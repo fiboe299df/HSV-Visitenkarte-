@@ -37,12 +37,8 @@
       <select class="lang-select" id="language-select" aria-label="Sprache wählen">
         <option value="de">Deutsch</option>
         <option value="en">English</option>
-        <option value="fr">Français</option>
         <option value="es">Español</option>
-        <option value="tr">Türkçe</option>
-        <option value="uk">Українська</option>
-        <option value="ru">Русский</option>
-        <option value="it">Italiano</option>
+        <option value="fr">Français</option>
       </select>
       <button class="tool-button" id="theme-toggle" type="button" aria-label="Darstellung wechseln">◐</button>
     </div>
@@ -97,36 +93,270 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
-    const CARD={firstName:"Lasse",lastName:"Böttcher",role:"Player Care & Teammanagement",company:"HSV Fußball AG",phone:"+491604339168",email:"Lasse.boettcher@hsv.de",address:"Uwe-Seeler-Allee 9, 22525 Hamburg"};
-    const TEXT={
-      de:{skip:"Zum Inhalt springen",eyebrow:"Hamburger Sport-Verein · Digitale Visitenkarte",intro:"Player Care & Teammanagement beim HSV. Der direkte Kontakt für Austausch, Zusammenarbeit und Fragen rund um den Spielerbereich.",emailCta:"✉ E-Mail schreiben",callCta:"☎ Anrufen",contactTitle:"Kontakt & Profile",contactNote:"Direkte Kontaktmöglichkeiten und berufliche Profile.",phone:"Telefon",copyPhone:"Telefonnummer kopieren",copyEmail:"E-Mail kopieren",saveContact:"＋ Kontakt speichern",share:"↗ Teilen",locationTitle:"Standort",locationNote:"HSV-Campus, Hamburg",mapConsent:"Die interaktive Karte wird erst nach deiner Zustimmung von OpenStreetMap geladen. Dabei wird deine IP-Adresse an den Kartendienst übermittelt.",loadMap:"Karte laden",googleRoute:"Google Maps Route ↗",appleRoute:"Apple Karten Route ↗",mapVerify:"Testversion: Bitte Anschrift und Karten-Pin vor Veröffentlichung verifizieren.",focusTitle:"Aufgabenbereich",focusNote:"Player Care & Teammanagement",focusText:"Diese Visitenkarte konzentriert sich auf die bestätigte Funktion und die direkten Kontaktwege. Weitere Stationen oder Qualifikationen können ergänzt werden, sobald die Angaben geprüft und zur Veröffentlichung freigegeben sind.",qrTitle:"Visitenkarte teilen",qrNote:"QR-Code scannen und diese Seite öffnen.",qrInfo:"Der Code verweist auf die aktuelle Seite.",copyLink:"Link kopieren",downloadQr:"QR-Code herunterladen",walletTitle:"In Wallet speichern",walletNote:"Wallet-Pass öffnen.",walletButton:"Wallet-Pass öffnen ↗",privacyTitle:"Datenschutz & Veröffentlichung",privacyText:"Die Karte lädt externe Kartendaten nur nach Klick auf „Karte laden“. Externe Profile und Wallet-Dienste öffnen sich beim Anklicken. Vor Livegang bitte Kontaktdaten, Rechte an Bildern und HSV-Markenverwendung sowie die erforderlichen Impressums- und Datenschutzhinweise mit dem zuständigen Team prüfen.",oldVersion:"Bisherige Visitenkarte",copied:"Kopiert.",copyFailed:"Kopieren nicht möglich. Bitte manuell kopieren.",vcardReady:"Kontaktdatei wurde erstellt.",mapFailed:"Karte konnte nicht geladen werden. Nutze bitte die Routenlinks.",mapPopup:"HSV-Campus · Uwe-Seeler-Allee 9, Hamburg"},
-      en:{skip:"Skip to content",eyebrow:"Hamburger Sport-Verein · Digital business card",intro:"Player Care & Team Management at HSV. Direct contact for exchange, collaboration and player-related enquiries.",emailCta:"✉ Send email",callCta:"☎ Call",contactTitle:"Contact & profiles",contactNote:"Direct contact details and professional profiles.",phone:"Phone",copyPhone:"Copy phone number",copyEmail:"Copy email",saveContact:"＋ Save contact",share:"↗ Share",locationTitle:"Location",locationNote:"HSV Campus, Hamburg",mapConsent:"The interactive map loads from OpenStreetMap only after you choose to load it. Your IP address will then be shared with the map provider.",loadMap:"Load map",googleRoute:"Google Maps directions ↗",appleRoute:"Apple Maps directions ↗",mapVerify:"Test version: Please verify the address and map pin before publication.",focusTitle:"Area of responsibility",focusNote:"Player Care & Team Management",focusText:"This card focuses on the stated role and direct contact options. Further career history or qualifications can be added once the details have been verified and approved for publication.",qrTitle:"Share this card",qrNote:"Scan the QR code to open this page.",qrInfo:"The code links to this page.",copyLink:"Copy link",downloadQr:"Download QR code",walletTitle:"Save to wallet",walletNote:"Open the wallet pass.",walletButton:"Open wallet pass ↗",privacyTitle:"Privacy & publication",privacyText:"External map data is loaded only after you select “Load map”. External profile and wallet services open when clicked. Before launch, confirm the contact details, image rights and HSV brand use, and have the required imprint and privacy notices reviewed by the responsible team.",oldVersion:"Previous business card",copied:"Copied.",copyFailed:"Could not copy. Please copy manually.",vcardReady:"Contact file created.",mapFailed:"The map could not be loaded. Please use the directions links.",mapPopup:"HSV Campus · Uwe-Seeler-Allee 9, Hamburg"},
-      fr:{skip:"Aller au contenu",eyebrow:"Hamburger Sport-Verein · Carte de visite numérique",intro:"Player Care & Teammanagement au HSV. Contact direct pour les échanges, la collaboration et les questions liées au secteur sportif.",emailCta:"✉ Envoyer un e-mail",callCta:"☎ Appeler",contactTitle:"Contact & profils",contactNote:"Coordonnées directes et profils professionnels.",phone:"Téléphone",copyPhone:"Copier le numéro",copyEmail:"Copier l’e-mail",saveContact:"＋ Enregistrer le contact",share:"↗ Partager",locationTitle:"Localisation",locationNote:"Campus HSV, Hambourg",mapConsent:"La carte interactive ne se charge qu’après votre autorisation via OpenStreetMap. Votre adresse IP sera transmise au service de cartes.",loadMap:"Charger la carte",googleRoute:"Itinéraire Google Maps ↗",appleRoute:"Itinéraire Apple Maps ↗",mapVerify:"Version test : veuillez vérifier l’adresse et l’emplacement sur la carte avant publication.",focusTitle:"Domaine d’activité",focusNote:"Player Care & Teammanagement",focusText:"Cette carte met l’accent sur le rôle confirmé et les moyens de contact directs. D’autres parcours ou qualifications peuvent être ajoutés après vérification et approbation pour publication.",qrTitle:"Partager la carte",qrNote:"Scanner le code QR pour ouvrir cette page.",qrInfo:"Le code ouvre cette page.",copyLink:"Copier le lien",downloadQr:"Télécharger le QR code",walletTitle:"Enregistrer dans le portefeuille",walletNote:"Ouvrir le billet Wallet.",walletButton:"Ouvrir le portefeuille ↗",privacyTitle:"Vie privée & publication",privacyText:"Les données cartographiques externes sont chargées seulement après avoir cliqué sur « Charger la carte ». Les profils et services externes s’ouvrent lors du clic. Avant le lancement, vérifiez les coordonnées, les droits d’image et l’usage de la marque HSV, puis faites valider les mentions légales et privacy par l’équipe concernée.",oldVersion:"Carte précédente",copied:"Copié.",copyFailed:"Impossible de copier. Merci de copier manuellement.",vcardReady:"Fichier de contact créé.",mapFailed:"La carte n’a pas pu être chargée. Veuillez utiliser les liens d’itinéraire.",mapPopup:"Campus HSV · Uwe-Seeler-Allee 9, Hambourg"},
-      es:{skip:"Ir al contenido",eyebrow:"Hamburger Sport-Verein · Tarjeta digital",intro:"Player Care & Teammanagement en HSV. Contacto directo para intercambio, colaboración y consultas relacionadas con el área deportiva.",emailCta:"✉ Enviar correo",callCta:"☎ Llamar",contactTitle:"Contacto y perfiles",contactNote:"Datos de contacto directos y perfiles profesionales.",phone:"Teléfono",copyPhone:"Copiar número",copyEmail:"Copiar correo",saveContact:"＋ Guardar contacto",share:"↗ Compartir",locationTitle:"Ubicación",locationNote:"Campus HSV, Hamburgo",mapConsent:"El mapa interactivo se carga desde OpenStreetMap solo después de tu confirmación. Tu dirección IP se compartirá con el proveedor del mapa.",loadMap:"Cargar mapa",googleRoute:"Ruta de Google Maps ↗",appleRoute:"Ruta de Apple Maps ↗",mapVerify:"Versión de prueba: por favor verifica la dirección y el punto del mapa antes de publicarlo.",focusTitle:"Área de responsabilidad",focusNote:"Player Care & Teammanagement",focusText:"Esta tarjeta se centra en la función confirmada y en las vías directas de contacto. Se pueden añadir más puestos o cualificaciones cuando la información esté verificada y autorizada para publicación.",qrTitle:"Compartir tarjeta",qrNote:"Escanea el código QR para abrir esta página.",qrInfo:"El código enlaza a la página actual.",copyLink:"Copiar enlace",downloadQr:"Descargar QR",walletTitle:"Guardar en billetera",walletNote:"Abrir la tarjeta wallet.",walletButton:"Abrir wallet ↗",privacyTitle:"Privacidad y publicación",privacyText:"Los datos del mapa externo solo se cargan tras pulsar “Cargar mapa”. Los perfiles externos y los servicios wallet se abren al hacer clic. Antes del lanzamiento, comprueba los datos de contacto, los derechos de imagen y el uso de la marca HSV, y hace revisar las notas legales y de privacidad por el equipo correspondiente.",oldVersion:"Tarjeta anterior",copied:"Copiado.",copyFailed:"No se pudo copiar. Copia manualmente.",vcardReady:"Archivo de contacto creado.",mapFailed:"No se pudo cargar el mapa. Usa los enlaces de ruta.",mapPopup:"Campus HSV · Uwe-Seeler-Allee 9, Hamburgo"},
-      tr:{skip:"İçeriğe geç",eyebrow:"Hamburger Sport-Verein · Dijital kartvizit",intro:"HSV’de Player Care & Teammanagement. Spor alanı ile ilgili iletişim, iş birliği ve sorular için doğrudan temas.",emailCta:"✉ E-posta yaz",callCta:"☎ Ara",contactTitle:"İletişim & profiller",contactNote:"Doğrudan iletişim bilgileri ve profesyonel profiller.",phone:"Telefon",copyPhone:"Telefon numarasını kopyala",copyEmail:"E-postayı kopyala",saveContact:"＋ Kişiyi kaydet",share:"↗ Paylaş",locationTitle:"Konum",locationNote:"HSV Kampüsü, Hamburg",mapConsent:"Etkin harita, yalnızca izin verdikten sonra OpenStreetMap’ten yüklenir. IP adresiniz harita sağlayıcısı ile paylaşılır.",loadMap:"Haritayı yükle",googleRoute:"Google Maps yönleri ↗",appleRoute:"Apple Haritalar yönleri ↗",mapVerify:"Test sürümü: Yayınlamadan önce adresi ve harita işaretini doğrulayın.",focusTitle:"Sorumluluk alanı",focusNote:"Player Care & Teammanagement",focusText:"Bu kart, onaylanmış rol ve doğrudan iletişim kanallarına odaklanır. Daha fazla kariyer bilgisi veya nitelik, doğrulandıktan ve yayın için onaylandıktan sonra eklenebilir.",qrTitle:"Kartviziti paylaş",qrNote:"Bu sayfayı açmak için QR kodunu tarayın.",qrInfo:"Kod mevcut sayfaya yönlendirir.",copyLink:"Bağlantıyı kopyala",downloadQr:"QR kodu indir",walletTitle:"Cüzdana kaydet",walletNote:"Wallet kartını aç.",walletButton:"Wallet kartını aç ↗",privacyTitle:"Gizlilik & yayınlama",privacyText:"Harita verileri sadece “Haritayı yükle” seçildikten sonra yüklenir. Harici profil ve wallet servisleri tıklandığında açılır. Yayına geçmeden önce iletişim bilgilerini, görsel haklarını ve HSV marka kullanımını kontrol edin; gerekli imprint ve privacy notlarını ilgili ekip ile gözden geçirin.",oldVersion:"Önceki kartvizit",copied:"Kopyalandı.",copyFailed:"Kopyalanamadı. Lütfen manuel kopyalayın.",vcardReady:"İletişim dosyası oluşturuldu.",mapFailed:"Harita yüklenemedi. Lütfen rota bağlantılarını kullanın.",mapPopup:"HSV Kampüsü · Uwe-Seeler-Allee 9, Hamburg"},
-      uk:{skip:"До вмісту",eyebrow:"Hamburger Sport-Verein · Цифрова візитка",intro:"Player Care & Teammanagement у HSV. Прямий контакт для обміну думками, співпраці та питань, пов’язаних із футбольним відділом.",emailCta:"✉ Написати листа",callCta:"☎ Подзвонити",contactTitle:"Контакти & профілі",contactNote:"Прямі контакти та професійні профілі.",phone:"Телефон",copyPhone:"Копіювати номер",copyEmail:"Копіювати e-mail",saveContact:"＋ Зберегти контакт",share:"↗ Поділитися",locationTitle:"Локація",locationNote:"Кампус HSV, Гамбург",mapConsent:"Інтерактивна карта завантажується з OpenStreetMap лише після вашого підтвердження. Ваша IP-адреса буде передана постачальнику карт.",loadMap:"Завантажити карту",googleRoute:"Маршрут Google Maps ↗",appleRoute:"Маршрут Apple Maps ↗",mapVerify:"Тестова версія: перед публікацією перевірте адресу та маркер на карті.",focusTitle:"Обов’язки",focusNote:"Player Care & Teammanagement",focusText:"Ця візитка зосереджена на підтвердженій ролі та прямих каналах зв’язку. Додаткові етапи кар’єри або кваліфікації можна додати після перевірки та схвалення для публікації.",qrTitle:"Поділитися візиткою",qrNote:"Скануйте QR-код, щоб відкрити цю сторінку.",qrInfo:"Код веде на цю сторінку.",copyLink:"Копіювати посилання",downloadQr:"Завантажити QR-код",walletTitle:"Зберегти в Wallet",walletNote:"Відкрити Wallet-pass.",walletButton:"Відкрити Wallet-pass ↗",privacyTitle:"Конфіденційність & публікація",privacyText:"Зовнішні картографічні дані завантажуються лише після натискання «Завантажити карту». Зовнішні профілі та сервіси Wallet відкриваються при натисканні. Перед запуском перевірте контактні дані, права на зображення та використання бренду HSV, а також потрібні відомості про імпринт і конфіденційність разом із відповідальною командою.",oldVersion:"Попередня візитка",copied:"Скопійовано.",copyFailed:"Не вдалося скопіювати. Скопіюйте вручну.",vcardReady:"Файл контакту створено.",mapFailed:"Карту не вдалося завантажити. Скористайтеся посиланнями маршруту.",mapPopup:"Кампус HSV · Uwe-Seeler-Allee 9, Гамбург"},
-      ru:{skip:"К содержанию",eyebrow:"Hamburger Sport-Verein · Цифровая визитка",intro:"Player Care & Teammanagement в HSV. Прямой контакт для обмена идеями, сотрудничества и вопросов, связанных с футбольной сферой.",emailCta:"✉ Написать письмо",callCta:"☎ Позвонить",contactTitle:"Контакты & профили",contactNote:"Прямые контактные данные и профессиональные профили.",phone:"Телефон",copyPhone:"Копировать номер",copyEmail:"Копировать e-mail",saveContact:"＋ Сохранить контакт",share:"↗ Поделиться",locationTitle:"Расположение",locationNote:"Кампус HSV, Гамбург",mapConsent:"Интерактивная карта загружается из OpenStreetMap только после вашего согласия. Ваш IP-адрес будет передан провайдеру карты.",loadMap:"Загрузить карту",googleRoute:"Маршрут Google Maps ↗",appleRoute:"Маршрут Apple Maps ↗",mapVerify:"Тестовая версия: перед публикацией проверьте адрес и метку на карте.",focusTitle:"Область ответственности",focusNote:"Player Care & Teammanagement",focusText:"Эта визитка сосредоточена на подтвержденной роли и прямых каналах связи. Дополнительные этапы карьеры или квалификации можно добавить после проверки и утверждения для публикации.",qrTitle:"Поделиться визиткой",qrNote:"Отсканируйте QR-код, чтобы открыть эту страницу.",qrInfo:"Код ведет на текущую страницу.",copyLink:"Копировать ссылку",downloadQr:"Скачать QR-код",walletTitle:"Сохранить в Wallet",walletNote:"Открыть Wallet-pass.",walletButton:"Открыть Wallet-pass ↗",privacyTitle:"Конфиденциальность & публикация",privacyText:"Внешние картографические данные загружаются только после нажатия «Загрузить карту». Внешние профили и сервисы Wallet открываются при клике. Перед запуском проверьте контактные данные, права на изображения и использование бренда HSV, а также необходимые сведения о правах и конфиденциальности вместе с ответственным отделом.",oldVersion:"Предыдущая визитка",copied:"Скопировано.",copyFailed:"Не удалось скопировать. Скопируйте вручную.",vcardReady:"Файл контакта создан.",mapFailed:"Карту не удалось загрузить. Используйте ссылки маршрутов.",mapPopup:"Кампус HSV · Uwe-Seeler-Allee 9, Гамбург"},
-      it:{skip:"Vai al contenuto",eyebrow:"Hamburger Sport-Verein · Biglietto da visita digitale",intro:"Player Care & Teammanagement presso l’HSV. Contatto diretto per scambi, collaborazione e domande legate all’area sportiva.",emailCta:"✉ Invia email",callCta:"☎ Chiama",contactTitle:"Contatti & profili",contactNote:"Dati di contatto diretti e profili professionali.",phone:"Telefono",copyPhone:"Copia numero",copyEmail:"Copia email",saveContact:"＋ Salva contatto",share:"↗ Condividi",locationTitle:"Posizione",locationNote:"Campus HSV, Amburgo",mapConsent:"La mappa interattiva viene caricata da OpenStreetMap solo dopo il tuo consenso. Il tuo indirizzo IP verrà condiviso con il fornitore della mappa.",loadMap:"Carica mappa",googleRoute:"Indicazioni Google Maps ↗",appleRoute:"Indicazioni Apple Maps ↗",mapVerify:"Versione di test: verifica indirizzo e punto sulla mappa prima della pubblicazione.",focusTitle:"Area di responsabilità",focusNote:"Player Care & Teammanagement",focusText:"Questa scheda si concentra sul ruolo confermato e sui canali diretti di contatto. Ulteriori esperienze o qualifiche possono essere aggiunti dopo verifica e approvazione per la pubblicazione.",qrTitle:"Condividi scheda",qrNote:"Scansiona il QR code per aprire questa pagina.",qrInfo:"Il codice apre la pagina corrente.",copyLink:"Copia link",downloadQr:"Scarica QR code",walletTitle:"Salva nel wallet",walletNote:"Apri il wallet pass.",walletButton:"Apri wallet pass ↗",privacyTitle:"Privacy & pubblicazione",privacyText:"I dati esterni della mappa vengono caricati solo dopo aver cliccato su “Carica mappa”. I profili e i servizi esterni si aprono al click. Prima del lancio, verifica i dati di contatto, i diritti sulle immagini e l’uso del marchio HSV, e fai valutare le note legali e di privacy dal team responsabile.",oldVersion:"Scheda precedente",copied:"Copiato.",copyFailed:"Impossibile copiare. Copia manualmente.",vcardReady:"File contatto creato.",mapFailed:"La mappa non è stata caricata. Usa i link di indicazioni.",mapPopup:"Campus HSV · Uwe-Seeler-Allee 9, Amburgo"}
+    const CARD = { firstName: 'Lasse', lastName: 'Böttcher', role: 'Player Care & Teammanagement', company: 'HSV Fußball AG', phone: '+491604339168', email: 'Lasse.boettcher@hsv.de', address: 'Uwe-Seeler-Allee 9, 22525 Hamburg' };
+    const TEXT = {
+      de: {
+        eyebrow: 'Hamburger Sport-Verein · Digitale Visitenkarte',
+        intro: 'Player Care & Teammanagement beim HSV. Der direkte Kontakt für Austausch, Zusammenarbeit und Fragen rund um den Spielerbereich.',
+        emailCta: '✉ E-Mail schreiben', callCta: '☎ Anrufen',
+        contactTitle: 'Kontakt & Profile', contactNote: 'Direkte Kontaktmöglichkeiten und berufliche Profile.',
+        phone: 'Telefon', copyPhone: 'Telefonnummer kopieren', copyEmail: 'E-Mail kopieren', saveContact: '＋ Kontakt speichern', share: '↗ Teilen',
+        locationTitle: 'Standort', locationNote: 'HSV-Campus, Hamburg',
+        mapConsent: 'Die interaktive Karte wird erst nach deiner Zustimmung von OpenStreetMap geladen. Dabei wird deine IP-Adresse an den Kartendienst übermittelt.',
+        loadMap: 'Karte laden', googleRoute: 'Google Maps Route ↗', appleRoute: 'Apple Karten Route ↗',
+        mapVerify: 'Testversion: Bitte Anschrift und Karten-Pin vor Veröffentlichung verifizieren.',
+        focusTitle: 'Aufgabenbereich', focusNote: 'Player Care & Teammanagement',
+        focusText: 'Diese Visitenkarte konzentriert sich auf die bestätigte Funktion und die direkten Kontaktwege. Weitere Stationen oder Qualifikationen können ergänzt werden, sobald die Angaben geprüft und zur Veröffentlichung freigegeben sind.',
+        qrTitle: 'Visitenkarte teilen', qrNote: 'QR-Code scannen und diese Seite öffnen.', qrInfo: 'Der Code verweist auf die aktuelle Seite.',
+        copyLink: 'Link kopieren', downloadQr: 'QR-Code herunterladen',
+        walletTitle: 'In Wallet speichern', walletNote: 'Wallet-Pass öffnen.', walletButton: 'Wallet-Pass öffnen ↗',
+        privacyTitle: 'Datenschutz & Veröffentlichung',
+        privacyText: 'Die Karte lädt externe Kartendaten nur nach Klick auf „Karte laden“. Externe Profile und Wallet-Dienste öffnen sich beim Anklicken. Vor Livegang bitte Kontaktdaten, Rechte an Bildern und HSV-Markenverwendung sowie die erforderlichen Impressums- und Datenschutzhinweise mit dem zuständigen Team prüfen.',
+        oldVersion: 'Bisherige Visitenkarte', copied: 'Kopiert.', copyFailed: 'Kopieren nicht möglich. Bitte manuell kopieren.',
+        vcardReady: 'Kontaktdatei wurde erstellt.', mapFailed: 'Karte konnte nicht geladen werden. Nutze bitte die Routenlinks.',
+        mapPopup: 'HSV-Campus · Uwe-Seeler-Allee 9, Hamburg'
+      },
+      en: {
+        eyebrow: 'Hamburger Sport-Verein · Digital business card',
+        intro: 'Player Care & Team Management at HSV. Direct contact for exchange, collaboration and player-related enquiries.',
+        emailCta: '✉ Send email', callCta: '☎ Call',
+        contactTitle: 'Contact & profiles', contactNote: 'Direct contact details and professional profiles.',
+        phone: 'Phone', copyPhone: 'Copy phone number', copyEmail: 'Copy email', saveContact: '＋ Save contact', share: '↗ Share',
+        locationTitle: 'Location', locationNote: 'HSV Campus, Hamburg',
+        mapConsent: 'The interactive map loads from OpenStreetMap only after you choose to load it. Your IP address will then be shared with the map provider.',
+        loadMap: 'Load map', googleRoute: 'Google Maps directions ↗', appleRoute: 'Apple Maps directions ↗',
+        mapVerify: 'Test version: Please verify the address and map pin before publication.',
+        focusTitle: 'Area of responsibility', focusNote: 'Player Care & Team Management',
+        focusText: 'This card focuses on the stated role and direct contact options. Further career history or qualifications can be added once the details have been verified and approved for publication.',
+        qrTitle: 'Share this card', qrNote: 'Scan the QR code to open this page.', qrInfo: 'The code links to this page.',
+        copyLink: 'Copy link', downloadQr: 'Download QR code',
+        walletTitle: 'Save to wallet', walletNote: 'Open the wallet pass.', walletButton: 'Open wallet pass ↗',
+        privacyTitle: 'Privacy & publication',
+        privacyText: 'External map data is loaded only after you select “Load map”. External profile and wallet services open when clicked. Before launch, confirm the contact details, image rights and HSV brand use, and have the required imprint and privacy notices reviewed by the responsible team.',
+        oldVersion: 'Previous business card', copied: 'Copied.', copyFailed: 'Could not copy. Please copy manually.',
+        vcardReady: 'Contact file created.', mapFailed: 'The map could not be loaded. Please use the directions links.',
+        mapPopup: 'HSV Campus · Uwe-Seeler-Allee 9, Hamburg'
+      },
+      es: {
+        eyebrow: 'Hamburger Sport-Verein · Tarjeta digital',
+        intro: 'Player Care & Teammanagement en HSV. Contacto directo para intercambio, colaboración y consultas relacionadas con el ámbito deportivo.',
+        emailCta: '✉ Enviar correo', callCta: '☎ Llamar',
+        contactTitle: 'Contacto y perfiles', contactNote: 'Datos de contacto directos y perfiles profesionales.',
+        phone: 'Teléfono', copyPhone: 'Copiar número', copyEmail: 'Copiar correo', saveContact: '＋ Guardar contacto', share: '↗ Compartir',
+        locationTitle: 'Ubicación', locationNote: 'Campus HSV, Hamburgo',
+        mapConsent: 'El mapa interactivo se carga desde OpenStreetMap solo después de tu confirmación. Tu dirección IP se compartirá con el proveedor del mapa.',
+        loadMap: 'Cargar mapa', googleRoute: 'Ruta de Google Maps ↗', appleRoute: 'Ruta de Apple Maps ↗',
+        mapVerify: 'Versión de prueba: por favor verifica la dirección y el punto del mapa antes de publicarlo.',
+        focusTitle: 'Área de responsabilidad', focusNote: 'Player Care & Teammanagement',
+        focusText: 'Esta tarjeta se centra en la función confirmada y en las vías directas de contacto. Se pueden añadir más puestos o cualificaciones cuando la información esté verificada y autorizada para publicación.',
+        qrTitle: 'Compartir tarjeta', qrNote: 'Escanea el código QR para abrir esta página.', qrInfo: 'El código enlaza a la página actual.',
+        copyLink: 'Copiar enlace', downloadQr: 'Descargar QR',
+        walletTitle: 'Guardar en billetera', walletNote: 'Abrir la tarjeta wallet.', walletButton: 'Abrir wallet ↗',
+        privacyTitle: 'Privacidad y publicación',
+        privacyText: 'Los datos del mapa externo solo se cargan tras pulsar “Cargar mapa”. Los perfiles externos y los servicios wallet se abren al hacer clic. Antes del lanzamiento, comprueba los datos de contacto, los derechos de imagen y el uso de la marca HSV, y haz revisar las notas legales y de privacidad por el equipo correspondiente.',
+        oldVersion: 'Tarjeta anterior', copied: 'Copiado.', copyFailed: 'No se pudo copiar. Copia manualmente.',
+        vcardReady: 'Archivo de contacto creado.', mapFailed: 'No se pudo cargar el mapa. Usa los enlaces de ruta.',
+        mapPopup: 'Campus HSV · Uwe-Seeler-Allee 9, Hamburgo'
+      },
+      fr: {
+        eyebrow: 'Hamburger Sport-Verein · Carte de visite numérique',
+        intro: 'Player Care & Teammanagement au HSV. Contact direct pour les échanges, la collaboration et les questions liées au secteur sportif.',
+        emailCta: '✉ Envoyer un e-mail', callCta: '☎ Appeler',
+        contactTitle: 'Contact & profils', contactNote: 'Coordonnées directes et profils professionnels.',
+        phone: 'Téléphone', copyPhone: 'Copier le numéro', copyEmail: 'Copier l’e-mail', saveContact: '＋ Enregistrer le contact', share: '↗ Partager',
+        locationTitle: 'Localisation', locationNote: 'Campus HSV, Hambourg',
+        mapConsent: 'La carte interactive ne se charge qu’après votre autorisation via OpenStreetMap. Votre adresse IP sera transmise au service de cartes.',
+        loadMap: 'Charger la carte', googleRoute: 'Itinéraire Google Maps ↗', appleRoute: 'Itinéraire Apple Maps ↗',
+        mapVerify: 'Version test : veuillez vérifier l’adresse et l’emplacement sur la carte avant publication.',
+        focusTitle: 'Domaine d’activité', focusNote: 'Player Care & Teammanagement',
+        focusText: 'Cette carte met l’accent sur le rôle confirmé et les moyens de contact directs. D’autres parcours ou qualifications peuvent être ajoutés après vérification et approbation pour publication.',
+        qrTitle: 'Partager la carte', qrNote: 'Scanner le code QR pour ouvrir cette page.', qrInfo: 'Le code ouvre cette page.',
+        copyLink: 'Copier le lien', downloadQr: 'Télécharger le QR code',
+        walletTitle: 'Enregistrer dans le portefeuille', walletNote: 'Ouvrir le billet Wallet.', walletButton: 'Ouvrir le portefeuille ↗',
+        privacyTitle: 'Vie privée & publication',
+        privacyText: 'Les données cartographiques externes sont chargées seulement après avoir cliqué sur « Charger la carte ». Les profils et services externes s’ouvrent lors du clic. Avant le lancement, vérifiez les coordonnées, les droits d’image et l’usage de la marque HSV, puis faites valider les mentions légales et privacy par l’équipe concernée.',
+        oldVersion: 'Carte précédente', copied: 'Copié.', copyFailed: 'Impossible de copier. Merci de copier manuellement.',
+        vcardReady: 'Fichier de contact créé.', mapFailed: 'La carte n’a pas pu être chargée. Veuillez utiliser les liens d’itinéraire.',
+        mapPopup: 'Campus HSV · Uwe-Seeler-Allee 9, Hambourg'
+      }
     };
-    const toast=document.getElementById("toast");let toastTimer;let mapPopup=false,marker=null;let language="de";
-    function notify(message){toast.textContent=message;toast.classList.add("visible");clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove("visible"),2600)}
-    function escapeVCard(value){return String(value).replace(/\\/g,"\\\\").replace(/\n/g,"\\n").replace(/,/g,"\\,").replace(/;/g,"\\;")}
-    function downloadVCard(){const full=`${CARD.firstName} ${CARD.lastName}`;const lines=["BEGIN:VCARD","VERSION:3.0",`N:${escapeVCard(CARD.lastName)};${escapeVCard(CARD.firstName)};;;`,`FN:${escapeVCard(full)}`,`ORG:${escapeVCard(CARD.company)}`,`TITLE:${escapeVCard(CARD.role)}`,`TEL;TYPE=WORK,VOICE:${CARD.phone}`,`EMAIL;TYPE=WORK:${CARD.email}`,`ADR;TYPE=WORK:;;${escapeVCard(CARD.address)};;;;`,`END:VCARD`].join("\r\n");const url=URL.createObjectURL(new Blob([lines],{type:"text/vcard;charset=utf-8"}));const a=document.createElement("a");a.href=url;a.download="Lasse_Boettcher.vcf";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);notify(TEXT[language].vcardReady)}
-    function setLanguage(next){language=next;document.documentElement.lang=next;document.querySelectorAll("[data-i18n]").forEach(el=>{const key=el.dataset.i18n;if(TEXT[next][key])el.textContent=TEXT[next][key]});document.getElementById("language-select").value=next;try{localStorage.setItem("hsv-card-lang",next)}catch{};if(mapPopup && marker){marker.setPopupContent(TEXT[next].mapPopup)}}
-    async function copyText(value){try{await navigator.clipboard.writeText(value);notify(TEXT[language].copied)}catch{notify(TEXT[language].copyFailed);window.prompt(TEXT[language].copyFailed,value)}}
-    document.getElementById("save-contact").addEventListener("click",downloadVCard);
-    document.getElementById("copy-phone").addEventListener("click",()=>copyText(CARD.phone));
-    document.getElementById("copy-email").addEventListener("click",()=>copyText(CARD.email));
-    const cardUrl=new URL(location.href);cardUrl.search="";cardUrl.hash="";
-    if(window.QRCode&&/^https?:$/.test(location.protocol)){new QRCode(document.getElementById("qrcode"),{text:cardUrl.href,width:112,height:112,colorDark:"#071b31",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M})}else{document.getElementById("qrcode").textContent="QR"}
-    document.getElementById("copy-link").addEventListener("click",()=>copyText(cardUrl.href));
-    document.getElementById("download-qr").addEventListener("click",()=>{const box=document.getElementById("qrcode");let dataUrl;const canvas=box.querySelector("canvas");const image=box.querySelector("img");if(canvas)dataUrl=canvas.toDataURL("image/png");else if(image){const c=document.createElement("canvas");c.width=image.naturalWidth||112;c.height=image.naturalHeight||112;const ctx=c.getContext("2d");ctx.drawImage(image,0,0);dataUrl=c.toDataURL("image/png")}if(!dataUrl){notify(TEXT[language].copyFailed);return}const a=document.createElement("a");a.href=dataUrl;a.download="lasse-boettcher-hsv-qr.png";a.click()});
-    document.getElementById("share-card").addEventListener("click",async()=>{const data={title:"Lasse Böttcher | HSV",text:"Digitale Visitenkarte von Lasse Böttcher",url:cardUrl.href};if(navigator.share){try{await navigator.share(data)}catch(error){if(error.name!=="AbortError")notify(TEXT[language].copyFailed)}}else copyText(cardUrl.href)});
-    document.getElementById("language-select").addEventListener("change",event=>setLanguage(event.target.value));
-    document.getElementById("theme-toggle").addEventListener("click",()=>{const dark=document.body.classList.toggle("dark");document.querySelector('meta[name="theme-color"]').content=dark?"#0c1723":"#071b31";try{localStorage.setItem("hsv-card-theme",dark?"dark":"light")}catch{}});try{if(localStorage.getItem("hsv-card-theme")==="dark")document.body.classList.add("dark")}catch{}
-    try{const saved=localStorage.getItem("hsv-card-lang");if(saved&&TEXT[saved])language=saved;}catch{}
-    document.getElementById("load-map").addEventListener("click",async()=>{const button=document.getElementById("load-map");button.disabled=true;try{if(!window.L){const css=document.createElement("link");css.rel="stylesheet";css.href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";document.head.appendChild(css);await new Promise((resolve,reject)=>{const script=document.createElement("script");script.src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";script.onload=resolve;script.onerror=reject;document.head.appendChild(script)})}document.getElementById("map-consent").hidden=true;document.getElementById("map-frame").hidden=false;const campus=[53.5874,9.8986];const map=L.map("map",{scrollWheelZoom:false}).setView(campus,15);L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);marker=L.marker(campus).addTo(map).bindPopup(TEXT[language].mapPopup).openPopup();mapPopup=true;map.on("click",()=>map.scrollWheelZoom.enable());setTimeout(()=>map.invalidateSize(),150);button.disabled=false}catch{document.getElementById("map-consent").hidden=false;document.getElementById("map-consent").querySelector("p").textContent=TEXT[language].mapFailed;notify(TEXT[language].mapFailed);button.disabled=false}}
-    setLanguage(language);
+
+    const languageSelect = document.getElementById('language-select');
+    const toast = document.getElementById('toast');
+    let toastTimer = null;
+    let activeLang = 'de';
+    let mapPopup = false;
+    let mapMarker = null;
+
+    function notify(message) {
+      toast.textContent = message;
+      toast.classList.add('visible');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('visible'), 2600);
+    }
+
+    function setLanguage(lang) {
+      if (!TEXT[lang]) return;
+      activeLang = lang;
+      document.documentElement.lang = lang;
+      languageSelect.value = lang;
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.dataset.i18n;
+        if (TEXT[lang][key]) el.textContent = TEXT[lang][key];
+      });
+      try { localStorage.setItem('hsv-card-lang', lang); } catch (e) {}
+      if (mapPopup && mapMarker && TEXT[lang].mapPopup) {
+        mapMarker.setPopupContent(TEXT[lang].mapPopup);
+      }
+    }
+
+    function escapeVCard(value) {
+      return String(value).replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/,/g, '\\,').replace(/;/g, '\\;');
+    }
+
+    function downloadVCard() {
+      const fullName = `${CARD.firstName} ${CARD.lastName}`;
+      const lines = [
+        'BEGIN:VCARD', 'VERSION:3.0',
+        `N:${escapeVCard(CARD.lastName)};${escapeVCard(CARD.firstName)};;;`,
+        `FN:${escapeVCard(fullName)}`,
+        `ORG:${escapeVCard(CARD.company)}`,
+        `TITLE:${escapeVCard(CARD.role)}`,
+        `TEL;TYPE=WORK,VOICE:${CARD.phone}`,
+        `EMAIL;TYPE=WORK:${CARD.email}`,
+        `ADR;TYPE=WORK:;;${escapeVCard(CARD.address)};;;;`,
+        'END:VCARD'
+      ].join('\r\n');
+      const url = URL.createObjectURL(new Blob([lines], { type: 'text/vcard;charset=utf-8' }));
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Lasse_Boettcher.vcf';
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      notify(TEXT[activeLang].vcardReady);
+    }
+
+    async function copyText(value) {
+      try {
+        await navigator.clipboard.writeText(value);
+        notify(TEXT[activeLang].copied);
+      } catch {
+        notify(TEXT[activeLang].copyFailed);
+        window.prompt(TEXT[activeLang].copyFailed, value);
+      }
+    }
+
+    document.getElementById('copy-phone').addEventListener('click', () => copyText(CARD.phone));
+    document.getElementById('copy-email').addEventListener('click', () => copyText(CARD.email));
+    document.getElementById('save-contact').addEventListener('click', downloadVCard);
+    document.getElementById('share-card').addEventListener('click', async () => {
+      const data = { title: 'Lasse Böttcher | HSV', text: 'Digitale Visitenkarte von Lasse Böttcher', url: cardUrl.href };
+      if (navigator.share) {
+        try { await navigator.share(data); } catch (error) { if (error.name !== 'AbortError') notify(TEXT[activeLang].copyFailed); }
+      } else {
+        copyText(cardUrl.href);
+      }
+    });
+
+    const cardUrl = new URL(location.href);
+    cardUrl.search = '';
+    cardUrl.hash = '';
+
+    if (window.QRCode && /^https?:$/.test(location.protocol)) {
+      new QRCode(document.getElementById('qrcode'), {
+        text: cardUrl.href,
+        width: 112,
+        height: 112,
+        colorDark: '#071b31',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    } else {
+      document.getElementById('qrcode').textContent = 'QR';
+    }
+
+    document.getElementById('copy-link').addEventListener('click', () => copyText(cardUrl.href));
+    document.getElementById('download-qr').addEventListener('click', () => {
+      const box = document.getElementById('qrcode');
+      let source = null;
+      const canvas = box.querySelector('canvas');
+      if (canvas) source = canvas.toDataURL('image/png');
+      if (!source) {
+        const image = box.querySelector('img');
+        if (image) {
+          const c = document.createElement('canvas');
+          c.width = image.naturalWidth || 112;
+          c.height = image.naturalHeight || 112;
+          const ctx = c.getContext('2d');
+          ctx.drawImage(image, 0, 0);
+          source = c.toDataURL('image/png');
+        }
+      }
+      if (!source) {
+        notify(TEXT[activeLang].copyFailed);
+        return;
+      }
+      const a = document.createElement('a');
+      a.href = source;
+      a.download = 'lasse-boettcher-hsv-qr.png';
+      a.click();
+    });
+
+    document.getElementById('language-select').addEventListener('change', (event) => setLanguage(event.target.value));
+
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const dark = document.body.classList.toggle('dark');
+      document.querySelector('meta[name="theme-color"]').content = dark ? '#0c1723' : '#071b31';
+      try { localStorage.setItem('hsv-card-theme', dark ? 'dark' : 'light'); } catch (e) {}
+    });
+
+    try {
+      if (localStorage.getItem('hsv-card-theme') === 'dark') document.body.classList.add('dark');
+      const savedLang = localStorage.getItem('hsv-card-lang');
+      if (savedLang && TEXT[savedLang]) activeLang = savedLang;
+    } catch (e) {}
+
+    document.getElementById('load-map').addEventListener('click', async () => {
+      const button = document.getElementById('load-map');
+      button.disabled = true;
+      try {
+        if (!window.L) {
+          const css = document.createElement('link');
+          css.rel = 'stylesheet';
+          css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+          document.head.appendChild(css);
+          await new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+            script.onload = resolve;
+            script.onerror = reject;
+            document.head.appendChild(script);
+          });
+        }
+
+        document.getElementById('map-consent').hidden = true;
+        document.getElementById('map-frame').hidden = false;
+
+        const campus = [53.5874, 9.8986];
+        const map = L.map('map', { scrollWheelZoom: false }).setView(campus, 15);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+        mapMarker = L.marker(campus).addTo(map).bindPopup(TEXT[activeLang].mapPopup).openPopup();
+        mapPopup = true;
+        map.on('click', () => map.scrollWheelZoom.enable());
+        setTimeout(() => map.invalidateSize(), 150);
+        button.disabled = false;
+      } catch (error) {
+        document.getElementById('map-consent').hidden = false;
+        document.getElementById('map-consent').querySelector('p').textContent = TEXT[activeLang].mapFailed;
+        notify(TEXT[activeLang].mapFailed);
+        button.disabled = false;
+      }
+    });
+
+    setLanguage(activeLang);
   </script>
 </body>
 </html>
