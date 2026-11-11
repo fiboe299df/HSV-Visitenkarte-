@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#00529f">
   <meta name="description" content="Digitale Visitenkarte von Lasse Boettcher">
-  <title>Lasse Boettcher | HSV </title>
+  <title>Lasse Boettcher | HSV</title>
 
   <style>
     :root {
@@ -90,7 +90,6 @@
       text-decoration: none;
     }
 
-    /* Banner mit Stadionhintergrund, HSV-Logo und Profilfoto */
     .hero {
       position: relative;
       display: grid;
@@ -100,7 +99,7 @@
       margin: 8px 0 24px;
       padding: clamp(24px, 5vw, 54px);
       overflow: hidden;
-      color: var(--white);
+      color: #fff;
       background:
         linear-gradient(90deg, rgba(0,29,58,.94), rgba(0,82,159,.64)),
         url("assets/volksparkstadion.jpg") center 48% / cover no-repeat;
@@ -141,8 +140,8 @@
 
     .hero-banner strong {
       display: block;
-      font-size: 1.15rem;
-      letter-spacing: .08em;
+      font-size: 1.2rem;
+      letter-spacing: .12em;
     }
 
     .hero-banner span {
@@ -151,7 +150,7 @@
       color: #d9eafa;
       font-size: .76rem;
       font-weight: 700;
-      letter-spacing: .12em;
+      letter-spacing: .1em;
       text-transform: uppercase;
     }
 
@@ -272,7 +271,7 @@
       justify-content: center;
       min-height: 44px;
       padding: 11px 15px;
-      color: var(--white);
+      color: #fff;
       background: var(--blue);
       border: 0;
       border-radius: 12px;
@@ -412,7 +411,7 @@
       align-items: center;
       gap: 12px;
       padding: 15px 16px;
-      color: var(--white);
+      color: #fff;
       background: linear-gradient(135deg, var(--blue-dark), var(--blue));
       border-radius: 13px;
       list-style: none;
@@ -433,6 +432,7 @@
     }
 
     #qrcode img, #qrcode canvas { max-width: 100%; }
+    .qr-target { overflow-wrap: anywhere; }
 
     .form-grid { display: grid; gap: 12px; margin-top: 16px; }
 
@@ -505,7 +505,7 @@
     <header>
       <a class="brand" href="https://www.hsv.de/" aria-label="Home | HSV">
         <span class="brand-logo">
-          <img src="assets/hsv-logo.png" alt="HSV-Logo">
+          <img src="assets/hsv-logo.jpg" alt="HSV-Logo">
         </span>
         <span>
           Lasse Boettcher
@@ -519,18 +519,16 @@
       <section class="hero" aria-labelledby="welcome-title">
         <div class="hero-content">
           <div class="hero-banner">
-            <img src="assets/hsv-logo.png" alt="">
+            <img src="assets/hsv-logo.jpg" alt="">
             <div>
-              <strong>HSV GO</strong>
+              <strong>HSV</strong>
               <span>Digitale Visitenkarte</span>
             </div>
           </div>
 
           <p class="eyebrow">Hamburger SV</p>
           <h1 id="welcome-title">Persönlich. Gemeinsam. HSV.</h1>
-          <p class="hero-copy">
-            Lasse Boettcher · Player Care &amp; Teammanagement
-          </p>
+          <p class="hero-copy">Lasse Boettcher · Player Care &amp; Teammanagement</p>
         </div>
 
         <div class="hero-photo">
@@ -663,9 +661,9 @@
               <summary id="career-title">Karriere / Bewerbung öffnen</summary>
               <div class="toggle-content">
                 <p class="small">
-                  Wähle hier Bewerbungsunterlagen aus. Die Dateien werden mit dieser
-                  statischen HTML-Seite nicht übertragen. Für einen echten Upload ist
-                  ein sicheres Bewerbungs-Backend erforderlich.
+                  Wähle hier Bewerbungsunterlagen aus. Diese statische HTML-Seite
+                  überträgt die Dateien nicht. Für echte Bewerbungen ist ein sicheres
+                  Upload-Backend erforderlich.
                 </p>
 
                 <form id="application-form" class="form-grid">
@@ -697,9 +695,21 @@
               <div class="toggle-content">
                 <p class="small">Der QR-Code öffnet diese Visitenkarten-Seite.</p>
                 <div id="qrcode" aria-label="QR-Code zur aktuellen Visitenkarte"></div>
-                <p class="small">Ziel: <span id="qr-target"></span></p>
+                <p class="small qr-target">Ziel: <span id="qr-target"></span></p>
               </div>
             </details>
+          </section>
+
+          <section class="card" aria-labelledby="wallet-title">
+            <h2 id="wallet-title">Wallet</h2>
+            <p class="small">
+              Apple Wallet und Google Wallet benötigen separat eingerichtete
+              Wallet-Pässe. Ohne Pass-Link sind die Buttons noch nicht aktiv.
+            </p>
+            <div class="actions">
+              <a class="button pale wallet-link" id="apple-wallet" href="#" aria-disabled="true">Apple Wallet</a>
+              <a class="button pale wallet-link" id="google-wallet" href="#" aria-disabled="true">Google Wallet</a>
+            </div>
           </section>
 
           <section class="card">
@@ -712,7 +722,7 @@
     </main>
 
     <footer>
-      <div>HSV GO · Lasse Boettcher</div>
+      <div>HSV · Lasse Boettcher</div>
 
       <details class="imprint">
         <summary>Impressum</summary>
@@ -799,24 +809,27 @@
 
           <h3>Copyright</h3>
           <p>
-            Alle Rechte vorbehalten. Nachdruck, Aufnahme in Online-Dienste und Internet
-            sowie Vervielfältigung auf Datenträgern – auch auszugsweise – nur nach
-            vorheriger schriftlicher Zustimmung der HSV Fußball AG &amp; Co. KGaA /
-            SPORTFIVE Germany GmbH.
+            Alle Rechte vorbehalten. Insbesondere dürfen Nachdruck, Aufnahme in
+            Online-Dienste und Internet sowie Vervielfältigung auf Datenträger wie
+            CD-ROM, DVD-ROM etc. – auch auszugsweise – nur nach vorheriger schriftlicher
+            Zustimmung der HSV Fußball AG &amp; Co. KGaA / SPORTFIVE Germany GmbH erfolgen.
           </p>
           <p>
             Für unverlangt eingesandte Manuskripte kann keine Haftung übernommen werden.
             Mit Übergabe der Manuskripte und Bilder an die Redaktion erteilt der Verfasser
             der HSV Fußball AG &amp; Co. KGaA / SPORTFIVE Germany GmbH das Recht zur
-            Veröffentlichung. Honorierte Arbeiten gehen in deren Verfügungsrecht über.
-            Warennamen werden ohne Gewährleistung einer freien Verfügung genutzt.
+            Veröffentlichung. Honorierte Arbeiten gehen in das Verfügungsrecht der
+            HSV Fußball AG &amp; Co. KGaA / SPORTFIVE Germany GmbH über. Warennamen
+            werden ohne Gewährleistung einer freien Verfügung genutzt.
           </p>
 
           <h3>Externe Links</h3>
           <p>
-            Die HSV Fußball AG &amp; Co. KGaA / SPORTFIVE Germany GmbH hat keinen Einfluss
-            auf Gestaltung und Inhalte verlinkter Seiten und distanziert sich ausdrücklich
-            von deren Inhalten, soweit sie nicht auf ihren eigenen Servern abgelegt sind.
+            Die HSV Fußball AG &amp; Co. KGaA / SPORTFIVE Germany GmbH erklärt, dass sie
+            keinen Einfluss auf Gestaltung und Inhalte verlinkter Internetseiten hat und
+            sich von deren Inhalten distanziert, soweit diese nicht auf ihren eigenen
+            Servern abgelegt sind. Dies gilt auch für Inhalte, zu denen Banner und Links
+            führen.
           </p>
 
           <h3>Alternative Streitbeilegung</h3>
@@ -889,13 +902,11 @@
     document.getElementById("save-contact").addEventListener("click", downloadVCard);
     document.getElementById("save-contact-side").addEventListener("click", downloadVCard);
 
-    // QR-Code zeigt auf die aktuell aufgerufene Visitenkarten-Seite,
-    // ohne Suchparameter oder Sprungmarke – nicht auf OneVcard.
+    // QR-Code zur aktuell veröffentlichten Visitenkarte
     const cardUrl = new URL(window.location.href);
     cardUrl.search = "";
     cardUrl.hash = "";
     const qrUrl = cardUrl.href;
-
     document.getElementById("qr-target").textContent = qrUrl;
 
     if (window.QRCode && /^https?:$/.test(window.location.protocol)) {
@@ -917,6 +928,12 @@
       document.getElementById("form-message").textContent =
         "Die Dateien wurden nicht übertragen. Für Bewerbungen muss ein sicheres Upload-Backend eingerichtet werden.";
     });
+
+    for (const id of ["apple-wallet", "google-wallet"]) {
+      document.getElementById(id).addEventListener("click", event => {
+        event.preventDefault();
+      });
+    }
   </script>
 </body>
 </html>
