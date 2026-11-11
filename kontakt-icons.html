@@ -1,0 +1,56 @@
+<style>
+  .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .social-link {
+    display: inline-flex;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: #00529f;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+
+  .social-link:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(0, 82, 159, .2);
+  }
+
+  .social-link.linkedin { background: #0a66c2; }
+  .social-link.xing { background: #026466; }
+  .social-link svg { width: 23px; height: 23px; fill: currentColor; }
+  .social-link .xing-mark { font: 800 12px Arial, sans-serif; letter-spacing: -.5px; }
+
+  .social-link:focus-visible {
+    outline: 3px solid #172b3b;
+    outline-offset: 3px;
+  }
+</style>
+
+<nav class="social-links" aria-label="Soziale Profile">
+  <a class="social-link linkedin"
+     href="https://de.linkedin.com/in/lasse-b%C3%B6ttcher-954938154"
+     target="_blank" rel="noopener noreferrer"
+     aria-label="LinkedIn-Profil von Lasse Böttcher öffnen"
+     title="LinkedIn">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.5H4.97V9h2.96v9.5ZM6.45 7.7a1.72 1.72 0 1 1 0-3.44 1.72 1.72 0 0 1 0 3.44ZM19 18.5h-2.95v-4.62c0-1.1-.02-2.52-1.54-2.52-1.55 0-1.79 1.2-1.79 2.44v4.7H9.77V9h2.83v1.3h.04c.39-.74 1.36-1.52 2.8-1.52 3 0 3.56 1.97 3.56 4.53v5.19Z"/>
+    </svg>
+  </a>
+
+  <a class="social-link xing"
+     href="https://www.xing.com/profile/Lasse_Boettcher"
+     target="_blank" rel="noopener noreferrer"
+     aria-label="XING-Profil von Lasse Böttcher öffnen"
+     title="XING">
+    <span class="xing-mark" aria-hidden="true">XING</span>
+  </a>
+</nav>
