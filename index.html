@@ -27,7 +27,7 @@
     header { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 0; }
     .brand { display:flex; align-items:center; gap:12px; color:var(--blue); font-size:1.1rem; font-weight:900; text-decoration:none; }
     .brand-logo { display:grid; place-items:center; flex:0 0 52px; width:52px; height:52px; padding:4px; overflow:hidden; background:#fff; border:1px solid var(--line); border-radius:50%; }
-    .brand-logo img { width:100%; height:100%; object-fit:contain; }
+    .brand-logo img { width:100%; height:100%; object-fit:contain; border-radius:50%; }
     .brand small { display:block; margin-top:3px; color:var(--muted); font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; }
     .home-link { color:var(--blue); font-size:.92rem; font-weight:800; text-decoration:none; }
     .hero { display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:center; margin:8px 0 24px; padding:clamp(24px,5vw,54px); color:#fff; background:linear-gradient(90deg,rgba(0,29,58,.94),rgba(0,82,159,.64)),url("assets/volksparkstadion.jpg") center 48%/cover no-repeat; border-radius:28px; box-shadow:0 18px 48px rgba(0,52,100,.10); }
@@ -56,15 +56,7 @@
     .button { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:11px 15px; color:#fff; background:var(--blue); border:0; border-radius:12px; cursor:pointer; font:inherit; font-weight:800; text-decoration:none; }
     .button:hover { transform:translateY(-1px); box-shadow:0 8px 18px rgba(0,82,159,.16); }
     .button.pale { color:var(--blue-dark); background:var(--blue-pale); }
-    .social-links {
-      display:flex;
-      flex-wrap:nowrap;
-      align-items:center;
-      justify-content:center;
-      width:100%;
-      gap:10px;
-      margin-top:12px;
-    }
+    .social-links { display:flex; flex-wrap:nowrap; align-items:center; justify-content:center; width:100%; gap:10px; margin-top:12px; }
     .social-link { display:inline-flex; flex:0 0 44px; width:44px; height:44px; align-items:center; justify-content:center; color:#fff; background:#00529f; border-radius:12px; text-decoration:none; transition:transform .15s ease, box-shadow .15s ease; }
     .social-link:hover { transform:translateY(-1px); box-shadow:0 8px 18px rgba(0,82,159,.2); }
     .social-link.linkedin { background:#0a66c2; }
@@ -148,13 +140,9 @@
               <a class="button" href="mailto:Lasse.boettcher@hsv.de">✉ E-Mail</a>
               <button class="button pale" id="save-contact" type="button">＋ Kontakt speichern</button>
               <nav class="social-links" aria-label="Soziale Profile von Lasse Böttcher">
-                <a class="social-link linkedin" href="https://de.linkedin.com/in/lasse-b%C3%B6ttcher-954938154" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn-Profil von Lasse Böttcher öffnen" title="LinkedIn">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.5H4.97V9h2.96v9.5ZM6.45 7.7a1.72 1.72 0 1 1 0-3.44 1.72 1.72 0 0 1 0 3.44ZM19 18.5h-2.95v-4.62c0-1.1-.02-2.52-1.54-2.52-1.54 0-1.78 1.2-1.78 2.44v4.7H9.77V9h2.84v1.3h.04c.4-.75 1.36-1.54 2.8-1.54 3 0 3.55 1.97 3.55 4.53v5.21Z"/></svg>
-                </a>
+                <a class="social-link linkedin" href="https://de.linkedin.com/in/lasse-b%C3%B6ttcher-954938154" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn-Profil von Lasse Böttcher öffnen" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.5H4.97V9h2.96v9.5ZM6.45 7.7a1.72 1.72 0 1 1 0-3.44 1.72 1.72 0 0 1 0 3.44ZM19 18.5h-2.95v-4.62c0-1.1-.02-2.52-1.54-2.52-1.54 0-1.78 1.2-1.78 2.44v4.7H9.77V9h2.84v1.3h.04c.4-.75 1.36-1.54 2.8-1.54 3 0 3.55 1.97 3.55 4.53v5.21Z"/></svg></a>
                 <a class="social-link xing" href="https://www.xing.com/profile/Lasse_Boettcher" target="_blank" rel="noopener noreferrer" aria-label="XING-Profil von Lasse Böttcher öffnen" title="XING"><span class="xing-mark" aria-hidden="true">XING</span></a>
-                <a class="social-link instagram" href="https://www.instagram.com/laboe1999?exln=MW95Zm91aXIzaDJuOQ==" target="_blank" rel="noopener noreferrer" aria-label="Instagram-Profil von Lasse Böttcher öffnen" title="Instagram">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7Zm5 2.3a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm0 2.2a3.3 3.3 0 1 0 0 6.6 3.3 3.3 0 0 0 0-6.6Zm5.7-3.5a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6Z"/></svg>
-                </a>
+                <a class="social-link instagram" href="https://www.instagram.com/laboe1999?exln=MW95Zm91aXIzaDJuOQ==" target="_blank" rel="noopener noreferrer" aria-label="Instagram-Profil von Lasse Böttcher öffnen" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7Zm5 2.3a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm0 2.2a3.3 3.3 0 1 0 0 6.6 3.3 3.3 0 0 0 0-6.6Zm5.7-3.5a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6Z"/></svg></a>
               </nav>
             </div>
           </section>
