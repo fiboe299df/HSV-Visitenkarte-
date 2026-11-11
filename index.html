@@ -1,642 +1,525 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#00529f">
+  <meta name="description" content="Digitale Visitenkarte von Lasse Boettcher">
   <title>Lasse Böttcher | HSV</title>
+
   <style>
-    :root{
-      --blue:#00529f;
-      --blue-dark:#003b72;
-      --blue-soft:#eaf3fb;
-      --ink:#1a2d3d;
-      --muted:#5b6d7e;
-      --line:#dfeaf2;
-      --bg:#edf3f8;
-      --card:#f7fbff;
-      --white:#fff;
+    :root {
+      --blue: #00529f;
+      --blue-dark: #003b72;
+      --blue-pale: #eaf3fb;
+      --ink: #172b3b;
+      --muted: #647789;
+      --white: #fff;
+      --line: #dce7f0;
+      --glass: rgba(255,255,255,.86);
+      --shadow: 0 18px 48px rgba(0,52,100,.10);
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior:smooth; }
-    body{
-      margin:0;
-      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
-      background: linear-gradient(180deg, #edf3f8 0%, #f4f8fb 100%);
-      color:var(--ink);
-    }
+    html { scroll-behavior: smooth; }
 
-    a { color: inherit; text-decoration:none; }
-    img { max-width:100%; display:block; }
-
-    .page{
-      width:min(1190px, calc(100% - 26px));
-      margin:0 auto;
-      padding:16px 0 40px;
-    }
-
-    header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:14px 12px 18px;
-      border-bottom:1px solid rgba(0,82,159,.12);
-      margin-bottom:18px;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      color:var(--blue);
-      font-weight:900;
-      letter-spacing:-.02em;
-    }
-
-    .brand-mark{
-      width:30px;
-      height:30px;
-      border-radius:50%;
-      background:linear-gradient(135deg, #0a4a8c, #0c68c8);
-      position:relative;
-      box-shadow:0 0 0 2px rgba(255,255,255,.8);
-    }
-
-    .brand-mark::before{
-      content:"";
-      position:absolute;
-      inset:8px;
-      border-radius:50%;
-      border:2px solid #fff;
-    }
-
-    .brand-name{
-      font-size:1.05rem;
-      line-height:1.1;
-    }
-
-    .brand-name small{
-      display:block;
-      color:var(--muted);
-      font-size:.62rem;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      font-weight:800;
-      margin-top:2px;
-    }
-
-    .home-link{
-      color:var(--blue);
-      font-weight:900;
-      font-size:.95rem;
-    }
-
-    .hero{
-      position:relative;
-      display:grid;
-      grid-template-columns:1.3fr .9fr;
-      gap:24px;
-      align-items:center;
-      padding:28px clamp(20px, 3vw, 46px);
-      min-height:270px;
-      border-radius:22px;
-      overflow:hidden;
-      color:#fff;
+    body {
+      margin: 0;
+      color: var(--ink);
       background:
-        linear-gradient(90deg, rgba(0,31,61,.92), rgba(0,82,159,.7)),
-        url("assets/volksparkstadion.jpg") center/cover no-repeat;
-      box-shadow:0 18px 38px rgba(0,50,95,.09);
-      border:1px solid rgba(255,255,255,.35);
-    }
-
-    .hero::after{
-      content:"";
-      position:absolute;
-      right:-60px;
-      top:-120px;
-      width:360px;
-      height:360px;
-      border-radius:50%;
-      border:52px solid rgba(255,255,255,.07);
+        radial-gradient(ellipse at 12% 5%, rgba(0,82,159,.09), transparent 30%),
+        linear-gradient(140deg, #f3f8fc, #fff 54%, #eef4f8);
+    }
+
+    a { color: inherit; }
+    .page { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--blue);
+      font-size: 1.1rem;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      display: grid;
+      place-items: center;
+      flex: 0 0 52px;
+      width: 52px;
+      height: 52px;
+      padding: 4px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      box-shadow: 0 5px 16px rgba(0,52,100,.12);
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .brand small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: .66rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .home-link {
+      color: var(--blue);
+      font-size: .92rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 28px;
+      align-items: center;
+      margin: 8px 0 24px;
+      padding: clamp(24px, 5vw, 54px);
+      overflow: hidden;
+      color: #fff;
+      background:
+        linear-gradient(90deg, rgba(0,29,58,.94), rgba(0,82,159,.64)),
+        url("assets/volksparkstadion.jpg") center 48% / cover no-repeat;
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      position: absolute;
+      top: -190px;
+      right: -40px;
+      width: 390px;
+      height: 390px;
+      border: 48px solid rgba(255,255,255,.10);
+      border-radius: 50%;
+      content: "";
+      pointer-events: none;
+    }
+
+    .hero-content, .hero-photo { position: relative; z-index: 1; }
+
+    .hero-banner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .hero-banner img {
+      width: 58px;
+      height: 58px;
+      padding: 4px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 50%;
+    }
+
+    .hero-banner strong {
+      display: block;
+      font-size: 1.2rem;
+      letter-spacing: .12em;
+    }
+
+    .hero-banner span {
+      display: block;
+      margin-top: 3px;
+      color: #d9eafa;
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: #c9e2f6;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.1rem, 5vw, 3.8rem);
+      line-height: 1.03;
+      letter-spacing: -.06em;
     }
-
-    .hero-body, .hero-photo { position:relative; z-index:1; }
-
-    .hero-badge{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-bottom:18px;
-    }
-
-    .hero-badge .mini{
-      width:52px;
-      height:52px;
-      border-radius:50%;
-      background:#fff;
-      display:grid;
-      place-items:center;
-      box-shadow:0 8px 18px rgba(0,0,0,.08);
-    }
-
-    .hero-badge .mini img{
-      width:62%;
-      height:62%;
-      object-fit:contain;
-    }
-
-    .hero-badge strong{
-      display:block;
-      font-size:1.15rem;
-      letter-spacing:.18em;
-    }
-
-    .hero-badge span{
-      display:block;
-      font-size:.72rem;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      color:#d9ebff;
-    }
-
-    .eyebrow{
-      margin:0 0 8px;
-      font-size:.75rem;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      color:#cfe7ff;
-      font-weight:800;
-    }
-
-    h1{
-      margin:0;
-      font-size:clamp(2.5rem, 5vw, 5.2rem);
-      line-height:.96;
-      letter-spacing:-.06em;
-      font-weight:900;
-    }
-
-    .hero-copy{
-      margin-top:12px;
-      font-size:1rem;
-      opacity:.92;
-      letter-spacing:.02em;
-      color:rgba(255,255,255,.9);
-    }
-
-    .hero-photo{
-      justify-self:end;
-      width:min(440px, 100%);
-      border-radius:18px;
-      overflow:hidden;
-      border:5px solid rgba(255,255,255,.92);
-      box-shadow:0 18px 38px rgba(0,0,0,.22);
-      background:#dfeaf5;
-    }
-
-    .hero-photo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:center top;
-      min-height:220px;
-    }
-
-    .content{
-      display:grid;
-      grid-template-columns:minmax(0,1.5fr) minmax(260px,.75fr);
-      gap:26px;
-      margin-top:24px;
-      align-items:start;
-    }
-
-    .stack{
-      display:grid;
-      gap:22px;
-    }
-
-    .card{
-      background:rgba(255,255,255,.82);
-      border:1px solid #dfeaf2;
-      border-radius:22px;
-      box-shadow:0 16px 32px rgba(0,52,100,.08);
-      padding:20px 22px;
-    }
-
-    .profile{
-      display:flex;
-      align-items:center;
-      gap:18px;
-      padding-bottom:18px;
-      border-bottom:1px solid var(--line);
-    }
-
-    .profile-pic{
-      width:72px;
-      height:72px;
-      border-radius:18px;
-      overflow:hidden;
-      background:#eaf2fb;
-      border:1px solid rgba(0,82,159,.12);
-      box-shadow:0 12px 22px rgba(0,52,100,.08);
-    }
-
-    .profile-pic img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:center top;
-    }
-
-    .profile h2{
-      margin:0 0 4px;
-      font-size:1.6rem;
-      letter-spacing:-.04em;
-      color:var(--ink);
-    }
-
-    .role{
-      margin:0;
-      color:var(--muted);
-      font-size:.9rem;
-    }
-
-    .company{
-      margin:6px 0 0;
-      color:var(--blue);
-      font-weight:900;
-    }
-
-    .actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:20px;
-    }
-
-    .button{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:44px;
-      padding:10px 16px;
-      border-radius:12px;
-      background:var(--blue);
-      color:#fff;
-      font-weight:800;
-      border:0;
-      cursor:pointer;
-      transition:transform .15s ease, box-shadow .15s ease;
-    }
-
-    .button:hover{
-      transform:translateY(-1px);
-      box-shadow:0 8px 18px rgba(0,82,159,.16);
-    }
-
-    .button.pale{
-      background:var(--blue-soft);
-      color:var(--blue-dark);
-    }
-
-    .social-links{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:18px;
-      justify-content:center;
-    }
-
-    .social-link{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:52px;
-      height:52px;
-      border-radius:14px;
-      color:#fff;
-      background:#0a66c2;
-      transition:transform .15s ease, box-shadow .15s ease;
-      border:1px solid rgba(255,255,255,.2);
-    }
-
-    .social-link:hover{
-      transform:translateY(-1px);
-      box-shadow:0 8px 18px rgba(0,82,159,.16);
-    }
-
-    .social-link.xing{ background:#026466; }
-    .social-link.instagram{ background:#c13584; }
-    .social-link svg{ width:24px; height:24px; fill:currentColor; }
-
-    .section-title{
-      margin:0 0 14px;
-      font-size:1.12rem;
-      color:var(--blue-dark);
-      letter-spacing:-.02em;
-    }
-
-    .contact-list{
-      display:grid;
-      gap:12px;
-      margin-top:10px;
-    }
-
-    .contact-item{
-      display:flex;
-      align-items:flex-start;
-      gap:12px;
-      padding:12px 14px;
-      border-radius:12px;
-      background:#f9fbfe;
-      border:1px solid var(--line);
-    }
-
-    .contact-icon{
-      width:32px;
-      height:32px;
-      border-radius:10px;
-      display:grid;
-      place-items:center;
-      background:var(--blue-soft);
-      color:var(--blue);
-      flex-shrink:0;
-      font-weight:800;
-    }
-
-    .contact-text{
-      display:grid;
-      gap:2px;
-    }
-
-    .contact-label{
-      font-weight:800;
-      color:var(--blue-dark);
-      font-size:.9rem;
-    }
-
-    .contact-value{
-      color:var(--muted);
-      font-size:.9rem;
-      overflow-wrap:anywhere;
-    }
-
-    .map-box{
-      margin-top:14px;
-      padding:12px 14px 0;
-      border-top:1px solid var(--line);
-    }
-
-    .map-box summary{
-      list-style:none;
-      cursor:pointer;
-      font-weight:800;
-      color:var(--blue-dark);
-    }
-
-    .map-box summary::-webkit-details-marker { display:none; }
-
-    .map-links{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:12px;
-    }
-
-    .side-wrap{
-      display:grid;
-      gap:22px;
-    }
-
-    .side-card{
-      background:rgba(255,255,255,.82);
-      border:1px solid #dfeaf2;
-      border-radius:22px;
-      box-shadow:0 16px 32px rgba(0,52,100,.08);
-      padding:18px 18px 20px;
-    }
-
-    .mini-head{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      margin:0 0 12px;
-    }
-
-    .mini-head h3{
-      margin:0;
-      color:var(--blue-dark);
-      font-size:1.08rem;
-    }
-
-    .qr-btn{
-      background:var(--blue-soft);
-      color:var(--blue-dark);
-      border:0;
-      border-radius:10px;
-      padding:8px 12px;
-      font-weight:800;
-      cursor:pointer;
+
+    .hero-copy {
+      max-width: 560px;
+      color: rgba(255,255,255,.86);
+      line-height: 1.7;
+    }
+
+    .hero-photo {
+      justify-self: center;
+      width: min(330px, 100%);
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #e9f0f8;
+      border: 5px solid rgba(255,255,255,.85);
+      border-radius: 24px;
+      box-shadow: 0 14px 40px rgba(0,0,0,.24);
+    }
+
+    .hero-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 32%;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(265px, .75fr);
+      gap: 22px;
+      align-items: start;
+      margin-bottom: 48px;
+    }
+
+    .stack { display: grid; gap: 20px; }
+
+    .card {
+      padding: clamp(20px, 3vw, 30px);
+      background: var(--glass);
+      border: 1px solid rgba(255,255,255,.92);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .profile-photo {
+      flex: 0 0 100px;
+      width: 100px;
+      height: 100px;
+      overflow: hidden;
+      background: #e9f0f8;
+      border: 1px solid var(--line);
+      border-radius: 23px;
+      box-shadow: 0 10px 22px rgba(0,52,100,.08);
+    }
+
+    .profile-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      color: var(--blue-dark);
+      font-size: 1.28rem;
+    }
+
+    .profile h2 {
+      margin-bottom: 5px;
+      color: var(--ink);
+      font-size: 1.55rem;
+      letter-spacing: -.04em;
+    }
+
+    .role { margin: 0; color: var(--muted); }
+    .company { margin: 6px 0 0; color: var(--blue); font-weight: 800; }
+    .small { color: var(--muted); font-size: .87rem; line-height: 1.55; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
     }
 
-    .wallet-box{
-      margin-top:12px;
-      display:grid;
-      gap:10px;
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 11px 15px;
+      color: #fff;
+      background: var(--blue);
+      border: 0;
+      border-radius: 12px;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 800;
+      text-align: center;
+      text-decoration: none;
+      transition: transform .15s ease, box-shadow .15s ease;
     }
 
-    .wallet-link{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-height:52px;
-      padding:12px 14px;
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:12px;
-      color:var(--ink);
-      font-weight:800;
+    .button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(0,82,159,.16);
     }
 
-    .wallet-icon{
-      width:24px;
-      height:24px;
-      flex-shrink:0;
+    .button.pale {
+      color: var(--blue-dark);
+      background: var(--blue-pale);
     }
 
-    .wallet-arrow{
-      margin-left:auto;
-      color:var(--muted);
-      font-size:1.1rem;
-    }
-
-    .timeline{
-      display:grid;
-      gap:12px;
-      margin-top:12px;
-    }
-
-    .timeline-item{
-      position:relative;
-      padding:16px 16px 16px 18px;
-      background:#f9fbfe;
-      border:1px solid var(--line);
-      border-left:4px solid var(--blue);
-      border-radius:12px;
-      overflow:hidden;
-    }
-
-    .timeline-item h3{
-      margin:0 0 6px;
-      font-size:1rem;
-      color:var(--blue-dark);
-    }
+    .contact-list { display: grid; gap: 11px; margin-top: 18px; }
 
-    .timeline-meta{
-      margin:0 0 8px;
-      color:var(--muted);
-      font-size:.86rem;
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      text-decoration: none;
     }
 
-    .timeline-item p{
-      margin:8px 0;
-      line-height:1.5;
-      color:var(--ink);
+    .contact-icon {
+      display: grid;
+      flex: 0 0 34px;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      color: var(--blue);
+      background: var(--blue-pale);
+      border-radius: 10px;
     }
 
-    .mini-details{
-      margin-top:10px;
-      padding:10px 12px;
-      border-radius:10px;
-      background:#f1f7fd;
-      border:1px solid var(--line);
-      color:var(--muted);
-      font-size:.85rem;
-    }
+    .contact-item strong { display: block; margin-bottom: 3px; color: var(--blue-dark); }
+    .contact-value { color: var(--muted); overflow-wrap: anywhere; }
 
-    .info-list{
-      list-style:none;
-      padding:0;
-      margin:16px 0 0;
-      display:grid;
-      gap:10px;
+    details {
+      margin-top: 14px;
+      padding: 14px;
+      background: rgba(234,243,251,.6);
+      border: 1px solid var(--line);
+      border-radius: 14px;
     }
 
-    .info-list li{
-      background:#f9fbfe;
-      border:1px solid var(--line);
-      border-radius:12px;
-      padding:12px 14px;
-      line-height:1.45;
+    summary {
+      color: var(--blue-dark);
+      cursor: pointer;
+      font-weight: 800;
     }
 
-    .info-list strong{
-      display:block;
-      color:var(--blue-dark);
-      margin-bottom:4px;
-    }
+    .map-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 13px; }
 
-    .chip-list{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top:16px;
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 15px;
     }
 
-    .chip{
-      padding:8px 12px;
-      background:linear-gradient(135deg, var(--blue-soft), #edf4ff);
-      border:1px solid rgba(0,82,159,.08);
-      border-radius:999px;
-      color:var(--blue-dark);
-      font-size:.88rem;
-      font-weight:700;
+    .chip {
+      padding: 8px 12px;
+      color: var(--blue-dark);
+      background: linear-gradient(135deg, var(--blue-pale), #edf5ff);
+      border: 1px solid rgba(0,82,159,.08);
+      border-radius: 999px;
+      font-size: .9rem;
+      font-weight: 700;
     }
 
-    .togglebox{
-      margin-top:16px;
-      background:linear-gradient(135deg, var(--blue-dark), var(--blue));
-      color:#fff;
-      border-radius:12px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.2);
-    }
+    .timeline { display: grid; gap: 14px; margin-top: 18px; }
 
-    .togglebox summary{
-      list-style:none;
-      cursor:pointer;
-      padding:16px 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      font-weight:900;
+    .timeline-item {
+      padding: 17px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--blue);
+      border-radius: 14px;
     }
 
-    .togglebox summary::-webkit-details-marker { display:none; }
-    .togglebox summary::after{
-      content:"+";
-      font-size:1.3rem;
-      font-weight:700;
+    .timeline-item h3 {
+      margin: 0 0 6px;
+      color: var(--blue-dark);
+      font-size: 1.05rem;
     }
 
-    .togglebox[open] summary::after{ content:"−"; }
-
-    .togglebox-content{
-      padding:0 18px 18px;
-      color:#fff;
+    .timeline-meta {
+      margin: 0 0 9px;
+      color: var(--muted);
+      font-size: .9rem;
     }
 
-    .togglebox-content p{
-      margin:0 0 12px;
-      opacity:.88;
-    }
+    .timeline-item p { margin: 7px 0; line-height: 1.5; }
+    .timeline-item details { margin-top: 10px; padding: 10px 12px; }
 
-    .footer{
-      margin-top:28px;
-      padding-top:16px;
-      border-top:1px solid rgba(0,82,159,.12);
-      text-align:center;
-      color:var(--muted);
-      font-size:.85rem;
+    .info-list {
+      display: grid;
+      gap: 10px;
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
     }
 
-    @media (max-width: 960px){
-      .hero{ grid-template-columns:1fr; }
-      .hero-photo{ justify-self:start; }
-      .content{ grid-template-columns:1fr; }
+    .info-list li {
+      padding: 13px 15px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--line);
+      border-radius: 12px;
     }
 
-    @media (max-width: 480px){
-      .page{ width:min(100% - 14px, 1120px); }
-      header{ padding-left:0; padding-right:0; }
-      .actions .button{ flex:1 1 100%; }
-      .brand-name{ font-size:.95rem; }
-      .hero{ border-radius:18px; }
+    .info-list strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--blue-dark);
+    }
+
+    .toggle {
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      border: 0;
+    }
+
+    .toggle > summary {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 16px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+      border-radius: 13px;
+      list-style: none;
+    }
+
+    .toggle > summary::-webkit-details-marker { display: none; }
+    .toggle > summary::after { margin-left: auto; content: "＋"; font-size: 1.2rem; }
+    .toggle[open] > summary::after { content: "−"; }
+    .toggle-content { padding-top: 16px; }
+
+    .qr-area { text-align: center; }
+
+    #qrcode {
+      display: grid;
+      min-height: 190px;
+      place-items: center;
+      margin: 16px auto 10px;
+    }
+
+    #qrcode img, #qrcode canvas { max-width: 100%; }
+    .qr-target { overflow-wrap: anywhere; }
+
+    .form-grid { display: grid; gap: 12px; margin-top: 16px; }
+
+    label {
+      display: grid;
+      gap: 6px;
+      color: var(--ink);
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      background: rgba(255,255,255,.8);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font: inherit;
+    }
+
+    footer {
+      padding: 0 0 32px;
+      color: var(--muted);
+      font-size: .85rem;
+      text-align: center;
+    }
+
+    .imprint {
+      max-width: 850px;
+      margin: 14px auto 0;
+      padding: 16px;
+      color: var(--ink);
+      background: rgba(255,255,255,.75);
+      border: 1px solid var(--line);
+      text-align: left;
+    }
+
+    .imprint-body { padding-top: 12px; line-height: 1.65; }
+    .imprint-body h3 { margin: 20px 0 7px; color: var(--blue-dark); font-size: 1rem; }
+    .imprint-body p { margin: 8px 0; }
+    .imprint-body ul { margin: 8px 0 14px; padding-left: 22px; }
+    .imprint-body li { margin: 4px 0; }
+    .imprint-body a { color: var(--blue); overflow-wrap: anywhere; }
+
+    @media (max-width: 760px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-photo { width: min(300px, 100%); justify-self: start; }
+      .layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 440px) {
+      .page { width: min(100% - 20px, 1120px); }
+      header { padding: 14px 0; }
+      .home-link { font-size: .82rem; }
+      .profile { align-items: flex-start; }
+      .profile-photo {
+        flex-basis: 78px;
+        width: 78px;
+        height: 78px;
+        border-radius: 18px;
+      }
+      .actions .button { flex: 1 1 100%; }
+      .hero { border-radius: 22px; }
     }
   </style>
 </head>
+
 <body>
   <div class="page">
     <header>
-      <a class="brand" href="https://www.hsv.de/" aria-label="HSV">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span class="brand-name">
-          Lasse Böttcher
+      <a class="brand" href="https://www.hsv.de/" aria-label="Home | HSV">
+        <span class="brand-logo">
+          <img src="assets/hsv-logo.jpg" alt="HSV-Logo">
+        </span>
+        <span>
+          Lasse Böttcher 
           <small>Player Care &amp; Teammanagement</small>
         </span>
       </a>
-
       <a class="home-link" href="https://www.hsv.de/">Home | HSV ↗</a>
     </header>
 
     <main>
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-body">
-          <div class="hero-badge">
-            <div class="mini">
-              <img src="assets/hsv-logo.jpg" alt="" />
-            </div>
+      <section class="hero" aria-labelledby="welcome-title">
+        <div class="hero-content">
+          <div class="hero-banner">
+            <img src="assets/hsv-logo.jpg" alt="">
             <div>
               <strong>HSV</strong>
               <span>Digitale Visitenkarte</span>
@@ -644,24 +527,24 @@
           </div>
 
           <p class="eyebrow">Hamburger SV</p>
-          <h1 id="hero-title">Persönlich.<br>Gemeinsam. HSV.</h1>
+          <h1 id="welcome-title">Persönlich. Gemeinsam. HSV.</h1>
           <p class="hero-copy">Lasse Böttcher · Player Care &amp; Teammanagement</p>
         </div>
 
         <div class="hero-photo">
-          <img src="assets/lasse-boettcher.jpg" alt="Lasse Böttcher" />
+          <img src="assets/lasse-boettcher.jpg" alt="Lasse Boettcher im Fußballstadion">
         </div>
       </section>
 
-      <div class="content">
+      <div class="layout">
         <div class="stack">
-          <section class="card">
+          <section class="card" aria-labelledby="profile-name">
             <div class="profile">
-              <div class="profile-pic">
-                <img src="assets/lasse-boettcher.jpg" alt="Profilbild" />
+              <div class="profile-photo">
+                <img src="assets/lasse-boettcher.jpg" alt="Profilbild von Lasse Boettcher">
               </div>
               <div>
-                <h2>Lasse Böttcher</h2>
+                <h2 id="profile-name">Lasse Boettcher</h2>
                 <p class="role">Player Care &amp; Teammanagement</p>
                 <p class="company">HSV Fußball AG</p>
               </div>
@@ -670,81 +553,68 @@
             <div class="actions">
               <a class="button" href="tel:+491604339168">☎ Telefon</a>
               <a class="button" href="mailto:Lasse.boettcher@hsv.de">✉ E-Mail</a>
-              <button class="button pale" type="button">＋ Kontakt speichern</button>
+              <button class="button pale" id="save-contact" type="button">＋ Kontakt speichern</button>
+              <a class="button pale"
+                 href="https://onevcard.app/v/a0p4iPCJ-G4QpKIpRXuE_?share"
+                 target="_blank" rel="noopener">Kontakt verbinden ↗</a>
             </div>
-
-            <nav class="social-links" aria-label="Soziale Profile">
-              <a class="social-link" href="https://de.linkedin.com/in/lasse-b%C3%B6ttcher-954938154" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.5H4.97V9h2.96v9.5ZM6.45 7.7a1.72 1.72 0 1 1 0-3.44 1.72 1.72 0 0 1 0 3.44ZM19 18.5h-2.96v-4.62c0-1.1-.02-2.51-1.53-2.51-1.53 0-1.77 1.19-1.77 2.43v4.7H9.78V9h2.84v1.3h.04c.4-.75 1.36-1.53 2.8-1.53 3 0 3.54 1.98 3.54 4.55v5.18Z"/>
-                </svg>
-              </a>
-
-              <a class="social-link xing" href="https://www.xing.com/profile/Lasse_Boettcher" target="_blank" rel="noopener noreferrer" aria-label="XING" title="XING">
-                <span aria-hidden="true" style="font-weight:900;font-size:.8rem;">XING</span>
-              </a>
-
-              <a class="social-link instagram" href="https://www.instagram.com/laboe1999?exln=MW95Zm91aXIzaDJuOQ==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7Zm5 2.3a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm0 2.2a3.3 3.3 0 1 0 0 6.6 3.3 3.3 0 0 0 0-6.6Zm5.7-3.1a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6Z"/>
-                </svg>
-              </a>
-            </nav>
           </section>
 
-          <section class="card">
-            <h2 class="section-title">Kontakt &amp; Standort</h2>
+          <section class="card" id="kontakt" aria-labelledby="contact-title">
+            <h2 id="contact-title">Kontakt &amp; Standort</h2>
 
             <div class="contact-list">
-              <div class="contact-item">
+              <a class="contact-item" href="tel:+491604339168">
                 <span class="contact-icon" aria-hidden="true">☎</span>
-                <span class="contact-text">
-                  <span class="contact-label">Telefon</span>
-                  <span class="contact-value">+49 160 4339168</span>
-                </span>
-              </div>
+                <span><strong>Telefon</strong><span class="contact-value">+49 160 4339168</span></span>
+              </a>
 
-              <div class="contact-item">
+              <a class="contact-item" href="mailto:Lasse.boettcher@hsv.de">
                 <span class="contact-icon" aria-hidden="true">✉</span>
-                <span class="contact-text">
-                  <span class="contact-label">E-Mail</span>
-                  <span class="contact-value">Lasse.boettcher@hsv.de</span>
-                </span>
-              </div>
+                <span><strong>E-Mail</strong><span class="contact-value">Lasse.boettcher@hsv.de</span></span>
+              </a>
 
               <div class="contact-item">
                 <span class="contact-icon" aria-hidden="true">⌖</span>
-                <span class="contact-text">
-                  <span class="contact-label">Adresse</span>
+                <span>
+                  <strong>Adresse</strong>
                   <span class="contact-value">Uwe-Seeler-Allee 9, 22525 Hamburg</span>
                 </span>
               </div>
             </div>
 
-            <details class="map-box">
+            <details>
               <summary>Adresse in einer Karten-App öffnen</summary>
               <div class="map-links">
-                <a class="button pale" href="#" aria-label="Google Maps">Google Maps</a>
-                <a class="button pale" href="#" aria-label="Apple Karten">Apple Karten</a>
+                <a class="button pale" id="google-maps" target="_blank" rel="noopener">Google Maps</a>
+                <a class="button pale" id="apple-maps" target="_blank" rel="noopener">Apple Karten</a>
               </div>
             </details>
           </section>
 
-          <section class="card">
-            <h2 class="section-title">Werdegang</h2>
+          <section class="card" aria-labelledby="career-history-title">
+            <h2 id="career-history-title">Werdegang</h2>
+            <p class="small">Berufliche Stationen, Weiterbildungen und Auszeichnungen.</p>
+
             <div class="timeline">
               <article class="timeline-item">
                 <h3>HSV Fußball AG</h3>
                 <p class="timeline-meta">Seit Februar 2022 · aktuell</p>
                 <p><strong>Player Care</strong> · Angestellt</p>
-                <div class="mini-details">Weitere Details</div>
+                <details>
+                  <summary>Weitere Details</summary>
+                  <p>Player Care &amp; Teammanagement.</p>
+                </details>
               </article>
 
               <article class="timeline-item">
                 <h3>UEFA EURO 2020</h3>
                 <p class="timeline-meta">Juni 2021 – Juli 2021 · 2 Monate</p>
                 <p><strong>Volunteer</strong> · Ehrenamt</p>
-                <div class="mini-details">Weitere Details</div>
+                <details>
+                  <summary>Weitere Details</summary>
+                  <p>Technical Services &amp; Overlay Ceremonies.</p>
+                </details>
               </article>
 
               <article class="timeline-item">
@@ -752,13 +622,16 @@
                 <p class="timeline-meta">September 2020 – Mai 2021 · 9 Monate</p>
                 <p><strong>Volunteer Business Development Manager in Germany, Austria and Switzerland</strong></p>
                 <p>Ehrenamt</p>
-                <div class="mini-details">Weitere Details</div>
+                <details>
+                  <summary>Weitere Details</summary>
+                  <p>Business Development in Deutschland, Österreich und der Schweiz.</p>
+                </details>
               </article>
             </div>
           </section>
 
-          <section class="card">
-            <h2 class="section-title">Weiterbildungen &amp; Auszeichnungen</h2>
+          <section class="card" aria-labelledby="awards-title">
+            <h2 id="awards-title">Weiterbildungen &amp; Auszeichnungen</h2>
             <ul class="info-list">
               <li><strong>2018</strong>Stipendium</li>
               <li><strong>FA Talent Identification Level 1</strong>Weiterbildung / Zertifizierung</li>
@@ -766,8 +639,8 @@
             </ul>
           </section>
 
-          <section class="card">
-            <h2 class="section-title">Sprachen</h2>
+          <section class="card" aria-labelledby="languages-title">
+            <h2 id="languages-title">Sprachen</h2>
             <ul class="info-list">
               <li><strong>Deutsch</strong>C2 · Verhandlungssicher / muttersprachlich</li>
               <li><strong>Englisch</strong>C1 · Fließend</li>
@@ -775,75 +648,292 @@
             </ul>
           </section>
 
-          <section class="card">
-            <h2 class="section-title">Interessen &amp; Hobbys</h2>
-            <div class="chip-list">
+          <section class="card" aria-labelledby="interests-title">
+            <h2 id="interests-title">Interessen &amp; Hobbys</h2>
+            <div class="chips">
               <span class="chip">Fußballmanagement</span>
               <span class="chip">Fußball</span>
             </div>
           </section>
 
-          <details class="togglebox">
-            <summary>Karriere / Bewerbung öffnen</summary>
-            <div class="togglebox-content">
-              <p>Wähle hier Bewerbungsunterlagen aus. Für echte Bewerbungen ist ein Upload-Backend nötig.</p>
-            </div>
-          </details>
+          <section class="card" id="karriere" aria-labelledby="career-title">
+            <details class="toggle">
+              <summary id="career-title">Karriere / Bewerbung öffnen</summary>
+              <div class="toggle-content">
+                <p class="small">
+                  Wähle hier Bewerbungsunterlagen aus. Diese statische HTML-Seite
+                  überträgt die Dateien nicht. Für echte Bewerbungen ist ein sicheres
+                  Upload-Backend erforderlich.
+                </p>
+
+                <form id="application-form" class="form-grid">
+                  <label>Lebenslauf
+                    <input type="file" name="lebenslauf" accept=".pdf,.doc,.docx">
+                  </label>
+                  <label>Zeugnisse
+                    <input type="file" name="zeugnisse" accept=".pdf,.doc,.docx,.jpg,.png" multiple>
+                  </label>
+                  <label>Fähigkeiten / Qualifikationen
+                    <input type="file" name="faehigkeiten" accept=".pdf,.doc,.docx,.jpg,.png" multiple>
+                  </label>
+                  <label>Sonstige Dokumente
+                    <input type="file" name="sonstiges" accept=".pdf,.doc,.docx,.jpg,.png" multiple>
+                  </label>
+                  <button class="button" type="submit">Unterlagen übermitteln</button>
+                </form>
+
+                <p class="small" id="form-message" role="status"></p>
+              </div>
+            </details>
+          </section>
         </div>
 
-        <aside class="side-wrap">
-          <section class="side-card">
-            <div class="mini-head">
-              <h3>QR-Code anzeigen</h3>
-              <button type="button" class="qr-btn">+</button>
-            </div>
-            <div style="padding:10px 0 0; color:var(--muted); font-size:.9rem;">
-              Der QR-Code öffnet diese Visitenkarten-Seite.
+        <aside class="stack">
+          <section class="card qr-area" aria-labelledby="qr-title">
+            <details class="toggle">
+              <summary id="qr-title">QR-Code anzeigen</summary>
+              <div class="toggle-content">
+                <p class="small">Der QR-Code öffnet diese Visitenkarten-Seite.</p>
+                <div id="qrcode" aria-label="QR-Code zur aktuellen Visitenkarte"></div>
+                <p class="small qr-target">Ziel: <span id="qr-target"></span></p>
+              </div>
+            </details>
+          </section>
+
+          <section class="card" aria-labelledby="wallet-title">
+            <h2 id="wallet-title">Wallet</h2>
+            <p class="small">
+              Apple Wallet und Google Wallet benötigen separat eingerichtete
+              Wallet-Pässe. Ohne Pass-Link sind die Buttons noch nicht aktiv.
+            </p>
+            <div class="actions">
+              <a class="button pale wallet-link" id="apple-wallet" href="#" aria-disabled="true">Apple Wallet</a>
+              <a class="button pale wallet-link" id="google-wallet" href="#" aria-disabled="true">Google Wallet</a>
             </div>
           </section>
 
-          <section class="side-card">
-            <h3 style="margin:0 0 8px; color:var(--blue-dark);">In Wallet speichern</h3>
-            <p style="margin:0; color:var(--muted); line-height:1.5; font-size:.9rem;">
-              Beide Schaltflächen öffnen den GoWalletPass-Link.
-            </p>
-
-            <div class="wallet-box">
-              <a class="wallet-link" href="#" target="_blank" rel="noopener noreferrer">
-                <svg class="wallet-icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill="currentColor" d="M16.37 12.22c.02 2.12 1.86 2.83 1.88 2.84-.02.05-.29 1-.97 1.98-.58.84-1.18 1.67-2.13 1.69-.93.02-1.23-.54-2.3-.54s-1.4.52-2.28.56c-.91.03-1.6-.9-2.18-1.99-.6-1.11-1.01-2.77-1.01-4.74 0-2.95 1.43-5.69 3.92-7.26.68-.42 1.41-.71 2.2-.89.82-.2 1.72-.22 2.62-.03.96.2 1.83.56 2.63 1.02.96.55 1.68 1.35 2.15 2.25.52.9.78 1.88.78 2.95 0 1.94-.82 3.78-2.3 5.08-.76.68-1.67 1.18-2.62 1.47-.7.22-1.42.32-2.16.3Zm-.12-3.17c-.17.03-.35.04-.54.02-.13-.01-.26-.04-.38-.08-.12-.04-.24-.09-.36-.16-.14-.09-.26-.2-.36-.32-.1-.13-.18-.26-.24-.41-.06-.15-.08-.31-.08-.48 0-.19.03-.38.09-.57.08-.25.2-.46.35-.65.18-.23.36-.4.6-.56.29-.19.57-.31.83-.35.4-.06.72.02 1.03.24.3.19.51.47.61.81.13.44.13.85-.01 1.27-.04.12-.09.23-.15.34-.07.13-.16.24-.27.36-.12.12-.27.23-.45.31-.18.09-.34.13-.48.16-.2.04-.41.06-.6.03-.21-.03-.4-.13-.58-.28-.18-.15-.34-.35-.46-.58-.11-.22-.17-.46-.17-.72 0-.25.06-.47.17-.66.12-.21.27-.38.45-.53.19-.16.4-.27.66-.32.14-.02.3-.03.47-.02.18.01.35.05.52.13.2.08.37.19.5.34.14.15.25.34.31.57.08.3.08.61-.01.92-.08.27-.24.51-.47.69-.23.18-.48.28-.75.31-.3.04-.59.03-.85-.03-.22-.06-.41-.17-.57-.34-.17-.18-.29-.4-.37-.67-.08-.26-.08-.53.01-.79.1-.28.27-.52.49-.72.22-.2.48-.32.78-.37.17-.03.33-.05.48-.03.14.01.28.05.41.1.13.06.25.13.35.22.1.09.17.2.22.35.05.16.07.32.05.48-.03.19-.12.36-.26.51-.14.15-.31.26-.52.32-.18.05-.34.06-.5.02-.17-.04-.31-.13-.42-.26-.12-.14-.19-.29-.23-.47-.04-.18-.04-.35.02-.52.06-.18.18-.33.35-.45.17-.13.38-.2.62-.21.15-.01.3 0 .44.05.14.04.26.11.35.22.09.11.15.25.17.41.02.17 0 .33-.07.49-.07.16-.18.29-.35.38-.17.1-.37.14-.58.13-.2-.01-.37-.12-.51-.3-.14-.18-.22-.39-.23-.64-.01-.25.06-.48.22-.69.16-.2.37-.35.63-.43.22-.08.45-.1.69-.06.22.04.41.15.56.32.15.17.25.36.29.59.05.24.02.46-.09.66-.1.19-.27.35-.49.45-.22.11-.46.16-.72.17-.2.01-.4-.02-.59-.1-.22-.1-.41-.27-.57-.5-.16-.23-.24-.49-.23-.76.02-.38.17-.71.44-.96.27-.25.6-.38.97-.38.4-.01.74.13 1 .41.24.27.35.59.35.95 0 .41-.13.77-.39 1.08-.3.36-.72.58-1.18.64-.3.05-.61.03-.9-.09-.28-.13-.53-.35-.71-.63-.18-.28-.26-.59-.25-.92.01-.35.12-.68.33-.94.22-.27.52-.45.9-.54.38-.09.74-.06 1.08.09.32.14.58.39.75.7.19.33.26.7.21 1.09-.06.38-.23.71-.52.98-.28.27-.64.44-1.08.52-.26.04-.52.04-.77.02-.24-.02-.46-.1-.65-.24-.18-.14-.32-.32-.42-.55-.1-.22-.14-.46-.12-.7.02-.25.12-.48.28-.69.17-.21.4-.37.67-.47.25-.1.52-.14.79-.09.29.05.56.2.78.42.22.22.35.49.37.8.02.29-.08.58-.3.83-.22.26-.52.43-.88.49a1.55 1.55 0 0 1-.47.03 1.45 1.45 0 0 1-.37-.11 1.34 1.34 0 0 1-.29-.19.82.82 0 0 1-.2-.28.84.84 0 0 1-.08-.34c0-.14.03-.27.09-.38.06-.11.14-.23.26-.32.11-.09.23-.16.38-.19.14-.04.29-.04.44-.01.16.04.29.13.39.27.1.13.15.27.15.42 0 .17-.05.31-.16.44-.11.12-.24.2-.4.23-.15.03-.29.02-.41-.04-.12-.06-.21-.17-.27-.32-.06-.15-.07-.31-.02-.47.05-.16.17-.28.34-.35.17-.08.34-.09.5-.04.12.04.23.13.31.26.08.14.12.28.12.45 0 .19-.07.36-.2.49-.14.14-.33.21-.56.2-.21-.01-.39-.12-.53-.31-.14-.19-.2-.43-.18-.69.02-.26.14-.5.36-.69.21-.18.45-.28.73-.28.28.01.52.12.71.33.18.2.29.45.31.74.02.28-.06.54-.25.77-.19.23-.45.38-.75.45-.3.07-.59.07-.87-.04-.26-.1-.49-.29-.65-.55-.15-.25-.22-.52-.18-.81.03-.29.17-.55.39-.76.21-.2.48-.31.76-.31.29 0 .55.11.75.33.19.2.31.47.32.76.01.24-.05.47-.18.68-.13.2-.31.36-.54.47-.18.09-.37.14-.58.15-.23.01-.43-.06-.61-.19-.18-.13-.32-.31-.41-.53-.1-.22-.13-.45-.09-.69.04-.24.17-.45.36-.61.21-.18.46-.29.74-.3.28-.01.53.08.75.27.22.18.35.41.39.67.05.28-.01.55-.17.8-.16.25-.38.42-.66.52-.29.1-.58.11-.87.02-.25-.08-.46-.27-.59-.52-.12-.24-.15-.49-.09-.74.06-.25.23-.46.48-.61.25-.15.54-.2.84-.14.28.06.51.24.66.49.15.25.2.53.14.81-.06.29-.24.53-.49.69-.25.16-.54.23-.84.19-.32-.05-.58-.25-.73-.57-.14-.29-.15-.6-.03-.88.12-.29.37-.52.67-.64.3-.12.62-.11.9.04.28.14.49.38.6.7.12.32.11.66-.03.97-.14.32-.4.57-.74.7-.35.13-.72.1-1.03-.11-.29-.2-.48-.52-.57-.87-.09-.34-.06-.68.08-1 .14-.32.42-.56.77-.67.36-.12.75-.09 1.09.09.34.18.6.5.76.89.17.4.18.81.01 1.19-.17.39-.5.68-.91.82-.42.14-.88.1-1.27-.14-.4-.24-.68-.63-.8-1.08-.12-.47-.06-.94.2-1.34.26-.4.66-.68 1.14-.74.52-.08 1-.02 1.47.22.46.24.79.63.96 1.08.16.45.15.92-.04 1.36-.2.45-.58.77-1.03.93-.46.17-.93.16-1.37-.03-.46-.2-.8-.56-.98-1-.15-.35-.18-.72-.08-1.09.11-.38.4-.69.78-.89.38-.2.8-.26 1.22-.17.44.1.83.38 1.09.79.26.4.35.85.26 1.31-.09.46-.36.85-.75 1.11-.4.26-.87.38-1.35.34-.48-.05-.93-.28-1.29-.68-.37-.41-.57-.94-.57-1.51 0-.56.19-1.06.58-1.47.4-.41.95-.64 1.54-.65.57-.01 1.08.16 1.51.52.46.38.74.89.8 1.49.07.67-.18 1.31-.7 1.79-.52.49-1.2.74-1.9.69-.73-.05-1.39-.42-1.85-1.02-.45-.6-.67-1.37-.62-2.17.06-.86.47-1.61 1.13-2.09.65-.48 1.51-.7 2.37-.57.69.1 1.3.43 1.76.93.46.5.71 1.15.72 1.84.01.72-.22 1.42-.68 1.98-.46.57-1.11.96-1.82 1.09-.74.13-1.46-.07-2.1-.58-.61-.49-.99-1.19-1.06-1.97-.08-.79.18-1.57.72-2.19.55-.64 1.35-1.02 2.18-1.05.82-.03 1.57.3 2.12.9.55.6.86 1.41.86 2.24 0 .9-.34 1.74-.9 2.35-.57.63-1.36.99-2.2 1.05-.87.06-1.68-.24-2.35-.82-.64-.55-1.02-1.36-1.07-2.26-.06-.9.21-1.78.79-2.47.57-.68 1.38-1.1 2.27-1.18.96-.09 1.87.23 2.62.84.74.6 1.16 1.48 1.17 2.46v.02c0 .94-.38 1.82-.98 2.45-.61.64-1.46 1.02-2.37 1.03-.93.01-1.82-.37-2.46-1.05-.64-.67-.97-1.57-.97-2.52v-.08c0-.82.26-1.6.74-2.23.46-.6 1.1-1.01 1.82-1.18.74-.17 1.51-.08 2.18.28.66.36 1.16.97 1.39 1.69.24.73.19 1.51-.16 2.2-.35.69-.98 1.23-1.72 1.53-.78.31-1.63.35-2.42.09-.7-.24-1.31-.72-1.72-1.33-.39-.59-.58-1.29-.52-2.02.06-.69.35-1.33.86-1.8.51-.47 1.19-.72 1.9-.7.73.02 1.39.33 1.88.88.49.55.74 1.27.69 2.02-.05.75-.41 1.44-1.02 1.91-.6.47-1.39.67-2.18.53-.74-.13-1.4-.62-1.79-1.34-.38-.71-.46-1.55-.2-2.31.28-.82.94-1.46 1.77-1.72.84-.27 1.75-.12 2.5.44.72.55 1.11 1.38 1.04 2.23-.07.86-.54 1.66-1.31 2.17-.78.53-1.78.7-2.7.48-.89-.21-1.66-.82-2.14-1.62-.46-.77-.61-1.68-.41-2.58.21-.94.74-1.78 1.52-2.35.8-.58 1.8-.82 2.81-.66.99.16 1.9.74 2.53 1.58.63.83.9 1.89.76 2.96-.14 1.07-.7 2.04-1.59 2.6-.91.57-2.07.75-3.15.47-1.05-.28-1.96-.97-2.53-1.9-.58-.95-.78-2.09-.58-3.2.21-1.13.84-2.14 1.8-2.8.96-.68 2.18-1.01 3.38-.87 1.18.13 2.29.7 3.08 1.63.79.94 1.2 2.14 1.19 3.38-.01 1.29-.56 2.53-1.51 3.39-.97.87-2.28 1.35-3.6 1.3-1.29-.05-2.53-.69-3.42-1.78-.88-1.09-1.36-2.54-1.32-4.01.04-1.53.63-2.98 1.68-4 .94-1 2.23-1.66 3.63-1.76 1.34-.09 2.68.35 3.76 1.31 1.1.97 1.82 2.39 1.95 3.89.13 1.52-.34 3-.97 4.12-.35.63-.76 1.19-1.23 1.67-.47.48-.99.88-1.55 1.18-.71.39-1.46.62-2.23.69-.82.08-1.66-.02-2.44-.32-.78-.3-1.47-.82-2-1.53-.52-.71-.83-1.58-.89-2.45-.08-.9.11-1.8.58-2.62.45-.79 1.14-1.39 1.98-1.7.79-.29 1.64-.29 2.42.03.76.32 1.38.91 1.73 1.66.35.75.37 1.61.05 2.39-.33.79-.96 1.42-1.75 1.77-.78.34-1.66.39-2.47.14-.8-.25-1.49-.8-1.95-1.57-.45-.75-.62-1.66-.47-2.56.15-.92.63-1.77 1.38-2.38.75-.62 1.73-.94 2.72-.88.98.06 1.89.48 2.58 1.17.7.71 1.09 1.66 1.09 2.66 0 1-.42 1.95-1.15 2.64-.72.68-1.72 1.04-2.74 1-.97-.03-1.9-.48-2.59-1.22-.68-.73-1.05-1.71-1.02-2.7.03-.98.46-1.9 1.2-2.58.72-.66 1.68-1.04 2.7-1.01 1.02.03 1.96.48 2.64 1.23.68.74 1.04 1.73 1.01 2.72-.03.98-.46 1.9-1.2 2.57-.74.67-1.75 1.04-2.81 1-.99-.03-1.9-.46-2.59-1.18-.69-.72-1.05-1.67-1.02-2.64.04-1.02.53-1.98 1.39-2.6.86-.62 1.96-.86 3.02-.65.98.21 1.82.82 2.38 1.63.55.8.79 1.77.67 2.72-.12.98-.58 1.88-1.36 2.52-.79.65-1.84 1.01-2.9 1.02-1.06.01-2.1-.38-2.89-1.09-.77-.7-1.26-1.69-1.39-2.76-.13-1.05.1-2.15.69-3.05.58-.89 1.53-1.57 2.62-1.89.98-.29 2.01-.24 2.93.17.91.41 1.67 1.15 2.1 2.06.43.9.52 1.93.24 2.89-.28.96-.9 1.81-1.77 2.35-.85.54-1.9.77-2.94.66-1.04-.11-2.03-.61-2.76-1.42-.73-.82-1.15-1.91-1.19-3 .04-1.08.42-2.13 1.11-2.96.7-.84 1.67-1.44 2.78-1.65.76-.15 1.54-.12 2.29.13.72.24 1.37.7 1.88 1.33.49.61.79 1.36.86 2.14.08.82-.08 1.66-.49 2.37-.39.68-.99 1.2-1.73 1.49-.82.33-1.71.37-2.56.06-.97-.35-1.77-1.09-2.26-2-.5-.92-.64-2.02-.39-3.06.26-1.05.95-1.95 1.92-2.51.96-.56 2.14-.75 3.23-.5 1.08.25 2.06.92 2.68 1.8.62.88.9 1.91.83 2.94-.08 1.08-.6 2.09-1.45 2.83-.85.73-1.96 1.13-3.11 1.12-1.21-.01-2.36-.52-3.21-1.46-.82-.91-1.28-2.09-1.29-3.31 0-1.18.39-2.34 1.14-3.27.75-.93 1.82-1.58 3.02-1.81 1.21-.24 2.46-.04 3.52.59 1.05.62 1.83 1.61 2.18 2.74.36 1.17.24 2.41-.39 3.46-.62 1.04-1.62 1.8-2.78 2.17-1.18.37-2.44.32-3.53-.17-1.1-.49-1.98-1.46-2.5-2.62-.49-1.12-.6-2.36-.3-3.56.29-1.19.96-2.25 1.91-2.99.98-.75 2.22-1.12 3.4-1.04 1.18.07 2.25.55 3.08 1.36.82.8 1.35 1.89 1.48 3.06.13 1.14-.11 2.29-.7 3.29-.6 1.01-1.57 1.81-2.7 2.23-1.13.42-2.37.39-3.48-.09-1.1-.47-1.99-1.42-2.47-2.56-.48-1.13-.55-2.38-.2-3.52.34-1.13 1.08-2.12 2.1-2.74.97-.58 2.12-.83 3.29-.67 1.16.15 2.2.71 2.98 1.57.79.88 1.2 2.04 1.17 3.2-.02 1.15-.49 2.29-1.33 3.14-.83.85-1.95 1.38-3.14 1.46-1.24.08-2.44-.29-3.4-1.04-.96-.75-1.65-1.85-1.85-3.07-.19-1.2.04-2.41.67-3.42.61-.97 1.62-1.67 2.78-2.01 1.15-.33 2.34-.26 3.4.24 1.06.5 1.92 1.44 2.39 2.57.48 1.18.53 2.49.14 3.67-.39 1.17-1.22 2.19-2.31 2.84-1.09.64-2.39.9-3.65.7-1.25-.19-2.39-.88-3.2-1.88-.79-.99-1.19-2.29-1.1-3.57.1-1.31.7-2.57 1.7-3.48 1-1.02 2.35-1.62 3.72-1.72 1.36-.08 2.73.32 3.82 1.12 1.08.8 1.82 1.97 2.07 3.29.25 1.29-.01 2.67-.76 3.79-.75 1.12-1.89 1.93-3.2 2.25-1.31.32-2.74.14-3.91-.66-1.2-.82-2.04-2.09-2.29-3.52-.25-1.42.14-2.92.99-4.08.84-1.16 2.14-1.93 3.6-2.13 1.44-.21 2.95.1 4.17.9 1.22.81 2.11 2.02 2.46 3.43.35 1.43.13 2.95-.7 4.18-.81 1.22-2.09 2.12-3.58 2.48-1.45.35-2.99.16-4.29-.63-1.31-.8-2.26-2.1-2.7-3.63-.45-1.53-.35-3.18.27-4.61.58-1.35 1.59-2.45 2.84-3.1 1.18-.62 2.56-.85 3.87-.63 1.28.21 2.45.87 3.31 1.9.86 1.04 1.36 2.38 1.32 3.71-.04 1.31-.57 2.6-1.54 3.52-.97.92-2.31 1.42-3.67 1.4-1.35-.02-2.64-.61-3.5-1.67-.84-1.05-1.29-2.45-1.21-3.83.08-1.37.63-2.67 1.6-3.63.97-.95 2.29-1.5 3.7-1.49 1.42.01 2.75.64 3.68 1.73.89 1.06 1.37 2.51 1.32 3.94-.06 1.45-.62 2.84-1.6 3.85-.96 1-2.28 1.6-3.67 1.66-1.43.06-2.82-.39-3.9-1.26-1.07-.87-1.76-2.11-1.9-3.46-.15-1.38.2-2.78 1.02-3.95.83-1.18 2.12-2.04 3.6-2.35 1.45-.31 2.99.02 4.29 1.01 1.28.98 2.15 2.44 2.38 4.04.22 1.49-.16 3.02-1.09 4.25-.93 1.24-2.35 2.1-3.92 2.34-1.59.24-3.25-.17-4.61-1.11-1.34-.93-2.28-2.39-2.59-4.02-.31-1.6.08-3.28 1.13-4.57.99-1.21 2.44-2.05 3.97-2.23 1.5-.17 3.05.26 4.28 1.16 1.2.89 2.06 2.24 2.35 3.73.29 1.46.01 2.96-.82 4.12-.83 1.18-2.06 2.04-3.4 2.34-1.4.32-2.9.08-4.15-.79-1.22-.85-2.08-2.13-2.42-3.6-.34-1.47-.12-3.02.72-4.28.84-1.26 2.18-2.12 3.64-2.37 1.43-.24 2.9.12 4.09 1.08 1.2.96 1.97 2.4 2.15 3.92.18 1.57-.26 3.18-1.21 4.42-.94 1.22-2.37 2.04-3.9 2.17-1.52.13-3.11-.43-4.38-1.55-1.25-1.09-2.08-2.65-2.27-4.28-.19-1.61.33-3.2 1.54-4.42 1.19-1.2 2.86-1.91 4.58-1.94 1.7-.04 3.38.55 4.64 1.76 1.28 1.23 2.09 2.97 2.17 4.8.08 1.84-.58 3.66-1.83 5.03-1.2 1.32-2.94 2.16-4.8 2.27-1.9.12-3.77-.58-5.15-1.9-1.36-1.3-2.16-3.09-2.2-5 .04-1.97.67-3.88 1.91-5.29 1.22-1.36 2.9-2.2 4.74-2.35 1.81-.15 3.65.36 5.12 1.53 1.47 1.17 2.47 2.9 2.76 4.76.28 1.82-.12 3.72-1.22 5.2-1.12 1.5-2.86 2.54-4.76 2.91-1.92.38-3.95.05-5.63-1.04-1.65-1.07-2.74-2.84-3.09-4.78-.34-1.93.1-3.98 1.4-5.6 1.3-1.6 3.27-2.64 5.39-2.89 2.12-.25 4.31.3 6.06 1.74 1.73 1.43 2.88 3.52 3.08 5.78.21 2.26-.54 4.55-2.12 6.2-1.57 1.64-3.8 2.56-6.1 2.53-2.27-.02-4.52-.99-6.14-2.72-1.69-1.85-2.58-4.42-2.37-6.95.21-2.57 1.34-5.05 3.26-6.67 1.92-1.63 4.48-2.48 7.02-2.25 2.52.23 4.93 1.5 6.58 3.61 1.61 2.06 2.38 4.77 2.13 7.41-.22 2.55-1.43 4.97-3.45 6.58-2.01 1.63-4.69 2.43-7.37 2.21-2.71-.22-5.19-1.55-6.9-3.74-1.73-2.19-2.5-5.07-2.1-7.87.39-2.81 1.86-5.33 4.12-6.95 2.3-1.66 5.19-2.4 8.04-2.05 2.76.34 5.35 1.72 7.14 3.89 1.8 2.18 2.69 5.05 2.48 7.87-.21 2.8-1.67 5.49-3.96 7.15-2.25 1.63-5.12 2.39-7.98 2.11-2.8-.28-5.41-1.72-7.15-3.96-1.7-2.2-2.49-5.11-2.18-7.97.3-2.89 1.73-5.52 4.02-7.2 2.31-1.7 5.24-2.47 8.11-2.07 2.96.4 5.61 2.04 7.18 4.55 1.52 2.46 2.09 5.62 1.52 8.5-.55 2.8-2.15 5.3-4.52 6.86-2.38 1.57-5.34 2.16-8.22 1.62-2.96-.55-5.62-2.36-7.26-4.99-1.64-2.64-2.08-5.9-1.23-8.89.84-2.92 2.83-5.45 5.55-6.92 2.69-1.45 5.92-1.78 8.84-.82 2.9.96 5.33 3.18 6.48 5.92 1.15 2.77.92 5.9-.61 8.48-1.56 2.65-4.38 4.5-7.47 5.08-3.06.57-6.18-.08-8.69-1.9-2.52-1.82-4.26-4.62-4.72-7.7-.47-3.08.32-6.36 2.39-8.8 2.04-2.39 5.09-3.86 8.37-3.9 3.32-.04 6.44 1.46 8.58 4.08 2.09 2.58 2.96 5.95 2.38 9.19-.58 3.21-2.72 6.04-5.7 7.67-2.96 1.62-6.49 2.08-9.77 1.26-3.32-.83-6.15-3.13-7.89-6.06-1.75-2.96-2.1-6.59-1.07-9.81.99-3.18 3.52-5.82 6.7-7.12 3.14-1.28 6.74-1.2 9.77.31 3.13 1.57 5.43 4.56 6.28 7.95.82 3.29-.08 6.85-2.36 9.4-2.28 2.49-5.6 3.99-8.99 4.11-3.31.12-6.67-1.32-9.17-3.98-2.51-2.7-3.82-6.42-3.52-10.12.3-3.67 2.2-7.03 5.35-9.06 3.17-2.05 7.16-2.5 10.79-1.09 3.63 1.42 6.52 4.52 7.8 8.22 1.32 3.8 1 7.92-.4 11.45-1.43 3.59-4.3 6.46-7.92 7.82-3.72 1.39-7.9 1.02-11.26-1.03-3.44-2.07-5.95-5.49-6.86-9.39-.95-4 0-8.28 2.46-11.56 2.42-3.21 6.21-5.28 10.21-5.58 4.02-.29 8.12 1.17 11.15 4.18 3 3.02 4.5 7.17 4.18 11.39-.35 4.2-2.6 8.02-6.13 10.18-3.46 2.14-7.82 2.86-11.94 2.03-4- .82-7.59-3.2-10-6.74-2.36-3.5-3.26-8.03-2.35-12.19 1.06-4.9 4.55-9.02 9.14-10.68 4.75-1.72 10.3-.68 14.24 2.68 2.9 2.52 4.66 6.12 4.8 9.88.14 3.68-1.25 7.39-4.07 10-2.8 2.58-6.66 4.04-10.56 3.96-3.95-.08-7.7-1.93-10.42-5.02-2.78-3.16-4.1-7.26-3.61-11.32.48-4.02 2.47-7.59 5.58-9.99 3.11-2.39 7.09-3.46 11.02-2.94 3.92.53 7.48 2.96 9.8 6.4 2.33 3.43 3.17 7.72 2.34 11.79-.82 3.98-3.49 7.43-7.01 9.32-3.49 1.86-7.65 2.28-11.41 1.14-3.71-1.12-6.9-3.72-8.7-7.06-1.84-3.37-2.1-7.47-.75-10.99 1.33-3.55 4.4-6.33 8.06-7.45 3.66-1.13 7.77-.62 11.1 1.61 3.34 2.22 5.65 5.93 6.17 10.03.55 4.12-.82 8.45-3.8 11.46-2.96 2.98-7.08 4.71-11.29 4.51-4.25-.2-8.14-2.44-10.62-5.93-2.5-3.5-3.28-8.08-2.17-12.2 1.07-4.04 3.83-7.4 7.71-9.14 3.75-1.72 8.2-1.89 12.08-.48 3.78 1.4 6.87 4.43 8.34 8.1 1.47 3.64 1.29 7.77-.54 11.22-1.86 3.52-5.28 6.08-9.16 6.71-3.85.62-7.96-.62-11.06-3.49-2.99-2.82-4.72-6.73-4.6-10.85.12-4.22 2.26-8.16 5.86-10.68 3.6-2.49 8.17-3.46 12.42-2.54 4.26.92 8 3.8 10.02 7.67 2.03 3.88 2.18 8.64.42 12.67-1.76 4.06-5.48 7.22-9.82 8.32-4.47 1.13-9.24.34-13.12-2.36-3.82-2.64-6.3-6.98-6.66-11.48-.38-4.55 1.26-9.12 4.77-12.38 3.52-3.29 8.25-5.15 13.21-5.04 4.83.11 9.38 2.49 12.57 6.45 3.14 3.9 4.65 9.16 4.07 14.17-.63 5.03-3.5 9.55-7.86 12.08-4.4 2.56-9.87 3.29-14.74 1.97-4.83-1.32-8.99-4.78-11.32-9.13-2.33-4.35-2.78-9.6-1.22-14.29 1.56-4.63 5.22-8.49 9.82-10.15 4.75-1.69 10.18-1.26 14.69 1.34 4.51 2.6 7.7 7.15 8.33 12.23.64 5.1-.72 10.47-4.52 14.32-3.8 3.89-9.33 6.02-14.8 5.64-5.48-.38-10.55-3.14-13.89-7.66-3.35-4.52-4.39-10.37-2.82-15.72 1.59-5.51 5.94-10.05 11.2-12.2 5.3-2.18 11.47-1.94 16.72.72 5.2 2.63 9.06 7.44 10.42 12.95 1.3 5.38.1 11.13-3.25 15.36-3.34 4.21-8.28 6.99-13.7 7.72-5.42.72-11.11-.62-15.59-4.3-4.47-3.72-7.2-9.24-7.56-15.04-.37-5.8 1.62-11.63 5.71-15.89 4.09-4.21 9.76-6.72 15.79-6.96 6.1-.23 12.1 2.02 16.43 6.5 4.3 4.51 6.65 10.55 6.31 16.68-.35 6.14-3.55 11.8-8.76 15.39-5.16 3.56-11.92 5.09-18.36 4.16-6.46-.92-12.38-4.7-16.17-10.04-3.78-5.34-5.04-12.04-3.42-18.24 1.58-6.12 5.96-11.31 11.71-14.14 5.92-2.82 12.9-3.19 19.04-.92 6.1 2.28 10.92 7.41 13.19 13.46 2.3 6.07 1.74 13.02-1.68 18.69-3.42 5.64-9.33 9.78-15.9 11.37-6.62 1.62-13.79.4-19.58-3.9-5.82-4.32-9.77-11.05-10.52-18.2-.76-7.2 1.87-14.59 7.31-19.7 5.52-5.13 13.16-8 20.82-7.43 7.68.58 14.71 4.64 19.36 10.81 4.59 6.1 6.3 14.18 4.66 21.56-1.67 7.42-6.72 13.81-13.54 17.63-6.77 3.8-14.9 4.96-22.44 3.13-7.53-1.85-14.09-6.9-17.95-13.52-3.95-6.78-4.82-14.76-2.09-22.02 2.72-7.17 8.92-12.82 16.46-15.46 7.46-2.6 16.01-2.2 23.09 1.24 7.07 3.44 12.35 9.9 14.4 17.54 2.14 7.94-.03 16.48-5.54 22.79-5.52 6.31-13.68 10.26-22.26 10.4-8.48.14-16.83-3.53-22.94-10.17-6.16-6.71-9.36-15.72-8.79-24.74.58-9.05 5.09-17.43 12.73-22.85 7.76-5.5 17.69-7.68 27.1-5.98 9.43 1.7 17.8 7.35 23.11 15.45 5.28 8.02 7.02 18.41 4.82 27.88-2.16 9.44-8.15 17.72-16.71 22.85-8.62 5.18-19.23 6.75-29.18 4.13-9.97-2.65-18.64-9.08-23.77-17.71-5.17-8.68-6.41-19.25-4.21-29.15 2.2-9.9 8.12-18.77 16.95-24.21 8.81-5.43 19.59-6.97 29.36-3.89 9.65 3.07 17.68 10.38 22.17 19.27 4.45 8.82 5.08 19.1 1.86 28.26-3.23 9.19-10.15 17.08-18.88 21.96-8.78 4.93-19.25 6.43-29.25 4.02-9.91-2.41-18.57-8.82-23.87-17.44-5.29-8.63-6.5-19.29-3.52-29.12 2.97-9.81 10.18-18.16 19.28-22.78 9.12-4.63 19.98-5.13 29.69-1.39 9.75 3.75 17.73 11.38 21.92 20.78 4.17 9.38 4.09 20.34-.42 29.7-4.52 9.36-13.12 16.58-23.1 19.74-9.99 3.17-21.05 2.03-30.13-3.82-9.08-5.84-15.74-15.42-17.34-25.79-1.62-10.48 2.21-21.4 10.11-29.28 7.85-7.82 18.63-11.88 29.48-10.86 10.73 1.01 20.7 6.33 27.45 15.26 7.1 9.34 9.84 21.79 7.28 33.4-2.52 11.59-9.71 21.86-19.8 28.25-10.02 6.39-22.3 8.55-33.72 5.95-11.39-2.67-21.61-10.2-28.08-20.85-6.45-10.62-8.17-23.2-4.72-34.89 3.54-11.86 11.82-21.95 22.5-28.09 10.79-6.2 23.72-7.97 35.7-4.87 11.7 3.07 21.75 11.2 27.82 22.04 6.13 10.94 7.05 24.26 2.48 35.71-4.56 11.44-14.34 20.32-26.02 24.79-11.67 4.46-24.93 4.15-36.43-.95-11.47-5.1-20.76-15.05-25.45-27.08-4.7-12.03-4.16-25.93 1.48-37.72 5.69-11.91 16.99-21.27 29.5-25.41 12.58-4.17 26.4-3.04 38.11 3.57 11.72 6.68 20.52 18.29 23.67 31.32 3.13 13.04.17 27.44-8.14 38.53-8.3 11.08-21.26 18.65-35.04 20.03-13.81 1.37-27.93-3.63-38.39-13.23-10.44-9.62-16.37-23.54-15.85-37.64.52-14.15 8.32-27.49 20.39-35.97 12.03-8.39 27.41-11.3 41.52-7.63 14.14 3.68 25.96 14.15 32.62 27.58 6.59 13.39 7.11 28.8 1.27 42.11-5.88 13.47-17.92 23.7-31.93 28.17-13.97 4.42-29.23 2.77-41.95-5.45-12.72-8.21-21.79-21.78-24.69-36.68-2.88-14.94.6-31.13 11.38-43.4 10.68-12.18 26.9-19.93 43.82-20.62 16.81-.68 33.44 5.75 45.8 18.27 12.43 12.6 19.21 30.26 17.54 47.79-1.68 17.75-10.62 34.2-25.55 45.18-15.01 11.05-34.39 16.03-53.05 13.05-18.58-2.98-35.41-14.84-46.15-31.96-10.77-17.18-13.6-38.32-7.33-57.46 6.22-19.11 21.76-34.87 40.82-43.02 18.98-8.17 41.32-8.38 60.71-.77 19.96 7.73 36.11 24.18 43.95 43.07 7.87 18.96 7.11 40.94-2.11 59.3-9.33 18.5-26.89 31.59-47.17 36.37-20.49 4.8-42.64.57-60.35-10.98-17.46-11.42-29.35-30.53-31.66-51.7-2.35-21.53 5.57-43.8 23.27-59.04 17.68-15.22 41.95-22.33 65.73-19.12 23.68 3.18 45.24 17.3 58.71 37.71 13.58 20.53 17.31 46.19 9.65 70.08-7.66 23.92-26.58 43.41-49.72 53.2-23.15 9.8-49.53 9.55-72.58-.69-23.42-10.42-42.1-31.7-50.78-56.93-8.72-25.41-7.21-53.58 5.31-77.52 12.68-24.05 35.3-42.12 61.09-49.17 26.73-7.04 56.02-2.97 79.85 12.53 23.96 15.56 40.96 40.65 45.4 68.92 4.34 28.07-3.78 57.38-24.53 79.73-20.7 22.08-49.63 35.07-79.28 35.09-29.5.02-58.97-13.14-80.18-37.16-21.12-23.9-31.53-56.49-27.26-88.17 4.31-32.09 23.62-60.57 52.12-76.63 28.66-16.09 64.16-18.64 95.08-7.42 30.71 11.22 55.6 37.03 67.22 67.81 11.67 30.89 9.15 65.88-7.95 94.12-17.04 28.24-48.06 47.65-83.4 52.61-35.17 4.96-71.73-5.47-97.66-30.75-26.09-25.42-40.18-61.16-38.58-97.95 1.54-36.45 19.24-70.62 48.81-92.06 31.16-22.7 72.65-30.45 111.26-19.99 38.55 10.49 70.93 39.22 88.63 75.9 17.53 36.46 18.26 79.17 1.43 116.08-16.85 36.98-49.96 65.62-89.68 79.09-39.95 13.52-84.34 10.79-121.18-10.63-36.98-21.53-65.32-58.16-77.37-100.56-12.05-42.41-5.87-88.89 18.62-126.07 24.63-37.45 64.85-63.34 109.36-70.87 44.68-7.56 92.1 3.42 129.65 33.67 37.55 30.22 61.61 76.24 65.14 125.52 3.51 49.18-13.59 99.24-48.18 138.66-34.82 39.43-85.22 65.85-139.46 72.06-54.09 6.23-109.38-8.77-154.43-42.43-45.19-33.72-74.84-82.13-80.87-136.35-6.05-54.28 14.86-110.05 57.48-151.66 42.48-41.52 100.31-65.5 161.52-66.72 61.27-1.23 121.77 21.57 168.35 64.64 46.59 43.07 75.41 103.88 77.92 167.44 2.49 63.5-20.74 128.07-69.26 177.7-48.95 49.89-118.7 82.85-191.55 90.39-73.96 7.67-149.78-12.24-210.77-59.55-60.68-47.12-101.56-116.96-113.43-194.66-12-78.35 5.11-160.05 59.96-222.45 54.88-62.47 134.88-99.88 219.06-104.38s164.5 27.29 226.89 89.62c62.37 62.29 98.25 149.58 99.36 237.18 1.09 87.28-32.09 171.77-89.76 233.65-57.85 62.04-138.96 100.4-223.35 108.93-84.5 8.52-170.79-11.31-240.91-63.17-70.31-51.93-120.63-129.67-140.44-216.85-19.73-86.82-8.1-179.57 39.86-255.96 48.7-77.09 128.53-134.74 216.75-152.75 90.08-18.18 183.47 4.53 257.17 67.91 75.15 64.17 120.7 161.77 120.1 261.46-.59 97.8-47.76 191.22-130.84 255.5-83.66 64.99-195.09 89.69-298.12 65.91-101.62-23.62-191.36-92.29-246.27-183.15-54.54-90.46-72.34-202.03-47.15-303.2 25.22-101.5 92.9-189.16 179.54-237.95 85.52-48.54 186.88-58.38 278.54-27.8 92.72 30.83 173.57 103.26 221.99 196.17 48.15 92.26 59.74 201.34 30.38 300.12-29.48 99.28-101.38 183.67-193.39 231.55-92.12 47.88-201.8 58.96-301.74 30.58-100.27-28.42-189.24-98.86-247.44-194.43-58.3-95.76-83.46-213.11-68.22-319.75 15.7-108.35 72.57-207.64 161.41-278.27 89.37-70.83 206.6-109.09 323.18-105.38 117.4 3.72 231.37 48.84 318.6 122.16 87.5 73.56 147.55 174.93 168.55 286.67 20.87 111.17 2.17 228.95-58.22 324.35-60.54 95.86-155.21 165.42-260.99 198.04-101.61 31.33-209.67 27.06-306.94-18.18-98.7-45.83-180.13-138.15-212.53-245.76-32.58-108.52-13.24-226.05 58.55-322.67 71.34-96.41 178.34-160.31 297.73-178.56 119.08-18.17 242.12 11.01 339.05 88.87 96.47 77.59 158.91 185.89 170.32 305.52 11.33 118.95-23.89 242.06-100.91 333.22-76.94 90.99-190.39 150.63-311.05 161.88-120.53 11.26-242.11-26.98-336.63-102.52-94.86-75.86-160.98-185.65-177.72-308.18-17.06-124.76 16.38-255.43 95.74-355.73 79.4-100.26 200.15-166.59 331.04-180.55 132.83-14.07 271.72 29.65 382.23 117.51 110.09 87.37 176.98 219.46 181.89 357.94 5.67 143.66-59.24 287.62-177.18 398.3-118.1 111.04-286.1 180.31-452.29 184.16-166.64 3.82-331.43-53.17-456.97-161.11-124.67-107.24-206.67-262.32-228.57-428.84-22.12-169.17 19.48-341.51 119.47-476.63 98.66-133.39 246.86-225.35 413.09-250.55 168.27-25.49 343.62 17.39 489.85 129.73 145.71 111.94 241.98 286.85 251.81 469.83 9.65 182.14-58.08 367.3-202.13 504.28-143.47 136.51-343.84 217.54-548.61 220.87-205.75 3.31-410.11-70.52-568.26-216.12-127.06-117.17-214.61-278.77-226.61-455.57-13.14-192.72 49.69-389.19 177.87-533.28 128.7-144.25 316.36-231.24 510.42-239.95 193.35-8.57 387.25 64.45 538.35 198.75 150 133.76 242.17 329.13 251.5 530.14 9.15 201.39-65.74 408.22-222.5 564.8-155.68 155.64-374.79 245.72-595.16 247.81-221.93 2.1-441.35-83.51-604.77-250.17-156.89-160.37-257.02-386.35-272.16-626.19-14.48-230.59 54.49-466.51 212.58-644.32 159.54-180.29 389.18-292.2 637.64-311.63 252.96-19.27 505.86 60.31 696.85 239.98 190.58 179.27 302.25 440.52 295.8 702.78-6.37 263.56-130.12 516.55-351.95 709.18-223.29 193.99-527.96 300.95-831.42 293.6-303.32-7.27-596.97-121.39-822.21-326.49-226.28-205.92-370.79-499.71-383.97-814.04-12.34-294.7 126.43-585.17 389.76-792.5 259.42-204.32 617.66-319.54 980.78-316.5 358.01 3.12 699.75 125.69 948.42 362.34 252.4 240.44 392.86 585.11 400.11 936.67 7.41 351.56-116.06 709.38-395.85 995.13-278.16 284.18-703.63 461.67-1127.32 472.56-425.81 11.16-844.17-141.36-1178.31-417.66-333.02-275.86-553.01-665.7-608.3-1090.93-55.22-424.26 80.55-868.07 421.43-1219.2 339.66-349.31 847.7-562.96 1369.13-575.4 520.42-12.16 1038.37 180.68 1452.2 542.02 410.55 355.57 687.67 882.9 751.96 1444.95 63.62 560.44-87.52 1144.44-500.11 1640.36-412.63 495.83-1014.11 833.33-1647.36 830.43-629.02-3.24-1248.57-462.94-1689.06-1217.48-443.94-757.21-693.83-1775.19-719.21-2805.67-24.69-1014.27 355.05-1956.17 1081.36-2833.4 2148.42-57.81 4407.86 413.5 6200.15 2011.01 1790.87 1597.73 2879.75 3882.69 2898.26 6105.73 18.33 2224.33-1300.54 4173.46-3479.07 5923.21-4161.08 858.01-9343.09 889.83-13287.92-100.85-3903.3-955.04-7513.05-2737.82-10334.11-5059.01-2838.62-6058.47-4109.06-9343.21-4766.73-13028.99-1184.89-3773.75 70.68-6985.3 1718.4-9755.5 6827.71-1969.35 15832.83-2140.17 22791.54 201.31 6812.22 5171.95 12566.82 12355.56 16601.04 17734.12 4118.28 4882.04 8325.78 11370.72 13132.34 11022.83 4800.27 16773.26 23204.46 20534.58 11794.54 2235.95 22673.87 24265 36004.95 19293.46 13469.8 20250.54 9000.95 10132.7 20365.6 7223.94 21408.05 4267.89 40634.22 10822.65 56965.16 2113.24 14195.38-3797.77 26118.41-19392.34 33243.75-38412.23 4307.15-15166.58 8206.3-8081.82 5590.04-21898.35 3841.62-35665.9 2206.36-44708.38-2367.97-24241.77-14485.29-44000.57-37023.58-54038.3-59874.42-15737.7-17973 1712.98-35389.48 11712.76-43275.2 30988.82-4031.01 49513.98 4688.99 70517.66 36596.39 5927.23 20465.32 18563.49 23255.38 39141.16 20372.95 48060.16 5713.2 64930.64 17012.55 86266.2 7927.67 20728.84-8609.94 42160.64-38105.35 53162.87-71519.61 10855.67-33148.8 10735.44-73682.55-2453.95-112752.52-7056.43-17917.71-24116.01-31381.71-57353.08-33242.12-28662.19-28385.33-79839.18 1050.18-130694.99 6631.42-17661.4 25890.14-29000.42 60765.18-25084.07 39828.48 6040.38 64871.99 29862.13 80363.65 62534.77 0 0 0 0-39069.5-9118.8-61764.68-46477.1-61925.75-6165.58-64230.47 61906.94-77734.54 105397.02-87454.93 16164.23-11076.42 36449.44-4780.62 54660.49 5476.59 65258.41 14773.63 9563.97 46322.18 19260.16 51834.84 47078.89 8440.8 40657.95 9084.58 60170.5 7965.97 83180.02-1004.11 17050.66-12374.3 24768.33-38398.5 14779.71-44125.15 17052.39-60511.86 2011.18-74876.43-7379-11696.11-2144.99-7772.94-5304.89-18114.31-16048.77-5763.89 2501.42-59961.87 14416.07-66848.86 16593.32 6540.26 42059.36 42562.62 61481.43 53678.58 24485.81 13090.97 40539.19 22690.37 29159.17 7434.43-87366.2 9942.26-82779.94 15105.09-12382.94 10972.34-36670.32 25225.01-57515.78 73789.27-60280.27 2143.01-25098.35 94323.47-29412.35 95987.5 4116.15 97337.67-7383.36 160870.84-8373.2 185424.43-9993.39 209059.22 21958.19 25254.26 16442.56 33859 45514.77 11283.6 77519.43 15972.26 95478.98 13703.15 120820.56 7644.11 18998.94-13423.4 20282.99-25362.85 25934.77-34141.95 31833.86-60133.76 27474.68-96755.55-4329.96-9208.72-13618.36-16089.58-33712.57-13755.8-25083.37 5479.36-39511.13 21484.84-43135.42 41284.89-4832.7 22503.29 10492.53 34943.63 37196.31 32054.14 12417.69 64761.33 30229.46 78188.41 50817.16 13556.44 19589.31 22857.93 29649.31 17722.24 54031.11-3584.68 25356.77-14154.45 46669.7-37846.81 48064.44-6888.56 12718.87-15139.34 11362.28-10932.92 3695.32 40572.36 17140.52 43739.4 20151.76 7386.6 10214.65 32895.91 33266.76 34197.7 14698.24 18842.38-27555.76 19491.53-66739.99 16597.85-56159.73-14856.62-9261.83 37516.26-9005.18 47702.49-5983.02 52180.53 4979.46 59607.16 20154.62 63866.79 34559.76 4243.23 45928.43-205.2 65904.78-14366.75 64944.29-18883.88 12367.77-50357.74 5002.85-99917.34 50940.86 9379.56 32039.25 40340.47 51653.83 25943.9 75281.61 15190.53 10726.48-32137.27 51864.58-27285.6 53119.65-5854.53 17801.28 11086.35 47628.07 20452.29 58999.79 14489.97 14838.46 34163.16 15383.71 43665.69-1302.17 12258.21-10511.73 15681.34-25639.8 12080.36-30004.61 4609.82-39888.71 16806.96-43076.13 53085.05-1750.08 30431.54 27406.99 42965.34 46887.28 33052.79 44256.55-3337.61 95396.99-22192.35 123592.03-40028.5 29324.62-60755.55 33695.55-133824.46-9885.63-183386.67-17753.95-24133.21-64976.64-87053.6-106290.07-102439.23-30418.53-11969.58-87346.92-21835.11-103403.63-22858.4-8748.85 12342.34 17486.48 23742.44 12778.2 44477.97-6133.13 26038.73-26268.25 45175.22-58296.25 48177.48-12434.53 37033.7 600.39 62352.28 11277.2 64666.95 10706.19 1839.11-22197.38 16078.88-46271.02 14014.74-63361.54-2284.97-31810.61-16613.53-47465.44-38450.62-27729.83-17234.25-117780.65-25334.68-166412.31-23977.82-54834.71 4099.9-128372.22 21407.81-196618.27 60284.27-12695.93 38323.26-21084.34 81827.45-14137.71 122589.08 17302.04 18503.52 97180.68 33646.21 128457.66 36832.1 10925.08 24291.95 12344.22 53347.34 13201.53 71204.08 7602.73 15546.61 21191.79 26178.35 38031.42 31657 11176.88 41939.02 15253.14 5882.26 12453.56 12744.64-29690.05-2139.69-58138.91-25862.65-66520.6-48415.13-5906.18-18767.16 3020.42-35560.97 19585.66-45731.39 11812.07-75640.76-2304.87-111846.47-10529.87-137402.82-43301.91-26563.55 17282.63-39060.84 45384.17-47470 82285.94 4296.86 20932.87 6973.89 50528.77 10143.68 53498.83 10002.11 22298.33 7788.52 30636.31 2414.11 36535.32-7552.11 44931.07-39732.27 48274.95-47381.72 35984.73-27264.64 56407.69-49574.43 60275.9-70890.56 63508.17-57166.56 104683.64-7717174.39 3074076.52 33696.36 83244.82 134067.53 63808.44 33028.09 10153.64 33247.94 26863.63 70415.46 12568.77 71057.93-2828.54 24016.8-14526.26 45764.67-38880.53 43664.84-56171.91-17072.02 21344.89-22903.23 48976.93-18392.79 56566.87 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-                </svg>
-              </a>
-
-              <a class="wallet-link" href="#" target="_blank" rel="noopener noreferrer">
-                <svg class="wallet-icon" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill="#4285F4" d="M4 5.2A2.2 2.2 0 0 1 6.2 3h11.6A2.2 2.2 0 0 1 20 5.2v1.5H4z"/>
-                  <path fill="#34A853" d="M4 7.3h16v3H4z"/>
-                  <path fill="#FBBC04" d="M4 10.1h16v3H4z"/>
-                  <path fill="#EA4335" d="M4 12.9h16v3H4z"/>
-                  <path fill="#4285F4" d="M4 15.7h16v3.1a2.2 2.2 0 0 1-2.2 2.2H6.2A2.2 2.2 0 0 1 4 18.8z"/>
-                  <circle cx="16.5" cy="12" r="1.15" fill="#fff"/>
-                </svg>
-                <span>Google Wallet</span>
-                <span class="wallet-arrow">↗</span>
-              </a>
-            </div>
-          </section>
-
-          <section class="side-card">
-            <h3 style="margin:0 0 8px; color:var(--blue-dark);">Kontakt direkt speichern</h3>
-            <p style="margin:0; color:var(--muted); line-height:1.5; font-size:.9rem;">
-              Lädt die Kontaktdaten als vCard-Datei herunter.
-            </p>
-            <button type="button" class="button" style="margin-top:16px; width:100%;">Kontakt speichern</button>
+          <section class="card">
+            <h2>Kontakt direkt speichern</h2>
+            <p class="small">Lädt die Kontaktdaten als vCard-Datei herunter.</p>
+            <button class="button" id="save-contact-side" type="button">Kontakt speichern</button>
           </section>
         </aside>
       </div>
     </main>
 
-    <div class="footer">
-      HSV · Lasse Böttcher
-    </div>
+    <footer>
+      <div>HSV · Lasse Boettcher</div>
+
+      <details class="imprint">
+        <summary>Impressum</summary>
+        <div class="imprint-body">
+          <h3>Dienstanbieter</h3>
+          <p>
+            HSV Fußball AG &amp; Co. KGaA<br>
+            Uwe-Seeler-Allee 9<br>
+            22525 Hamburg
+          </p>
+          <p>
+            Telefon: <a href="tel:+494041551887">040 4155-1887</a><br>
+            Telefax: 040 4155-1234<br>
+            E-Mail: <a href="mailto:info@hsv.de">info@hsv.de</a>
+          </p>
+          <p><strong>Vorsitzender des Aufsichtsrates:</strong><br>Michael Papenfuß</p>
+          <p><strong>Handelsregister Amtsgericht Hamburg:</strong><br>HRB 191603</p>
+          <p><strong>USt-Id-Nr.:</strong><br>DE118717273</p>
+
+          <h3>Komplementärin</h3>
+          <p>
+            HSV Fußball Management AG<br>
+            Vorstand: Dr. Eric Huwer, Kathleen Krüger<br>
+            Prokuristen: Daniel Nolte, Dr. Philipp Winter, Cornelius Göbel
+          </p>
+          <p>
+            <strong>Vertretungsberechtigte:</strong><br>
+            Zwei Vorstandsmitglieder gemeinsam oder ein Vorstandsmitglied in
+            Gemeinschaft mit einem Prokuristen oder zwei Prokuristen gemeinsam.
+          </p>
+          <p><strong>Handelsregister Amtsgericht Hamburg:</strong><br>HRB 188040</p>
+          <p><strong>USt-Id-Nr.:</strong><br>DE449793445</p>
+
+          <h3>Verantwortlich für den Inhalt (V.i.S.d.P.)</h3>
+          <p>
+            Christian Pletz<br>
+            HSV Fußball AG &amp; Co. KGaA, Uwe-Seeler-Allee 9, 22525 Hamburg
+          </p>
+
+          <h3>Redaktion</h3>
+          <ul>
+            <li>Thomas Huesmann</li>
+            <li>Pascal Martin</li>
+            <li>Hannah Borwitzky</li>
+            <li>Nina Elsler</li>
+            <li>Chiara Schlüter</li>
+            <li>Hanna Kummerfeld</li>
+          </ul>
+
+          <h3>Bilder</h3>
+          <p>
+            WITTERS GmbH Sportfotografie<br>
+            Bilser Straße 57<br>
+            22297 Hamburg
+          </p>
+
+          <h3>Datendienste</h3>
+          <p>
+            HEIM:SPIEL Medien GmbH &amp; Co. KG<br>
+            Am Stadtgraben 48<br>
+            48143 Münster<br>
+            <a href="https://www.heimspiel.de" target="_blank" rel="noopener">www.heimspiel.de</a>
+          </p>
+
+          <h3>Technische Umsetzung</h3>
+          <p>
+            Turbine Kreuzberg GmbH<br>
+            Prinzessinnenstraße 19/20<br>
+            10969 Berlin<br>
+            <a href="https://turbinekreuzberg.com/" target="_blank" rel="noopener">turbinekreuzberg.com</a>
+          </p>
+
+          <h3>Verantwortlich für den Anzeigenteil</h3>
+          <p>
+            Johannes Haupt (Senior Director Team HSV)<br>
+            SPORTFIVE Germany GmbH<br>
+            Barcastraße 5<br>
+            22087 Hamburg
+          </p>
+          <p>
+            Telefon: <a href="tel:+494041552000">040 4155-2000</a><br>
+            E-Mail: <a href="mailto:de.hsv@sportfive.com">de.hsv@sportfive.com</a>
+          </p>
+
+          <h3>Copyright</h3>
+          <p>
+            Alle Rechte vorbehalten. Insbesondere dürfen Nachdruck, Aufnahme in
+            Online-Dienste und Internet sowie Vervielfältigung auf Datenträger wie
+            CD-ROM, DVD-ROM etc. – auch auszugsweise – nur nach vorheriger schriftlicher
+            Zustimmung der HSV Fußball AG &amp; Co. KGaA / SPORTFIVE Germany GmbH erfolgen.
+          </p>
+          <p>
+            Für unverlangt eingesandte Manuskripte kann keine Haftung übernommen werden.
+            Mit Übergabe der Manuskripte und Bilder an die Redaktion erteilt der Verfasser
+            der HSV Fußball AG &amp; Co. KGaA / SPORTFIVE Germany GmbH das Recht zur
+            Veröffentlichung. Honorierte Arbeiten gehen in das Verfügungsrecht der
+            HSV Fußball AG &amp; Co. KGaA / SPORTFIVE Germany GmbH über. Warennamen
+            werden ohne Gewährleistung einer freien Verfügung genutzt.
+          </p>
+
+          <h3>Externe Links</h3>
+          <p>
+            Die HSV Fußball AG &amp; Co. KGaA / SPORTFIVE Germany GmbH erklärt, dass sie
+            keinen Einfluss auf Gestaltung und Inhalte verlinkter Internetseiten hat und
+            sich von deren Inhalten distanziert, soweit diese nicht auf ihren eigenen
+            Servern abgelegt sind. Dies gilt auch für Inhalte, zu denen Banner und Links
+            führen.
+          </p>
+
+          <h3>Alternative Streitbeilegung</h3>
+          <p>
+            Der HSV nimmt nicht an einem Streitbeilegungsverfahren vor der
+            Verbraucherschlichtungsstelle teil (vgl. § 36 VSBG).
+          </p>
+
+          <h3>Sonstige Hinweise</h3>
+          <p>
+            Aus Gründen der sprachlichen Vereinfachung und besseren Lesbarkeit wird auf
+            dieser Website auf die explizite Nennung aller Geschlechtsformen verzichtet.
+            Begriffe wie „Zuschauer“ und „Teilnehmer“ sind geschlechtsneutral aufzufassen.
+          </p>
+        </div>
+      </details>
+    </footer>
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    const CARD = {
+      firstName: "Lasse",
+      lastName: "Böttcher",
+      role: "Player Care & Teammanagement",
+      company: "HSV Fußball AG",
+      phone: "+491604339168",
+      email: "Lasse.boettcher@hsv.de",
+      address: "Uwe-Seeler-Allee 9, 22525 Hamburg, Deutschland",
+      oneVcard: "https://onevcard.app/v/a0p4iPCJ-G4QpKIpRXuE_?share"
+    };
+
+    const encodedAddress = encodeURIComponent(CARD.address);
+    document.getElementById("google-maps").href =
+      `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+    document.getElementById("apple-maps").href =
+      `https://maps.apple.com/?q=${encodedAddress}`;
+
+    function downloadVCard() {
+      const escapeVCard = value =>
+        String(value)
+          .replace(/\\/g, "\\\\")
+          .replace(/\n/g, "\\n")
+          .replace(/,/g, "\\,")
+          .replace(/;/g, "\\;");
+
+      const vcard = [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        `N:${escapeVCard(CARD.lastName)};${escapeVCard(CARD.firstName)};;;`,
+        `FN:${escapeVCard(`${CARD.firstName} ${CARD.lastName}`)}`,
+        `ORG:${escapeVCard(CARD.company)}`,
+        `TITLE:${escapeVCard(CARD.role)}`,
+        `TEL;TYPE=MAIN,VOICE:${escapeVCard(CARD.phone)}`,
+        `EMAIL;TYPE=WORK:${escapeVCard(CARD.email)}`,
+        `ADR;TYPE=WORK:;;${escapeVCard(CARD.address)};;;;`,
+        `URL:${CARD.oneVcard}`,
+        "END:VCARD"
+      ].join("\r\n");
+
+      const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "Lasse_Boettcher.vcf";
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    document.getElementById("save-contact").addEventListener("click", downloadVCard);
+    document.getElementById("save-contact-side").addEventListener("click", downloadVCard);
+
+    // QR-Code zur aktuell veröffentlichten Visitenkarte
+    const cardUrl = new URL(window.location.href);
+    cardUrl.search = "";
+    cardUrl.hash = "";
+    const qrUrl = cardUrl.href;
+    document.getElementById("qr-target").textContent = qrUrl;
+
+    if (window.QRCode && /^https?:$/.test(window.location.protocol)) {
+      new QRCode(document.getElementById("qrcode"), {
+        text: qrUrl,
+        width: 190,
+        height: 190,
+        colorDark: "#00529f",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    } else {
+      document.getElementById("qrcode").textContent =
+        "Der QR-Code wird angezeigt, sobald die Seite über eine Webadresse aufgerufen wird.";
+    }
+
+    document.getElementById("application-form").addEventListener("submit", event => {
+      event.preventDefault();
+      document.getElementById("form-message").textContent =
+        "Die Dateien wurden nicht übertragen. Für Bewerbungen muss ein sicheres Upload-Backend eingerichtet werden.";
+    });
+
+    for (const id of ["apple-wallet", "google-wallet"]) {
+      document.getElementById(id).addEventListener("click", event => {
+        event.preventDefault();
+      });
+    }
+  </script>
 </body>
 </html>
