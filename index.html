@@ -492,8 +492,8 @@
     .social-link svg { width: 22px; height: 22px; fill: currentColor; }
     .social-link .xing-mark { font: 800 12px Arial, sans-serif; letter-spacing: -.5px; }
 
-    /* Wallet Buttons & Akkordeon */
-    .wallet-accordion {
+    /* Akkordeons im einheitlichen blauen Design (QR, Wallet, Save Contact) */
+    .qr-accordion, .wallet-accordion, .save-accordion {
       margin-top: 0;
       padding: 0;
       background: var(--card-bg);
@@ -502,7 +502,7 @@
       overflow: hidden;
     }
 
-    .wallet-accordion summary {
+    .qr-accordion summary, .wallet-accordion summary, .save-accordion summary {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -515,15 +515,20 @@
       cursor: pointer;
     }
 
-    .wallet-accordion summary::-webkit-details-marker { display: none; }
-    .wallet-accordion summary::after {
+    .qr-accordion summary::-webkit-details-marker,
+    .wallet-accordion summary::-webkit-details-marker,
+    .save-accordion summary::-webkit-details-marker { display: none; }
+
+    .qr-accordion summary::after, .wallet-accordion summary::after, .save-accordion summary::after {
       margin-left: auto;
       content: "+";
       font-size: 1.3rem;
     }
-    .wallet-accordion[open] summary::after { content: "−"; }
+    .qr-accordion[open] summary::after,
+    .wallet-accordion[open] summary::after,
+    .save-accordion[open] summary::after { content: "−"; }
 
-    .wallet-content {
+    .qr-content, .wallet-content, .save-content {
       padding: 20px;
       background: var(--glass);
     }
@@ -721,37 +726,6 @@
       border-radius: 999px;
       transition: width .6s ease;
     }
-
-    /* Aufklappbarer QR-Code im blauen Design */
-    .qr-accordion {
-      margin-top: 0;
-      padding: 0;
-      background: var(--card-bg);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      overflow: hidden;
-    }
-
-    .qr-accordion summary {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 16px 18px;
-      color: #fff;
-      background: var(--summary-bg);
-      font-size: 1rem;
-      font-weight: 800;
-      list-style: none;
-      cursor: pointer;
-    }
-
-    .qr-accordion summary::-webkit-details-marker { display: none; }
-    .qr-accordion summary::after {
-      margin-left: auto;
-      content: "+";
-      font-size: 1.3rem;
-    }
-    .qr-accordion[open] summary::after { content: "−"; }
 
     .qr-content {
       padding: 20px;
@@ -1134,11 +1108,14 @@
             </div>
           </details>
 
-          <section class="card" aria-labelledby="save-heading">
-            <h2 id="save-heading" data-i18n="saveHeading">Kontakt direkt speichern</h2>
-            <p class="small" data-i18n="saveIntro">Speichere alle Kontaktdaten als vCard (.vcf) im Adressbuch.</p>
-            <button class="button full" id="save-contact-side" type="button" data-i18n="saveContactSide">Kontakt speichern (.vcf)</button>
-          </section>
+          <!-- Kontakt direkt speichern als aufklappbarer Button in Blau -->
+          <details class="save-accordion">
+            <summary data-i18n="saveHeading">Kontakt direkt speichern</summary>
+            <div class="save-content">
+              <p class="small" data-i18n="saveIntro" style="margin-top:0;">Speichere alle Kontaktdaten als vCard (.vcf) im Adressbuch.</p>
+              <button class="button full" id="save-contact-side" type="button" data-i18n="saveContactSide">Kontakt speichern (.vcf)</button>
+            </div>
+          </details>
         </aside>
       </div>
     </main>
@@ -1477,11 +1454,11 @@
         careerLink: "Ir al portal de empleo HSV ↗",
         qrHeading: "Código QR y Enlace",
         qrIntro: "Escanea o abre el enlace directamente.",
-        copyLink: "Copiar enlace",
+        copyLink: "Copier enlace",
         copied: "¡Enlace copiado!",
         downloadQr: "Descargar código QR",
         walletHeading: "Guardar en Wallet",
-        walletIntro: "Añade esta tarjeta digital directamente a tu cartera.",
+        walletIntro: "Añade esta tarjeta digital direktamente a tu cartera.",
         saveHeading: "Guardar contacto",
         saveIntro: "Guarda los datos de contacto como vCard (.vcf) en tu agenda.",
         saveContactSide: "Guardar contacto (.vcf)",
