@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#00529f">
-  <meta name="description" content="Digitale Visitenkarte von Lasse Boettcher">
+  <meta name="description" content="Digitale Visitenkarte von Lasse Böttcher">
   <title>Lasse Böttcher | HSV</title>
 
   <style>
@@ -16,7 +16,7 @@
       --muted: #647789;
       --white: #fff;
       --line: #dce7f0;
-      --glass: rgba(255,255,255,.86);
+      --glass: rgba(255,255,255,.88);
       --shadow: 0 18px 48px rgba(0,52,100,.10);
       font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
     }
@@ -61,7 +61,7 @@
       height: 52px;
       padding: 4px;
       overflow: hidden;
-      background: #fff;
+      background: var(--white);
       border: 1px solid var(--line);
       border-radius: 50%;
       box-shadow: 0 5px 16px rgba(0,52,100,.12);
@@ -99,7 +99,7 @@
       margin: 8px 0 24px;
       padding: clamp(24px, 5vw, 54px);
       overflow: hidden;
-      color: #fff;
+      color: var(--white);
       background:
         linear-gradient(90deg, rgba(0,29,58,.94), rgba(0,82,159,.64)),
         url("assets/volksparkstadion.jpg") center 48% / cover no-repeat;
@@ -134,7 +134,7 @@
       height: 58px;
       padding: 4px;
       object-fit: contain;
-      background: #fff;
+      background: var(--white);
       border-radius: 50%;
     }
 
@@ -271,7 +271,7 @@
       justify-content: center;
       min-height: 44px;
       padding: 11px 15px;
-      color: #fff;
+      color: var(--white);
       background: var(--blue);
       border: 0;
       border-radius: 12px;
@@ -411,7 +411,7 @@
       align-items: center;
       gap: 12px;
       padding: 15px 16px;
-      color: #fff;
+      color: var(--white);
       background: linear-gradient(135deg, var(--blue-dark), var(--blue));
       border-radius: 13px;
       list-style: none;
@@ -433,6 +433,31 @@
 
     #qrcode img, #qrcode canvas { max-width: 100%; }
     .qr-target { overflow-wrap: anywhere; }
+
+    .wallet-buttons { display: grid; gap: 10px; margin-top: 16px; }
+
+    .wallet-button {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 54px;
+      padding: 12px 15px;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .wallet-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(0,52,100,.12);
+    }
+
+    .wallet-icon { width: 26px; height: 26px; flex: 0 0 26px; }
+    .wallet-arrow { margin-left: auto; color: var(--muted); }
 
     .form-grid { display: grid; gap: 12px; margin-top: 16px; }
 
@@ -508,7 +533,7 @@
           <img src="assets/hsv-logo.jpg" alt="HSV-Logo">
         </span>
         <span>
-          Lasse Böttcher 
+          Lasse Böttcher
           <small>Player Care &amp; Teammanagement</small>
         </span>
       </a>
@@ -532,7 +557,7 @@
         </div>
 
         <div class="hero-photo">
-          <img src="assets/lasse-boettcher.jpg" alt="Lasse Boettcher im Fußballstadion">
+          <img src="assets/lasse-boettcher.jpg" alt="Lasse Böttcher im Fußballstadion">
         </div>
       </section>
 
@@ -541,10 +566,10 @@
           <section class="card" aria-labelledby="profile-name">
             <div class="profile">
               <div class="profile-photo">
-                <img src="assets/lasse-boettcher.jpg" alt="Profilbild von Lasse Boettcher">
+                <img src="assets/lasse-boettcher.jpg" alt="Profilbild von Lasse Böttcher">
               </div>
               <div>
-                <h2 id="profile-name">Lasse Boettcher</h2>
+                <h2 id="profile-name">Lasse Böttcher</h2>
                 <p class="role">Player Care &amp; Teammanagement</p>
                 <p class="company">HSV Fußball AG</p>
               </div>
@@ -556,7 +581,7 @@
               <button class="button pale" id="save-contact" type="button">＋ Kontakt speichern</button>
               <a class="button pale"
                  href="https://onevcard.app/v/a0p4iPCJ-G4QpKIpRXuE_?share"
-                 target="_blank" rel="noopener">Kontakt verbinden ↗</a>
+                 target="_blank" rel="noopener noreferrer">Kontakt verbinden ↗</a>
             </div>
           </section>
 
@@ -586,8 +611,8 @@
             <details>
               <summary>Adresse in einer Karten-App öffnen</summary>
               <div class="map-links">
-                <a class="button pale" id="google-maps" target="_blank" rel="noopener">Google Maps</a>
-                <a class="button pale" id="apple-maps" target="_blank" rel="noopener">Apple Karten</a>
+                <a class="button pale" id="google-maps" target="_blank" rel="noopener noreferrer">Google Maps</a>
+                <a class="button pale" id="apple-maps" target="_blank" rel="noopener noreferrer">Apple Karten</a>
               </div>
             </details>
           </section>
@@ -701,14 +726,39 @@
           </section>
 
           <section class="card" aria-labelledby="wallet-title">
-            <h2 id="wallet-title">Wallet</h2>
+            <h2 id="wallet-title">In Wallet speichern</h2>
             <p class="small">
-              Apple Wallet und Google Wallet benötigen separat eingerichtete
-              Wallet-Pässe. Ohne Pass-Link sind die Buttons noch nicht aktiv.
+              Beide Schaltflächen öffnen den GoWalletPass-Link. Dort kannst du
+              die passende Apple- oder Google-Wallet-Option auswählen.
             </p>
-            <div class="actions">
-              <a class="button pale wallet-link" id="apple-wallet" href="#" aria-disabled="true">Apple Wallet</a>
-              <a class="button pale wallet-link" id="google-wallet" href="#" aria-disabled="true">Google Wallet</a>
+
+            <div class="wallet-buttons">
+              <a class="wallet-button"
+                 href="https://gowalletpass.com/p/20637eaeb86a"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Pass zu Apple Wallet hinzufügen">
+                <svg class="wallet-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="currentColor" d="M16.37 12.22c.02 2.12 1.86 2.83 1.88 2.84-.02.05-.29 1-.97 1.98-.58.84-1.18 1.67-2.13 1.69-.93.02-1.23-.54-2.3-.54s-1.4.52-2.28.56c-.91.03-1.6-.9-2.18-1.73-1.19-1.72-2.1-4.86-.88-6.99.6-1.06 1.68-1.73 2.85-1.75.89-.02 1.73.6 2.28.6.54 0 1.57-.74 2.65-.63.45.02 1.72.18 2.53 1.37-.07.04-1.51.88-1.5 2.6ZM14.63 6.9c.48-.58.8-1.39.71-2.2-.69.03-1.52.46-2.02 1.04-.44.51-.82 1.33-.72 2.12.77.06 1.55-.39 2.03-.96Z"/>
+                </svg>
+                <span>Apple Wallet</span>
+                <span class="wallet-arrow" aria-hidden="true">↗</span>
+              </a>
+
+              <a class="wallet-button"
+                 href="https://gowalletpass.com/p/20637eaeb86a"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Pass zu Google Wallet hinzufügen">
+                <svg class="wallet-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="#4285F4" d="M4 5.2A2.2 2.2 0 0 1 6.2 3h11.6A2.2 2.2 0 0 1 20 5.2v1.5H4z"/>
+                  <path fill="#34A853" d="M4 7.3h16v3H4z"/>
+                  <path fill="#FBBC04" d="M4 10.1h16v3H4z"/>
+                  <path fill="#EA4335" d="M4 12.9h16v3H4z"/>
+                  <path fill="#4285F4" d="M4 15.7h16v3.1a2.2 2.2 0 0 1-2.2 2.2H6.2A2.2 2.2 0 0 1 4 18.8z"/>
+                  <circle cx="16.5" cy="12" r="1.15" fill="#fff"/>
+                </svg>
+                <span>Google Wallet</span>
+                <span class="wallet-arrow" aria-hidden="true">↗</span>
+              </a>
             </div>
           </section>
 
@@ -722,7 +772,7 @@
     </main>
 
     <footer>
-      <div>HSV · Lasse Boettcher</div>
+      <div>HSV · Lasse Böttcher</div>
 
       <details class="imprint">
         <summary>Impressum</summary>
@@ -784,7 +834,7 @@
             HEIM:SPIEL Medien GmbH &amp; Co. KG<br>
             Am Stadtgraben 48<br>
             48143 Münster<br>
-            <a href="https://www.heimspiel.de" target="_blank" rel="noopener">www.heimspiel.de</a>
+            <a href="https://www.heimspiel.de" target="_blank" rel="noopener noreferrer">www.heimspiel.de</a>
           </p>
 
           <h3>Technische Umsetzung</h3>
@@ -792,7 +842,7 @@
             Turbine Kreuzberg GmbH<br>
             Prinzessinnenstraße 19/20<br>
             10969 Berlin<br>
-            <a href="https://turbinekreuzberg.com/" target="_blank" rel="noopener">turbinekreuzberg.com</a>
+            <a href="https://turbinekreuzberg.com/" target="_blank" rel="noopener noreferrer">turbinekreuzberg.com</a>
           </p>
 
           <h3>Verantwortlich für den Anzeigenteil</h3>
@@ -825,11 +875,10 @@
 
           <h3>Externe Links</h3>
           <p>
-            Die HSV Fußball AG &amp; Co. KGaA / SPORTFIVE Germany GmbH erklärt, dass sie
-            keinen Einfluss auf Gestaltung und Inhalte verlinkter Internetseiten hat und
-            sich von deren Inhalten distanziert, soweit diese nicht auf ihren eigenen
-            Servern abgelegt sind. Dies gilt auch für Inhalte, zu denen Banner und Links
-            führen.
+            Die HSV Fußball AG &amp; Co. KGaA / SPORTFIVE Germany GmbH hat auf ihren
+            Internetseiten Links zu anderen Internetseiten geschaltet. Sie erklärt, dass
+            sie keinen Einfluss auf Gestaltung und Inhalte der verlinkten Seiten hat und
+            sich von deren Inhalten distanziert, soweit diese nicht auf ihrem Server liegen.
           </p>
 
           <h3>Alternative Streitbeilegung</h3>
@@ -868,14 +917,15 @@
     document.getElementById("apple-maps").href =
       `https://maps.apple.com/?q=${encodedAddress}`;
 
-    function downloadVCard() {
-      const escapeVCard = value =>
-        String(value)
-          .replace(/\\/g, "\\\\")
-          .replace(/\n/g, "\\n")
-          .replace(/,/g, "\\,")
-          .replace(/;/g, "\\;");
+    function escapeVCard(value) {
+      return String(value)
+        .replace(/\\/g, "\\\\")
+        .replace(/\n/g, "\\n")
+        .replace(/,/g, "\\,")
+        .replace(/;/g, "\\;");
+    }
 
+    function downloadVCard() {
       const vcard = [
         "BEGIN:VCARD",
         "VERSION:3.0",
@@ -894,7 +944,7 @@
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = "Lasse_Boettcher.vcf";
+      link.download = "Lasse_Böttcher.vcf";
       link.click();
       URL.revokeObjectURL(url);
     }
@@ -902,11 +952,12 @@
     document.getElementById("save-contact").addEventListener("click", downloadVCard);
     document.getElementById("save-contact-side").addEventListener("click", downloadVCard);
 
-    // QR-Code zur aktuell veröffentlichten Visitenkarte
+    // QR-Code zeigt auf die veröffentlichte Visitenkarten-Seite, nicht auf OneVcard.
     const cardUrl = new URL(window.location.href);
     cardUrl.search = "";
     cardUrl.hash = "";
     const qrUrl = cardUrl.href;
+
     document.getElementById("qr-target").textContent = qrUrl;
 
     if (window.QRCode && /^https?:$/.test(window.location.protocol)) {
@@ -928,12 +979,6 @@
       document.getElementById("form-message").textContent =
         "Die Dateien wurden nicht übertragen. Für Bewerbungen muss ein sicheres Upload-Backend eingerichtet werden.";
     });
-
-    for (const id of ["apple-wallet", "google-wallet"]) {
-      document.getElementById(id).addEventListener("click", event => {
-        event.preventDefault();
-      });
-    }
   </script>
 </body>
 </html>
