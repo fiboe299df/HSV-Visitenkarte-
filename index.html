@@ -15,20 +15,14 @@
       --muted: #647789;
       --white: #fff;
       --line: #dce7f0;
-      --glass: rgba(255, 255, 255, .86);
-      --shadow: 0 18px 48px rgba(0, 52, 100, .1);
-      --page-bg-1: #f3f8fc;
-      --page-bg-2: #fff;
-      --page-bg-3: #eef4f8;
-      --card-bg: rgba(255, 255, 255, .72);
-      --fieldset-bg: rgba(234, 243, 251, .6);
+      --glass: rgba(255, 255, 255, .88);
+      --shadow: 0 18px 48px rgba(0, 52, 100, .15);
+      --card-bg: rgba(255, 255, 255, .82);
       --chip-bg: linear-gradient(135deg, var(--blue-pale), #edf5ff);
-      --hero-overlay-1: rgba(0, 29, 58, .94);
-      --hero-overlay-2: rgba(0, 82, 159, .64);
+      --hero-overlay-1: rgba(0, 29, 58, .92);
+      --hero-overlay-2: rgba(0, 82, 159, .62);
       --button-text: #fff;
       --button-pale-text: var(--blue-dark);
-      --summary-bg: linear-gradient(135deg, var(--blue-dark), var(--blue));
-      --input-bg: rgba(255, 255, 255, .8);
       font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
     }
 
@@ -40,20 +34,14 @@
       --muted: #bfd0ea;
       --white: #0b1624;
       --line: rgba(172, 198, 224, .18);
-      --glass: rgba(14, 22, 35, .82);
-      --shadow: 0 18px 48px rgba(0, 0, 0, .35);
-      --page-bg-1: #091824;
-      --page-bg-2: #0e1f2f;
-      --page-bg-3: #0a1828;
-      --card-bg: rgba(17, 28, 40, .84);
-      --fieldset-bg: rgba(17, 28, 40, .8);
+      --glass: rgba(14, 22, 35, .85);
+      --shadow: 0 18px 48px rgba(0, 0, 0, .45);
+      --card-bg: rgba(17, 28, 40, .88);
       --chip-bg: linear-gradient(135deg, rgba(31, 62, 96, .9), rgba(20, 38, 58, .9));
-      --hero-overlay-1: rgba(3, 13, 22, .9);
-      --hero-overlay-2: rgba(18, 58, 98, .8);
+      --hero-overlay-1: rgba(3, 13, 22, .92);
+      --hero-overlay-2: rgba(18, 58, 98, .82);
       --button-text: #051d2f;
       --button-pale-text: #dfefff;
-      --summary-bg: linear-gradient(135deg, #12304f, #0d49a1);
-      --input-bg: rgba(16, 27, 38, .9);
     }
 
     * { box-sizing: border-box; }
@@ -61,32 +49,12 @@
     body {
       margin: 0;
       color: var(--ink);
-      /* HSV-Logo als raumgreifendes, 25% transparentes Hintergrund-Wasserzeichen */
-      background-image: linear-gradient(140deg, var(--page-bg-1), var(--page-bg-2) 54%, var(--page-bg-3)),
-                        url("assets/hsv-hintergrund.jpg");
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: min(600px, 80vw);
-      background-attachment: fixed;
-      /* 25% Transparenz über die Opazität des Hintergrundbild-Layers via Blend-Mode oder Fallback */
-      background-blend-mode: overlay;
+      /* Globales HSV-Hintergrundbild für Desktop und Handy mit Farb-Overlay zur optimalen Lesbarkeit */
+      background: linear-gradient(135deg, rgba(0, 42, 84, 0.75), rgba(0, 82, 159, 0.65)),
+                  url("assets/hsv-hintergrund.jpg") center center / cover no-repeat fixed;
       transition: background .25s, color .25s;
+      min-height: 100vh;
     }
-
-    /* Extra Schicht für fehlerfreie 25% Transparenz des Hintergrundlogos auf allen Geräten */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image: url("assets/hsv-hintergrund.jpg");
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: min(500px, 75vw);
-      opacity: 0.50;
-      pointer-events: none;
-      z-index: -1;
-    }
-
     a { color: inherit; }
 
     .page {
@@ -107,10 +75,11 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      color: var(--blue);
+      color: #fff;
       font-size: 1.1rem;
       font-weight: 900;
       text-decoration: none;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
 
     .brand-logo {
@@ -124,7 +93,7 @@
       background: #fff;
       border: 1px solid var(--line);
       border-radius: 50%;
-      box-shadow: 0 5px 16px rgba(0, 52, 100, .12);
+      box-shadow: 0 5px 16px rgba(0, 52, 100, .3);
     }
 
     .brand-logo img {
@@ -137,7 +106,7 @@
     .brand small {
       display: block;
       margin-top: 3px;
-      color: var(--muted);
+      color: #d9eafa;
       font-size: .66rem;
       font-weight: 700;
       letter-spacing: .08em;
@@ -154,6 +123,12 @@
       display: flex;
       align-items: center;
       gap: 6px;
+      background: var(--glass);
+      padding: 4px 8px;
+      border-radius: 999px;
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
     }
 
     .theme-toggle {
@@ -167,18 +142,13 @@
       background: transparent;
       border: 0;
       border-radius: 50%;
-      box-shadow: none;
       cursor: pointer;
       transition: transform .15s, background-color .15s;
     }
 
     .theme-toggle:hover {
       transform: scale(1.08);
-      background: rgba(0, 82, 159, .08);
-    }
-
-    body.dark .theme-toggle:hover {
-      background: rgba(255, 255, 255, .1);
+      background: rgba(0, 82, 159, .12);
     }
 
     .theme-toggle svg {
@@ -204,17 +174,7 @@
       background: transparent;
       border: 0;
       border-radius: 999px;
-      box-shadow: none;
       color: var(--blue-dark);
-      transition: background-color .15s;
-    }
-
-    .lang-dropdown:hover {
-      background: rgba(0, 82, 159, .08);
-    }
-
-    body.dark .lang-dropdown:hover {
-      background: rgba(255, 255, 255, .1);
     }
 
     .lang-dropdown svg {
@@ -273,8 +233,8 @@
       border: 1px solid var(--line);
       border-radius: 18px;
       box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       scrollbar-width: none;
     }
     .quick-nav::-webkit-scrollbar { display: none; }
@@ -296,9 +256,7 @@
       cursor: pointer;
       transition: background-color .15s;
     }
-    .quick-nav a:hover, .quick-nav button:hover { background: rgba(0, 82, 159, .09); }
-    body.dark .quick-nav a:hover, body.dark .quick-nav button:hover { background: rgba(255, 255, 255, .1); }
-    .quick-nav a:focus-visible, .quick-nav button:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+    .quick-nav a:hover, .quick-nav button:hover { background: rgba(0, 82, 159, .1); }
     .quick-nav svg {
       width: 22px;
       height: 22px;
@@ -311,11 +269,17 @@
     section[id] { scroll-margin-top: 92px; }
 
     .home-link {
-      color: var(--blue);
+      color: #fff;
       font-size: .92rem;
       font-weight: 800;
       text-decoration: none;
       white-space: nowrap;
+      background: var(--glass);
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
     }
 
     .hero {
@@ -333,18 +297,6 @@
       border: 1px solid rgba(255, 255, 255, .35);
       border-radius: 28px;
       box-shadow: var(--shadow);
-    }
-
-    .hero::after {
-      position: absolute;
-      top: -190px;
-      right: -40px;
-      width: 390px;
-      height: 390px;
-      border: 48px solid rgba(255, 255, 255, .1);
-      border-radius: 50%;
-      content: "";
-      pointer-events: none;
     }
 
     .hero-content, .hero-photo { position: relative; z-index: 1; }
@@ -411,7 +363,7 @@
       background: #e9f0f8;
       border: 5px solid rgba(255, 255, 255, .85);
       border-radius: 24px;
-      box-shadow: 0 14px 40px rgba(0, 0, 0, .24);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, .3);
     }
 
     .hero-photo img {
@@ -438,7 +390,8 @@
       border: 1px solid var(--line);
       border-radius: 22px;
       box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
 
     .profile {
@@ -457,7 +410,7 @@
       background: #e9f0f8;
       border: 1px solid var(--line);
       border-radius: 23px;
-      box-shadow: 0 10px 22px rgba(0, 52, 100, .08);
+      box-shadow: 0 10px 22px rgba(0, 52, 100, .15);
     }
 
     .profile-photo img {
@@ -516,7 +469,7 @@
     .button.full { width: 100%; }
     .button:hover {
       transform: translateY(-1px);
-      box-shadow: 0 8px 18px rgba(0, 82, 159, .16);
+      box-shadow: 0 8px 18px rgba(0, 82, 159, .25);
     }
 
     .button.pale {
@@ -550,7 +503,7 @@
 
     .social-link:hover {
       transform: translateY(-1px);
-      box-shadow: 0 8px 18px rgba(0, 82, 159, .2);
+      box-shadow: 0 8px 18px rgba(0, 82, 159, .3);
     }
 
     .social-link.linkedin { background: #0a66c2; }
@@ -562,8 +515,8 @@
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 29, 58, .6);
-      backdrop-filter: blur(6px);
+      background: rgba(0, 29, 58, .7);
+      backdrop-filter: blur(8px);
       display: grid;
       place-items: center;
       padding: 20px;
@@ -584,7 +537,7 @@
       border: 1px solid var(--line);
       border-radius: 24px;
       padding: 24px;
-      box-shadow: 0 24px 60px rgba(0, 52, 100, .25);
+      box-shadow: 0 24px 60px rgba(0, 52, 100, .35);
       position: relative;
       transform: translateY(14px) scale(0.98);
       transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -623,7 +576,7 @@
       transition: background .15s;
     }
     .modal-close:hover {
-      background: rgba(0, 82, 159, .15);
+      background: rgba(0, 82, 159, .2);
     }
 
     .wallet-buttons-modal {
@@ -667,14 +620,14 @@
       font-size: .9rem;
       font-weight: 800;
       text-decoration: none;
-      box-shadow: 0 4px 12px rgba(0, 52, 100, .04);
+      box-shadow: 0 4px 12px rgba(0, 52, 100, .08);
       transition: transform .15s, box-shadow .15s, border-color .15s;
     }
 
     .wallet-btn:hover {
       transform: translateY(-2px);
       border-color: var(--blue);
-      box-shadow: 0 8px 20px rgba(0, 82, 159, .12);
+      box-shadow: 0 8px 20px rgba(0, 82, 159, .2);
     }
 
     .wallet-btn svg {
@@ -709,7 +662,7 @@
 
     .save-icon-btn:hover {
       transform: translateY(-2px);
-      background: rgba(0, 82, 159, .15);
+      background: rgba(0, 82, 159, .2);
     }
 
     .save-icon-btn svg {
@@ -773,7 +726,7 @@
     }
 
     .map-btn:hover {
-      background: rgba(0, 82, 159, .15);
+      background: rgba(0, 82, 159, .2);
     }
 
     .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 14px; }
@@ -873,7 +826,7 @@
       display: none;
     }
 
-    footer { padding: 0 0 40px; color: var(--muted); font-size: .85rem; text-align: center; }
+    footer { padding: 0 0 40px; color: #fff; font-size: .85rem; text-align: center; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
     .footer-logo {
       display: grid;
       place-items: center;
@@ -884,7 +837,7 @@
       background: #fff;
       border: 1px solid var(--line);
       border-radius: 50%;
-      box-shadow: 0 4px 12px rgba(0, 52, 100, .08);
+      box-shadow: 0 4px 12px rgba(0, 52, 100, .2);
     }
     .footer-logo img {
       width: 100%;
@@ -900,6 +853,7 @@
       background: var(--glass);
       border: 1px solid var(--line);
       border-radius: 14px;
+      backdrop-filter: blur(10px);
     }
     .legal-body { padding-top: 12px; line-height: 1.65; }
     .legal-body h3 { margin: 18px 0 6px; color: var(--blue-dark); font-size: 1rem; }
@@ -925,9 +879,9 @@
         background: var(--glass);
         border: 1px solid var(--line);
         border-radius: 18px;
-        box-shadow: 0 12px 32px rgba(0, 29, 58, .22);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
+        box-shadow: 0 12px 32px rgba(0, 29, 58, .35);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
       }
       .mobile-sticky-bar .button {
         min-height: 42px;
@@ -1466,7 +1420,7 @@
             <p>HSV Fußball AG & Co. KGaA<br>Uwe-Seeler-Allee 9<br>22525 Hamburg<br>E-Mail: <a href="mailto:datenschutz@hsv.de">datenschutz@hsv.de</a></p>
 
             <h3>3. Hosting über GitHub Pages</h3>
-            <p>Diese Website wird über GitHub Pages (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA) bereitgestellt. Beim Aufruf der Seite werden durch den Hostinganbieter technisch notwendige Verbindungsdaten (z. B. IP-Adresse, Zeitpunkt des Zugriffs, Browsertyp) in Server-Logfiles verarbeitet, um die Auslieferung und Sicherheit der Website zu gewährleisten (Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO).</p>
+            <p>Diese Website wird über GitHub Pages (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA) bereitgestellt. Beim Aufruf der Seite werden durch den Hostinganbieter technisch notwendige Verbindungsdaten (z. B. IP-Adresse, Zeitpunkt des Zugriffs, Browsertyp) in Server-Logfiles verarbeitet, um die Auslieferung und Sicherheit zu gewährleisten (Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO).</p>
 
             <h3>4. Lokale Speicherung (Local Storage)</h3>
             <p>Für eine benutzerfreundliche Darstellung speichert die Seite Ihre gewählte Einstellung für den Darkmode sowie die ausgewählte Sprache lokal im Browser (Local Storage). Diese Daten werden nicht an Server übertragen.</p>
@@ -1774,7 +1728,7 @@
         careerLink: "Ir al portal de empleo HSV ↗",
         qrHeading: "Código QR y Enlace",
         qrIntro: "Escanea o abre el enlace directamente.",
-        copyLink: "Copier enlace",
+        copyLink: "Copiar enlace",
         copied: "¡Enlace copiado!",
         downloadQr: "Descargar código QR",
         walletHeading: "Guardar en Wallet",
