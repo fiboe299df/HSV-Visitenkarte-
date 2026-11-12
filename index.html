@@ -560,6 +560,26 @@
       margin-top: 10px;
     }
 
+    .wallet-qr {
+      display: grid;
+      justify-items: center;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .wallet-qr #qrcode-wallet {
+      padding: 10px;
+      line-height: 0;
+      background: #fff;
+      border-radius: 12px;
+    }
+    .wallet-qr p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .82rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
     .wallet-btn {
       display: flex;
       align-items: center;
@@ -1137,6 +1157,10 @@
             <span>Google</span>
           </a>
         </div>
+        <div class="wallet-qr">
+          <div id="qrcode-wallet"></div>
+          <p data-i18n="walletQr">Oder mit dem Handy scannen</p>
+        </div>
       </div>
     </div>
 
@@ -1353,6 +1377,7 @@
         downloadQr: "QR-Code herunterladen",
         walletHeading: "In Wallet speichern",
         walletIntro: "Füge die digitale Visitenkarte direkt zu deiner Wallet hinzu.",
+        walletQr: "Oder mit dem Handy scannen",
         saveHeading: "Kontakt direkt speichern",
         saveIntro: "Speichere alle Kontaktdaten als vCard (.vcf) im Adressbuch.",
         saveContactSide: "Kontakt speichern (.vcf)",
@@ -1414,6 +1439,7 @@
         downloadQr: "Download QR code",
         walletHeading: "Save to Wallet",
         walletIntro: "Add this digital business card directly to your wallet.",
+        walletQr: "Or scan with your phone",
         saveHeading: "Save Contact Directly",
         saveIntro: "Save all contact details as a vCard (.vcf) to your address book.",
         saveContactSide: "Save Contact (.vcf)",
@@ -1475,6 +1501,7 @@
         downloadQr: "Télécharger le code QR",
         walletHeading: "Ajouter au Wallet",
         walletIntro: "Ajoutez cette carte de visite directement à votre portefeuille.",
+        walletQr: "Ou scannez avec votre téléphone",
         saveHeading: "Enregistrer directement",
         saveIntro: "Enregistrez les coordonnées au format vCard (.vcf).",
         saveContactSide: "Enregistrer le contact (.vcf)",
@@ -1536,6 +1563,7 @@
         downloadQr: "Descargar código QR",
         walletHeading: "Guardar en Wallet",
         walletIntro: "Añade esta tarjeta digital directamente a tu cartera.",
+        walletQr: "O escanea con tu móvil",
         saveHeading: "Guardar contacto",
         saveIntro: "Guarda los datos de contacto como vCard (.vcf) en tu agenda.",
         saveContactSide: "Guardar contacto (.vcf)",
@@ -1652,6 +1680,15 @@
     // Direkt-Weiterleitung: Aufruf mit #wallet am Ende der Adresse
     const WALLET_APPLE  = "https://api.walletwallet.dev/p/16bb86a1-7a9f-4ffe-b28b-0d3106739cfd/apple.pkpass";
     const WALLET_GOOGLE = "https://pass.walletwallet.dev/p/16bb86a1-7a9f-4ffe-b28b-0d3106739cfd";
+
+    new QRCode(document.getElementById("qrcode-wallet"), {
+      text: WALLET_GOOGLE,
+      width: 160,
+      height: 160,
+      colorDark: "#003b72",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.M
+    });
 
     if (location.hash === "#wallet") {
       const ua = navigator.userAgent;
