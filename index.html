@@ -133,7 +133,6 @@
       box-shadow: var(--shadow);
     }
 
-    /* Kleines HSV-Logo als Rechteck mit weißem Rand genau zwischen Header-Tools und Home-Button */
     .header-mid-logo {
       display: inline-flex;
       align-items: center;
@@ -551,7 +550,6 @@
     .social-link svg { width: 22px; height: 22px; fill: currentColor; }
     .social-link .xing-mark { font: 800 12px Arial, sans-serif; letter-spacing: -.5px; }
 
-    /* Kontaktdaten Trennung Arbeit & Privat */
     .contact-group-title {
       display: flex;
       align-items: center;
@@ -640,7 +638,7 @@
       border-top: 1px solid var(--line);
     }
 
-    /* PDF Lebenslauf Karte im Werdegang (Blaues Icon, nur Original-Dokument) */
+    /* PDF Lebenslauf Karte im Werdegang (Blaues Icon) */
     .cv-doc-card {
       display: flex;
       align-items: center;
@@ -674,7 +672,7 @@
       flex: 0 0 46px;
       width: 46px;
       height: 46px;
-      background: #00529f; /* Blaues PDF-Icon */
+      background: #00529f;
       color: #fff;
       border-radius: 12px;
       box-shadow: 0 6px 14px rgba(0, 82, 159, .28);
@@ -705,7 +703,6 @@
       white-space: nowrap;
     }
 
-    /* Modals */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -782,7 +779,7 @@
       background: rgba(0, 82, 159, .2);
     }
 
-    /* CV PDF Document Sheet Preview (Original CV Lasse Boettcher August.pdf) */
+    /* CV PDF Document Sheet Preview */
     .cv-sheet {
       background: #ffffff;
       color: #172b3b;
@@ -996,6 +993,19 @@
       font-weight: 700;
     }
 
+    .timeline { display: grid; gap: 14px; margin-top: 16px; }
+    .timeline-item {
+      padding: 17px;
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--blue);
+      border-radius: 14px;
+    }
+    .timeline-item h3 { margin: 0 0 6px; color: var(--blue-dark); font-size: 1.05rem; }
+    .timeline-meta { margin: 0 0 9px; color: var(--muted); font-size: .9rem; }
+    .timeline-item p { margin: 7px 0; line-height: 1.5; }
+    .timeline-item details { margin-top: 10px; padding: 10px 12px; }
+
     .info-list { display: grid; gap: 10px; margin: 16px 0 0; padding: 0; list-style: none; }
     .info-list li {
       padding: 13px 15px;
@@ -1064,10 +1074,7 @@
     .qr-actions { display: grid; gap: 8px; }
     .status { min-height: 1.3em; margin: 8px 0 0; color: var(--blue-dark); font-size: .84rem; font-weight: 700; }
 
-    /* Mobile Sticky Bottom Bar */
-    .mobile-sticky-bar {
-      display: none;
-    }
+    .mobile-sticky-bar { display: none; }
 
     footer { padding: 0 0 40px; color: #fff; font-size: .85rem; text-align: center; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
     .footer-logo {
@@ -1184,7 +1191,6 @@
           </div>
         </div>
 
-        <!-- Kleines HSV-Logo als Rechteck mit weißem Rand genau in der Mitte zwischen Header-Tools und Home-Button -->
         <div class="header-mid-logo" title="HSV Logo">
           <img src="assets/hsv-hintergrund.jpg" onerror="this.src='https://placehold.co/100x100/00529f/ffffff?text=HSV'" alt="HSV Logo">
         </div>
@@ -1264,11 +1270,9 @@
             </p>
           </section>
 
-          <!-- KONTAKTDATEN: GETRENNT IN ARBEIT UND PRIVAT -->
           <section class="card" id="kontakt" aria-labelledby="contact-title">
             <h2 id="contact-title" data-i18n="contactTitle">Kontakt & Standort</h2>
 
-            <!-- BEREICH ARBEIT -->
             <div class="contact-group-title" data-i18n="workSectionTitle">🏢 Arbeit</div>
             <div class="contact-list">
               <a class="contact-item" href="tel:+491604339168">
@@ -1294,7 +1298,6 @@
                   </div>
                 </div>
 
-                <!-- Interaktive Google Map aufklappbar -->
                 <details style="margin-top: 12px; border-top: 1px solid var(--line); padding-top: 10px;">
                   <summary style="cursor: pointer; color: var(--blue); font-weight: 800; font-size: 0.9rem;" data-i18n="mapSummaryLabel">Volksparkstadion auf Karte anzeigen</summary>
                   <div style="margin-top: 10px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line);">
@@ -1304,10 +1307,8 @@
               </div>
             </div>
 
-            <!-- Aufklappbarer Button / Modal für Google Map / Apple Map (Arbeit) -->
             <button class="button full" id="open-work-maps-modal" type="button" style="margin-top: 12px;" data-i18n="openWorkMapsBtn">🗺️ Google Maps / Apple Maps öffnen (Arbeit)</button>
 
-            <!-- BEREICH PRIVAT: VERSTECKT MIT BUTTON -->
             <details class="private-details">
               <summary class="private-summary">
                 <span class="private-summary-left">
@@ -1340,7 +1341,6 @@
                     </div>
                   </div>
 
-                  <!-- Interaktive Google Map aufklappbar (Privat) -->
                   <details style="margin-top: 12px; border-top: 1px solid var(--line); padding-top: 10px;">
                     <summary style="cursor: pointer; color: var(--blue); font-weight: 800; font-size: 0.9rem;" data-i18n="privateMapSummaryLabel">Koppelstraße auf Karte anzeigen</summary>
                     <div style="margin-top: 10px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line);">
@@ -1349,7 +1349,6 @@
                   </details>
                 </div>
 
-                <!-- Aufklappbarer Button / Modal für Google Map / Apple Map (Privat) -->
                 <button class="button pale full" id="open-private-maps-modal" type="button" data-i18n="openPrivateMapsBtn">🗺️ Google Maps / Apple Maps öffnen (Privat)</button>
               </div>
             </details>
@@ -1359,7 +1358,7 @@
             <h2 id="career-history-title" data-i18n="careerTitle">Werdegang</h2>
             <p class="small" data-i18n="careerSubtitle">Berufliche Stationen, Weiterbildungen und Auszeichnungen.</p>
 
-            <!-- Originales Lebenslauf-Dokument als blaues PDF Dokument Icon (Ersetzt die alte Zeitleiste vollständig im Werdegang) -->
+            <!-- ORIGINALES LEBENSLAUF-DOKUMENT (BLAUES PDF-ICON) -->
             <button type="button" class="cv-doc-card" id="open-cv-modal" aria-label="Lebenslauf als PDF öffnen">
               <span class="cv-doc-left">
                 <span class="pdf-badge-icon" aria-hidden="true">
@@ -1370,12 +1369,98 @@
                   </svg>
                 </span>
                 <span>
-                  <span class="cv-doc-title" data-i18n="cvDocTitle">CV Lasse Boettcher August.pdf</span>
+                  <span class="cv-doc-title">CV Lasse Boettcher August.pdf</span>
                   <span class="cv-doc-sub" data-i18n="cvDocSub">Originales Dokument ansehen & herunterladen</span>
                 </span>
               </span>
               <span class="cv-doc-action" data-i18n="cvDocOpen">PDF öffnen</span>
             </button>
+
+            <!-- ORIGINALER WERDEGANG (UNVERÄNDERT) -->
+            <div class="timeline">
+              <article class="timeline-item">
+                <h3>HSV Fußball AG</h3>
+                <p class="timeline-meta">08/2024 – heute</p>
+                <p><strong>Player Care & Administration Sport</strong> · <span data-i18n="employment">Angestellt</span></p>
+                <details>
+                  <summary data-i18n="detailsHsvCurrent">Aufgaben & Details</summary>
+                  <p>• TMS-Administration und Abwicklung aller Spielertransfers<br>• Zentraler Ansprechpartner für alle den Club vertretenden Berater und Agenturen<br>• Koordination des gesamten Signing-Prozesses</p>
+                </details>
+              </article>
+
+              <article class="timeline-item">
+                <h3>HSV Fußball AG</h3>
+                <p class="timeline-meta">02/2022 – 08/2024</p>
+                <p><strong>Teammanagement / Player Care</strong> · <span data-i18n="employment">Angestellt</span></p>
+                <details>
+                  <summary data-i18n="detailsHsvOld">Aufgaben & Details</summary>
+                  <p>• Betreuung der Lizenzspieler (1. Herren) & deren Familien<br>• Optimierung des Onboarding-Prozesses für Neuzugänge<br>• Erste Anlaufstelle für jegliche Spieleranfragen</p>
+                </details>
+              </article>
+
+              <article class="timeline-item">
+                <h3>UEFA EURO 2020 (München / Allianz Arena)</h3>
+                <p class="timeline-meta">06/2021 – 07/2021</p>
+                <p><strong>Volunteer (Technische Dienste & Overlay Ceremonies)</strong> · <span data-i18n="volunteer">Ehrenamt</span></p>
+              </article>
+
+              <article class="timeline-item">
+                <h3>Crawley Town FC</h3>
+                <p class="timeline-meta">08/2020 – 06/2021</p>
+                <p><strong>Volunteer Business Development (DE, AT, CH)</strong> · <span data-i18n="volunteer">Ehrenamt</span></p>
+              </article>
+            </div>
+
+            <details class="career-more" style="margin-top: 16px; background: transparent; border: 0; padding: 0;">
+              <summary class="button full" style="list-style: none; text-align: center; cursor: pointer;" data-i18n="showMore">Weitere Werdegänge anzeigen</summary>
+              <div class="timeline" style="margin-top: 14px;">
+                <article class="timeline-item">
+                  <h3>West Ham United F.C (London)</h3>
+                  <p class="timeline-meta">09/2018 – 05/2021</p>
+                  <p><strong>Supervisor Player's Family Liaison Officer</strong> · <span data-i18n="employment">Angestellt</span></p>
+                  <p>• Family Liaison Officer an Spieltagen (Player Care Department)<br>• Zusammenarbeit mit Spielern bei Community-Projekten</p>
+                </article>
+                <article class="timeline-item">
+                  <h3>The FA (London)</h3>
+                  <p class="timeline-meta">02/2019 – 05/2021</p>
+                  <p><strong>Team Liaison Officer</strong> · <span data-i18n="volunteer">Ehrenamt</span></p>
+                </article>
+                <article class="timeline-item">
+                  <h3>SPORT1 Media GmbH (Ismaning)</h3>
+                  <p class="timeline-meta">05/2019 – 07/2019</p>
+                  <p><strong>Intern Product Management</strong> · <span data-i18n="internship">Praktikum</span></p>
+                </article>
+                <article class="timeline-item">
+                  <h3>Benugo / V&A Museum / Dorchester Hotel (London)</h3>
+                  <p class="timeline-meta">09/2017 – 05/2019</p>
+                  <p><strong>Customer Service</strong> (inkl. TV Choice Awards) · <span data-i18n="employment">Angestellt</span></p>
+                </article>
+                <article class="timeline-item">
+                  <h3>NATO</h3>
+                  <p class="timeline-meta">07/2017</p>
+                  <p><strong>Konferenzassistent</strong> · <span data-i18n="volunteer">Ehrenamt</span></p>
+                </article>
+                <article class="timeline-item">
+                  <h3>Congrebas (Bilbao)</h3>
+                  <p class="timeline-meta">10/2015 – 11/2015</p>
+                  <p><strong>Intern Marketing und Events</strong> · <span data-i18n="internship">Praktikum</span></p>
+                </article>
+
+                <h3 data-i18n="educationSection" style="margin: 16px 0 0; color: var(--blue-dark);">Studium & Ausbildung</h3>
+                <article class="timeline-item">
+                  <h3>University Campus of Football Business (UCFB Wembley)</h3>
+                  <p class="timeline-meta">09/2018 – 06/2021</p>
+                  <p><strong>Bachelor of Arts: Football Business and Marketing</strong> · <span data-i18n="study">Studium</span></p>
+                  <p>• Note: First Class Honours (1,0)<br>• Abschlussarbeit: „A comparative analysis of the ownership structures in the Bundesliga and the Premier League and its effects on the fan cultures“ (88/100)</p>
+                </article>
+                <article class="timeline-item">
+                  <h3>Herderschule Rendsburg</h3>
+                  <p class="timeline-meta">08/2009 – 06/2017</p>
+                  <p><strong>Abitur</strong> · <span data-i18n="schoolDegree">Schulabschluss</span></p>
+                  <p>Schwerpunktfächer: Spanisch, Englisch, Latein</p>
+                </article>
+              </div>
+            </details>
           </section>
 
           <section class="card" id="auszeichnungen" aria-labelledby="awards-title">
@@ -1452,13 +1537,11 @@
       </div>
     </main>
 
-    <!-- Mobile Sticky Bottom Bar -->
     <div class="mobile-sticky-bar">
       <button class="button" id="sticky-save-contact" type="button" data-i18n="saveContact">+ Kontakt speichern</button>
       <button class="button pale" data-open="open-wallet-modal" type="button" data-i18n="navWallet">Wallet</button>
     </div>
 
-    <!-- MODAL: QR-CODE -->
     <div class="modal-overlay" id="qr-modal">
       <div class="modal-card">
         <div class="modal-header">
@@ -1478,7 +1561,6 @@
       </div>
     </div>
 
-    <!-- MODAL: WALLET -->
     <div class="modal-overlay" id="wallet-modal">
       <div class="modal-card">
         <div class="modal-header">
@@ -1511,7 +1593,6 @@
       </div>
     </div>
 
-    <!-- MODAL: KONTAKT SPEICHERN -->
     <div class="modal-overlay" id="save-modal">
       <div class="modal-card">
         <div class="modal-header">
@@ -1550,7 +1631,6 @@
       </div>
     </div>
 
-    <!-- MODAL: KARTEN-APP (ARBEIT) -->
     <div class="modal-overlay" id="work-maps-modal">
       <div class="modal-card">
         <div class="modal-header">
@@ -1569,7 +1649,6 @@
       </div>
     </div>
 
-    <!-- MODAL: KARTEN-APP (PRIVAT) -->
     <div class="modal-overlay" id="private-maps-modal">
       <div class="modal-card">
         <div class="modal-header">
@@ -1588,7 +1667,7 @@
       </div>
     </div>
 
-    <!-- MODAL: LEBENSLAUF PDF VORSCHAU & DOWNLOAD (Original CV Lasse Boettcher August.pdf) -->
+    <!-- MODAL: LEBENSLAUF PDF VORSCHAU & DOWNLOAD (Original Inhalt aus CV Lasse Boettcher August.pdf) -->
     <div class="modal-overlay" id="cv-modal">
       <div class="modal-card cv-modal-wide">
         <div class="modal-header">
@@ -1600,13 +1679,13 @@
           <div class="cv-sheet-top">
             <div>
               <h4 class="cv-sheet-name">Lasse Böttcher</h4>
-              <p class="cv-sheet-role">Player Care & Administration Sport · HSV Fußball AG</p>
+              <p class="cv-sheet-role">Player Care & Administration Sport</p>
             </div>
             <div class="cv-sheet-meta">
-              <div>E-Mail: laboe99@web.de / Lasse.boettcher@hsv.de[cite: 2]</div>
-              <div>Tel: +49 1604339168[cite: 2]</div>
-              <div>Volksparkstadion | 22525 Hamburg[cite: 2]</div>
-              <div>D.O.B: 09.06.1999 · German[cite: 2]</div>
+              <div>E-Mail: laboe99@web.de[cite: 6]</div>
+              <div>Mobile: +49 1604339168[cite: 6]</div>
+              <div>Address: Koppelstraße 24, 22527 Hamburg[cite: 6]</div>
+              <div>D.O.B: 09.06.1999 · Nationality: German[cite: 6]</div>
             </div>
           </div>
 
@@ -1614,53 +1693,53 @@
             <h4>Jobs</h4>
             <div class="cv-entry">
               <div class="cv-entry-head"><span>Player Care & Administration Sport – HSV Fußball AG</span><span class="cv-entry-date">08/2024-now</span></div>
-              <div class="cv-entry-sub">Volksparkstadion | 22525 Hamburg[cite: 2]</div>
+              <div class="cv-entry-sub">Volksparkstadion | 22525 Hamburg[cite: 6]</div>
               <ul>
-                <li>TMS administration, administration of all player transfers[cite: 2]</li>
-                <li>Contact person to all agents representing the club[cite: 2]</li>
-                <li>Coordination of the entire signing process[cite: 2]</li>
+                <li>TMS administration, administration of all player transfers[cite: 6]</li>
+                <li>Contact person to all agents representing the club[cite: 6]</li>
+                <li>Coordination of the entire signing process[cite: 6]</li>
               </ul>
             </div>
             <div class="cv-entry">
               <div class="cv-entry-head"><span>Teammanagement / Player Care – HSV Fußball AG</span><span class="cv-entry-date">02/2022-08/2024</span></div>
-              <div class="cv-entry-sub">Volksparkstadion | 22525 Hamburg[cite: 2]</div>
+              <div class="cv-entry-sub">Volksparkstadion | 22525 Hamburg[cite: 6]</div>
               <ul>
-                <li>Care of Men's first team & their families[cite: 2]</li>
-                <li>Optimisation of the onboarding process for new signings[cite: 2]</li>
-                <li>First point of contact for any queries of the players[cite: 2]</li>
+                <li>Care of Men's first team & their families[cite: 6]</li>
+                <li>Optimisation of the onboarding process for new signings[cite: 6]</li>
+                <li>First point of contact for any queries of the players[cite: 6]</li>
               </ul>
             </div>
             <div class="cv-entry">
               <div class="cv-entry-head"><span>Volunteer at EUROS 2020 in Munich – UEFA</span><span class="cv-entry-date">06/2021-07/2021</span></div>
-              <div class="cv-entry-sub">Allianz Arena · Technical Services & Overlay, Ceremonies[cite: 2]</div>
+              <div class="cv-entry-sub">Allianz Arena · Technical Services & Overlay, Ceremonies[cite: 6]</div>
             </div>
             <div class="cv-entry">
               <div class="cv-entry-head"><span>Volunteer Business Development (DE, AT, CH) – Crawley Town FC</span><span class="cv-entry-date">08/2020-06/2021</span></div>
-              <div class="cv-entry-sub">RH11 9RX Crawley[cite: 2]</div>
+              <div class="cv-entry-sub">RH11 9RX Crawley[cite: 6]</div>
             </div>
             <div class="cv-entry">
               <div class="cv-entry-head"><span>Supervisor Player's Family Liaison Officer – West Ham United F.C</span><span class="cv-entry-date">09/2018-05/2021</span></div>
-              <div class="cv-entry-sub">E20 2ST London · Player Care Department[cite: 3]</div>
+              <div class="cv-entry-sub">E20 2ST London · Player Care Department[cite: 7]</div>
               <ul>
-                <li>Family Liaison Officer on Matchdays</li>
-                <li>Work with players on community projects[cite: 3]</li>
+                <li>Family Liaison Officer on Matchdays[cite: 7]</li>
+                <li>Work with players on community projects[cite: 7]</li>
               </ul>
             </div>
             <div class="cv-entry">
               <div class="cv-entry-head"><span>Intern Product Management – SPORT1 Media GmbH</span><span class="cv-entry-date">05/2019-07/2019</span></div>
-              <div class="cv-entry-sub">85737 Ismaning[cite: 3]</div>
+              <div class="cv-entry-sub">85737 Ismaning[cite: 7]</div>
             </div>
             <div class="cv-entry">
               <div class="cv-entry-head"><span>Team Liaison Officer – The FA</span><span class="cv-entry-date">02/2019-05/2021</span></div>
-              <div class="cv-entry-sub">London[cite: 3]</div>
+              <div class="cv-entry-sub">London[cite: 7]</div>
             </div>
             <div class="cv-entry">
               <div class="cv-entry-head"><span>Customer Service – Benugo / Dorchester Hotel</span><span class="cv-entry-date">09/2017-05/2019</span></div>
-              <div class="cv-entry-sub">Victoria and Albert Museum London[cite: 3]</div>
+              <div class="cv-entry-sub">Victoria and Albert Museum London / TV Choice Awards[cite: 7]</div>
             </div>
             <div class="cv-entry">
               <div class="cv-entry-head"><span>Intern Marketing und Events – Congrebas</span><span class="cv-entry-date">10/2015-11/2015</span></div>
-              <div class="cv-entry-sub">Bilbao[cite: 3]</div>
+              <div class="cv-entry-sub">Bilbao[cite: 7]</div>
             </div>
           </div>
 
@@ -1668,20 +1747,20 @@
             <h4>Education</h4>
             <div class="cv-entry">
               <div class="cv-entry-head"><span>Bachelor of Arts: Football Business and Marketing</span><span class="cv-entry-date">09/2018-06/2021</span></div>
-              <div class="cv-entry-sub">UCFB Wembley Stadium, London · Final Grade: First Class Honours (1,0)[cite: 3]</div>
+              <div class="cv-entry-sub">UCFB Wembley Stadium, London · Final Grade: First Class Honours (1,0)[cite: 7]</div>
               <ul>
-                <li>Bachelor Dissertation: A comparative analysis of the ownership structures in the Bundesliga and the Premier League and its effects on the fan cultures (88/100)[cite: 3]</li>
+                <li>Bachelor Dissertation: A comparative analysis of the ownership structures in the Bundesliga and the Premier League and its effects on the fan cultures (88/100)[cite: 7]</li>
               </ul>
             </div>
             <div class="cv-entry">
               <div class="cv-entry-head"><span>Abitur – Herderschule Rendsburg</span><span class="cv-entry-date">08/2009-06/2017</span></div>
-              <div class="cv-entry-sub">24768 Rendsburg · Focused Subjects: Spanish, English, Latin[cite: 3]</div>
+              <div class="cv-entry-sub">24768 Rendsburg · Focused Subjects: Spanish, English, Latin[cite: 7]</div>
             </div>
           </div>
 
           <div class="cv-sheet-section" style="margin-bottom:0;">
             <h4>Languages</h4>
-            <div class="cv-entry-sub">English (fluent) · German (mother tongue) · Spanish (advanced) · French (basic)[cite: 3]</div>
+            <div class="cv-entry-sub">English (fluent) · German (mother tongue) · Spanish (advanced) · French (basic)</div>
           </div>
         </div>
 
@@ -1741,7 +1820,7 @@
             <p>Telefon: <a href="tel:+494041552000">040 4155-2000</a><br>E-Mail: <a href="mailto:de.hsv@sportfive.com">de.hsv@sportfive.com</a></p>
 
             <h3>Copyright</h3>
-            <p>Alle Rechte vorbehalten. Insbesondere dürfen Nachdruck, Aufnahme in Online-Dienste und Internet sekä Vervielfältigung auf Datenträger wie CD-ROM, DVD-ROM etc. – auch auszugsweise – nur nach vorheriger schriftlicher Zustimmung der HSV Fußball AG & Co. KGaA / SPORTFIVE Germany GmbH erfolgen.</p>
+            <p>Alle Rechte vorbehalten. Insbesondere dürfen Nachdruck, Aufnahme in Online-Dienste und Internet sowie Vervielfältigung auf Datenträger wie CD-ROM, DVD-ROM etc. – auch auszugsweise – nur nach vorheriger schriftlicher Zustimmung der HSV Fußball AG & Co. KGaA / SPORTFIVE Germany GmbH erfolgen.</p>
 
             <h3>Externe Links</h3>
             <p>Die HSV Fußball AG & Co. KGaA / SPORTFIVE Germany GmbH erklärt, dass sie keinen Einfluss auf Gestaltung und Inhalte verlinkter Internetseiten hat und sich von deren Inhalten distanziert, soweit diese nicht auf ihren eigenen Servern abgelegt sind.</p>
@@ -1824,7 +1903,6 @@
         openPrivateMapsBtn: "🗺️ Google Maps / Apple Maps öffnen (Privat)",
         workMapsModalTitle: "Arbeit: Volksparkstadion öffnen",
         privateMapsModalTitle: "Privat: Adresse öffnen",
-        cvDocTitle: "CV Lasse Boettcher August.pdf",
         cvDocSub: "Originales Dokument ansehen & herunterladen",
         cvDocOpen: "PDF öffnen",
         cvModalTitle: "CV Lasse Boettcher August.pdf",
@@ -1901,14 +1979,13 @@
         openPrivateMapsBtn: "🗺️ Open Google Maps / Apple Maps (Private)",
         workMapsModalTitle: "Work: Open Volksparkstadion",
         privateMapsModalTitle: "Private: Open Address",
-        cvDocTitle: "CV Lasse Boettcher August.pdf",
         cvDocSub: "View & download original document",
         cvDocOpen: "Open PDF",
         cvModalTitle: "CV Lasse Boettcher August.pdf",
         downloadCvPdf: "⬇ Download CV Lasse Boettcher August.pdf",
         closeBtn: "Close",
         aboutTitle: "About Me",
-        aboutText: "At 27 years young, I am a dedicated and internationally experienced professional in Player Care & Sports Administration with comprehensive management practice in the Bundesliga and Premier League. Strong expertise in player support, transfer processing (TMS), and seamless coordination of signing processes and agent networks. Sound business know-how gained through First Class Honours studies in Football Business & Marketing at UCFB Wembley.",
+        aboutText: "At 27 years young, I am a dedicated and internationally experienced professional in Player Care & Sports Administration with comprehensive management practice in the Bundesliga and Premier League.",
         careerTitle: "Career",
         careerSubtitle: "Professional roles, education, and awards.",
         awardsTitle: "Certifications & Awards",
@@ -1978,7 +2055,6 @@
         openPrivateMapsBtn: "🗺️ Ouvrir Google Maps / Apple Maps (Privé)",
         workMapsModalTitle: "Travail : Ouvrir Volksparkstadion",
         privateMapsModalTitle: "Privé : Ouvrir l'adresse",
-        cvDocTitle: "CV Lasse Boettcher August.pdf",
         cvDocSub: "Consulter et télécharger le document d'origine",
         cvDocOpen: "Ouvrir PDF",
         cvModalTitle: "CV Lasse Boettcher August.pdf",
@@ -2055,7 +2131,6 @@
         openPrivateMapsBtn: "🗺️ Abrir Google Maps / Apple Maps (Privado)",
         workMapsModalTitle: "Trabajo: Abrir Volksparkstadion",
         privateMapsModalTitle: "Privado: Abrir dirección",
-        cvDocTitle: "CV Lasse Boettcher August.pdf",
         cvDocSub: "Ver y descargar el documento original",
         cvDocOpen: "Abrir PDF",
         cvModalTitle: "CV Lasse Boettcher August.pdf",
@@ -2087,7 +2162,7 @@
         careerLink: "Ir al portal de empleo HSV ↗",
         qrHeading: "Código QR y Enlace",
         qrIntro: "Escanea o abre el enlace directamente.",
-        copyLink: "Copiar enlace",
+        copyLink: "Copier enlace",
         copied: "¡Enlace copiado!",
         downloadQr: "Descargar código QR",
         walletHeading: "Guardar en Wallet",
@@ -2137,7 +2212,6 @@
     langSelect.addEventListener("change", (e) => applyLanguage(e.target.value));
     applyLanguage(currentLang);
 
-    // QR Code generieren
     const qrContainer = document.getElementById("qrcode");
     new QRCode(qrContainer, {
       text: CARD.url,
@@ -2183,7 +2257,6 @@
       a.click();
     });
 
-    // vCard Download (inkl. Arbeit & Privat)
     function downloadVCard(btnElement) {
       const vcard = [
         "BEGIN:VCARD",
@@ -2221,7 +2294,6 @@
     document.getElementById("save-contact-side").addEventListener("click", function() { downloadVCard(this); });
     document.getElementById("sticky-save-contact").addEventListener("click", function() { downloadVCard(this); });
 
-    // Modal Setup Hilfsfunktion
     function setupModal(openBtnId, modalId, closeBtnIds) {
       const openBtn = document.getElementById(openBtnId);
       const modal = document.getElementById(modalId);
@@ -2244,7 +2316,6 @@
     setupModal("open-private-maps-modal", "private-maps-modal", ["close-private-maps-modal"]);
     setupModal("open-cv-modal", "cv-modal", ["close-cv-modal", "close-cv-modal-bottom"]);
 
-    // Echtes PDF-Dokument (CV Lasse Boettcher August.pdf) generieren & herunterladen
     function generateAndDownloadCvPdf() {
       const lines = [
         "CURRICULUM VITAE - LASSE BOETTCHER",
@@ -2260,16 +2331,16 @@
         "  - Care of Men's first team & their families",
         "  - Optimisation of the onboarding process for new signings",
         "  - First point of contact for any queries of the players",
-        "06/2021-07/2021: Volunteer at EUROS 2020 in Munich - Allianz Arena (Technical Services & Overlay, Ceremonies)",
-        "08/2020-06/2021: Volunteer Business Development for Germany, Austria and Switzerland - Crawley Town FC",
-        "09/2018-05/2021: Supervisor Player's Family Liaison Officer - West Ham United F.C (London)",
-        "05/2019-07/2019: Intern Product Management - SPORT1 Media GmbH (Ismaning)",
+        "06/2021-07/2021: Volunteer at EUROS 2020 in Munich - Allianz Arena",
+        "08/2020-06/2021: Volunteer Business Development for DE, AT, CH - Crawley Town FC",
+        "09/2018-05/2021: Supervisor Player's Family Liaison Officer - West Ham United F.C",
+        "05/2019-07/2019: Intern Product Management - SPORT1 Media GmbH",
         "02/2019-05/2021: Team Liaison Officer - The FA London",
-        "09/2017-05/2019: Customer Service - Benugo / V&A Museum / Dorchester Hotel London",
+        "09/2017-05/2019: Customer Service - Benugo / Dorchester Hotel / V&A Museum London",
         "10/2015-11/2015: Intern Marketing und Events - Congrebas, Bilbao",
         "--------------------------------------------------------------------------------",
         "EDUCATION",
-        "09/2018-06/2021: Bachelor of Arts: Football Business and Marketing - UCFB Wembley London",
+        "09/2018-06/2021: Bachelor of Arts: Football Business and Marketing - UCFB Wembley",
         "  - Final Grade: First Class Honours (1,0)",
         "  - Dissertation: A comparative analysis of ownership structures in Bundesliga and Premier League (88/100)",
         "08/2009-06/2017: Abitur - Herderschule Rendsburg (Focused Subjects: Spanish, English, Latin)",
@@ -2324,7 +2395,6 @@
 
     document.getElementById("download-cv-pdf-btn").addEventListener("click", generateAndDownloadCvPdf);
 
-    // Wallet Integration
     const WALLET_APPLE  = "https://api.walletwallet.dev/p/16bb86a1-7a9f-4ffe-b28b-0d3106739cfd/apple.pkpass";
     const WALLET_GOOGLE = "https://pass.walletwallet.dev/p/16bb86a1-7a9f-4ffe-b28b-0d3106739cfd";
 
