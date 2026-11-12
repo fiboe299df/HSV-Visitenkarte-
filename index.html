@@ -61,31 +61,30 @@
     body {
       margin: 0;
       color: var(--ink);
-      background-image: url("assets/hsv-logo.jpg");
+      /* HSV-Logo als raumgreifendes, 25% transparentes Hintergrund-Wasserzeichen */
+      background-image: linear-gradient(140deg, var(--page-bg-1), var(--page-bg-2) 54%, var(--page-bg-3)),
+                        url("assets/hsv-logo.jpg");
       background-repeat: no-repeat;
       background-position: center center;
-      background-size: min(650px, 85vw);
+      background-size: min(600px, 80vw);
       background-attachment: fixed;
-      background-color: var(--page-bg-1);
-      position: relative;
+      /* 25% Transparenz über die Opazität des Hintergrundbild-Layers via Blend-Mode oder Fallback */
+      background-blend-mode: overlay;
       transition: background .25s, color .25s;
     }
 
-    /* Halbtransparentes Overlay, damit das Logo als Wasserzeichen im Hintergrund wirkt und der Text lesbar bleibt */
+    /* Extra Schicht für fehlerfreie 25% Transparenz des Hintergrundlogos auf allen Geräten */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      background: radial-gradient(ellipse at 12% 5%, rgba(0, 82, 159, .06), transparent 30%),
-                  linear-gradient(140deg, rgba(243, 248, 252, 0.94), rgba(255, 255, 255, 0.96) 54%, rgba(238, 244, 248, 0.95));
-      z-index: -1;
+      background-image: url("assets/hsv-logo.jpg");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: min(500px, 75vw);
+      opacity: 0.25;
       pointer-events: none;
-      transition: background .25s;
-    }
-
-    body.dark::before {
-      background: radial-gradient(ellipse at 12% 5%, rgba(123, 181, 255, .04), transparent 30%),
-                  linear-gradient(140deg, rgba(9, 24, 36, 0.95), rgba(14, 31, 47, 0.97) 54%, rgba(10, 24, 40, 0.96));
+      z-index: -1;
     }
 
     a { color: inherit; }
@@ -1775,7 +1774,7 @@
         careerLink: "Ir al portal de empleo HSV ↗",
         qrHeading: "Código QR y Enlace",
         qrIntro: "Escanea o abre el enlace directamente.",
-        copyLink: "Copiar enlace",
+        copyLink: "Copier enlace",
         copied: "¡Enlace copiado!",
         downloadQr: "Descargar código QR",
         walletHeading: "Guardar en Wallet",
