@@ -116,17 +116,19 @@
     .header-right {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
     }
 
     .header-tools {
-      display: flex;
+      display: inline-flex;
       align-items: center;
+      height: 48px;
       gap: 6px;
       background: var(--glass);
-      padding: 4px 8px;
+      padding: 4px 10px;
       border-radius: 999px;
       backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
     }
@@ -217,7 +219,33 @@
       right: 8px;
       font-size: .75rem;
       pointer-events: none;
-      color: var(--muted);
+      color: var(--blue-dark);
+    }
+
+    /* Home HSV Button: Blau eingefärbt & exakt gleiche Höhe wie Darkmode/Sprache */
+    .home-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      padding: 4px 16px;
+      color: var(--blue-dark);
+      font-size: .84rem;
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+      background: var(--glass);
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      transition: transform .15s, background-color .15s;
+    }
+
+    .home-link:hover {
+      transform: translateY(-1px);
+      background: var(--blue-pale);
     }
 
     .quick-nav {
@@ -267,20 +295,6 @@
       stroke-linejoin: round;
     }
     section[id] { scroll-margin-top: 92px; }
-
-    .home-link {
-      color: #fff;
-      font-size: .92rem;
-      font-weight: 800;
-      text-decoration: none;
-      white-space: nowrap;
-      background: var(--glass);
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      backdrop-filter: blur(10px);
-      box-shadow: var(--shadow);
-    }
 
     .hero {
       position: relative;
@@ -512,14 +526,170 @@
     .social-link svg { width: 22px; height: 22px; fill: currentColor; }
     .social-link .xing-mark { font: 800 12px Arial, sans-serif; letter-spacing: -.5px; }
 
+    /* Kontaktdaten Trennung Arbeit & Privat */
+    .contact-group-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 18px 0 10px;
+      color: var(--blue);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .contact-list { display: grid; gap: 11px; margin-top: 10px; }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px;
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      text-decoration: none;
+      transition: border-color .15s;
+    }
+    a.contact-item:hover {
+      border-color: var(--blue);
+    }
+
+    .contact-icon {
+      display: grid;
+      flex: 0 0 34px;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      color: var(--blue);
+      background: var(--blue-pale);
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    .contact-item strong { display: block; margin-bottom: 3px; color: var(--blue-dark); }
+    .contact-value { color: var(--muted); overflow-wrap: anywhere; }
+
+    .private-details {
+      margin-top: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .private-summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-weight: 800;
+      font-size: .92rem;
+      color: var(--blue-dark);
+      background: var(--blue-pale);
+      transition: background-color .15s;
+    }
+    .private-summary::-webkit-details-marker { display: none; }
+    .private-summary:hover {
+      background: rgba(0, 82, 159, .15);
+    }
+    .private-summary-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .private-chevron {
+      transition: transform .2s ease;
+      font-size: .85rem;
+    }
+    .private-details[open] .private-chevron {
+      transform: rotate(180deg);
+    }
+    .private-body {
+      padding: 14px;
+      display: grid;
+      gap: 11px;
+      border-top: 1px solid var(--line);
+    }
+
+    /* PDF Lebenslauf Karte im Werdegang */
+    .cv-doc-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin: 14px 0 18px;
+      padding: 14px 16px;
+      background: var(--chip-bg);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+      font: inherit;
+      color: var(--ink);
+      transition: transform .15s, box-shadow .15s, border-color .15s;
+    }
+    .cv-doc-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--blue);
+      box-shadow: 0 8px 20px rgba(0, 82, 159, .16);
+    }
+    .cv-doc-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .pdf-badge-icon {
+      display: grid;
+      place-items: center;
+      flex: 0 0 46px;
+      width: 46px;
+      height: 46px;
+      background: #d93025;
+      color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 14px rgba(217, 48, 37, .28);
+    }
+    .pdf-badge-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+    .cv-doc-title {
+      display: block;
+      color: var(--blue-dark);
+      font-weight: 800;
+      font-size: .96rem;
+    }
+    .cv-doc-sub {
+      display: block;
+      color: var(--muted);
+      font-size: .8rem;
+      margin-top: 2px;
+    }
+    .cv-doc-action {
+      padding: 7px 12px;
+      border-radius: 10px;
+      background: var(--blue);
+      color: var(--button-text);
+      font-size: .8rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    /* Modals */
     .modal-overlay {
       position: fixed;
       inset: 0;
       background: rgba(0, 29, 58, .7);
       backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       display: grid;
       place-items: center;
-      padding: 20px;
+      padding: 16px;
       z-index: 1000;
       opacity: 0;
       pointer-events: none;
@@ -532,7 +702,9 @@
     }
 
     .modal-card {
-      width: min(420px, 100%);
+      width: min(440px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
       background: var(--white);
       border: 1px solid var(--line);
       border-radius: 24px;
@@ -543,6 +715,10 @@
       transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
+    .modal-card.cv-modal-wide {
+      width: min(760px, 100%);
+    }
+
     .modal-overlay.active .modal-card {
       transform: translateY(0) scale(1);
     }
@@ -551,6 +727,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 12px;
       margin-bottom: 16px;
     }
 
@@ -565,10 +742,11 @@
       background: var(--blue-pale);
       border: 0;
       color: var(--blue-dark);
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
       border-radius: 50%;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: 800;
       cursor: pointer;
       display: grid;
@@ -577,6 +755,84 @@
     }
     .modal-close:hover {
       background: rgba(0, 82, 159, .2);
+    }
+
+    /* CV PDF Document Sheet Preview */
+    .cv-sheet {
+      background: #ffffff;
+      color: #172b3b;
+      border: 1px solid #cbd9e6;
+      border-radius: 14px;
+      padding: clamp(18px, 3vw, 30px);
+      box-shadow: inset 0 0 0 1px rgba(0,82,159,0.06);
+      font-size: .88rem;
+      line-height: 1.5;
+      max-height: 58vh;
+      overflow-y: auto;
+    }
+    .cv-sheet-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #00529f;
+      margin-bottom: 16px;
+    }
+    .cv-sheet-name {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #003b72;
+      font-weight: 900;
+    }
+    .cv-sheet-role {
+      margin: 4px 0 0;
+      color: #00529f;
+      font-weight: 700;
+    }
+    .cv-sheet-meta {
+      font-size: .8rem;
+      color: #4a5d70;
+      text-align: right;
+    }
+    .cv-sheet-section {
+      margin-bottom: 16px;
+    }
+    .cv-sheet-section h4 {
+      margin: 0 0 8px;
+      color: #00529f;
+      font-size: .92rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      border-bottom: 1px solid #e2ecf5;
+      padding-bottom: 4px;
+    }
+    .cv-entry {
+      margin-bottom: 10px;
+    }
+    .cv-entry-head {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-weight: 700;
+      color: #172b3b;
+    }
+    .cv-entry-date {
+      color: #00529f;
+      font-size: .82rem;
+    }
+    .cv-entry-sub {
+      color: #54687a;
+      font-size: .82rem;
+      margin-bottom: 3px;
+    }
+    .cv-entry ul {
+      margin: 4px 0 0;
+      padding-left: 18px;
+      color: #2c3e50;
+      font-size: .83rem;
     }
 
     .wallet-buttons-modal {
@@ -675,32 +931,6 @@
     .save-icon-btn.xing { color: #026466; }
     .save-icon-btn.instagram { color: #c13584; }
 
-    .contact-list { display: grid; gap: 11px; margin-top: 16px; }
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 14px;
-      background: var(--card-bg);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      text-decoration: none;
-    }
-
-    .contact-icon {
-      display: grid;
-      flex: 0 0 34px;
-      place-items: center;
-      width: 34px;
-      height: 34px;
-      color: var(--blue);
-      background: var(--blue-pale);
-      border-radius: 10px;
-    }
-
-    .contact-item strong { display: block; margin-bottom: 3px; color: var(--blue-dark); }
-    .contact-value { color: var(--muted); overflow-wrap: anywhere; }
-
     .maps-content-modal {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -722,11 +952,12 @@
       font-size: .9rem;
       font-weight: 800;
       text-decoration: none;
-      transition: background-color .15s;
+      transition: background-color .15s, transform .15s;
     }
 
     .map-btn:hover {
       background: rgba(0, 82, 159, .2);
+      transform: translateY(-1px);
     }
 
     .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 14px; }
@@ -890,16 +1121,18 @@
       }
     }
 
-    @media(max-width: 480px) {
+    @media(max-width: 540px) {
       .page { width: min(100% - 20px, 1120px); }
       header { padding: 14px 0; }
-      .home-link { display: none; }
+      .header-right { width: 100%; justify-content: space-between; }
+      .home-link { padding: 4px 12px; font-size: .8rem; }
       .profile { align-items: flex-start; }
       .profile-photo { flex-basis: 78px; width: 78px; height: 78px; border-radius: 18px; }
       .actions > .button { flex: 1 1 100%; }
       .hero { border-radius: 22px; }
       .wallet-buttons-modal, .maps-content-modal { grid-template-columns: 1fr; }
       .save-modal-icons { grid-template-columns: repeat(3, 1fr); }
+      .cv-sheet-meta { text-align: left; }
     }
   </style>
 </head>
@@ -990,7 +1223,7 @@
 
             <div class="actions">
               <a class="button" href="tel:+491604339168" data-i18n="phoneButton">☎ Telefon</a>
-              <a class="button" href="mailto:laboe99@web.de" data-i18n="emailButton">✉ E-Mail</a>
+              <a class="button" href="mailto:Lasse.boettcher@hsv.de" data-i18n="emailButton">✉ E-Mail</a>
               <button class="button pale" id="save-contact" type="button" data-i18n="saveContact">+ Kontakt speichern</button>
 
               <nav class="social-links" aria-label="Soziale Profile von Lasse Böttcher">
@@ -1010,12 +1243,16 @@
           <section class="card" id="ueber-mich" aria-labelledby="about-title">
             <h2 id="about-title" data-i18n="aboutTitle">Über mich</h2>
             <p class="small" style="margin-top: 8px; line-height: 1.6;" data-i18n="aboutText">
-              Mit <strong>27 Jahren jung</strong> bin ich ein engagierter und international erfahrener Experte im Bereich Player Care & Sportadministration mit umfassender Management-Praxis in der Bundesliga und Premier League. Ausgeprägte Kompetenzen in der Spielerbetreuung, Transfer-Abwicklung (TMS) sowie in der nahtlosen Koordination von Signing-Prozessen und Berater-Netzwerken. Fundiertes betriebswirtschaftliches Know-how durch das First Class Honours-Studium im Bereich Football Business & Marketing am UCFB Wembley.
+              Mit 27 Jahren jung bin ich ein engagierter und international erfahrener Experte im Bereich Player Care & Sportadministration mit umfassender Management-Praxis in der Bundesliga und Premier League. Ausgeprägte Kompetenzen in der Spielerbetreuung, Transfer-Abwicklung (TMS) sowie in der nahtlosen Koordination von Signing-Prozessen und Berater-Netzwerken. Fundiertes betriebswirtschaftliches Know-how durch das First Class Honours-Studium im Bereich Football Business & Marketing am UCFB Wembley.
             </p>
           </section>
 
+          <!-- KONTAKTDATEN: GETRENNT IN ARBEIT UND PRIVAT -->
           <section class="card" id="kontakt" aria-labelledby="contact-title">
             <h2 id="contact-title" data-i18n="contactTitle">Kontakt & Standort</h2>
+
+            <!-- BEREICH ARBEIT -->
+            <div class="contact-group-title" data-i18n="workSectionTitle">🏢 Arbeit</div>
             <div class="contact-list">
               <a class="contact-item" href="tel:+491604339168">
                 <span class="contact-icon" aria-hidden="true">☎</span>
@@ -1024,60 +1261,105 @@
                   <span class="contact-value">+49 160 4339168</span>
                 </span>
               </a>
-              <a class="contact-item" href="mailto:laboe99@web.de">
+              <a class="contact-item" href="mailto:Lasse.boettcher@hsv.de">
                 <span class="contact-icon" aria-hidden="true">✉</span>
                 <span>
                   <strong data-i18n="emailLabel">E-Mail</strong>
-                  <span class="contact-value">laboe99@web.de</span>
+                  <span class="contact-value">Lasse.boettcher@hsv.de</span>
                 </span>
               </a>
               <div class="contact-item" style="flex-direction: column; align-items: stretch;">
                 <div style="display: flex; align-items: flex-start; gap: 12px;">
                   <span class="contact-icon" aria-hidden="true">⌖</span>
                   <div style="flex: 1;">
-                    <strong data-i18n="addressLabel">Arbeitsadresse (Volksparkstadion)</strong>
-                    <span class="contact-value">Volksparkstadion, 22525 Hamburg</span>
+                    <strong data-i18n="addressLabel">Adresse (Volksparkstadion)</strong>
+                    <span class="contact-value">Uwe-Seeler-Allee 9, 22525 Hamburg</span>
                   </div>
                 </div>
+
+                <!-- Interaktive Google Map aufklappbar -->
                 <details style="margin-top: 12px; border-top: 1px solid var(--line); padding-top: 10px;">
-                  <summary style="cursor: pointer; color: var(--blue); font-weight: 700; font-size: 0.9rem;" data-i18n="mapSummaryLabel">Karte einblenden</summary>
+                  <summary style="cursor: pointer; color: var(--blue); font-weight: 800; font-size: 0.9rem;" data-i18n="mapSummaryLabel">Volksparkstadion auf Karte anzeigen</summary>
                   <div style="margin-top: 10px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line);">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2368.317999077168!2d9.897435176746448!3d53.587787372360076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b185d5fee31105%3A0x3f3b088aae5b75a1!2sUwe-Seeler-Allee%209%2C%2022525%20Altona!5e0!3m2!1sde!2sde!4v1794487400362!5m2!1sde!2sde" width="100%" height="280" style="border:0; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2368.3535886062023!2d9.898629!3d53.5871523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b185d5e3884a41%3A0x2b93b45f7b4d3ce2!2sVolksparkstadion!5e0!3m2!1sde!2sde!4v1794507927470!5m2!1sde!2sde" width="100%" height="300" style="border:0; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Google Map Volksparkstadion"></iframe>
                   </div>
                 </details>
               </div>
+            </div>
 
-              <!-- Private Adresse als aufklappbarer Button mit Karten-App-Integration -->
-              <details style="background: var(--card-bg); border: 1px solid var(--line); border-radius: 14px; padding: 14px;">
-                <summary style="cursor: pointer; color: var(--blue-dark); font-weight: 800; font-size: 0.95rem; display: flex; align-items: center; gap: 10px;" data-i18n="privateAddressSummary">
-                  <span class="contact-icon" aria-hidden="true" style="margin: 0;">🏠</span> Private Adresse anzeigen
-                </summary>
-                <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px;">
-                  <div style="display: flex; align-items: flex-start; gap: 12px;">
-                    <span class="contact-icon" aria-hidden="true">📍</span>
-                    <div>
-                      <strong data-i18n="privateAddressLabel">Wohnort</strong>
-                      <span class="contact-value">Koppelstraße 24, 22527 Hamburg</span>[cite: 3]
-                    </div>
-                  </div>
-                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px;">
-                    <a class="map-btn" href="https://maps.google.com/?q=Koppelstraße+24,+22527+Hamburg" target="_blank" rel="noopener noreferrer" style="font-size: 0.82rem; min-height: 38px; padding: 6px 10px;">
-                      <span>Google Maps</span> ↗
-                    </a>
-                    <a class="map-btn" href="https://maps.apple.com/?q=Koppelstraße+24,+22527+Hamburg" target="_blank" rel="noopener noreferrer" style="font-size: 0.82rem; min-height: 38px; padding: 6px 10px;">
-                      <span>Apple Karten</span> ↗
-                    </a>
-                  </div>
+            <!-- Aufklappbarer Button / Modal für Google Map / Apple Map (Arbeit) -->
+            <button class="button full" id="open-work-maps-modal" type="button" style="margin-top: 12px;" data-i18n="openWorkMapsBtn">🗺️ Google Maps / Apple Maps öffnen (Arbeit)</button>
+
+            <!-- BEREICH PRIVAT: VERSTECKT MIT BUTTON -->
+        <details class="private-details">
+          <summary class="private-summary">
+            <span class="private-summary-left">
+              <span>🔒</span>
+              <span data-i18n="privateSectionBtn">Privat (Kontaktdaten anzeigen)</span>
+            </span>
+            <span class="private-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="private-body">
+            <a class="contact-item" href="tel:+447521686937">
+              <span class="contact-icon" aria-hidden="true">☎</span>
+              <span>
+                <strong data-i18n="phoneLabel">Telefon</strong>
+                <span class="contact-value">+44 7521 686937</span>
+              </span>
+            </a>
+            <a class="contact-item" href="mailto:laboe99@web.de">
+              <span class="contact-icon" aria-hidden="true">✉</span>
+              <span>
+                <strong data-i18n="emailLabel">E-Mail</strong>
+                <span class="contact-value">laboe99@web.de</span>
+              </span>
+            </a>
+            <div class="contact-item" style="flex-direction: column; align-items: stretch;">
+              <div style="display: flex; align-items: flex-start; gap: 12px;">
+                <span class="contact-icon" aria-hidden="true">🏠</span>
+                <div style="flex: 1;">
+                  <strong data-i18n="privateAddressLabel">Adresse</strong>
+                  <span class="contact-value">Koppelstraße 24, 22527 Hamburg</span>
+                </div>
+              </div>
+
+              <!-- Interaktive Google Map aufklappbar (Privat) -->
+              <details style="margin-top: 12px; border-top: 1px solid var(--line); padding-top: 10px;">
+                <summary style="cursor: pointer; color: var(--blue); font-weight: 800; font-size: 0.9rem;" data-i18n="privateMapSummaryLabel">Koppelstraße auf Karte anzeigen</summary>
+                <div style="margin-top: 10px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line);">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2368.0296787642296!2d9.935313476968856!3d53.592932072362046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b1860f0a9489d7%3A0x64b6c0f83bcdaaf2!2sKoppelstra%C3%9Fe%2024%2C%2022527%20Eimsb%C3%BCttel!5e0!3m2!1sde!2sde!4v1794509287115!5m2!1sde!2sde" width="100%" height="300" style="border:0; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Google Map Koppelstraße"></iframe>
                 </div>
               </details>
             </div>
-            
-            <button class="button full" id="open-maps-modal" type="button" style="margin-top: 14px;" data-i18n="mapsSummary">In Karten-App öffnen</button>
-          </section>
 
-          <section class="card" id="werdegang" aria-labelledby="career-history-title">
+            <!-- Aufklappbarer Button / Modal für Google Map / Apple Map (Privat) -->
+            <button class="button pale full" id="open-private-maps-modal" type="button" data-i18n="openPrivateMapsBtn">🗺️ Google Maps / Apple Maps öffnen (Privat)</button>
+          </div>
+        </details>
+      </section>
+
+      <section class="card" id="werdegang" aria-labelledby="career-history-title">
             <h2 id="career-history-title" data-i18n="careerTitle">Werdegang</h2>
             <p class="small" data-i18n="careerSubtitle">Berufliche Stationen, Weiterbildungen und Auszeichnungen.</p>
+
+            <!-- Lebenslauf als PDF Dokument Icon & Klick für Vorschau/Download -->
+            <button type="button" class="cv-doc-card" id="open-cv-modal" aria-label="Lebenslauf als PDF öffnen">
+              <span class="cv-doc-left">
+                <span class="pdf-badge-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <path d="M9 15h6M9 11h2"/>
+                  </svg>
+                </span>
+                <span>
+                  <span class="cv-doc-title" data-i18n="cvDocTitle">Lebenslauf – Lasse Böttcher (PDF)</span>
+                  <span class="cv-doc-sub" data-i18n="cvDocSub">Curriculum Vitae ansehen & herunterladen</span>
+                </span>
+              </span>
+              <span class="cv-doc-action" data-i18n="cvDocOpen">PDF öffnen</span>
+            </button>
+
             <div class="timeline">
               <article class="timeline-item">
                 <h3>HSV Fußball AG</h3>
@@ -1085,7 +1367,7 @@
                 <p><strong>Player Care & Administration Sport</strong> · <span data-i18n="employment">Angestellt</span></p>
                 <details>
                   <summary data-i18n="detailsHsvCurrent">Aufgaben & Details</summary>
-                  <p>• TMS-Administration und Abwicklung aller Spielertransfers[cite: 3]<br>• Zentraler Ansprechpartner für alle den Club vertretenden Berater und Agenturen[cite: 3]<br>• Koordination des gesamten Signing-Prozesses[cite: 3]</p>
+                  <p>• TMS-Administration und Abwicklung aller Spielertransfers<br>• Zentraler Ansprechpartner für alle den Club vertretenden Berater und Agenturen<br>• Koordination des gesamten Signing-Prozesses</p>
                 </details>
               </article>
 
@@ -1095,20 +1377,20 @@
                 <p><strong>Teammanagement / Player Care</strong> · <span data-i18n="employment">Angestellt</span></p>
                 <details>
                   <summary data-i18n="detailsHsvOld">Aufgaben & Details</summary>
-                  <p>• Betreuung der Lizenzspieler (1. Herren) & deren Familien[cite: 3]<br>• Optimierung des Onboarding-Prozesses für Neuzugänge[cite: 3]<br>• Erste Anlaufstelle für jegliche Spieleranfragen[cite: 3]</p>
+                  <p>• Betreuung der Lizenzspieler (1. Herren) & deren Familien<br>• Optimierung des Onboarding-Prozesses für Neuzugänge<br>• Erste Anlaufstelle für jegliche Spieleranfragen</p>
                 </details>
               </article>
 
               <article class="timeline-item">
                 <h3>UEFA EURO 2020 (München / Allianz Arena)</h3>
                 <p class="timeline-meta">06/2021 – 07/2021</p>
-                <p><strong>Volunteer (Technische Dienste & Overlay Ceremonies)</strong> · <span data-i18n="volunteer">Ehrenamt</span>[cite: 3]</p>
+                <p><strong>Volunteer (Technische Dienste & Overlay Ceremonies)</strong> · <span data-i18n="volunteer">Ehrenamt</span></p>
               </article>
 
               <article class="timeline-item">
                 <h3>Crawley Town FC</h3>
                 <p class="timeline-meta">08/2020 – 06/2021</p>
-                <p><strong>Volunteer Business Development (DE, AT, CH)</strong> · <span data-i18n="volunteer">Ehrenamt</span>[cite: 3]</p>
+                <p><strong>Volunteer Business Development (DE, AT, CH)</strong> · <span data-i18n="volunteer">Ehrenamt</span></p>
               </article>
             </div>
 
@@ -1118,47 +1400,47 @@
                 <article class="timeline-item">
                   <h3>West Ham United F.C (London)</h3>
                   <p class="timeline-meta">09/2018 – 05/2021</p>
-                  <p><strong>Supervisor Player's Family Liaison Officer</strong> · <span data-i18n="employment">Angestellt</span>[cite: 4]</p>
-                  <p>• Family Liaison Officer an Spieltagen (Player Care Department)[cite: 4]<br>• Zusammenarbeit mit Spielern bei Community-Projekten[cite: 4]</p>
+                  <p><strong>Supervisor Player's Family Liaison Officer</strong> · <span data-i18n="employment">Angestellt</span></p>
+                  <p>• Family Liaison Officer an Spieltagen (Player Care Department)<br>• Zusammenarbeit mit Spielern bei Community-Projekten</p>
                 </article>
                 <article class="timeline-item">
                   <h3>The FA (London)</h3>
                   <p class="timeline-meta">02/2019 – 05/2021</p>
-                  <p><strong>Team Liaison Officer</strong> · <span data-i18n="volunteer">Ehrenamt</span>[cite: 4]</p>
+                  <p><strong>Team Liaison Officer</strong> · <span data-i18n="volunteer">Ehrenamt</span></p>
                 </article>
                 <article class="timeline-item">
                   <h3>SPORT1 Media GmbH (Ismaning)</h3>
                   <p class="timeline-meta">05/2019 – 07/2019</p>
-                  <p><strong>Intern Product Management</strong> · <span data-i18n="internship">Praktikum</span>[cite: 4]</p>
+                  <p><strong>Intern Product Management</strong> · <span data-i18n="internship">Praktikum</span></p>
                 </article>
                 <article class="timeline-item">
                   <h3>Benugo / V&A Museum / Dorchester Hotel (London)</h3>
                   <p class="timeline-meta">09/2017 – 05/2019</p>
-                  <p><strong>Customer Service</strong> (inkl. TV Choice Awards) · <span data-i18n="employment">Angestellt</span>[cite: 4]</p>
+                  <p><strong>Customer Service</strong> (inkl. TV Choice Awards) · <span data-i18n="employment">Angestellt</span></p>
                 </article>
                 <article class="timeline-item">
                   <h3>NATO</h3>
                   <p class="timeline-meta">07/2017</p>
-                  <p><strong>Konferenzassistent</strong> · <span data-i18n="volunteer">Ehrenamt</span>[cite: 4]</p>
+                  <p><strong>Konferenzassistent</strong> · <span data-i18n="volunteer">Ehrenamt</span></p>
                 </article>
                 <article class="timeline-item">
                   <h3>Congrebas (Bilbao)</h3>
                   <p class="timeline-meta">10/2015 – 11/2015</p>
-                  <p><strong>Intern Marketing und Events</strong> · <span data-i18n="internship">Praktikum</span>[cite: 4]</p>
+                  <p><strong>Intern Marketing und Events</strong> · <span data-i18n="internship">Praktikum</span></p>
                 </article>
 
                 <h3 data-i18n="educationSection" style="margin: 16px 0 0; color: var(--blue-dark);">Studium & Ausbildung</h3>
                 <article class="timeline-item">
                   <h3>University Campus of Football Business (UCFB Wembley)</h3>
                   <p class="timeline-meta">09/2018 – 06/2021</p>
-                  <p><strong>Bachelor of Arts: Football Business and Marketing</strong> · <span data-i18n="study">Studium</span>[cite: 4]</p>
-                  <p>• Note: First Class Honours (1,0)[cite: 4]<br>• Abschlussarbeit: „A comparative analysis of the ownership structures in the Bundesliga and the Premier League and its effects on the fan cultures“ (88/100)[cite: 4]</p>
+                  <p><strong>Bachelor of Arts: Football Business and Marketing</strong> · <span data-i18n="study">Studium</span></p>
+                  <p>• Note: First Class Honours (1,0)<br>• Abschlussarbeit: „A comparative analysis of the ownership structures in the Bundesliga and the Premier League and its effects on the fan cultures“ (88/100)</p>
                 </article>
                 <article class="timeline-item">
                   <h3>Herderschule Rendsburg</h3>
                   <p class="timeline-meta">08/2009 – 06/2017</p>
-                  <p><strong>Abitur</strong> · <span data-i18n="schoolDegree">Schulabschluss</span>[cite: 4]</p>
-                  <p>Schwerpunktfächer: Spanisch, Englisch, Latein[cite: 4]</p>
+                  <p><strong>Abitur</strong> · <span data-i18n="schoolDegree">Schulabschluss</span></p>
+                  <p>Schwerpunktfächer: Spanisch, Englisch, Latein</p>
                 </article>
               </div>
             </details>
@@ -1244,6 +1526,7 @@
       <button class="button pale" data-open="open-wallet-modal" type="button" data-i18n="navWallet">Wallet</button>
     </div>
 
+    <!-- MODAL: QR-CODE -->
     <div class="modal-overlay" id="qr-modal">
       <div class="modal-card">
         <div class="modal-header">
@@ -1263,6 +1546,7 @@
       </div>
     </div>
 
+    <!-- MODAL: WALLET -->
     <div class="modal-overlay" id="wallet-modal">
       <div class="modal-card">
         <div class="modal-header">
@@ -1295,25 +1579,26 @@
       </div>
     </div>
 
+    <!-- MODAL: KONTAKT SPEICHERN -->
     <div class="modal-overlay" id="save-modal">
       <div class="modal-card">
         <div class="modal-header">
           <h3 data-i18n="saveHeading">Kontakt direkt speichern</h3>
           <button class="modal-close" id="close-save-modal" type="button">×</button>
         </div>
-        <p class="small" data-i18n="saveIntro" style="margin-top:0;">Speichere alle Kontaktdaten als vCard (.vcf) im Adressbuch.</p>
+        <p class="small" data-i18n="saveIntro" style="margin-top:0;">Speichere alle geschäftlichen & privaten Kontaktdaten als vCard (.vcf) im Adressbuch.</p>
         <button class="button full" id="save-contact-side" type="button" data-i18n="saveContactSide">Kontakt speichern (.vcf)</button>
 
         <div class="save-modal-icons">
-          <a class="save-icon-btn" href="tel:+491604339168" title="Telefon">
+          <a class="save-icon-btn" href="tel:+491604339168" title="Telefon Arbeit">
             <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
             <span>Telefon</span>
           </a>
-          <a class="save-icon-btn" href="mailto:laboe99@web.de" title="E-Mail">
+          <a class="save-icon-btn" href="mailto:Lasse.boettcher@hsv.de" title="E-Mail Arbeit">
             <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
             <span>E-Mail</span>
           </a>
-          <a class="save-icon-btn" href="https://maps.google.com/?q=Volksparkstadion,+Hamburg" target="_blank" rel="noopener noreferrer" title="Adresse">
+          <a class="save-icon-btn" href="https://maps.google.com/?q=Uwe-Seeler-Allee+9,+22525+Hamburg" target="_blank" rel="noopener noreferrer" title="Adresse Arbeit">
             <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
             <span>Adresse</span>
           </a>
@@ -1333,20 +1618,127 @@
       </div>
     </div>
 
-    <div class="modal-overlay" id="maps-modal">
+    <!-- MODAL: KARTEN-APP (ARBEIT) -->
+    <div class="modal-overlay" id="work-maps-modal">
       <div class="modal-card">
         <div class="modal-header">
-          <h3 data-i18n="mapsSummary">In Karten-App öffnen</h3>
-          <button class="modal-close" id="close-maps-modal" type="button">×</button>
+          <h3 data-i18n="workMapsModalTitle">Arbeit: Volksparkstadion öffnen</h3>
+          <button class="modal-close" id="close-work-maps-modal" type="button">×</button>
         </div>
-        <p class="small" style="margin-top:0;">Wähle deine bevorzugte Karten-Anwendung aus:</p>
+        <p class="small" style="margin-top:0;">Uwe-Seeler-Allee 9, 22525 Hamburg</p>
         <div class="maps-content-modal">
-          <a class="map-btn" href="https://maps.google.com/?q=Volksparkstadion,+Hamburg" target="_blank" rel="noopener noreferrer">
+          <a class="map-btn" href="https://maps.google.com/?q=Uwe-Seeler-Allee+9,+22525+Hamburg" target="_blank" rel="noopener noreferrer">
             <span>Google Maps</span> ↗
           </a>
-          <a class="map-btn" href="https://maps.apple.com/?q=Volksparkstadion,+Hamburg" target="_blank" rel="noopener noreferrer">
-            <span>Apple Karten</span> ↗
+          <a class="map-btn" href="https://maps.apple.com/?q=Uwe-Seeler-Allee+9,+22525+Hamburg" target="_blank" rel="noopener noreferrer">
+            <span>Apple Maps</span> ↗
           </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL: KARTEN-APP (PRIVAT) -->
+    <div class="modal-overlay" id="private-maps-modal">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 data-i18n="privateMapsModalTitle">Privat: Adresse öffnen</h3>
+          <button class="modal-close" id="close-private-maps-modal" type="button">×</button>
+        </div>
+        <p class="small" style="margin-top:0;">Koppelstraße 24, 22527 Hamburg</p>
+        <div class="maps-content-modal">
+          <a class="map-btn" href="https://maps.google.com/?q=Koppelstraße+24,+22527+Hamburg" target="_blank" rel="noopener noreferrer">
+            <span>Google Maps</span> ↗
+          </a>
+          <a class="map-btn" href="https://maps.apple.com/?q=Koppelstraße+24,+22527+Hamburg" target="_blank" rel="noopener noreferrer">
+            <span>Apple Maps</span> ↗
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL: LEBENSLAUF PDF VORSCHAU & DOWNLOAD -->
+    <div class="modal-overlay" id="cv-modal">
+      <div class="modal-card cv-modal-wide">
+        <div class="modal-header">
+          <h3 data-i18n="cvModalTitle">Curriculum Vitae – Lasse Böttcher (PDF)</h3>
+          <button class="modal-close" id="close-cv-modal" type="button">×</button>
+        </div>
+
+        <div class="cv-sheet" id="cv-preview-sheet">
+          <div class="cv-sheet-top">
+            <div>
+              <h4 class="cv-sheet-name">Lasse Böttcher</h4>
+              <p class="cv-sheet-role">Player Care & Administration Sport · HSV Fußball AG</p>
+            </div>
+            <div class="cv-sheet-meta">
+              <div>E-Mail: Lasse.boettcher@hsv.de / laboe99@web.de</div>
+              <div>Tel: +49 160 4339168</div>
+              <div>Volksparkstadion · 22525 Hamburg</div>
+              <div>Geburtsdatum: 09.06.1999 · Deutsch</div>
+            </div>
+          </div>
+
+          <div class="cv-sheet-section">
+            <h4>Berufserfahrung (Jobs)</h4>
+            <div class="cv-entry">
+              <div class="cv-entry-head"><span>Player Care & Administration Sport – HSV Fußball AG</span><span class="cv-entry-date">08/2024 – heute</span></div>
+              <div class="cv-entry-sub">Volksparkstadion | 22525 Hamburg</div>
+              <ul>
+                <li>TMS-Administration und Abwicklung aller Spielertransfers</li>
+                <li>Ansprechpartner für alle den Club vertretenden Berater</li>
+                <li>Koordination des gesamten Signing-Prozesses</li>
+              </ul>
+            </div>
+            <div class="cv-entry">
+              <div class="cv-entry-head"><span>Teammanagement / Player Care – HSV Fußball AG</span><span class="cv-entry-date">02/2022 – 08/2024</span></div>
+              <div class="cv-entry-sub">Volksparkstadion | 22525 Hamburg</div>
+              <ul>
+                <li>Betreuung der 1. Herrenmannschaft & deren Familien</li>
+                <li>Optimierung des Onboarding-Prozesses für Neuzugänge</li>
+                <li>Erste Anlaufstelle für sämtliche Spieleranfragen</li>
+              </ul>
+            </div>
+            <div class="cv-entry">
+              <div class="cv-entry-head"><span>Volunteer – UEFA EURO 2020 München</span><span class="cv-entry-date">06/2021 – 07/2021</span></div>
+              <div class="cv-entry-sub">Allianz Arena · Technical Services & Overlay, Ceremonies</div>
+            </div>
+            <div class="cv-entry">
+              <div class="cv-entry-head"><span>Volunteer Business Development (DACH) – Crawley Town FC</span><span class="cv-entry-date">08/2020 – 06/2021</span></div>
+              <div class="cv-entry-sub">Crawley | Großbritannien</div>
+            </div>
+            <div class="cv-entry">
+              <div class="cv-entry-head"><span>Supervisor Player's Family Liaison Officer – West Ham United F.C</span><span class="cv-entry-date">09/2018 – 05/2021</span></div>
+              <div class="cv-entry-sub">London | Player Care Department & Community Projekte</div>
+            </div>
+            <div class="cv-entry">
+              <div class="cv-entry-head"><span>Team Liaison Officer – The FA London</span><span class="cv-entry-date">02/2019 – 05/2021</span></div>
+            </div>
+            <div class="cv-entry">
+              <div class="cv-entry-head"><span>Intern Product Management – SPORT1 Media GmbH</span><span class="cv-entry-date">05/2019 – 07/2019</span></div>
+            </div>
+          </div>
+
+          <div class="cv-sheet-section">
+            <h4>Ausbildung & Studium (Education)</h4>
+            <div class="cv-entry">
+              <div class="cv-entry-head"><span>Bachelor of Arts (Hons): Football Business and Marketing</span><span class="cv-entry-date">09/2018 – 06/2021</span></div>
+              <div class="cv-entry-sub">UCFB Wembley Stadium, London · Note: First Class Honours (1,0)</div>
+            </div>
+            <div class="cv-entry">
+              <div class="cv-entry-head"><span>Abitur – Herderschule Rendsburg</span><span class="cv-entry-date">08/2009 – 06/2017</span></div>
+              <div class="cv-entry-sub">Schwerpunkte: Spanisch, Englisch, Latein</div>
+            </div>
+          </div>
+
+          <div class="cv-sheet-section" style="margin-bottom:0;">
+            <h4>Sprachen (Languages)</h4>
+            <div class="cv-entry-sub">Deutsch (Muttersprache) · Englisch (Fließend) · Spanisch (Fortgeschritten) · Französisch (Grundkenntnisse)</div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px;">
+          <button type="button" class="button" style="flex: 1;" id="download-cv-pdf-btn" data-i18n="downloadCvPdf">⬇ Lebenslauf als PDF herunterladen</button>
+          <button type="button" class="button pale" id="close-cv-modal-bottom" data-i18n="closeBtn">Schließen</button>
         </div>
       </div>
     </div>
@@ -1443,11 +1835,16 @@
       lastName: "Böttcher",
       role: "Player Care & Administration Sport",
       company: "HSV Fußball AG",
-      phone: "+491604339168",
-      email: "laboe99@web.de",
-      street: "Koppelstraße 24",
-      zip: "22527",
-      city: "Hamburg",
+      workPhone: "+491604339168",
+      workEmail: "Lasse.boettcher@hsv.de",
+      workStreet: "Uwe-Seeler-Allee 9",
+      workZip: "22525",
+      workCity: "Hamburg",
+      privatePhone: "+447521686937",
+      privateEmail: "laboe99@web.de",
+      privateStreet: "Koppelstraße 24",
+      privateZip: "22527",
+      privateCity: "Hamburg",
       country: "Deutschland",
       url: "https://fiboe299df.github.io/HSV-Visitenkarte-/"
     };
@@ -1466,13 +1863,24 @@
         emailButton: "✉ E-Mail",
         saveContact: "+ Kontakt speichern",
         contactTitle: "Kontakt & Standort",
+        workSectionTitle: "🏢 Arbeit",
         phoneLabel: "Telefon",
         emailLabel: "E-Mail",
-        addressLabel: "Arbeitsadresse",
-        privateAddressSummary: "🏠 Private Adresse anzeigen",
-        privateAddressLabel: "Wohnort",
-        mapSummaryLabel: "Karte einblenden",
-        mapsSummary: "In Karten-App öffnen",
+        addressLabel: "Adresse (Volksparkstadion)",
+        mapSummaryLabel: "Volksparkstadion auf Karte anzeigen",
+        openWorkMapsBtn: "🗺️ Google Maps / Apple Maps öffnen (Arbeit)",
+        privateSectionBtn: "Privat (Kontaktdaten anzeigen)",
+        privateAddressLabel: "Adresse",
+        privateMapSummaryLabel: "Koppelstraße auf Karte anzeigen",
+        openPrivateMapsBtn: "🗺️ Google Maps / Apple Maps öffnen (Privat)",
+        workMapsModalTitle: "Arbeit: Volksparkstadion öffnen",
+        privateMapsModalTitle: "Privat: Adresse öffnen",
+        cvDocTitle: "Lebenslauf – Lasse Böttcher (PDF)",
+        cvDocSub: "Curriculum Vitae ansehen & herunterladen",
+        cvDocOpen: "PDF öffnen",
+        cvModalTitle: "Curriculum Vitae – Lasse Böttcher (PDF)",
+        downloadCvPdf: "⬇ Lebenslauf als PDF herunterladen",
+        closeBtn: "Schließen",
         aboutTitle: "Über mich",
         aboutText: "Mit 27 Jahren jung bin ich ein engagierter und international erfahrener Experte im Bereich Player Care & Sportadministration mit umfassender Management-Praxis in der Bundesliga und Premier League. Ausgeprägte Kompetenzen in der Spielerbetreuung, Transfer-Abwicklung (TMS) sowie in der nahtlosen Koordination von Signing-Prozessen und Berater-Netzwerken. Fundiertes betriebswirtschaftliches Know-how durch das First Class Honours-Studium im Bereich Football Business & Marketing am UCFB Wembley.",
         careerTitle: "Werdegang",
@@ -1522,7 +1930,7 @@
         navWallet: "Wallet",
         navQr: "QR-Code",
         saveHeading: "Kontakt direkt speichern",
-        saveIntro: "Speichere alle Kontaktdaten als vCard (.vcf) im Adressbuch.",
+        saveIntro: "Speichere alle geschäftlichen & privaten Kontaktdaten als vCard (.vcf) im Adressbuch.",
         saveContactSide: "Kontakt speichern (.vcf)",
         imprint: "Impressum",
         privacy: "Datenschutz"
@@ -1540,13 +1948,23 @@
         emailButton: "✉ Email",
         saveContact: "+ Save Contact",
         contactTitle: "Contact & Location",
+        workSectionTitle: "🏢 Work",
         phoneLabel: "Phone",
         emailLabel: "Email",
-        addressLabel: "Work Address",
-        privateAddressSummary: "🏠 Show Private Address",
-        privateAddressLabel: "Home Address",
-        mapSummaryLabel: "Show Map",
-        mapsSummary: "Open in Maps app",
+        addressLabel: "Address (Volksparkstadion)",
+        mapSummaryLabel: "Show Volksparkstadion on Map",
+        openWorkMapsBtn: "🗺️ Open Google Maps / Apple Maps (Work)",
+        privateSectionBtn: "Private (Show Contact Details)",
+        privateAddressLabel: "Address",
+        openPrivateMapsBtn: "🗺️ Open Google Maps / Apple Maps (Private)",
+        workMapsModalTitle: "Work: Open Volksparkstadion",
+        privateMapsModalTitle: "Private: Open Address",
+        cvDocTitle: "Curriculum Vitae – Lasse Böttcher (PDF)",
+        cvDocSub: "View & download CV document",
+        cvDocOpen: "Open PDF",
+        cvModalTitle: "Curriculum Vitae – Lasse Böttcher (PDF)",
+        downloadCvPdf: "⬇ Download CV as PDF",
+        closeBtn: "Close",
         aboutTitle: "About Me",
         aboutText: "At 27 years young, I am a dedicated and internationally experienced professional in Player Care & Sports Administration with comprehensive management practice in the Bundesliga and Premier League. Strong expertise in player support, transfer processing (TMS), and seamless coordination of signing processes and agent networks. Sound business know-how gained through First Class Honours studies in Football Business & Marketing at UCFB Wembley.",
         careerTitle: "Career",
@@ -1596,7 +2014,7 @@
         navWallet: "Wallet",
         navQr: "QR code",
         saveHeading: "Save Contact Directly",
-        saveIntro: "Save all contact details as a vCard (.vcf) to your address book.",
+        saveIntro: "Save all work & private contact details as a vCard (.vcf) to your address book.",
         saveContactSide: "Save Contact (.vcf)",
         imprint: "Imprint",
         privacy: "Privacy Policy"
@@ -1614,15 +2032,25 @@
         emailButton: "✉ E-mail",
         saveContact: "+ Enregistrer le contact",
         contactTitle: "Contact & Adresse",
+        workSectionTitle: "🏢 Travail",
         phoneLabel: "Téléphone",
         emailLabel: "E-mail",
-        addressLabel: "Adresse pro",
-        privateAddressSummary: "🏠 Afficher l'adresse privée",
-        privateAddressLabel: "Adresse privée",
-        mapSummaryLabel: "Afficher la carte",
-        mapsSummary: "Ouvrir dans l'application de plans",
+        addressLabel: "Adresse (Volksparkstadion)",
+        mapSummaryLabel: "Afficher le Volksparkstadion sur la carte",
+        openWorkMapsBtn: "🗺️ Ouvrir Google Maps / Apple Maps (Travail)",
+        privateSectionBtn: "Privé (Afficher les coordonnées)",
+        privateAddressLabel: "Adresse",
+        openPrivateMapsBtn: "🗺️ Ouvrir Google Maps / Apple Maps (Privé)",
+        workMapsModalTitle: "Travail : Ouvrir Volksparkstadion",
+        privateMapsModalTitle: "Privé : Ouvrir l'adresse",
+        cvDocTitle: "Curriculum Vitae – Lasse Böttcher (PDF)",
+        cvDocSub: "Consulter et télécharger le CV",
+        cvDocOpen: "Ouvrir PDF",
+        cvModalTitle: "Curriculum Vitae – Lasse Böttcher (PDF)",
+        downloadCvPdf: "⬇ Télécharger le CV en PDF",
+        closeBtn: "Fermer",
         aboutTitle: "À propos de moi",
-        aboutText: "Âgé de 27 ans, je suis un professionnel engagé et expérimenté...",
+        aboutText: "Âgé de 27 ans, je suis un professionnel engagé et expérimenté dans le domaine du Player Care & Administration Sport avec une solide expérience en Bundesliga et Premier League.",
         careerTitle: "Parcours",
         careerSubtitle: "Expériences professionnelles, formations et distinctions.",
         employment: "Salarié",
@@ -1688,15 +2116,25 @@
         emailButton: "✉ Correo",
         saveContact: "+ Guardar contacto",
         contactTitle: "Contacto y ubicación",
+        workSectionTitle: "🏢 Trabajo",
         phoneLabel: "Teléfono",
         emailLabel: "Correo electrónico",
-        addressLabel: "Dirección laboral",
-        privateAddressSummary: "🏠 Mostrar dirección privada",
-        privateAddressLabel: "Dirección privada",
-        mapSummaryLabel: "Mostrar mapa",
-        mapsSummary: "Abrir en la aplicación de mapas",
+        addressLabel: "Dirección (Volksparkstadion)",
+        mapSummaryLabel: "Mostrar Volksparkstadion en el mapa",
+        openWorkMapsBtn: "🗺️ Abrir Google Maps / Apple Maps (Trabajo)",
+        privateSectionBtn: "Privado (Mostrar datos de contacto)",
+        privateAddressLabel: "Dirección",
+        openPrivateMapsBtn: "🗺️ Abrir Google Maps / Apple Maps (Privado)",
+        workMapsModalTitle: "Trabajo: Abrir Volksparkstadion",
+        privateMapsModalTitle: "Privado: Abrir dirección",
+        cvDocTitle: "Currículum Vitae – Lasse Böttcher (PDF)",
+        cvDocSub: "Ver y descargar el currículum",
+        cvDocOpen: "Abrir PDF",
+        cvModalTitle: "Currículum Vitae – Lasse Böttcher (PDF)",
+        downloadCvPdf: "⬇ Descargar CV en PDF",
+        closeBtn: "Cerrar",
         aboutTitle: "Sobre mí",
-        aboutText: "Con 27 años, soy un profesional comprometido y con experiencia internacional...",
+        aboutText: "Con 27 años, soy un profesional comprometido y con experiencia internacional en Player Care y Administración Deportiva en la Bundesliga y la Premier League.",
         careerTitle: "Trayectoria",
         careerSubtitle: "Experiencia profesional, formación y reconocimientos.",
         employment: "Empleado",
@@ -1778,6 +2216,7 @@
     langSelect.addEventListener("change", (e) => applyLanguage(e.target.value));
     applyLanguage(currentLang);
 
+    // QR Code generieren
     const qrContainer = document.getElementById("qrcode");
     new QRCode(qrContainer, {
       text: CARD.url,
@@ -1823,6 +2262,7 @@
       a.click();
     });
 
+    // vCard Download (inkl. Arbeit & Privat)
     function downloadVCard(btnElement) {
       const vcard = [
         "BEGIN:VCARD",
@@ -1831,9 +2271,12 @@
         `FN:${CARD.firstName} ${CARD.lastName}`,
         `ORG:${CARD.company}`,
         `TITLE:${CARD.role}`,
-        `TEL;TYPE=CELL,VOICE:${CARD.phone}`,
-        `EMAIL;TYPE=PREF,INTERNET:${CARD.email}`,
-        `ADR;TYPE=HOME:;;${CARD.street};${CARD.city};;${CARD.zip};${CARD.country}`,
+        `TEL;TYPE=WORK,VOICE:${CARD.workPhone}`,
+        `TEL;TYPE=HOME,CELL,VOICE:${CARD.privatePhone}`,
+        `EMAIL;TYPE=WORK,PREF,INTERNET:${CARD.workEmail}`,
+        `EMAIL;TYPE=HOME,INTERNET:${CARD.privateEmail}`,
+        `ADR;TYPE=WORK:;;${CARD.workStreet};${CARD.workCity};;${CARD.workZip};${CARD.country}`,
+        `ADR;TYPE=HOME:;;${CARD.privateStreet};${CARD.privateCity};;${CARD.privateZip};${CARD.country}`,
         `URL:${CARD.url}`,
         "END:VCARD"
       ].join("\r\n");
@@ -1857,25 +2300,110 @@
     document.getElementById("save-contact-side").addEventListener("click", function() { downloadVCard(this); });
     document.getElementById("sticky-save-contact").addEventListener("click", function() { downloadVCard(this); });
 
-    function setupModal(openBtnId, modalId, closeBtnId) {
+    // Modal Setup Hilfsfunktion
+    function setupModal(openBtnId, modalId, closeBtnIds) {
       const openBtn = document.getElementById(openBtnId);
       const modal = document.getElementById(modalId);
-      const closeBtn = document.getElementById(closeBtnId);
+      if (!openBtn || !modal) return;
 
-      if (openBtn && modal && closeBtn) {
-        openBtn.addEventListener("click", () => modal.classList.add("active"));
-        closeBtn.addEventListener("click", () => modal.classList.remove("active"));
-        modal.addEventListener("click", (e) => {
-          if (e.target === modal) modal.classList.remove("active");
-        });
-      }
+      openBtn.addEventListener("click", () => modal.classList.add("active"));
+      closeBtnIds.forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) btn.addEventListener("click", () => modal.classList.remove("active"));
+      });
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) modal.classList.remove("active");
+      });
     }
 
-    setupModal("open-qr-modal", "qr-modal", "close-qr-modal");
-    setupModal("open-wallet-modal", "wallet-modal", "close-wallet-modal");
-    setupModal("open-save-modal", "save-modal", "close-save-modal");
-    setupModal("open-maps-modal", "maps-modal", "close-maps-modal");
+    setupModal("open-qr-modal", "qr-modal", ["close-qr-modal"]);
+    setupModal("open-wallet-modal", "wallet-modal", ["close-wallet-modal"]);
+    setupModal("open-save-modal", "save-modal", ["close-save-modal"]);
+    setupModal("open-work-maps-modal", "work-maps-modal", ["close-work-maps-modal"]);
+    setupModal("open-private-maps-modal", "private-maps-modal", ["close-private-maps-modal"]);
+    setupModal("open-cv-modal", "cv-modal", ["close-cv-modal", "close-cv-modal-bottom"]);
 
+    // Echtes PDF-Dokument für den Lebenslauf generieren & herunterladen
+    function generateAndDownloadCvPdf() {
+      const lines = [
+        "CURRICULUM VITAE - LASSE BOETTCHER",
+        "Player Care & Administration Sport | HSV Fussball AG",
+        "Arbeit: Uwe-Seeler-Allee 9, 22525 Hamburg | Tel: +49 160 4339168 | Lasse.boettcher@hsv.de",
+        "Privat: Koppelstrasse 24, 22527 Hamburg | Tel: +44 7521 686937 | laboe99@web.de",
+        "Geburtsdatum: 09.06.1999 | Nationalitaet: Deutsch",
+        "--------------------------------------------------------------------------------",
+        "BERUFSERFAHRUNG (JOBS)",
+        "08/2024 - heute : Player Care & Administration Sport - HSV Fussball AG (Hamburg)",
+        "  - TMS-Administration und Abwicklung aller Spielertransfers",
+        "  - Zentraler Ansprechpartner fuer alle den Club vertretenden Berater",
+        "  - Koordination des gesamten Signing-Prozesses",
+        "02/2022 - 08/2024: Teammanagement / Player Care - HSV Fussball AG (Hamburg)",
+        "  - Betreuung der 1. Herrenmannschaft & deren Familien, Onboarding Neuzugaenge",
+        "06/2021 - 07/2021: Volunteer UEFA EURO 2020 Muenchen (Allianz Arena)",
+        "08/2020 - 06/2021: Volunteer Business Development (DE, AT, CH) - Crawley Town FC",
+        "09/2018 - 05/2021: Supervisor Player's Family Liaison Officer - West Ham United F.C",
+        "02/2019 - 05/2021: Team Liaison Officer - The FA London",
+        "05/2019 - 07/2019: Intern Product Management - SPORT1 Media GmbH",
+        "09/2017 - 05/2019: Customer Service - Benugo / V&A Museum / Dorchester Hotel London",
+        "10/2015 - 11/2015: Intern Marketing und Events - Congrebas, Bilbao",
+        "--------------------------------------------------------------------------------",
+        "AUSBILDUNG & STUDIUM (EDUCATION)",
+        "09/2018 - 06/2021: B.A. (Hons) Football Business and Marketing - UCFB Wembley London",
+        "  - Abschlussnote: First Class Honours (1,0)",
+        "08/2009 - 06/2017: Abitur - Herderschule Rendsburg (Spanisch, Englisch, Latein)",
+        "--------------------------------------------------------------------------------",
+        "SPRACHEN (LANGUAGES)",
+        "Deutsch (Muttersprache) | Englisch (Fliessend) | Spanisch (Fortgeschritten) | Franzoesisch (Basis)"
+      ];
+
+      // Valides Minimal-PDF 1.4 mit sauberer Typografie erstellen
+      let contentStream = "BT\n/F1 10 Tf\n45 795 Td\n14 TL\n";
+      lines.forEach((line, idx) => {
+        const escaped = line.replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)");
+        if (idx === 0) {
+          contentStream += `/F2 14 Tf (${escaped}) Tj\n/F1 9.5 Tf\nT*\n`;
+        } else {
+          contentStream += `(${escaped}) Tj\nT*\n`;
+        }
+      });
+      contentStream += "ET";
+
+      const objects = [
+        "1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n",
+        "2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n",
+        "3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>\nendobj\n",
+        `4 0 obj\n<< /Length ${contentStream.length} >>\nstream\n${contentStream}\nendstream\nendobj\n`,
+        "5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>\nendobj\n",
+        "6 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>\nendobj\n"
+      ];
+
+      let pdf = "%PDF-1.4\n";
+      const offsets = [0];
+      objects.forEach(obj => {
+        offsets.push(pdf.length);
+        pdf += obj;
+      });
+      const xrefStart = pdf.length;
+      pdf += `xref\n0 ${objects.length + 1}\n0000000000 65535 f \n`;
+      for (let i = 1; i <= objects.length; i++) {
+        pdf += String(offsets[i]).padStart(10, "0") + " 00000 n \n";
+      }
+      pdf += `trailer\n<< /Size ${objects.length + 1} /Root 1 0 R >>\nstartxref\n${xrefStart}\n%%EOF`;
+
+      const blob = new Blob([pdf], { type: "application/pdf" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "CV_Lasse_Boettcher.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    document.getElementById("download-cv-pdf-btn").addEventListener("click", generateAndDownloadCvPdf);
+
+    // Wallet Integration
     const WALLET_APPLE  = "https://api.walletwallet.dev/p/16bb86a1-7a9f-4ffe-b28b-0d3106739cfd/apple.pkpass";
     const WALLET_GOOGLE = "https://pass.walletwallet.dev/p/16bb86a1-7a9f-4ffe-b28b-0d3106739cfd";
 
