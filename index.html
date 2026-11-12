@@ -61,10 +61,33 @@
     body {
       margin: 0;
       color: var(--ink);
-      background: radial-gradient(ellipse at 12% 5%, rgba(0, 82, 159, .09), transparent 30%),
-                  linear-gradient(140deg, var(--page-bg-1), var(--page-bg-2) 54%, var(--page-bg-3));
+      background-image: url("assets/hsv-logo.jpg");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: min(650px, 85vw);
+      background-attachment: fixed;
+      background-color: var(--page-bg-1);
+      position: relative;
       transition: background .25s, color .25s;
     }
+
+    /* Halbtransparentes Overlay, damit das Logo als Wasserzeichen im Hintergrund wirkt und der Text lesbar bleibt */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 12% 5%, rgba(0, 82, 159, .06), transparent 30%),
+                  linear-gradient(140deg, rgba(243, 248, 252, 0.94), rgba(255, 255, 255, 0.96) 54%, rgba(238, 244, 248, 0.95));
+      z-index: -1;
+      pointer-events: none;
+      transition: background .25s;
+    }
+
+    body.dark::before {
+      background: radial-gradient(ellipse at 12% 5%, rgba(123, 181, 255, .04), transparent 30%),
+                  linear-gradient(140deg, rgba(9, 24, 36, 0.95), rgba(14, 31, 47, 0.97) 54%, rgba(10, 24, 40, 0.96));
+    }
+
     a { color: inherit; }
 
     .page {
@@ -934,7 +957,7 @@
         <span class="brand-logo"><img src="assets/hsv-logo.jpg" onerror="this.src='https://placehold.co/100x100/00529f/ffffff?text=HSV'" alt="HSV-Logo"></span>
         <span>
           <span data-i18n="brandName">Lasse Böttcher</span>
-          <small data-i18n="brandSubtitle">Player Care & Teammanagement</small>
+          <small data-i18n="brandSubtitle">Player Care & Administration Sport</small>
         </span>
       </a>
 
@@ -969,6 +992,7 @@
 
     <nav class="quick-nav" aria-label="Schnellzugriff">
       <a href="#kontakt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg><span data-i18n="navContact">Kontakt</span></a>
+      <a href="#ueber-mich"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span data-i18n="navAbout">Über mich</span></a>
       <a href="#werdegang"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h18v11H3zM8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg><span data-i18n="navCareer">Werdegang</span></a>
       <a href="#auszeichnungen"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M8.5 13.5 7 21l5-3 5 3-1.5-7.5"/></svg><span data-i18n="navAwards">Auszeichnungen</span></a>
       <a href="#sprachen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg><span data-i18n="navLanguages">Sprachen</span></a>
@@ -990,7 +1014,7 @@
           </div>
           <p class="eyebrow">Hamburger SV</p>
           <h1 id="welcome-title" data-i18n="heroTitle">Persönlich. Gemeinsam. HSV.</h1>
-          <p class="hero-copy">Lasse Böttcher · <span data-i18n="brandSubtitle">Player Care & Teammanagement</span></p>
+          <p class="hero-copy">Lasse Böttcher · <span data-i18n="brandSubtitle">Player Care & Administration Sport</span></p>
         </div>
         <div class="hero-photo">
           <img src="assets/lasse-boettcher.jpg" onerror="this.src='https://placehold.co/600x450/eaf3fb/00529f?text=Lasse+B%C3%B6ttcher'" alt="Lasse Böttcher im Fußballstadion">
@@ -1006,14 +1030,14 @@
               </div>
               <div>
                 <h2 id="profile-name">Lasse Böttcher</h2>
-                <p class="role" data-i18n="role">Player Care & Teammanagement</p>
+                <p class="role" data-i18n="role">Player Care & Administration Sport</p>
                 <p class="company" data-i18n="company">HSV Fußball AG</p>
               </div>
             </div>
 
             <div class="actions">
               <a class="button" href="tel:+491604339168" data-i18n="phoneButton">☎ Telefon</a>
-              <a class="button" href="mailto:Lasse.boettcher@hsv.de" data-i18n="emailButton">✉ E-Mail</a>
+              <a class="button" href="mailto:laboe99@web.de" data-i18n="emailButton">✉ E-Mail</a>
               <button class="button pale" id="save-contact" type="button" data-i18n="saveContact">+ Kontakt speichern</button>
 
               <nav class="social-links" aria-label="Soziale Profile von Lasse Böttcher">
@@ -1030,6 +1054,13 @@
             </div>
           </section>
 
+          <section class="card" id="ueber-mich" aria-labelledby="about-title">
+            <h2 id="about-title" data-i18n="aboutTitle">Über mich</h2>
+            <p class="small" style="margin-top: 8px; line-height: 1.6;" data-i18n="aboutText">
+              Mit <strong>27 Jahren jung</strong> bin ich ein engagierter und international erfahrener Experte im Bereich Player Care & Sportadministration mit umfassender Management-Praxis in der Bundesliga und Premier League. Ausgeprägte Kompetenzen in der Spielerbetreuung, Transfer-Abwicklung (TMS) sowie in der nahtlosen Koordination von Signing-Prozessen und Berater-Netzwerken. Fundiertes betriebswirtschaftliches Know-how durch das First Class Honours-Studium im Bereich Football Business & Marketing am UCFB Wembley.
+            </p>
+          </section>
+
           <section class="card" id="kontakt" aria-labelledby="contact-title">
             <h2 id="contact-title" data-i18n="contactTitle">Kontakt & Standort</h2>
             <div class="contact-list">
@@ -1040,19 +1071,19 @@
                   <span class="contact-value">+49 160 4339168</span>
                 </span>
               </a>
-              <a class="contact-item" href="mailto:Lasse.boettcher@hsv.de">
+              <a class="contact-item" href="mailto:laboe99@web.de">
                 <span class="contact-icon" aria-hidden="true">✉</span>
                 <span>
                   <strong data-i18n="emailLabel">E-Mail</strong>
-                  <span class="contact-value">Lasse.boettcher@hsv.de</span>
+                  <span class="contact-value">laboe99@web.de</span>
                 </span>
               </a>
               <div class="contact-item" style="flex-direction: column; align-items: stretch;">
                 <div style="display: flex; align-items: flex-start; gap: 12px;">
                   <span class="contact-icon" aria-hidden="true">⌖</span>
                   <div style="flex: 1;">
-                    <strong data-i18n="addressLabel">Adresse</strong>
-                    <span class="contact-value">Uwe-Seeler-Allee 9, 22525 Hamburg</span>
+                    <strong data-i18n="addressLabel">Arbeitsadresse (Volksparkstadion)</strong>
+                    <span class="contact-value">Volksparkstadion, 22525 Hamburg</span>
                   </div>
                 </div>
                 <details style="margin-top: 12px; border-top: 1px solid var(--line); padding-top: 10px;">
@@ -1062,6 +1093,30 @@
                   </div>
                 </details>
               </div>
+
+              <!-- Private Adresse als aufklappbarer Button mit Karten-App-Integration -->
+              <details style="background: var(--card-bg); border: 1px solid var(--line); border-radius: 14px; padding: 14px;">
+                <summary style="cursor: pointer; color: var(--blue-dark); font-weight: 800; font-size: 0.95rem; display: flex; align-items: center; gap: 10px;" data-i18n="privateAddressSummary">
+                  <span class="contact-icon" aria-hidden="true" style="margin: 0;">🏠</span> Private Adresse anzeigen
+                </summary>
+                <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px;">
+                  <div style="display: flex; align-items: flex-start; gap: 12px;">
+                    <span class="contact-icon" aria-hidden="true">📍</span>
+                    <div>
+                      <strong data-i18n="privateAddressLabel">Wohnort</strong>
+                      <span class="contact-value">Koppelstraße 24, 22527 Hamburg</span>[cite: 3]
+                    </div>
+                  </div>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px;">
+                    <a class="map-btn" href="https://maps.google.com/?q=Koppelstraße+24,+22527+Hamburg" target="_blank" rel="noopener noreferrer" style="font-size: 0.82rem; min-height: 38px; padding: 6px 10px;">
+                      <span>Google Maps</span> ↗
+                    </a>
+                    <a class="map-btn" href="https://maps.apple.com/?q=Koppelstraße+24,+22527+Hamburg" target="_blank" rel="noopener noreferrer" style="font-size: 0.82rem; min-height: 38px; padding: 6px 10px;">
+                      <span>Apple Karten</span> ↗
+                    </a>
+                  </div>
+                </div>
+              </details>
             </div>
             
             <button class="button full" id="open-maps-modal" type="button" style="margin-top: 14px;" data-i18n="mapsSummary">In Karten-App öffnen</button>
@@ -1073,32 +1128,34 @@
             <div class="timeline">
               <article class="timeline-item">
                 <h3>HSV Fußball AG</h3>
-                <p class="timeline-meta" data-i18n="periodHsv">Aktuell · seit Februar 2022</p>
-                <p><strong data-i18n="rolePlayerCare">Player Care</strong> · <span data-i18n="employment">Angestellt</span></p>
+                <p class="timeline-meta">08/2024 – heute</p>
+                <p><strong>Player Care & Administration Sport</strong> · <span data-i18n="employment">Angestellt</span></p>
                 <details>
-                  <summary data-i18n="details">Weitere Details</summary>
-                  <p>Player Care & Teammanagement.</p>
+                  <summary data-i18n="detailsHsvCurrent">Aufgaben & Details</summary>
+                  <p>• TMS-Administration und Abwicklung aller Spielertransfers[cite: 3]<br>• Zentraler Ansprechpartner für alle den Club vertretenden Berater und Agenturen[cite: 3]<br>• Koordination des gesamten Signing-Prozesses[cite: 3]</p>
                 </details>
               </article>
 
               <article class="timeline-item">
-                <h3>UEFA EURO 2020</h3>
-                <p class="timeline-meta" data-i18n="periodUefa">Juni 2021 – Juli 2021 · 2 Monate</p>
-                <p><strong>Volunteer</strong> · <span data-i18n="volunteer">Ehrenamt</span></p>
+                <h3>HSV Fußball AG</h3>
+                <p class="timeline-meta">02/2022 – 08/2024</p>
+                <p><strong>Teammanagement / Player Care</strong> · <span data-i18n="employment">Angestellt</span></p>
                 <details>
-                  <summary data-i18n="details2">Weitere Details</summary>
-                  <p>Technische Dienste & Overlay Ceremonies.</p>
+                  <summary data-i18n="detailsHsvOld">Aufgaben & Details</summary>
+                  <p>• Betreuung der Lizenzspieler (1. Herren) & deren Familien[cite: 3]<br>• Optimierung des Onboarding-Prozesses für Neuzugänge[cite: 3]<br>• Erste Anlaufstelle für jegliche Spieleranfragen[cite: 3]</p>
                 </details>
               </article>
 
               <article class="timeline-item">
-                <h3>Crawley Town Football Club</h3>
-                <p class="timeline-meta" data-i18n="periodCrawley">Sep. 2020 – Mai 2021 · 9 Monate</p>
-                <p><strong data-i18n="roleCrawley">Volunteer Business Development Manager in Deutschland, Österreich und der Schweiz</strong> · <span data-i18n="volunteer">Ehrenamt</span></p>
-                <details>
-                  <summary data-i18n="details3">Weitere Details</summary>
-                  <p data-i18n="detailCrawley">Business Development in Deutschland, Österreich und der Schweiz.</p>
-                </details>
+                <h3>UEFA EURO 2020 (München / Allianz Arena)</h3>
+                <p class="timeline-meta">06/2021 – 07/2021</p>
+                <p><strong>Volunteer (Technische Dienste & Overlay Ceremonies)</strong> · <span data-i18n="volunteer">Ehrenamt</span>[cite: 3]</p>
+              </article>
+
+              <article class="timeline-item">
+                <h3>Crawley Town FC</h3>
+                <p class="timeline-meta">08/2020 – 06/2021</p>
+                <p><strong>Volunteer Business Development (DE, AT, CH)</strong> · <span data-i18n="volunteer">Ehrenamt</span>[cite: 3]</p>
               </article>
             </div>
 
@@ -1106,42 +1163,49 @@
               <summary class="button full" style="list-style: none; text-align: center; cursor: pointer;" data-i18n="showMore">Weitere Werdegänge anzeigen</summary>
               <div class="timeline" style="margin-top: 14px;">
                 <article class="timeline-item">
-                  <h3>The FA</h3>
-                  <p class="timeline-meta">Feb. 2019 – Mai 2021 · 2 Jahre und 4 Monate</p>
-                  <p><strong>Team Liaison Officer</strong> · <span data-i18n="volunteer">Ehrenamt</span></p>
+                  <h3>West Ham United F.C (London)</h3>
+                  <p class="timeline-meta">09/2018 – 05/2021</p>
+                  <p><strong>Supervisor Player's Family Liaison Officer</strong> · <span data-i18n="employment">Angestellt</span>[cite: 4]</p>
+                  <p>• Family Liaison Officer an Spieltagen (Player Care Department)[cite: 4]<br>• Zusammenarbeit mit Spielern bei Community-Projekten[cite: 4]</p>
                 </article>
                 <article class="timeline-item">
-                  <h3>West Ham United</h3>
-                  <p class="timeline-meta">Sep. 2018 – Mai 2021 · 2 Jahre und 9 Monate</p>
-                  <p><strong>Supervisor Player Family Liaison Officer</strong> · <span data-i18n="employment">Angestellt</span></p>
-                  <p>Abteilung für die Spielerbetreuung.</p>
+                  <h3>The FA (London)</h3>
+                  <p class="timeline-meta">02/2019 – 05/2021</p>
+                  <p><strong>Team Liaison Officer</strong> · <span data-i18n="volunteer">Ehrenamt</span>[cite: 4]</p>
                 </article>
                 <article class="timeline-item">
-                  <h3>SPORT1 MEDIA GmbH</h3>
-                  <p class="timeline-meta">Mai 2019 – Juli 2019 · 3 Monate</p>
-                  <p><strong>Produktmanager</strong> · <span data-i18n="internship">Praktikum</span></p>
+                  <h3>SPORT1 Media GmbH (Ismaning)</h3>
+                  <p class="timeline-meta">05/2019 – 07/2019</p>
+                  <p><strong>Intern Product Management</strong> · <span data-i18n="internship">Praktikum</span>[cite: 4]</p>
                 </article>
                 <article class="timeline-item">
-                  <h3>Benugo</h3>
-                  <p class="timeline-meta">Sep. 2017 – Mai 2019 · 1 Jahr und 9 Monate</p>
-                  <p><strong data-i18n="customerService">Kundenservice</strong> · <span data-i18n="employment">Angestellt</span></p>
+                  <h3>Benugo / V&A Museum / Dorchester Hotel (London)</h3>
+                  <p class="timeline-meta">09/2017 – 05/2019</p>
+                  <p><strong>Customer Service</strong> (inkl. TV Choice Awards) · <span data-i18n="employment">Angestellt</span>[cite: 4]</p>
                 </article>
                 <article class="timeline-item">
                   <h3>NATO</h3>
-                  <p class="timeline-meta">Juli 2017 · 1 Monat</p>
-                  <p><strong>Konferenzassistent</strong> · <span data-i18n="volunteer">Ehrenamt</span></p>
+                  <p class="timeline-meta">07/2017</p>
+                  <p><strong>Konferenzassistent</strong> · <span data-i18n="volunteer">Ehrenamt</span>[cite: 4]</p>
                 </article>
                 <article class="timeline-item">
-                  <h3>Congrebas</h3>
-                  <p class="timeline-meta">Okt. 2015 – Nov. 2015 · 2 Monate</p>
-                  <p><strong data-i18n="eventManager">Event- und Marketing-Manager</strong> · <span data-i18n="internship">Praktikum</span></p>
+                  <h3>Congrebas (Bilbao)</h3>
+                  <p class="timeline-meta">10/2015 – 11/2015</p>
+                  <p><strong>Intern Marketing und Events</strong> · <span data-i18n="internship">Praktikum</span>[cite: 4]</p>
                 </article>
-                <h3 data-i18n="education" style="margin: 12px 0 0; color: var(--blue-dark);">Studium</h3>
+
+                <h3 data-i18n="educationSection" style="margin: 16px 0 0; color: var(--blue-dark);">Studium & Ausbildung</h3>
                 <article class="timeline-item">
-                  <h3>University Campus of Football Business Wembley</h3>
-                  <p class="timeline-meta">Sep. 2018 – Juni 2021 · 2 Jahre und 10 Monate</p>
-                  <p><strong>Football Business and Marketing</strong> · <span data-i18n="study">Studium</span></p>
-                  <p data-i18n="gradeText">Note: 1,0 (First Class Honours)</p>
+                  <h3>University Campus of Football Business (UCFB Wembley)</h3>
+                  <p class="timeline-meta">09/2018 – 06/2021</p>
+                  <p><strong>Bachelor of Arts: Football Business and Marketing</strong> · <span data-i18n="study">Studium</span>[cite: 4]</p>
+                  <p>• Note: First Class Honours (1,0)[cite: 4]<br>• Abschlussarbeit: „A comparative analysis of the ownership structures in the Bundesliga and the Premier League and its effects on the fan cultures“ (88/100)[cite: 4]</p>
+                </article>
+                <article class="timeline-item">
+                  <h3>Herderschule Rendsburg</h3>
+                  <p class="timeline-meta">08/2009 – 06/2017</p>
+                  <p><strong>Abitur</strong> · <span data-i18n="schoolDegree">Schulabschluss</span>[cite: 4]</p>
+                  <p>Schwerpunktfächer: Spanisch, Englisch, Latein[cite: 4]</p>
                 </article>
               </div>
             </details>
@@ -1163,7 +1227,7 @@
                 <div class="lang-progress-item">
                   <div class="lang-header-row">
                     <strong data-i18n="languageDe">Deutsch</strong>
-                    <span data-i18n="languageDeLevel">C2 · Verhandlungssicher / muttersprachlich</span>
+                    <span data-i18n="languageDeLevel">C2 · Muttersprache</span>
                   </div>
                   <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 100%;"></div></div>
                 </div>
@@ -1174,14 +1238,23 @@
                     <strong data-i18n="languageEn">Englisch</strong>
                     <span data-i18n="languageEnLevel">C1 · Fließend</span>
                   </div>
-                  <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 80%;"></div></div>
+                  <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 85%;"></div></div>
                 </div>
               </li>
               <li>
                 <div class="lang-progress-item">
                   <div class="lang-header-row">
                     <strong data-i18n="languageEs">Spanisch</strong>
-                    <span data-i18n="languageEsLevel">A1–A2 · Grundkenntnisse</span>
+                    <span data-i18n="languageEsLevel">Fortgeschritten / Advanced</span>
+                  </div>
+                  <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 60%;"></div></div>
+                </div>
+              </li>
+              <li>
+                <div class="lang-progress-item">
+                  <div class="lang-header-row">
+                    <strong data-i18n="languageFr">Französisch</strong>
+                    <span data-i18n="languageFrLevel">Grundkenntnisse / Basic</span>
                   </div>
                   <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 30%;"></div></div>
                 </div>
@@ -1283,11 +1356,11 @@
             <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
             <span>Telefon</span>
           </a>
-          <a class="save-icon-btn" href="mailto:Lasse.boettcher@hsv.de" title="E-Mail">
+          <a class="save-icon-btn" href="mailto:laboe99@web.de" title="E-Mail">
             <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
             <span>E-Mail</span>
           </a>
-          <a class="save-icon-btn" href="https://maps.google.com/?q=Uwe-Seeler-Allee+9,+22525+Hamburg" target="_blank" rel="noopener noreferrer" title="Adresse">
+          <a class="save-icon-btn" href="https://maps.google.com/?q=Volksparkstadion,+Hamburg" target="_blank" rel="noopener noreferrer" title="Adresse">
             <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
             <span>Adresse</span>
           </a>
@@ -1315,10 +1388,10 @@
         </div>
         <p class="small" style="margin-top:0;">Wähle deine bevorzugte Karten-Anwendung aus:</p>
         <div class="maps-content-modal">
-          <a class="map-btn" href="https://maps.google.com/?q=Uwe-Seeler-Allee+9,+22525+Hamburg" target="_blank" rel="noopener noreferrer">
+          <a class="map-btn" href="https://maps.google.com/?q=Volksparkstadion,+Hamburg" target="_blank" rel="noopener noreferrer">
             <span>Google Maps</span> ↗
           </a>
-          <a class="map-btn" href="https://maps.apple.com/?q=Uwe-Seeler-Allee+9,+22525+Hamburg" target="_blank" rel="noopener noreferrer">
+          <a class="map-btn" href="https://maps.apple.com/?q=Volksparkstadion,+Hamburg" target="_blank" rel="noopener noreferrer">
             <span>Apple Karten</span> ↗
           </a>
         </div>
@@ -1415,12 +1488,12 @@
     const CARD = {
       firstName: "Lasse",
       lastName: "Böttcher",
-      role: "Player Care & Teammanagement",
+      role: "Player Care & Administration Sport",
       company: "HSV Fußball AG",
       phone: "+491604339168",
-      email: "Lasse.boettcher@hsv.de",
-      street: "Uwe-Seeler-Allee 9",
-      zip: "22525",
+      email: "laboe99@web.de",
+      street: "Koppelstraße 24",
+      zip: "22527",
       city: "Hamburg",
       country: "Deutschland",
       url: "https://fiboe299df.github.io/HSV-Visitenkarte-/"
@@ -1430,11 +1503,11 @@
       de: {
         pageTitle: "Lasse Böttcher | HSV",
         brandName: "Lasse Böttcher",
-        brandSubtitle: "Player Care & Teammanagement",
+        brandSubtitle: "Player Care & Administration Sport",
         homeLink: "Home | HSV ↗",
         heroBadge: "Digitale Visitenkarte",
         heroTitle: "Persönlich. Gemeinsam. HSV.",
-        role: "Player Care & Teammanagement",
+        role: "Player Care & Administration Sport",
         company: "HSV Fußball AG",
         phoneButton: "☎ Telefon",
         emailButton: "✉ E-Mail",
@@ -1442,22 +1515,22 @@
         contactTitle: "Kontakt & Standort",
         phoneLabel: "Telefon",
         emailLabel: "E-Mail",
-        addressLabel: "Adresse",
+        addressLabel: "Arbeitsadresse",
+        privateAddressSummary: "🏠 Private Adresse anzeigen",
+        privateAddressLabel: "Wohnort",
         mapSummaryLabel: "Karte einblenden",
         mapsSummary: "In Karten-App öffnen",
+        aboutTitle: "Über mich",
+        aboutText: "Mit 27 Jahren jung bin ich ein engagierter und international erfahrener Experte im Bereich Player Care & Sportadministration mit umfassender Management-Praxis in der Bundesliga und Premier League. Ausgeprägte Kompetenzen in der Spielerbetreuung, Transfer-Abwicklung (TMS) sowie in der nahtlosen Koordination von Signing-Prozessen und Berater-Netzwerken. Fundiertes betriebswirtschaftliches Know-how durch das First Class Honours-Studium im Bereich Football Business & Marketing am UCFB Wembley.",
         careerTitle: "Werdegang",
         careerSubtitle: "Berufliche Stationen, Weiterbildungen und Auszeichnungen.",
-        periodHsv: "Aktuell · seit Februar 2022",
-        rolePlayerCare: "Player Care",
         employment: "Angestellt",
         volunteer: "Ehrenamt",
         internship: "Praktikum",
         study: "Studium",
-        education: "Studium",
+        schoolDegree: "Schulabschluss",
+        educationSection: "Studium & Ausbildung",
         showMore: "Weitere Werdegänge anzeigen",
-        details: "Weitere Details",
-        details2: "Weitere Details",
-        details3: "Weitere Details",
         awardsTitle: "Weiterbildungen & Auszeichnungen",
         award2018: "Stipendium",
         awardLevel1: "Weiterbildung / Zertifizierung",
@@ -1465,11 +1538,13 @@
         latinText: "Qualifikation",
         languagesTitle: "Sprachen",
         languageDe: "Deutsch",
-        languageDeLevel: "C2 · Verhandlungssicher / muttersprachlich",
+        languageDeLevel: "C2 · Muttersprache",
         languageEn: "Englisch",
         languageEnLevel: "C1 · Fließend",
         languageEs: "Spanisch",
-        languageEsLevel: "A1–A2 · Grundkenntnisse",
+        languageEsLevel: "Fortgeschritten",
+        languageFr: "Französisch",
+        languageFrLevel: "Grundkenntnisse",
         interestsTitle: "Interessen & Hobbys",
         interest1: "Fußballmanagement",
         interest2: "Fußball",
@@ -1485,6 +1560,7 @@
         walletIntro: "Füge die digitale Visitenkarte direkt zu deiner Wallet hinzu.",
         walletQr: "Oder mit dem Handy scannen",
         navContact: "Kontakt",
+        navAbout: "Über mich",
         navCareer: "Werdegang",
         navAwards: "Auszeichnungen",
         navLanguages: "Sprachen",
@@ -1501,11 +1577,11 @@
       en: {
         pageTitle: "Lasse Böttcher | HSV",
         brandName: "Lasse Böttcher",
-        brandSubtitle: "Player Care & Team Management",
+        brandSubtitle: "Player Care & Sports Administration",
         homeLink: "Home | HSV ↗",
         heroBadge: "Digital Business Card",
         heroTitle: "Personal. Together. HSV.",
-        role: "Player Care & Team Management",
+        role: "Player Care & Sports Administration",
         company: "HSV Fußball AG",
         phoneButton: "☎ Call",
         emailButton: "✉ Email",
@@ -1513,22 +1589,22 @@
         contactTitle: "Contact & Location",
         phoneLabel: "Phone",
         emailLabel: "Email",
-        addressLabel: "Address",
+        addressLabel: "Work Address",
+        privateAddressSummary: "🏠 Show Private Address",
+        privateAddressLabel: "Home Address",
         mapSummaryLabel: "Show Map",
         mapsSummary: "Open in Maps app",
+        aboutTitle: "About Me",
+        aboutText: "At 27 years young, I am a dedicated and internationally experienced professional in Player Care & Sports Administration with comprehensive management practice in the Bundesliga and Premier League. Strong expertise in player support, transfer processing (TMS), and seamless coordination of signing processes and agent networks. Sound business know-how gained through First Class Honours studies in Football Business & Marketing at UCFB Wembley.",
         careerTitle: "Career",
         careerSubtitle: "Professional roles, education, and awards.",
-        periodHsv: "Current · since February 2022",
-        rolePlayerCare: "Player Care",
         employment: "Full-time",
         volunteer: "Volunteer",
         internship: "Internship",
         study: "Degree",
-        education: "Education",
+        schoolDegree: "School Degree",
+        educationSection: "Education",
         showMore: "Show more career history",
-        details: "More details",
-        details2: "More details",
-        details3: "More details",
         awardsTitle: "Certifications & Awards",
         award2018: "Scholarship",
         awardLevel1: "Certification",
@@ -1536,11 +1612,13 @@
         latinText: "Qualification",
         languagesTitle: "Languages",
         languageDe: "German",
-        languageDeLevel: "C2 · Native / Bilingual",
+        languageDeLevel: "C2 · Native",
         languageEn: "English",
         languageEnLevel: "C1 · Fluent",
         languageEs: "Spanish",
-        languageEsLevel: "A1–A2 · Basic",
+        languageEsLevel: "Advanced",
+        languageFr: "French",
+        languageFrLevel: "Basic",
         interestsTitle: "Interests & Hobbies",
         interest1: "Football Management",
         interest2: "Football",
@@ -1556,6 +1634,7 @@
         walletIntro: "Add this digital business card directly to your wallet.",
         walletQr: "Or scan with your phone",
         navContact: "Contact",
+        navAbout: "About",
         navCareer: "Career",
         navAwards: "Awards",
         navLanguages: "Languages",
@@ -1572,11 +1651,11 @@
       fr: {
         pageTitle: "Lasse Böttcher | HSV",
         brandName: "Lasse Böttcher",
-        brandSubtitle: "Player Care & Team Management",
+        brandSubtitle: "Player Care & Administration Sport",
         homeLink: "Accueil | HSV ↗",
         heroBadge: "Carte de visite numérique",
         heroTitle: "Personnel. Ensemble. HSV.",
-        role: "Player Care & Team Management",
+        role: "Player Care & Administration Sport",
         company: "HSV Fußball AG",
         phoneButton: "☎ Téléphone",
         emailButton: "✉ E-mail",
@@ -1584,22 +1663,22 @@
         contactTitle: "Contact & Adresse",
         phoneLabel: "Téléphone",
         emailLabel: "E-mail",
-        addressLabel: "Adresse",
+        addressLabel: "Adresse pro",
+        privateAddressSummary: "🏠 Afficher l'adresse privée",
+        privateAddressLabel: "Adresse privée",
         mapSummaryLabel: "Afficher la carte",
         mapsSummary: "Ouvrir dans l'application de plans",
+        aboutTitle: "À propos de moi",
+        aboutText: "Âgé de 27 ans, je suis un professionnel engagé et expérimenté...",
         careerTitle: "Parcours",
         careerSubtitle: "Expériences professionnelles, formations et distinctions.",
-        periodHsv: "Actuel · depuis février 2022",
-        rolePlayerCare: "Player Care",
         employment: "Salarié",
         volunteer: "Bénévolat",
         internship: "Stage",
         study: "Études",
-        education: "Formation",
+        schoolDegree: "Diplôme scolaire",
+        educationSection: "Formation",
         showMore: "Afficher plus d'expériences",
-        details: "Plus de détails",
-        details2: "Plus de détails",
-        details3: "Plus de détails",
         awardsTitle: "Formations & Distinctions",
         award2018: "Bourse d'études",
         awardLevel1: "Certification",
@@ -1607,11 +1686,13 @@
         latinText: "Qualification",
         languagesTitle: "Langues",
         languageDe: "Allemand",
-        languageDeLevel: "C2 · Langue maternelle",
+        languageDeLevel: "C2 · Maternelle",
         languageEn: "Anglais",
         languageEnLevel: "C1 · Courant",
         languageEs: "Espagnol",
-        languageEsLevel: "A1–A2 · Notions",
+        languageEsLevel: "Avancé",
+        languageFr: "Français",
+        languageFrLevel: "Notions",
         interestsTitle: "Intérêts & Loisirs",
         interest1: "Management du football",
         interest2: "Football",
@@ -1627,6 +1708,7 @@
         walletIntro: "Ajoutez cette carte de visite directement à votre portefeuille.",
         walletQr: "Ou scannez avec votre téléphone",
         navContact: "Contact",
+        navAbout: "À propos",
         navCareer: "Parcours",
         navAwards: "Distinctions",
         navLanguages: "Langues",
@@ -1643,11 +1725,11 @@
       es: {
         pageTitle: "Lasse Böttcher | HSV",
         brandName: "Lasse Böttcher",
-        brandSubtitle: "Player Care & Team Management",
+        brandSubtitle: "Player Care & Administration Sport",
         homeLink: "Inicio | HSV ↗",
         heroBadge: "Tarjeta de visita digital",
         heroTitle: "Personal. Juntos. HSV.",
-        role: "Player Care & Team Management",
+        role: "Player Care & Administration Sport",
         company: "HSV Fußball AG",
         phoneButton: "☎ Teléfono",
         emailButton: "✉ Correo",
@@ -1655,22 +1737,22 @@
         contactTitle: "Contacto y ubicación",
         phoneLabel: "Teléfono",
         emailLabel: "Correo electrónico",
-        addressLabel: "Dirección",
+        addressLabel: "Dirección laboral",
+        privateAddressSummary: "🏠 Mostrar dirección privada",
+        privateAddressLabel: "Dirección privada",
         mapSummaryLabel: "Mostrar mapa",
         mapsSummary: "Abrir en la aplicación de mapas",
+        aboutTitle: "Sobre mí",
+        aboutText: "Con 27 años, soy un profesional comprometido y con experiencia internacional...",
         careerTitle: "Trayectoria",
         careerSubtitle: "Experiencia profesional, formación y reconocimientos.",
-        periodHsv: "Actual · desde febrero de 2022",
-        rolePlayerCare: "Player Care",
         employment: "Empleado",
         volunteer: "Voluntariado",
         internship: "Prácticas",
         study: "Estudios",
-        education: "Formación",
+        schoolDegree: "Título escolar",
+        educationSection: "Educación",
         showMore: "Mostrar más trayectoria",
-        details: "Más detalles",
-        details2: "Más detalles",
-        details3: "Más detalles",
         awardsTitle: "Certificaciones y Premios",
         award2018: "Beca",
         awardLevel1: "Certificación",
@@ -1678,11 +1760,13 @@
         latinText: "Cualificación",
         languagesTitle: "Idiomas",
         languageDe: "Alemán",
-        languageDeLevel: "C2 · Nativo / Bilingüe",
+        languageDeLevel: "C2 · Nativo",
         languageEn: "Inglés",
         languageEnLevel: "C1 · Fluido",
         languageEs: "Español",
-        languageEsLevel: "A1–A2 · Básico",
+        languageEsLevel: "Avanzado",
+        languageFr: "Francés",
+        languageFrLevel: "Básico",
         interestsTitle: "Intereses y Aficiones",
         interest1: "Gestión del fútbol",
         interest2: "Fútbol",
@@ -1698,6 +1782,7 @@
         walletIntro: "Añade esta tarjeta digital directamente a tu cartera.",
         walletQr: "O escanea con tu móvil",
         navContact: "Contacto",
+        navAbout: "Sobre mí",
         navCareer: "Trayectoria",
         navAwards: "Premios",
         navLanguages: "Idiomas",
@@ -1763,7 +1848,6 @@
           copyBtn.textContent = originalText;
         }, 2500);
       } catch {
-        // Fallback für iFrame-Umgebungen
         const tempInput = document.createElement("input");
         tempInput.value = CARD.url;
         document.body.appendChild(tempInput);
@@ -1796,7 +1880,7 @@
         `TITLE:${CARD.role}`,
         `TEL;TYPE=CELL,VOICE:${CARD.phone}`,
         `EMAIL;TYPE=PREF,INTERNET:${CARD.email}`,
-        `ADR;TYPE=WORK:;;${CARD.street};${CARD.city};;${CARD.zip};${CARD.country}`,
+        `ADR;TYPE=HOME:;;${CARD.street};${CARD.city};;${CARD.zip};${CARD.country}`,
         `URL:${CARD.url}`,
         "END:VCARD"
       ].join("\r\n");
@@ -1839,7 +1923,6 @@
     setupModal("open-save-modal", "save-modal", "close-save-modal");
     setupModal("open-maps-modal", "maps-modal", "close-maps-modal");
 
-    // Direkt-Weiterleitung: Aufruf mit #wallet oder ?wallet am Ende der Adresse
     const WALLET_APPLE  = "https://api.walletwallet.dev/p/16bb86a1-7a9f-4ffe-b28b-0d3106739cfd/apple.pkpass";
     const WALLET_GOOGLE = "https://pass.walletwallet.dev/p/16bb86a1-7a9f-4ffe-b28b-0d3106739cfd";
 
