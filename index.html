@@ -49,7 +49,6 @@
     body {
       margin: 0;
       color: var(--ink);
-      /* Globales HSV-Hintergrundbild für Desktop und Handy mit Farb-Overlay zur optimalen Lesbarkeit */
       background: linear-gradient(135deg, rgba(0, 42, 84, 0.75), rgba(0, 82, 159, 0.65)),
                   url("assets/hsv-hintergrund.jpg") center center / cover no-repeat fixed;
       transition: background .25s, color .25s;
@@ -117,6 +116,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .header-tools {
@@ -131,6 +131,32 @@
       -webkit-backdrop-filter: blur(10px);
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
+    }
+
+    /* Kleines HSV-Logo als Rechteck mit weißem Rand genau zwischen Header-Tools und Home-Button */
+    .header-mid-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      width: 52px;
+      padding: 4px;
+      background: var(--glass);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+
+    .header-mid-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #fff;
+      border: 2px solid #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
 
     .theme-toggle {
@@ -222,7 +248,6 @@
       color: var(--blue-dark);
     }
 
-    /* Home HSV Button: Blau eingefärbt & exakt gleiche Höhe wie Darkmode/Sprache */
     .home-link {
       display: inline-flex;
       align-items: center;
@@ -1172,6 +1197,11 @@
           </div>
         </div>
 
+        <!-- Kleines HSV-Logo als Rechteck mit weißem Rand genau in der Mitte zwischen Header-Tools und Home-Button -->
+        <div class="header-mid-logo" title="HSV Logo">
+          <img src="assets/hsv-logo.jpg" onerror="this.src='https://placehold.co/100x100/00529f/ffffff?text=HSV'" alt="HSV Logo">
+        </div>
+
         <a class="home-link" href="https://www.hsv.de/" target="_blank" rel="noopener noreferrer" data-i18n="homeLink">Home | HSV ↗</a>
       </div>
     </header>
@@ -1291,54 +1321,54 @@
             <button class="button full" id="open-work-maps-modal" type="button" style="margin-top: 12px;" data-i18n="openWorkMapsBtn">🗺️ Google Maps / Apple Maps öffnen (Arbeit)</button>
 
             <!-- BEREICH PRIVAT: VERSTECKT MIT BUTTON -->
-        <details class="private-details">
-          <summary class="private-summary">
-            <span class="private-summary-left">
-              <span>🔒</span>
-              <span data-i18n="privateSectionBtn">Privat (Kontaktdaten anzeigen)</span>
-            </span>
-            <span class="private-chevron" aria-hidden="true">▾</span>
-          </summary>
-          <div class="private-body">
-            <a class="contact-item" href="tel:+447521686937">
-              <span class="contact-icon" aria-hidden="true">☎</span>
-              <span>
-                <strong data-i18n="phoneLabel">Telefon</strong>
-                <span class="contact-value">+44 7521 686937</span>
-              </span>
-            </a>
-            <a class="contact-item" href="mailto:laboe99@web.de">
-              <span class="contact-icon" aria-hidden="true">✉</span>
-              <span>
-                <strong data-i18n="emailLabel">E-Mail</strong>
-                <span class="contact-value">laboe99@web.de</span>
-              </span>
-            </a>
-            <div class="contact-item" style="flex-direction: column; align-items: stretch;">
-              <div style="display: flex; align-items: flex-start; gap: 12px;">
-                <span class="contact-icon" aria-hidden="true">🏠</span>
-                <div style="flex: 1;">
-                  <strong data-i18n="privateAddressLabel">Adresse</strong>
-                  <span class="contact-value">Koppelstraße 24, 22527 Hamburg</span>
+            <details class="private-details">
+              <summary class="private-summary">
+                <span class="private-summary-left">
+                  <span>🔒</span>
+                  <span data-i18n="privateSectionBtn">Privat (Kontaktdaten anzeigen)</span>
+                </span>
+                <span class="private-chevron" aria-hidden="true">▾</span>
+              </summary>
+              <div class="private-body">
+                <a class="contact-item" href="tel:+447521686937">
+                  <span class="contact-icon" aria-hidden="true">☎</span>
+                  <span>
+                    <strong data-i18n="phoneLabel">Telefon</strong>
+                    <span class="contact-value">+44 7521 686937</span>
+                  </span>
+                </a>
+                <a class="contact-item" href="mailto:laboe99@web.de">
+                  <span class="contact-icon" aria-hidden="true">✉</span>
+                  <span>
+                    <strong data-i18n="emailLabel">E-Mail</strong>
+                    <span class="contact-value">laboe99@web.de</span>
+                  </span>
+                </a>
+                <div class="contact-item" style="flex-direction: column; align-items: stretch;">
+                  <div style="display: flex; align-items: flex-start; gap: 12px;">
+                    <span class="contact-icon" aria-hidden="true">🏠</span>
+                    <div style="flex: 1;">
+                      <strong data-i18n="privateAddressLabel">Adresse</strong>
+                      <span class="contact-value">Koppelstraße 24, 22527 Hamburg</span>
+                    </div>
+                  </div>
+
+                  <!-- Interaktive Google Map aufklappbar (Privat) -->
+                  <details style="margin-top: 12px; border-top: 1px solid var(--line); padding-top: 10px;">
+                    <summary style="cursor: pointer; color: var(--blue); font-weight: 800; font-size: 0.9rem;" data-i18n="privateMapSummaryLabel">Koppelstraße auf Karte anzeigen</summary>
+                    <div style="margin-top: 10px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line);">
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2368.0296787642296!2d9.935313476968856!3d53.592932072362046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b1860f0a9489d7%3A0x64b6c0f83bcdaaf2!2sKoppelstra%C3%9Fe%2024%2C%2022527%20Eimsb%C3%BCttel!5e0!3m2!1sde!2sde!4v1794509287115!5m2!1sde!2sde" width="100%" height="300" style="border:0; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Google Map Koppelstraße"></iframe>
+                    </div>
+                  </details>
                 </div>
+
+                <!-- Aufklappbarer Button / Modal für Google Map / Apple Map (Privat) -->
+                <button class="button pale full" id="open-private-maps-modal" type="button" data-i18n="openPrivateMapsBtn">🗺️ Google Maps / Apple Maps öffnen (Privat)</button>
               </div>
+            </details>
+          </section>
 
-              <!-- Interaktive Google Map aufklappbar (Privat) -->
-              <details style="margin-top: 12px; border-top: 1px solid var(--line); padding-top: 10px;">
-                <summary style="cursor: pointer; color: var(--blue); font-weight: 800; font-size: 0.9rem;" data-i18n="privateMapSummaryLabel">Koppelstraße auf Karte anzeigen</summary>
-                <div style="margin-top: 10px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line);">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2368.0296787642296!2d9.935313476968856!3d53.592932072362046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b1860f0a9489d7%3A0x64b6c0f83bcdaaf2!2sKoppelstra%C3%9Fe%2024%2C%2022527%20Eimsb%C3%BCttel!5e0!3m2!1sde!2sde!4v1794509287115!5m2!1sde!2sde" width="100%" height="300" style="border:0; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Google Map Koppelstraße"></iframe>
-                </div>
-              </details>
-            </div>
-
-            <!-- Aufklappbarer Button / Modal für Google Map / Apple Map (Privat) -->
-            <button class="button pale full" id="open-private-maps-modal" type="button" data-i18n="openPrivateMapsBtn">🗺️ Google Maps / Apple Maps öffnen (Privat)</button>
-          </div>
-        </details>
-      </section>
-
-      <section class="card" id="werdegang" aria-labelledby="career-history-title">
+          <section class="card" id="werdegang" aria-labelledby="career-history-title">
             <h2 id="career-history-title" data-i18n="careerTitle">Werdegang</h2>
             <p class="small" data-i18n="careerSubtitle">Berufliche Stationen, Weiterbildungen und Auszeichnungen.</p>
 
@@ -2356,7 +2386,6 @@
         "Deutsch (Muttersprache) | Englisch (Fliessend) | Spanisch (Fortgeschritten) | Franzoesisch (Basis)"
       ];
 
-      // Valides Minimal-PDF 1.4 mit sauberer Typografie erstellen
       let contentStream = "BT\n/F1 10 Tf\n45 795 Td\n14 TL\n";
       lines.forEach((line, idx) => {
         const escaped = line.replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)");
