@@ -1681,25 +1681,32 @@
     const WALLET_APPLE  = "https://api.walletwallet.dev/p/16bb86a1-7a9f-4ffe-b28b-0d3106739cfd/apple.pkpass";
     const WALLET_GOOGLE = "https://pass.walletwallet.dev/p/16bb86a1-7a9f-4ffe-b28b-0d3106739cfd";
 
-    new QRCode(document.getElementById("qrcode-wallet"), {
-      text: WALLET_GOOGLE,
-      width: 160,
-      height: 160,
-      colorDark: "#003b72",
-      colorLight: "#ffffff",
-      correctLevel: QRCode.CorrectLevel.M
-    });
-
-    if (location.hash === "#wallet") {
+    function openWallet() {
+      const wantsWallet = location.hash === "#wallet" || /[?&]wallet(=|&|$)/.test(location.search);
+      if (!wantsWallet) return;
       const ua = navigator.userAgent;
-      if (/iPhone|iPad|iPod/.test(ua)) {
-        location.replace(WALLET_APPLE);
-      } else if (/Android/.test(ua)) {
-        location.replace(WALLET_GOOGLE);
+      const isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      if (isIOS) {
+        location.href = WALLET_APPLE;
+      } else if (/Android/i.test(ua)) {
+        location.href = WALLET_GOOGLE;
       } else {
         document.getElementById("open-wallet-modal").click();
       }
     }
+    window.addEventListener("hashchange", openWallet);
+    openWallet();
+
+    try {
+      new QRCode(document.getElementById("qrcode-wallet"), {
+        text: WALLET_GOOGLE,
+        width: 160,
+        height: 160,
+        colorDark: "#003b72",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    } catch (err) {}
   </script>
 </body>
 </html>
