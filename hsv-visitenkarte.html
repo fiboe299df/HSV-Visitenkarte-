@@ -72,7 +72,6 @@
       margin: 0 auto;
     }
 
-    /* Header & transparente Tools */
     header {
       display: flex;
       align-items: center;
@@ -173,7 +172,6 @@
     .theme-icon.dark, body.dark .theme-icon.light { display: none; }
     body.dark .theme-icon.dark { display: block; }
 
-    /* Transparentes Sprach-Dropdown */
     .lang-dropdown {
       position: relative;
       display: inline-flex;
@@ -247,7 +245,6 @@
       white-space: nowrap;
     }
 
-    /* Hero */
     .hero {
       position: relative;
       display: grid;
@@ -352,7 +349,6 @@
       object-position: center 32%;
     }
 
-    /* Layout & Cards */
     .layout {
       display: grid;
       grid-template-columns: minmax(0, 1.45fr) minmax(275px, .75fr);
@@ -416,7 +412,6 @@
     .company { margin: 6px 0 0; color: var(--blue); font-weight: 800; }
     .small { color: var(--muted); font-size: .87rem; line-height: 1.55; margin: 6px 0 12px; }
 
-    /* Buttons & Actions */
     .actions {
       display: flex;
       flex-wrap: wrap;
@@ -457,7 +452,6 @@
       border: 1px solid var(--line);
     }
 
-    /* Social Links */
     .social-links {
       display: flex;
       flex: 1 0 100%;
@@ -492,7 +486,6 @@
     .social-link svg { width: 22px; height: 22px; fill: currentColor; }
     .social-link .xing-mark { font: 800 12px Arial, sans-serif; letter-spacing: -.5px; }
 
-    /* Modal / Neues Fenster Overlay für Buttons */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -597,7 +590,6 @@
       flex-shrink: 0;
     }
 
-    /* Zusätzliche Icons im "Kontakt speichern"-Modal */
     .save-modal-icons {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -637,7 +629,6 @@
     .save-icon-btn.xing { color: #026466; }
     .save-icon-btn.instagram { color: #c13584; }
 
-    /* Contact & Timeline */
     .contact-list { display: grid; gap: 11px; margin-top: 16px; }
     .contact-item {
       display: flex;
@@ -725,7 +716,6 @@
     }
     .info-list strong { display: block; margin-bottom: 3px; color: var(--blue-dark); }
 
-    /* Fortschrittsbalken für Sprachen */
     .lang-progress-item {
       display: grid;
       gap: 6px;
@@ -785,7 +775,6 @@
     .qr-actions { display: grid; gap: 8px; }
     .status { min-height: 1.3em; margin: 8px 0 0; color: var(--blue-dark); font-size: .84rem; font-weight: 700; }
 
-    /* Footer, Impressum & Datenschutz */
     footer { padding: 0 0 40px; color: var(--muted); font-size: .85rem; text-align: center; }
     .footer-logo {
       display: grid;
@@ -851,7 +840,6 @@
 
       <div class="header-right">
         <div class="header-tools">
-          <!-- Transparenter Darkmode Button -->
           <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Dunklen Modus umschalten" title="Dark Mode">
             <svg class="theme-icon light" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M12 3v2.2M12 18.8V21M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M3 12h2.2M18.8 12H21M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56M12 6.5A5.5 5.5 0 1 1 12 17.5A5.5 5.5 0 0 1 12 6.5Z"/>
@@ -861,7 +849,6 @@
             </svg>
           </button>
 
-          <!-- Transparentes Sprach-Dropdown -->
           <div class="lang-dropdown" title="Sprache wählen">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <circle cx="12" cy="12" r="9"/>
@@ -900,7 +887,6 @@
       </section>
 
       <div class="layout">
-        <!-- Linke Hauptspalte -->
         <div class="stack">
           <section class="card" aria-labelledby="profile-name">
             <div class="profile">
@@ -959,7 +945,6 @@
               </div>
             </div>
             
-            <!-- Button zum Öffnen der Karten-Auswahl im neuen Fenster (Modal) -->
             <button class="button full" id="open-maps-modal" type="button" style="margin-top: 14px;" data-i18n="mapsSummary">In Karten-App öffnen</button>
           </section>
 
@@ -998,7 +983,6 @@
               </article>
             </div>
 
-            <!-- "Weitere Werdegänge anzeigen" als blauer Button -->
             <details class="career-more" style="margin-top: 16px; background: transparent; border: 0; padding: 0;">
               <summary class="button full" style="list-style: none; text-align: center; cursor: pointer;" data-i18n="showMore">Weitere Werdegänge anzeigen</summary>
               <div class="timeline" style="margin-top: 14px;">
@@ -1053,7 +1037,6 @@
             </ul>
           </section>
 
-          <!-- Sprachen mit Fortschrittsbalken -->
           <section class="card" aria-labelledby="languages-title">
             <h2 id="languages-title" data-i18n="languagesTitle">Sprachen</h2>
             <ul class="info-list" style="display: grid; gap: 14px;">
@@ -1102,23 +1085,14 @@
           </section>
         </div>
 
-        <!-- Rechte Seitenleiste -->
         <aside class="stack">
-          <!-- QR-Code als blauer Button, öffnet neues Fenster -->
           <button class="button full" id="open-qr-modal" type="button" data-i18n="qrHeading">QR-Code & Link</button>
-
-          <!-- In Wallet speichern als blauer Button, öffnet neues Fenster -->
           <button class="button full" id="open-wallet-modal" type="button" data-i18n="walletHeading">In Wallet speichern</button>
-
-          <!-- Kontakt direkt speichern als blauer Button, öffnet neues Fenster -->
           <button class="button full" id="open-save-modal" type="button" data-i18n="saveHeading">Kontakt direkt speichern</button>
         </aside>
       </div>
     </main>
 
-    <!-- NEUE FENSTER / MODALS -->
-
-    <!-- QR-Code Modal -->
     <div class="modal-overlay" id="qr-modal">
       <div class="modal-card">
         <div class="modal-header">
@@ -1138,7 +1112,6 @@
       </div>
     </div>
 
-    <!-- Wallet Modal -->
     <div class="modal-overlay" id="wallet-modal">
       <div class="modal-card">
         <div class="modal-header">
@@ -1147,7 +1120,6 @@
         </div>
         <p class="small" data-i18n="walletIntro" style="margin-top:0;">Füge die digitale Visitenkarte direkt zu deiner Wallet hinzu.</p>
         <div class="wallet-buttons-modal">
-          <!-- Apple Wallet -->
           <a class="wallet-btn" href="https://gowalletpass.com/p/20637eaeb86a" target="_blank" rel="noopener noreferrer" aria-label="Zu Apple Wallet hinzufügen">
             <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
               <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 5.35c.57-.69.96-1.65.85-2.61-.84.04-1.85.56-2.44 1.25-.53.61-.99 1.59-.87 2.54 $.94.07 1.89-.48 2.46-1.18Z"/>
@@ -1155,7 +1127,6 @@
             <span>Apple</span>
           </a>
 
-          <!-- Google Wallet -->
           <a class="wallet-btn" href="https://gowalletpass.com/p/20637eaeb86a" target="_blank" rel="noopener noreferrer" aria-label="Zu Google Wallet hinzufügen">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path fill="#4285F4" d="M21.5 12.25c0-.85-.08-1.67-.23-2.46H12v4.66h5.38c-.23 1.25-.93 2.31-1.98 3.02v2.51h3.21c1.88-1.73 3.09-4.28 3.09-7.73Z"/>
@@ -1169,7 +1140,6 @@
       </div>
     </div>
 
-    <!-- Kontakt Speichern Modal (mit zusätzlichen Icons unten) -->
     <div class="modal-overlay" id="save-modal">
       <div class="modal-card">
         <div class="modal-header">
@@ -1179,34 +1149,27 @@
         <p class="small" data-i18n="saveIntro" style="margin-top:0;">Speichere alle Kontaktdaten als vCard (.vcf) im Adressbuch.</p>
         <button class="button full" id="save-contact-side" type="button" data-i18n="saveContactSide">Kontakt speichern (.vcf)</button>
 
-        <!-- Zusätzliche Icons unter Kontakt Speichern -->
         <div class="save-modal-icons">
-          <!-- Telefon -->
           <a class="save-icon-btn" href="tel:+491604339168" title="Telefon">
             <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
             <span>Telefon</span>
           </a>
-          <!-- E-Mail -->
           <a class="save-icon-btn" href="mailto:Lasse.boettcher@hsv.de" title="E-Mail">
             <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
             <span>E-Mail</span>
           </a>
-          <!-- Adresse -->
           <a class="save-icon-btn" href="https://maps.google.com/?q=Uwe-Seeler-Allee+9,+22525+Hamburg" target="_blank" rel="noopener noreferrer" title="Adresse">
             <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
             <span>Adresse</span>
           </a>
-          <!-- LinkedIn -->
           <a class="save-icon-btn linkedin" href="https://de.linkedin.com/in/lasse-b%C3%B6ttcher-954938154" target="_blank" rel="noopener noreferrer" title="LinkedIn">
             <svg viewBox="0 0 24 24"><path d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.5H4.97V9h2.96v9.5ZM6.45 7.7a1.72 1.72 0 1 1 0-3.44 1.72 1.72 0 0 1 0 3.44ZM19 18.5h-2.96v-4.62c0-1.1-.02-2.52-1.54-2.52-1.55 0-1.79 1.2-1.79 2.44v4.7H9.75V9h2.84v1.3h.04c.4-.75 1.36-1.54 2.8-1.54 3 0 3.57 1.97 3.57 4.53v5.21Z"/></svg>
             <span>LinkedIn</span>
           </a>
-          <!-- XING -->
           <a class="save-icon-btn xing" href="https://www.xing.com/profile/Lasse_Boettcher" target="_blank" rel="noopener noreferrer" title="XING">
             <svg viewBox="0 0 24 24"><path d="M18.18 2h-3.45a.65.65 0 0 0-.46.2l-4.5 5.25L5.73 2.2a.65.65 0 0 0-.46-.2H2.18a.32.32 0 0 0-.23.55l5.08 5.43-4.8 5.82a.32.32 0 0 0 .24.52h3.45c.18 0 .35-.08.46-.2l4.35-5.22 4.07 5.07c.11.14.28.22.46.22h3.45a.32.32 0 0 0 .23-.55l-4.82-5.96L21.41 2.55A.32.32 0 0 0 18.18 2Z"/></svg>
             <span>XING</span>
           </a>
-          <!-- Instagram -->
           <a class="save-icon-btn instagram" href="https://www.instagram.com/laboe1999?exln=MW95Zm91aXIzaDJuOQ==" target="_blank" rel="noopener noreferrer" title="Instagram">
             <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7Zm5 2.3a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm0 2.2a3.3 3.3 0 1 0 0 6.6 3.3 3.3 0 0 0 0-6.6Zm5.7-3.9a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6Z"/></svg>
             <span>Instagram</span>
@@ -1215,7 +1178,6 @@
       </div>
     </div>
 
-    <!-- Karten-App Auswahl Modal -->
     <div class="modal-overlay" id="maps-modal">
       <div class="modal-card">
         <div class="modal-header">
@@ -1240,7 +1202,6 @@
       </div>
       <div>HSV · Lasse Böttcher</div>
       <div class="legal-wrap">
-        <!-- Impressum -->
         <details class="legal-box">
           <summary data-i18n="imprint">Impressum</summary>
           <div class="legal-body">
@@ -1294,7 +1255,6 @@
           </div>
         </details>
 
-        <!-- Datenschutz -->
         <details class="legal-box">
           <summary data-i18n="privacy">Datenschutz</summary>
           <div class="legal-body">
@@ -1586,7 +1546,6 @@
 
     let currentLang = localStorage.getItem("hsv_lang") || "de";
 
-    // Darkmode Initialisierung
     const themeToggle = document.getElementById("theme-toggle");
     if (localStorage.getItem("hsv_theme") === "dark") {
       document.body.classList.add("dark");
@@ -1596,7 +1555,6 @@
       localStorage.setItem("hsv_theme", document.body.classList.contains("dark") ? "dark" : "light");
     });
 
-    // Sprachauswahl Dropdown
     const langSelect = document.getElementById("lang-select");
     function applyLanguage(lang) {
       currentLang = T[lang] ? lang : "de";
@@ -1613,7 +1571,6 @@
     langSelect.addEventListener("change", (e) => applyLanguage(e.target.value));
     applyLanguage(currentLang);
 
-    // QR-Code generieren
     const qrContainer = document.getElementById("qrcode");
     new QRCode(qrContainer, {
       text: CARD.url,
@@ -1624,7 +1581,6 @@
       correctLevel: QRCode.CorrectLevel.H
     });
 
-    // Link kopieren
     const statusEl = document.getElementById("qr-status");
     document.getElementById("copy-link").addEventListener("click", async () => {
       try {
@@ -1636,7 +1592,6 @@
       }
     });
 
-    // QR-Code als PNG herunterladen
     document.getElementById("download-qr").addEventListener("click", () => {
       const canvas = qrContainer.querySelector("canvas");
       const img = qrContainer.querySelector("img");
@@ -1648,7 +1603,6 @@
       a.click();
     });
 
-    // vCard (.vcf) generieren & herunterladen
     function downloadVCard() {
       const vcard = [
         "BEGIN:VCARD",
@@ -1676,7 +1630,6 @@
     document.getElementById("save-contact").addEventListener("click", downloadVCard);
     document.getElementById("save-contact-side").addEventListener("click", downloadVCard);
 
-    // Modal / Neues Fenster Steuerung
     function setupModal(openBtnId, modalId, closeBtnId) {
       const openBtn = document.getElementById(openBtnId);
       const modal = document.getElementById(modalId);
