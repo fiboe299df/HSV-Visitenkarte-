@@ -237,6 +237,56 @@
       color: var(--muted);
     }
 
+    .quick-nav {
+      position: sticky;
+      top: 8px;
+      z-index: 20;
+      display: flex;
+      gap: 2px;
+      margin-bottom: 14px;
+      padding: 6px;
+      overflow-x: auto;
+      background: var(--glass);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      scrollbar-width: none;
+    }
+    .quick-nav::-webkit-scrollbar { display: none; }
+    .quick-nav a, .quick-nav button {
+      flex: 1 0 64px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 4px;
+      color: var(--blue-dark);
+      font: inherit;
+      font-size: .66rem;
+      font-weight: 700;
+      text-decoration: none;
+      background: transparent;
+      border: 0;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color .15s;
+    }
+    .quick-nav a:hover, .quick-nav button:hover { background: rgba(0, 82, 159, .09); }
+    body.dark .quick-nav a:hover, body.dark .quick-nav button:hover { background: rgba(255, 255, 255, .1); }
+    .quick-nav a:focus-visible, .quick-nav button:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+    .quick-nav svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    section[id] { scroll-margin-top: 92px; }
+
     .home-link {
       color: var(--blue);
       font-size: .92rem;
@@ -887,6 +937,17 @@
       </div>
     </header>
 
+    <nav class="quick-nav" aria-label="Schnellzugriff">
+      <a href="#kontakt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg><span data-i18n="navContact">Kontakt</span></a>
+      <a href="#werdegang"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h18v11H3zM8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg><span data-i18n="navCareer">Werdegang</span></a>
+      <a href="#auszeichnungen"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M8.5 13.5 7 21l5-3 5 3-1.5-7.5"/></svg><span data-i18n="navAwards">Auszeichnungen</span></a>
+      <a href="#sprachen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg><span data-i18n="navLanguages">Sprachen</span></a>
+      <a href="#interessen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg><span data-i18n="navInterests">Interessen</span></a>
+      <a href="#karriere"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.2-4.2"/></svg><span data-i18n="navPortal">Karriere</span></a>
+      <button type="button" data-open="open-wallet-modal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Zm0 0V6a2 2 0 0 1 2-2h11M16 14h2.5"/></svg><span data-i18n="navWallet">Wallet</span></button>
+      <button type="button" data-open="open-qr-modal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 14h2v6h-4M14 18h2v2"/></svg><span data-i18n="navQr">QR-Code</span></button>
+    </nav>
+
     <main>
       <section class="hero" aria-labelledby="welcome-title">
         <div class="hero-content">
@@ -968,7 +1029,7 @@
             <button class="button full" id="open-maps-modal" type="button" style="margin-top: 14px;" data-i18n="mapsSummary">In Karten-App öffnen</button>
           </section>
 
-          <section class="card" aria-labelledby="career-history-title">
+          <section class="card" id="werdegang" aria-labelledby="career-history-title">
             <h2 id="career-history-title" data-i18n="careerTitle">Werdegang</h2>
             <p class="small" data-i18n="careerSubtitle">Berufliche Stationen, Weiterbildungen und Auszeichnungen.</p>
             <div class="timeline">
@@ -1048,7 +1109,7 @@
             </details>
           </section>
 
-          <section class="card" aria-labelledby="awards-title">
+          <section class="card" id="auszeichnungen" aria-labelledby="awards-title">
             <h2 id="awards-title" data-i18n="awardsTitle">Weiterbildungen & Auszeichnungen</h2>
             <ul class="info-list">
               <li><strong>2018</strong><span data-i18n="award2018">Stipendium</span></li>
@@ -1057,7 +1118,7 @@
             </ul>
           </section>
 
-          <section class="card" aria-labelledby="languages-title">
+          <section class="card" id="sprachen" aria-labelledby="languages-title">
             <h2 id="languages-title" data-i18n="languagesTitle">Sprachen</h2>
             <ul class="info-list" style="display: grid; gap: 14px;">
               <li>
@@ -1090,7 +1151,7 @@
             </ul>
           </section>
 
-          <section class="card" aria-labelledby="interests-title">
+          <section class="card" id="interessen" aria-labelledby="interests-title">
             <h2 id="interests-title" data-i18n="interestsTitle">Interessen & Hobbys</h2>
             <div class="chips">
               <span class="chip" data-i18n="interest1">Fußballmanagement</span>
@@ -1098,7 +1159,7 @@
             </div>
           </section>
 
-          <section class="card" aria-labelledby="careerPortal">
+          <section class="card" id="karriere" aria-labelledby="careerPortal">
             <h2 id="careerPortal" data-i18n="careerPortalTitle">Karriereportal</h2>
             <p class="small" data-i18n="careerIntro">Bewerbungen und Karriereinformationen findest du im offiziellen HSV-Karriereportal.</p>
             <a class="button full" href="https://www.hsv.de/karriere" target="_blank" rel="noopener noreferrer" data-i18n="careerLink">Zum HSV-Karriereportal ↗</a>
@@ -1378,6 +1439,14 @@
         walletHeading: "In Wallet speichern",
         walletIntro: "Füge die digitale Visitenkarte direkt zu deiner Wallet hinzu.",
         walletQr: "Oder mit dem Handy scannen",
+        navContact: "Kontakt",
+        navCareer: "Werdegang",
+        navAwards: "Auszeichnungen",
+        navLanguages: "Sprachen",
+        navInterests: "Interessen",
+        navPortal: "Karriere",
+        navWallet: "Wallet",
+        navQr: "QR-Code",
         saveHeading: "Kontakt direkt speichern",
         saveIntro: "Speichere alle Kontaktdaten als vCard (.vcf) im Adressbuch.",
         saveContactSide: "Kontakt speichern (.vcf)",
@@ -1440,6 +1509,14 @@
         walletHeading: "Save to Wallet",
         walletIntro: "Add this digital business card directly to your wallet.",
         walletQr: "Or scan with your phone",
+        navContact: "Contact",
+        navCareer: "Career",
+        navAwards: "Awards",
+        navLanguages: "Languages",
+        navInterests: "Interests",
+        navPortal: "Jobs",
+        navWallet: "Wallet",
+        navQr: "QR code",
         saveHeading: "Save Contact Directly",
         saveIntro: "Save all contact details as a vCard (.vcf) to your address book.",
         saveContactSide: "Save Contact (.vcf)",
@@ -1502,6 +1579,14 @@
         walletHeading: "Ajouter au Wallet",
         walletIntro: "Ajoutez cette carte de visite directement à votre portefeuille.",
         walletQr: "Ou scannez avec votre téléphone",
+        navContact: "Contact",
+        navCareer: "Parcours",
+        navAwards: "Distinctions",
+        navLanguages: "Langues",
+        navInterests: "Intérêts",
+        navPortal: "Carrières",
+        navWallet: "Wallet",
+        navQr: "Code QR",
         saveHeading: "Enregistrer directement",
         saveIntro: "Enregistrez les coordonnées au format vCard (.vcf).",
         saveContactSide: "Enregistrer le contact (.vcf)",
@@ -1564,6 +1649,14 @@
         walletHeading: "Guardar en Wallet",
         walletIntro: "Añade esta tarjeta digital directamente a tu cartera.",
         walletQr: "O escanea con tu móvil",
+        navContact: "Contacto",
+        navCareer: "Trayectoria",
+        navAwards: "Premios",
+        navLanguages: "Idiomas",
+        navInterests: "Intereses",
+        navPortal: "Empleo",
+        navWallet: "Wallet",
+        navQr: "Código QR",
         saveHeading: "Guardar contacto",
         saveIntro: "Guarda los datos de contacto como vCard (.vcf) en tu agenda.",
         saveContactSide: "Guardar contacto (.vcf)",
@@ -1694,6 +1787,9 @@
         document.getElementById("open-wallet-modal").click();
       }
     }
+    document.querySelectorAll("[data-open]").forEach(btn => {
+      btn.addEventListener("click", () => document.getElementById(btn.dataset.open).click());
+    });
     window.addEventListener("hashchange", openWallet);
     openWallet();
 
