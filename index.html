@@ -492,51 +492,78 @@
     .social-link svg { width: 22px; height: 22px; fill: currentColor; }
     .social-link .xing-mark { font: 800 12px Arial, sans-serif; letter-spacing: -.5px; }
 
-    /* Akkordeons im einheitlichen blauen Design */
-    .qr-accordion, .wallet-accordion, .save-accordion {
-      margin-top: 0;
-      padding: 0;
-      background: var(--card-bg);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      overflow: hidden;
+    /* Modal / Neues Fenster Overlay für Buttons */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 29, 58, .6);
+      backdrop-filter: blur(6px);
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease;
     }
 
-    .qr-accordion summary, .wallet-accordion summary, .save-accordion summary {
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      width: min(420px, 100%);
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 24px 60px rgba(0, 52, 100, .25);
+      position: relative;
+      transform: translateY(10px);
+      transition: transform .2s ease;
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: translateY(0);
+    }
+
+    .modal-header {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 16px 18px;
-      color: #fff;
-      background: var(--summary-bg);
-      font-size: 1rem;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .modal-header h3 {
+      margin: 0;
+      color: var(--blue-dark);
+      font-size: 1.15rem;
       font-weight: 800;
-      list-style: none;
+    }
+
+    .modal-close {
+      background: var(--blue-pale);
+      border: 0;
+      color: var(--blue-dark);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      font-weight: 800;
       cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: background .15s;
+    }
+    .modal-close:hover {
+      background: rgba(0, 82, 159, .15);
     }
 
-    .qr-accordion summary::-webkit-details-marker,
-    .wallet-accordion summary::-webkit-details-marker,
-    .save-accordion summary::-webkit-details-marker { display: none; }
-
-    .qr-accordion summary::after, .wallet-accordion summary::after, .save-accordion summary::after {
-      margin-left: auto;
-      content: "+";
-      font-size: 1.3rem;
-    }
-    .qr-accordion[open] summary::after,
-    .wallet-accordion[open] summary::after,
-    .save-accordion[open] summary::after { content: "−"; }
-
-    .qr-content, .wallet-content, .save-content {
-      padding: 20px;
-      background: var(--glass);
-    }
-
-    .wallet-buttons {
+    .wallet-buttons-modal {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 12px;
       margin-top: 10px;
     }
 
@@ -545,13 +572,13 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      min-height: 42px;
+      min-height: 48px;
       padding: 10px 12px;
       background: var(--card-bg);
       border: 1px solid var(--line);
       border-radius: 12px;
       color: var(--blue-dark);
-      font-size: .88rem;
+      font-size: .9rem;
       font-weight: 800;
       text-decoration: none;
       box-shadow: 0 4px 12px rgba(0, 52, 100, .04);
@@ -569,6 +596,46 @@
       height: 22px;
       flex-shrink: 0;
     }
+
+    /* Zusätzliche Icons im "Kontakt speichern"-Modal */
+    .save-modal-icons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .save-icon-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 12px 8px;
+      background: var(--blue-pale);
+      color: var(--blue-dark);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: .75rem;
+      font-weight: 700;
+      transition: transform .15s, background-color .15s;
+    }
+
+    .save-icon-btn:hover {
+      transform: translateY(-2px);
+      background: rgba(0, 82, 159, .15);
+    }
+
+    .save-icon-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    .save-icon-btn.linkedin { color: #0a66c2; }
+    .save-icon-btn.xing { color: #026466; }
+    .save-icon-btn.instagram { color: #c13584; }
 
     /* Contact & Timeline */
     .contact-list { display: grid; gap: 11px; margin-top: 16px; }
@@ -597,66 +664,11 @@
     .contact-item strong { display: block; margin-bottom: 3px; color: var(--blue-dark); }
     .contact-value { color: var(--muted); overflow-wrap: anywhere; }
 
-    /* Interaktive eingebettete Karte & Maps Accordion */
-    .map-embed-container {
-      margin-top: 14px;
-      width: 100%;
-      height: 220px;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background: #e9f0f8;
-    }
-
-    .map-embed-container iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-    }
-
-    body.dark .map-embed-container iframe {
-      filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%);
-    }
-
-    .maps-accordion {
-      margin-top: 14px;
-      background: var(--card-bg);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-
-    .maps-accordion summary {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      min-height: 44px;
-      padding: 11px 16px;
-      color: var(--button-text);
-      background: var(--blue);
-      border-radius: 12px;
-      font-size: .92rem;
-      font-weight: 800;
-      list-style: none;
-      cursor: pointer;
-      text-align: center;
-      transition: transform .15s, box-shadow .15s;
-    }
-
-    .maps-accordion summary::-webkit-details-marker { display: none; }
-    .maps-accordion summary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 18px rgba(0, 82, 159, .16);
-    }
-
-    .maps-content {
+    .maps-content-modal {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
-      padding: 14px;
-      background: var(--glass);
+      margin-top: 10px;
     }
 
     .map-btn {
@@ -664,20 +676,20 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      min-height: 42px;
+      min-height: 44px;
       padding: 10px 12px;
       background: var(--blue-pale);
       color: var(--blue-dark);
       border: 1px solid var(--line);
-      border-radius: 10px;
-      font-size: .88rem;
+      border-radius: 12px;
+      font-size: .9rem;
       font-weight: 800;
       text-decoration: none;
       transition: background-color .15s;
     }
 
     .map-btn:hover {
-      background: rgba(0, 82, 159, .12);
+      background: rgba(0, 82, 159, .15);
     }
 
     .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 14px; }
@@ -747,10 +759,8 @@
       transition: width .6s ease;
     }
 
-    .qr-content {
-      padding: 20px;
+    .qr-content-modal {
       text-align: center;
-      background: var(--glass);
     }
 
     #qrcode {
@@ -823,7 +833,8 @@
       .profile-photo { flex-basis: 78px; width: 78px; height: 78px; border-radius: 18px; }
       .actions > .button { flex: 1 1 100%; }
       .hero { border-radius: 22px; }
-      .maps-content, .wallet-buttons { grid-template-columns: 1fr; }
+      .wallet-buttons-modal, .maps-content-modal { grid-template-columns: 1fr; }
+      .save-modal-icons { grid-template-columns: repeat(3, 1fr); }
     }
   </style>
 </head>
@@ -947,30 +958,9 @@
                 </span>
               </div>
             </div>
-
-            <!-- Interaktive, eingebettete Google Maps Karte direkt auf der Visitenkarte -->
-            <div class="map-embed-container" aria-label="Standort Karte">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2369.349757049444!2d9.907954976865615!3d53.58788397234739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b1869e54a88ef1%3A0x6b7de5cd7d5a5cf2!2sUwe-Seeler-Allee%209%2C%2022525%20Hamburg!5e0!3m2!1sde!2sde!4v1710000000000!5m2!1sde!2sde" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade"
-                title="Standort Uwe-Seeler-Allee 9, Hamburg">
-              </iframe>
-            </div>
             
-            <!-- Interaktive, aufklappbare Karten-App Auswahl -->
-            <details class="maps-accordion">
-              <summary data-i18n="mapsSummary">In Karten-App öffnen</summary>
-              <div class="maps-content">
-                <a class="map-btn" href="https://maps.google.com/?q=Uwe-Seeler-Allee+9,+22525+Hamburg" target="_blank" rel="noopener noreferrer">
-                  <span>Google Maps</span> ↗
-                </a>
-                <a class="map-btn" href="https://maps.apple.com/?q=Uwe-Seeler-Allee+9,+22525+Hamburg" target="_blank" rel="noopener noreferrer">
-                  <span>Apple Karten</span> ↗
-                </a>
-              </div>
-            </details>
+            <!-- Button zum Öffnen der Karten-Auswahl im neuen Fenster (Modal) -->
+            <button class="button full" id="open-maps-modal" type="button" style="margin-top: 14px;" data-i18n="mapsSummary">In Karten-App öffnen</button>
           </section>
 
           <section class="card" aria-labelledby="career-history-title">
@@ -1114,60 +1104,135 @@
 
         <!-- Rechte Seitenleiste -->
         <aside class="stack">
-          <!-- QR-Code als aufklappbarer Button in Blau -->
-          <details class="qr-accordion">
-            <summary data-i18n="qrHeading">QR-Code & Link</summary>
-            <div class="qr-content">
-              <p class="small" data-i18n="qrIntro" style="margin-top:0;">Scannen oder den Link direkt öffnen.</p>
-              <div id="qrcode" aria-label="QR-Code"></div>
-              <a class="qr-target" id="qr-target" href="https://fiboe299df.github.io/HSV-Visitenkarte-/" target="_blank" rel="noopener noreferrer">https://fiboe299df.github.io/HSV-Visitenkarte-/</a>
-              <div class="qr-actions">
-                <button class="button pale full" id="copy-link" type="button" data-i18n="copyLink">Link kopieren</button>
-                <button class="button pale full" id="download-qr" type="button" data-i18n="downloadQr">QR-Code herunterladen</button>
-              </div>
-              <p class="status" id="qr-status" aria-live="polite"></p>
-            </div>
-          </details>
+          <!-- QR-Code als blauer Button, öffnet neues Fenster -->
+          <button class="button full" id="open-qr-modal" type="button" data-i18n="qrHeading">QR-Code & Link</button>
 
-          <!-- In Wallet speichern als aufklappbarer Button in Blau -->
-          <details class="wallet-accordion">
-            <summary data-i18n="walletHeading">In Wallet speichern</summary>
-            <div class="wallet-content">
-              <p class="small" data-i18n="walletIntro" style="margin-top:0;">Füge die digitale Visitenkarte direkt zu deiner Wallet hinzu.</p>
-              <div class="wallet-buttons">
-                <!-- Apple Wallet -->
-                <a class="wallet-btn" href="https://gowalletpass.com/p/20637eaeb86a" target="_blank" rel="noopener noreferrer" aria-label="Zu Apple Wallet hinzufügen">
-                  <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
-                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 5.35c.57-.69.96-1.65.85-2.61-.84.04-1.85.56-2.44 1.25-.53.61-.99 1.59-.87 2.54 $.94.07 1.89-.48 2.46-1.18Z"/>
-                  </svg>
-                  <span>Apple</span>
-                </a>
+          <!-- In Wallet speichern als blauer Button, öffnet neues Fenster -->
+          <button class="button full" id="open-wallet-modal" type="button" data-i18n="walletHeading">In Wallet speichern</button>
 
-                <!-- Google Wallet -->
-                <a class="wallet-btn" href="https://gowalletpass.com/p/20637eaeb86a" target="_blank" rel="noopener noreferrer" aria-label="Zu Google Wallet hinzufügen">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path fill="#4285F4" d="M21.5 12.25c0-.85-.08-1.67-.23-2.46H12v4.66h5.38c-.23 1.25-.93 2.31-1.98 3.02v2.51h3.21c1.88-1.73 3.09-4.28 3.09-7.73Z"/>
-                    <path fill="#34A853" d="M12 22c2.75 0 5.06-.91 6.74-2.48l-3.21-2.51c-.91.61-2.07.97-3.53.97-2.72 0-5.02-1.84-5.84-4.32H2.82v2.59C4.52 19.82 7.97 22 12 22Z"/>
-                    <path fill="#FBBC05" d="M6.16 13.66c-.21-.61-.33-1.26-.33-1.66s.12-1.05.33-1.66V7.75H2.82C2.1 9.19 1.7 10.82 1.7 12s.4 2.81 1.12 4.25l3.34-2.59Z"/>
-                    <path fill="#EA4335" d="M12 5.98c1.5 0 2.84.52 3.9 1.53l2.93-2.93C17.06 2.97 14.75 2 12 2 7.97 2 4.52 4.18 2.82 7.75l3.34 2.59c.82-2.48 3.12-4.36 5.84-4.36Z"/>
-                  </svg>
-                  <span>Google</span>
-                </a>
-              </div>
-            </div>
-          </details>
-
-          <!-- Kontakt direkt speichern als aufklappbarer Button in Blau -->
-          <details class="save-accordion">
-            <summary data-i18n="saveHeading">Kontakt direkt speichern</summary>
-            <div class="save-content">
-              <p class="small" data-i18n="saveIntro" style="margin-top:0;">Speichere alle Kontaktdaten als vCard (.vcf) im Adressbuch.</p>
-              <button class="button full" id="save-contact-side" type="button" data-i18n="saveContactSide">Kontakt speichern (.vcf)</button>
-            </div>
-          </details>
+          <!-- Kontakt direkt speichern als blauer Button, öffnet neues Fenster -->
+          <button class="button full" id="open-save-modal" type="button" data-i18n="saveHeading">Kontakt direkt speichern</button>
         </aside>
       </div>
     </main>
+
+    <!-- NEUE FENSTER / MODALS -->
+
+    <!-- QR-Code Modal -->
+    <div class="modal-overlay" id="qr-modal">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 data-i18n="qrHeading">QR-Code & Link</h3>
+          <button class="modal-close" id="close-qr-modal" type="button">×</button>
+        </div>
+        <div class="qr-content-modal">
+          <p class="small" data-i18n="qrIntro" style="margin-top:0;">Scannen oder den Link direkt öffnen.</p>
+          <div id="qrcode" aria-label="QR-Code"></div>
+          <a class="qr-target" id="qr-target" href="https://fiboe299df.github.io/HSV-Visitenkarte-/" target="_blank" rel="noopener noreferrer">https://fiboe299df.github.io/HSV-Visitenkarte-/</a>
+          <div class="qr-actions">
+            <button class="button pale full" id="copy-link" type="button" data-i18n="copyLink">Link kopieren</button>
+            <button class="button pale full" id="download-qr" type="button" data-i18n="downloadQr">QR-Code herunterladen</button>
+          </div>
+          <p class="status" id="qr-status" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wallet Modal -->
+    <div class="modal-overlay" id="wallet-modal">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 data-i18n="walletHeading">In Wallet speichern</h3>
+          <button class="modal-close" id="close-wallet-modal" type="button">×</button>
+        </div>
+        <p class="small" data-i18n="walletIntro" style="margin-top:0;">Füge die digitale Visitenkarte direkt zu deiner Wallet hinzu.</p>
+        <div class="wallet-buttons-modal">
+          <!-- Apple Wallet -->
+          <a class="wallet-btn" href="https://gowalletpass.com/p/20637eaeb86a" target="_blank" rel="noopener noreferrer" aria-label="Zu Apple Wallet hinzufügen">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 5.35c.57-.69.96-1.65.85-2.61-.84.04-1.85.56-2.44 1.25-.53.61-.99 1.59-.87 2.54 $.94.07 1.89-.48 2.46-1.18Z"/>
+            </svg>
+            <span>Apple</span>
+          </a>
+
+          <!-- Google Wallet -->
+          <a class="wallet-btn" href="https://gowalletpass.com/p/20637eaeb86a" target="_blank" rel="noopener noreferrer" aria-label="Zu Google Wallet hinzufügen">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#4285F4" d="M21.5 12.25c0-.85-.08-1.67-.23-2.46H12v4.66h5.38c-.23 1.25-.93 2.31-1.98 3.02v2.51h3.21c1.88-1.73 3.09-4.28 3.09-7.73Z"/>
+              <path fill="#34A853" d="M12 22c2.75 0 5.06-.91 6.74-2.48l-3.21-2.51c-.91.61-2.07.97-3.53.97-2.72 0-5.02-1.84-5.84-4.32H2.82v2.59C4.52 19.82 7.97 22 12 22Z"/>
+              <path fill="#FBBC05" d="M6.16 13.66c-.21-.61-.33-1.26-.33-1.66s.12-1.05.33-1.66V7.75H2.82C2.1 9.19 1.7 10.82 1.7 12s.4 2.81 1.12 4.25l3.34-2.59Z"/>
+              <path fill="#EA4335" d="M12 5.98c1.5 0 2.84.52 3.9 1.53l2.93-2.93C17.06 2.97 14.75 2 12 2 7.97 2 4.52 4.18 2.82 7.75l3.34 2.59c.82-2.48 3.12-4.36 5.84-4.36Z"/>
+            </svg>
+            <span>Google</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kontakt Speichern Modal (mit zusätzlichen Icons unten) -->
+    <div class="modal-overlay" id="save-modal">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 data-i18n="saveHeading">Kontakt direkt speichern</h3>
+          <button class="modal-close" id="close-save-modal" type="button">×</button>
+        </div>
+        <p class="small" data-i18n="saveIntro" style="margin-top:0;">Speichere alle Kontaktdaten als vCard (.vcf) im Adressbuch.</p>
+        <button class="button full" id="save-contact-side" type="button" data-i18n="saveContactSide">Kontakt speichern (.vcf)</button>
+
+        <!-- Zusätzliche Icons unter Kontakt Speichern -->
+        <div class="save-modal-icons">
+          <!-- Telefon -->
+          <a class="save-icon-btn" href="tel:+491604339168" title="Telefon">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            <span>Telefon</span>
+          </a>
+          <!-- E-Mail -->
+          <a class="save-icon-btn" href="mailto:Lasse.boettcher@hsv.de" title="E-Mail">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <span>E-Mail</span>
+          </a>
+          <!-- Adresse -->
+          <a class="save-icon-btn" href="https://maps.google.com/?q=Uwe-Seeler-Allee+9,+22525+Hamburg" target="_blank" rel="noopener noreferrer" title="Adresse">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>Adresse</span>
+          </a>
+          <!-- LinkedIn -->
+          <a class="save-icon-btn linkedin" href="https://de.linkedin.com/in/lasse-b%C3%B6ttcher-954938154" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.5H4.97V9h2.96v9.5ZM6.45 7.7a1.72 1.72 0 1 1 0-3.44 1.72 1.72 0 0 1 0 3.44ZM19 18.5h-2.96v-4.62c0-1.1-.02-2.52-1.54-2.52-1.55 0-1.79 1.2-1.79 2.44v4.7H9.75V9h2.84v1.3h.04c.4-.75 1.36-1.54 2.8-1.54 3 0 3.57 1.97 3.57 4.53v5.21Z"/></svg>
+            <span>LinkedIn</span>
+          </a>
+          <!-- XING -->
+          <a class="save-icon-btn xing" href="https://www.xing.com/profile/Lasse_Boettcher" target="_blank" rel="noopener noreferrer" title="XING">
+            <svg viewBox="0 0 24 24"><path d="M18.18 2h-3.45a.65.65 0 0 0-.46.2l-4.5 5.25L5.73 2.2a.65.65 0 0 0-.46-.2H2.18a.32.32 0 0 0-.23.55l5.08 5.43-4.8 5.82a.32.32 0 0 0 .24.52h3.45c.18 0 .35-.08.46-.2l4.35-5.22 4.07 5.07c.11.14.28.22.46.22h3.45a.32.32 0 0 0 .23-.55l-4.82-5.96L21.41 2.55A.32.32 0 0 0 18.18 2Z"/></svg>
+            <span>XING</span>
+          </a>
+          <!-- Instagram -->
+          <a class="save-icon-btn instagram" href="https://www.instagram.com/laboe1999?exln=MW95Zm91aXIzaDJuOQ==" target="_blank" rel="noopener noreferrer" title="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7Zm5 2.3a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm0 2.2a3.3 3.3 0 1 0 0 6.6 3.3 3.3 0 0 0 0-6.6Zm5.7-3.9a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6Z"/></svg>
+            <span>Instagram</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Karten-App Auswahl Modal -->
+    <div class="modal-overlay" id="maps-modal">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 data-i18n="mapsSummary">In Karten-App öffnen</h3>
+          <button class="modal-close" id="close-maps-modal" type="button">×</button>
+        </div>
+        <p class="small" style="margin-top:0;">Wähle deine bevorzugte Karten-Anwendung aus:</p>
+        <div class="maps-content-modal">
+          <a class="map-btn" href="https://maps.google.com/?q=Uwe-Seeler-Allee+9,+22525+Hamburg" target="_blank" rel="noopener noreferrer">
+            <span>Google Maps</span> ↗
+          </a>
+          <a class="map-btn" href="https://maps.apple.com/?q=Uwe-Seeler-Allee+9,+22525+Hamburg" target="_blank" rel="noopener noreferrer">
+            <span>Apple Karten</span> ↗
+          </a>
+        </div>
+      </div>
+    </div>
 
     <footer>
       <div class="footer-logo">
@@ -1610,6 +1675,26 @@
 
     document.getElementById("save-contact").addEventListener("click", downloadVCard);
     document.getElementById("save-contact-side").addEventListener("click", downloadVCard);
+
+    // Modal / Neues Fenster Steuerung
+    function setupModal(openBtnId, modalId, closeBtnId) {
+      const openBtn = document.getElementById(openBtnId);
+      const modal = document.getElementById(modalId);
+      const closeBtn = document.getElementById(closeBtnId);
+
+      if (openBtn && modal && closeBtn) {
+        openBtn.addEventListener("click", () => modal.classList.add("active"));
+        closeBtn.addEventListener("click", () => modal.classList.remove("active"));
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) modal.classList.remove("active");
+        });
+      }
+    }
+
+    setupModal("open-qr-modal", "qr-modal", "close-qr-modal");
+    setupModal("open-wallet-modal", "wallet-modal", "close-wallet-modal");
+    setupModal("open-save-modal", "save-modal", "close-save-modal");
+    setupModal("open-maps-modal", "maps-modal", "close-maps-modal");
   </script>
 </body>
 </html>
