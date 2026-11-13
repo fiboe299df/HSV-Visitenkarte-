@@ -2325,171 +2325,60 @@
     }
 
     
-    
-    /* ===== Responsive boxes: Desktop / Tablet / Mobile ===== */
-    .page {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    /* Cards consistent padding & radius across breakpoints */
-    .card {
-      padding: clamp(16px, 2.5vw, 28px) !important;
-      border-radius: clamp(16px, 2vw, 22px) !important;
-    }
-
-    /* Layout: desktop 2-col, tablet/mobile 1-col */
-    .layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.75fr);
-      gap: clamp(14px, 2vw, 22px);
-      align-items: start;
-    }
-    @media (max-width: 900px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
-      aside.stack {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-      }
-      aside.stack > .button.full {
-        min-height: 64px !important;
-      }
-      .wallet-direct-row {
-        grid-column: 1 / -1;
-      }
-    }
-    @media (max-width: 560px) {
-      .page { width: calc(100% - 20px); }
-      aside.stack {
-        grid-template-columns: 1fr;
-      }
-      .profile {
-        flex-wrap: wrap;
-        gap: 14px;
-      }
-      .profile-photo {
-        width: 72px !important;
-        height: 72px !important;
-        flex-basis: 72px !important;
-      }
-      .hero {
-        grid-template-columns: 1fr !important;
-        padding: 20px 16px !important;
-        border-radius: 20px !important;
-      }
-      .hero-photo {
-        width: min(100%, 280px) !important;
-        justify-self: center !important;
-      }
-      h1 {
-        font-size: clamp(1.65rem, 7.5vw, 2.2rem) !important;
-      }
-      .quick-nav a, .quick-nav button {
-        flex: 0 0 auto;
-        min-width: 64px;
-        padding: 8px 6px !important;
-        font-size: 0.62rem !important;
-      }
-      .contact-item {
-        padding: 12px !important;
-      }
-      .timeline-item {
-        padding: 14px !important;
-      }
-      .actions > .button,
-      .matches-footer .button {
-        flex: 1 1 100%;
-      }
-      .qa {
-        min-height: 70px !important;
-        font-size: 0.75rem !important;
-      }
-      .mobile-sticky-bar {
-        display: grid !important;
-      }
-    }
-    @media (min-width: 561px) and (max-width: 900px) {
-      .page { width: calc(100% - 28px); }
-      .hero {
-        grid-template-columns: 1.1fr 0.9fr !important;
-        gap: 18px;
-      }
-      .hero-photo {
-        width: min(100%, 260px) !important;
-      }
-      .quick-nav a, .quick-nav button {
-        font-size: 0.72rem !important;
-      }
-    }
-    @media (min-width: 901px) {
-      .mobile-sticky-bar { display: none !important; }
-    }
-
-    /* Touch targets */
-    .button, .qa, .wallet-btn, .matches-summary, .contact-item, .quick-nav a {
-      min-height: 44px;
-    }
-
-    /* Prevent horizontal overflow */
-    .card, .hero, .match-item, .contact-item {
-      max-width: 100%;
-      overflow-wrap: anywhere;
-    }
-
-    /* ===== Matches as modal window ===== */
-    .hsv-matches-trigger {
-      margin: 12px 0 28px;
+    /* ===== HSV Matches – collapsible bottom box ===== */
+    .hsv-matches {
+      margin-top: 8px;
+      margin-bottom: 24px;
       padding: 0 !important;
       overflow: hidden;
     }
-    .matches-open-btn {
-      width: 100%;
+    .matches-details {
+      border: 0;
+    }
+    .matches-summary {
+      list-style: none;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
       padding: 16px 18px;
-      min-height: 64px;
-      border: 0;
-      background: transparent;
-      color: var(--ink);
+      min-height: 56px;
       font: inherit;
-      text-align: left;
-      cursor: pointer;
+      color: var(--ink);
+      user-select: none;
       transition: background 0.15s;
     }
-    .matches-open-btn:hover {
+    .matches-summary::-webkit-details-marker { display: none; }
+    .matches-summary:hover {
       background: rgba(10, 79, 156, 0.06);
     }
-    body.dark .matches-open-btn:hover {
+    body.dark .matches-summary:hover {
       background: rgba(126, 182, 255, 0.08);
     }
-    .matches-open-btn .matches-summary-left {
+    .matches-summary-left {
       display: flex;
       align-items: center;
       gap: 12px;
       min-width: 0;
     }
-    .matches-open-btn .matches-icon {
-      flex: 0 0 42px;
-      width: 42px;
-      height: 42px;
+    .matches-icon {
+      flex: 0 0 40px;
+      width: 40px;
+      height: 40px;
       display: grid;
       place-items: center;
       border-radius: 12px;
       background: var(--blue-pale);
-      font-size: 1.25rem;
+      font-size: 1.2rem;
     }
-    .matches-open-btn strong {
+    .matches-summary strong {
       display: block;
       font-size: 1.05rem;
       font-weight: 750;
       color: var(--blue-dark);
     }
-    .matches-open-btn .matches-summary-sub {
+    .matches-summary-sub {
       display: block;
       margin-top: 2px;
       font-size: 0.82rem;
@@ -2498,55 +2387,43 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: min(55vw, 360px);
+      max-width: min(52vw, 340px);
     }
-    .matches-open-btn .matches-open-hint {
+    .matches-chevron {
       flex-shrink: 0;
-      padding: 8px 12px;
-      border-radius: 10px;
-      background: var(--blue);
-      color: #fff;
-      font-size: 0.78rem;
-      font-weight: 800;
-      white-space: nowrap;
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--blue-pale);
+      color: var(--blue-dark);
+      font-size: 0.85rem;
+      transition: transform 0.2s ease;
     }
-    body.dark .matches-open-btn .matches-open-hint {
-      background: #3d8eef;
-      color: #041422;
+    .matches-details[open] .matches-chevron {
+      transform: rotate(180deg);
     }
-
-    /* Matches modal – window style */
-    #matches-modal.modal-overlay {
-      z-index: 1100;
+    .matches-body {
+      padding: 0 18px 18px;
+      border-top: 1px solid var(--line);
     }
-    #matches-modal .modal-card {
-      width: min(520px, 100%);
-      max-height: min(88vh, 720px);
-      display: flex;
-      flex-direction: column;
-      padding: 0;
-      overflow: hidden;
+    .matches-body .matches-sub {
+      margin: 12px 0 12px;
+      font-size: 0.84rem;
+      color: var(--muted);
     }
-    #matches-modal .modal-header {
-      padding: 16px 18px;
-      margin: 0;
-      border-bottom: 1px solid var(--line);
-      flex-shrink: 0;
+    .matches-note {
+      margin: 12px 0 0 !important;
     }
-    #matches-modal .matches-modal-body {
-      padding: 14px 18px 18px;
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      -webkit-overflow-scrolling: touch;
-    }
-    #matches-modal .match-list {
+    .match-list {
       display: grid;
       gap: 8px;
       margin: 0;
       padding: 0;
       list-style: none;
     }
-    #matches-modal .match-item {
+    .match-item {
       display: grid;
       grid-template-columns: auto 1fr auto;
       gap: 8px 12px;
@@ -2556,15 +2433,15 @@
       background: var(--glass-1, rgba(255,255,255,0.35)) !important;
       border: 1px solid var(--glass-border-soft, var(--line)) !important;
     }
-    #matches-modal .match-item.next {
+    .match-item.next {
       border-color: rgba(10, 79, 156, 0.35) !important;
       background: rgba(10, 79, 156, 0.1) !important;
     }
-    body.dark #matches-modal .match-item.next {
+    body.dark .match-item.next {
       border-color: rgba(126, 182, 255, 0.35) !important;
       background: rgba(126, 182, 255, 0.1) !important;
     }
-    #matches-modal .match-badge {
+    .match-badge {
       font-size: 0.66rem;
       font-weight: 800;
       letter-spacing: 0.05em;
@@ -2575,41 +2452,47 @@
       color: var(--blue-dark);
       white-space: nowrap;
     }
-    #matches-modal .match-badge.result-w {
+    .match-badge.result-w {
       background: rgba(22, 163, 74, 0.15);
       color: #15803d;
     }
-    body.dark #matches-modal .match-badge.result-w { color: #4ade80; }
-    #matches-modal .match-badge.next-badge {
+    body.dark .match-badge.result-w { color: #4ade80; background: rgba(22,163,74,0.2); }
+    .match-badge.result-l {
+      background: rgba(220, 38, 38, 0.12);
+      color: #b91c1c;
+    }
+    body.dark .match-badge.result-l { color: #f87171; background: rgba(220,38,38,0.2); }
+    .match-badge.next-badge {
       background: var(--blue);
       color: #fff;
     }
-    body.dark #matches-modal .match-badge.next-badge {
+    body.dark .match-badge.next-badge {
       background: #3d8eef;
       color: #041422;
     }
-    #matches-modal .match-main strong {
+    .match-main strong {
       display: block;
       font-size: 0.92rem;
       font-weight: 750;
       color: var(--ink);
     }
-    #matches-modal .match-meta {
+    .match-meta {
       font-size: 0.78rem;
       color: var(--muted);
       margin-top: 2px;
     }
-    #matches-modal .match-score {
+    .match-score {
       font-weight: 800;
       font-size: 1.05rem;
       color: var(--blue-dark);
       font-variant-numeric: tabular-nums;
     }
-    #matches-modal .match-score.pending {
+    .match-score.pending {
       color: var(--muted);
       font-size: 0.85rem;
+      font-weight: 700;
     }
-    #matches-modal .table-chip {
+    .table-chip {
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -2618,203 +2501,29 @@
       border-radius: 999px;
       font-size: 0.8rem;
       font-weight: 700;
-      background: var(--blue-pale);
+      background: var(--glass-1, var(--blue-pale));
       border: 1px solid var(--line);
       color: var(--blue-dark);
     }
-    #matches-modal .matches-footer {
+    .matches-footer {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 14px;
     }
-    #matches-modal .matches-footer .button {
+    .matches-footer .button {
       flex: 1 1 140px;
-      min-height: 46px;
-    }
-    #matches-modal .matches-sub {
-      margin: 0 0 12px;
-      font-size: 0.84rem;
-      color: var(--muted);
-    }
-    #matches-modal .matches-note {
-      margin: 12px 0 0;
-      font-size: 0.8rem;
-      color: var(--muted);
+      min-height: 44px;
     }
     @media (max-width: 540px) {
-      #matches-modal .modal-card {
-        width: 100%;
-        max-height: 92vh;
-        border-radius: 18px 18px 12px 12px !important;
-        margin-top: auto;
-      }
-      #matches-modal.modal-overlay {
-        align-items: end;
-        padding: 8px;
-      }
-      #matches-modal .match-item {
+      .matches-summary-sub { max-width: 58vw; }
+      .match-item {
         grid-template-columns: auto 1fr;
       }
-      #matches-modal .match-score {
+      .match-score {
         grid-column: 2;
         justify-self: start;
       }
-      .matches-open-btn .matches-summary-sub {
-        max-width: 48vw;
-      }
-    }
-
-    /* ===== Spiele: blauer Button unten ===== */
-    .matches-btn-wrap {
-      margin: 8px 0 28px;
-      width: 100%;
-    }
-    .matches-blue-btn.button.full {
-      display: flex !important;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 14px;
-      width: 100%;
-      min-height: 64px !important;
-      padding: 14px 16px !important;
-      text-align: left !important;
-      color: #fff !important;
-      background: linear-gradient(135deg, #083f80 0%, #0a5cb8 55%, #1479e0 100%) !important;
-      border: 1px solid rgba(255,255,255,0.22) !important;
-      border-radius: 16px !important;
-      box-shadow: 0 10px 24px rgba(10,79,156,0.3), inset 0 1px 0 rgba(255,255,255,0.22) !important;
-      font-weight: 700;
-    }
-    .matches-blue-btn.button.full:hover {
-      filter: brightness(1.07);
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(10,79,156,0.38), inset 0 1px 0 rgba(255,255,255,0.28) !important;
-    }
-    .matches-blue-btn.button.full::before,
-    .matches-blue-btn.button.full::after {
-      display: none !important;
-      content: none !important;
-    }
-    .matches-blue-icon {
-      flex: 0 0 44px;
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.18);
-      color: #fff;
-    }
-    .matches-blue-text {
-      flex: 1;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .matches-blue-text strong {
-      display: block;
-      font-size: 1rem;
-      font-weight: 750;
-      color: #fff;
-      letter-spacing: -0.01em;
-    }
-    .matches-blue-text small {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.85);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .matches-blue-arrow {
-      flex-shrink: 0;
-      font-size: 1.6rem;
-      line-height: 1;
-      opacity: 0.8;
-      color: #fff;
-    }
-
-    /* ===== Geräteabhängige Box-Größen ===== */
-    /* Mobile */
-    @media (max-width: 560px) {
-      .page { width: calc(100% - 16px); }
-      .card {
-        padding: 16px 14px !important;
-        border-radius: 16px !important;
-      }
-      .stack { gap: 14px !important; }
-      .layout { gap: 14px !important; }
-      .hero {
-        padding: 18px 14px !important;
-        border-radius: 18px !important;
-        margin-bottom: 16px !important;
-      }
-      .hero h1 { font-size: clamp(1.55rem, 7vw, 2rem) !important; }
-      .profile-photo {
-        width: 68px !important;
-        height: 68px !important;
-        flex-basis: 68px !important;
-      }
-      .contact-item { padding: 11px 12px !important; border-radius: 12px !important; }
-      .timeline-item { padding: 12px 13px !important; border-radius: 12px !important; }
-      .qa { min-height: 64px !important; padding: 10px 4px !important; border-radius: 14px !important; }
-      aside.stack > .button.full { min-height: 58px !important; border-radius: 14px !important; font-size: 0.92rem !important; }
-      .matches-blue-btn.button.full { min-height: 58px !important; padding: 12px 14px !important; border-radius: 14px !important; }
-      .matches-blue-icon { width: 40px; height: 40px; flex-basis: 40px; border-radius: 10px; }
-      .matches-blue-text strong { font-size: 0.95rem; }
-      .matches-blue-text small { font-size: 0.74rem; }
-      .modal-card { border-radius: 16px !important; }
-      #matches-modal .modal-card { max-height: 90vh; }
-      .chip { padding: 6px 11px !important; font-size: 0.82rem !important; }
-    }
-    /* Tablet */
-    @media (min-width: 561px) and (max-width: 900px) {
-      .page { width: calc(100% - 24px); }
-      .card {
-        padding: 20px 18px !important;
-        border-radius: 18px !important;
-      }
-      .stack { gap: 16px !important; }
-      .hero { padding: 22px 20px !important; border-radius: 22px !important; }
-      aside.stack {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-      }
-      .wallet-direct-row,
-      .matches-btn-wrap {
-        grid-column: 1 / -1;
-      }
-      aside.stack > .button.full { min-height: 62px !important; }
-      .matches-blue-btn.button.full { min-height: 62px !important; }
-      .contact-item, .timeline-item { padding: 13px 14px !important; }
-    }
-    /* Desktop */
-    @media (min-width: 901px) {
-      .page { width: min(1120px, calc(100% - 32px)); }
-      .card {
-        padding: clamp(20px, 2.2vw, 28px) !important;
-        border-radius: 20px !important;
-      }
-      .stack { gap: 18px !important; }
-      .layout { gap: 20px !important; }
-      aside.stack > .button.full { min-height: 68px !important; }
-      .matches-blue-btn.button.full { min-height: 68px !important; }
-    }
-
-    /* Spiele-Button in Sidebar */
-    aside.stack .matches-btn-wrap {
-      margin: 0;
-      width: 100%;
-      grid-column: 1 / -1; /* full width in tablet 2-col aside */
-    }
-    aside.stack .matches-blue-btn.button.full {
-      width: 100%;
-    }
-    @media (min-width: 901px) {
-      aside.stack .matches-btn-wrap { margin: 0; }
     }
 </style>
 
@@ -3515,19 +3224,6 @@
           <button class="button pale full" id="copy-contact" type="button" data-i18n="copyContact">Kontaktdaten kopieren</button>
           <a class="button full" id="book-appt" href="mailto:Lasse.boettcher@hsv.de?subject=Terminanfrage" data-i18n="bookAppt">Termin vereinbaren</a>
           <button class="button pale full" id="print-card" type="button" data-i18n="printCard">Karte drucken / als PDF</button>
-          <div class="matches-btn-wrap" id="spiele">
-          <button type="button" class="button full matches-blue-btn" id="open-matches-modal" aria-haspopup="dialog" aria-controls="matches-modal">
-            <span class="matches-blue-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 1 0 20M12 2a14.5 14.5 0 0 0 0 20M2 12h20"/></svg>
-            </span>
-            <span class="matches-blue-text">
-              <strong data-i18n="matchesTitle">HSV Herren · Spiele</strong>
-              <small data-i18n="matchesSummarySub">Nächstes: Bremen – HSV · So. 22.11. · 17:30</small>
-            </span>
-            <span class="matches-blue-arrow" aria-hidden="true">›</span>
-          </button>
-        </div>
-
         </aside>
       </div>
     </main>
@@ -3692,15 +3388,19 @@
     </div>
 
     
-        
-        
-        <div class="modal-overlay" id="matches-modal" role="dialog" aria-modal="true" aria-labelledby="matches-modal-title" aria-hidden="true">
-          <div class="modal-card">
-            <div class="modal-header">
-              <h3 id="matches-modal-title" data-i18n="matchesTitle">HSV Herren · Spiele</h3>
-              <button type="button" class="modal-close" id="close-matches-modal" aria-label="Schließen">×</button>
-            </div>
-            <div class="matches-modal-body">
+        <section class="card hsv-matches" id="spiele" aria-labelledby="matches-title">
+          <details class="matches-details" id="matches-details">
+            <summary class="matches-summary">
+              <span class="matches-summary-left">
+                <span class="matches-icon" aria-hidden="true">⚽</span>
+                <span>
+                  <strong id="matches-title" data-i18n="matchesTitle">HSV Herren · Spiele</strong>
+                  <span class="matches-summary-sub" data-i18n="matchesSummarySub">Nächstes: Bremen – HSV · So. 22.11. · 17:30</span>
+                </span>
+              </span>
+              <span class="matches-chevron" aria-hidden="true">▾</span>
+            </summary>
+            <div class="matches-body">
               <p class="matches-sub" data-i18n="matchesSub">Bundesliga 2026/27 · 1. Mannschaft · Stand: 13.11.2026</p>
               <ul class="match-list">
                 <li class="match-item">
@@ -3736,7 +3436,7 @@
                   <span class="match-score pending">–:–</span>
                 </li>
               </ul>
-              <div class="table-chip">
+              <div class="table-chip" title="Bundesliga-Tabelle">
                 <span aria-hidden="true">📊</span>
                 <span data-i18n="tablePos">Platz 11 · 12 Punkte · 9 Spiele</span>
               </div>
@@ -3746,9 +3446,8 @@
               </div>
               <p class="small matches-note" data-i18n="matchesNote">Daten manuell aktualisiert. Aktuelle Ergebnisse &amp; Tickets immer auf hsv.de.</p>
             </div>
-          </div>
-        </div>
-
+          </details>
+        </section>
 
 <footer>
       <div class="footer-logo">
@@ -4997,50 +4696,6 @@
           if (trigger) {
             // will be handled by trigger's listener
           }
-        });
-      });
-    })();
-
-  
-    /* Matches modal window */
-    (function () {
-      const openBtn = document.getElementById("open-matches-modal");
-      const modal = document.getElementById("matches-modal");
-      const closeBtn = document.getElementById("close-matches-modal");
-      if (!openBtn || !modal) return;
-
-      function openMatches() {
-        modal.classList.add("active");
-        modal.setAttribute("aria-hidden", "false");
-        const focusEl = closeBtn || modal.querySelector(".modal-close, a, button");
-        if (focusEl) setTimeout(() => focusEl.focus(), 40);
-      }
-      function closeMatches() {
-        modal.classList.remove("active");
-        modal.setAttribute("aria-hidden", "true");
-        openBtn.focus();
-      }
-
-      openBtn.addEventListener("click", openMatches);
-      if (closeBtn) closeBtn.addEventListener("click", closeMatches);
-      modal.addEventListener("click", (e) => { if (e.target === modal) closeMatches(); });
-      modal.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") { e.preventDefault(); closeMatches(); }
-      });
-
-      // Deep link #spiele opens modal
-      function checkHash() {
-        if (location.hash === "#spiele" || location.hash === "#matches") openMatches();
-      }
-      window.addEventListener("hashchange", checkHash);
-      checkHash();
-
-      // Quick-nav link
-      document.querySelectorAll('a[href="#spiele"]').forEach(a => {
-        a.addEventListener("click", (e) => {
-          e.preventDefault();
-          openMatches();
-          history.replaceState(null, "", "#spiele");
         });
       });
     })();
