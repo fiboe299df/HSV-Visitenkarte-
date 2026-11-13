@@ -1489,6 +1489,103 @@
       background: #1a3a5c;
       color: #f0f6ff;
     }
+
+
+    /* ===== Barrierefreiheit: Skip-Link, Fokus, Reduced Motion, Dialoge ===== */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 16px;
+      z-index: 10000;
+      padding: 12px 18px;
+      background: #062f5c;
+      color: #fff;
+      font-weight: 700;
+      font-size: .95rem;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(0,0,0,.3);
+      transition: top .2s;
+    }
+    .skip-link:focus {
+      top: 16px;
+      outline: 3px solid #7eb6ff;
+      outline-offset: 2px;
+    }
+    body.dark .skip-link {
+      background: #1a3a5c;
+      color: #f0f6ff;
+    }
+
+    /* Active nav indicator for screen readers + visual */
+    .quick-nav a.is-active,
+    .quick-nav a[aria-current="true"] {
+      background: rgba(255,255,255,.28) !important;
+      font-weight: 750;
+    }
+    body:not(.dark) .quick-nav a.is-active,
+    body:not(.dark) .quick-nav a[aria-current="true"] {
+      background: rgba(10,79,156,.18) !important;
+      color: #062f5c !important;
+    }
+
+    /* Modal dialog base a11y */
+    .modal-overlay[role="dialog"] {
+      /* already styled */
+    }
+    .modal-overlay:not(.active) {
+      /* keep pointer-events none when closed – already set */
+    }
+
+    /* Visually hidden but available to screen readers */
+    .sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0,0,0,0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    /* Live region container (invisible) */
+    #a11y-live {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+    }
+
+    /* Stronger reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .modal-overlay, .modal-card {
+        transition: none !important;
+      }
+    }
+
+    /* High contrast tweaks */
+    @media (prefers-contrast: more) {
+      .card, .timeline-item, .contact-item, .info-list li, .qa, .chip {
+        border-width: 2px !important;
+        border-color: currentColor !important;
+      }
+      .button {
+        border: 2px solid currentColor !important;
+      }
+      .skip-link {
+        border: 2px solid #fff;
+      }
+    }
 </style>
 
   <!-- ============================================================
@@ -1776,6 +1873,9 @@
   </style>
 </head>
 <body>
+
+  <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+
   <div class="page">
     <header>
       <a class="brand" href="https://www.hsv.de/" aria-label="Home | HSV">
@@ -1788,7 +1888,7 @@
 
       <div class="header-right">
         <div class="header-tools">
-          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Dunklen Modus umschalten" title="Dark Mode">
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Zum dunklen Modus wechseln" aria-pressed="false" title="Dark Mode umschalten">
             <svg class="theme-icon light" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M12 3v2.2M12 18.8V21M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M3 12h2.2M18.8 12H21M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56M12 6.5A5.5 5.5 0 1 1 12 17.5A5.5 5.5 0 0 1 12 6.5Z"/>
             </svg>
@@ -1833,7 +1933,7 @@
       <button type="button" data-open="open-qr-modal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 14h2v6h-4M14 18h2v2"/></svg><span data-i18n="navQr">QR-Code</span></button>
     </nav>
 
-    <main>
+    <main id="main-content">
       <section class="hero" aria-labelledby="welcome-title">
         <div class="hero-content">
           <div class="hero-banner">
@@ -2178,15 +2278,15 @@
       <button class="button pale" data-open="open-wallet-modal" type="button" data-i18n="navWallet">Wallet</button>
     </div>
 
-    <div class="modal-overlay" id="qr-modal">
+    <div class="modal-overlay" id="qr-modal" role="dialog" aria-modal="true" aria-labelledby="qr-modal-title" aria-hidden="true">
       <div class="modal-card">
         <div class="modal-header">
-          <h3 data-i18n="qrHeading">QR-Code & Link</h3>
+          <h3 id="qr-modal-title" data-i18n="qrHeading">QR-Code & Link</h3>
           <button class="modal-close" id="close-qr-modal" type="button">×</button>
         </div>
         <div class="qr-content-modal">
           <p class="small" data-i18n="qrIntro" style="margin-top:0;">Scannen oder den Link direkt öffnen.</p>
-          <div id="qrcode" aria-label="QR-Code"></div>
+          <div id="qrcode" role="img" aria-label="QR-Code zur digitalen Visitenkarte von Lasse Böttcher" aria-label="QR-Code"></div>
           <a class="qr-target" id="qr-target" href="https://fiboe299df.github.io/HSV-Visitenkarte-/" target="_blank" rel="noopener noreferrer">https://fiboe299df.github.io/HSV-Visitenkarte-/</a>
           <div class="qr-actions">
             <button class="button pale full" id="copy-link" type="button" data-i18n="copyLink">Link kopieren</button>
@@ -2197,10 +2297,10 @@
       </div>
     </div>
 
-    <div class="modal-overlay" id="wallet-modal">
+    <div class="modal-overlay" id="wallet-modal" role="dialog" aria-modal="true" aria-labelledby="wallet-modal-title" aria-hidden="true">
       <div class="modal-card">
         <div class="modal-header">
-          <h3 data-i18n="walletHeading">In Wallet speichern</h3>
+          <h3 id="wallet-modal-title" data-i18n="walletHeading">In Wallet speichern</h3>
           <button class="modal-close" id="close-wallet-modal" type="button">×</button>
         </div>
         <p class="small" data-i18n="walletIntro" style="margin-top:0;">Füge die digitale Visitenkarte direkt zu deiner Wallet hinzu.</p>
@@ -2223,16 +2323,16 @@
           </a>
         </div>
         <div class="wallet-qr">
-          <div id="qrcode-wallet"></div>
+          <div id="qrcode-wallet" role="img" aria-label="QR-Code zum Speichern in der Wallet"></div>
           <p data-i18n="walletQr">Oder mit dem Handy scannen</p>
         </div>
       </div>
     </div>
 
-    <div class="modal-overlay" id="save-modal">
+    <div class="modal-overlay" id="save-modal" role="dialog" aria-modal="true" aria-labelledby="save-modal-title" aria-hidden="true">
       <div class="modal-card">
         <div class="modal-header">
-          <h3 data-i18n="saveHeading">Kontakt direkt speichern</h3>
+          <h3 id="save-modal-title" data-i18n="saveHeading">Kontakt direkt speichern</h3>
           <button class="modal-close" id="close-save-modal" type="button">×</button>
         </div>
         <p class="small" data-i18n="saveIntro" style="margin-top:0;">Speichere alle geschäftlichen & privaten Kontaktdaten als vCard (.vcf) im Adressbuch.</p>
@@ -2267,10 +2367,10 @@
       </div>
     </div>
 
-    <div class="modal-overlay" id="work-maps-modal">
+    <div class="modal-overlay" id="work-maps-modal" role="dialog" aria-modal="true" aria-labelledby="work-maps-modal-title" aria-hidden="true">
       <div class="modal-card">
         <div class="modal-header">
-          <h3 data-i18n="workMapsModalTitle">Arbeit: Volksparkstadion öffnen</h3>
+          <h3 id="work-maps-modal-title" data-i18n="workMapsModalTitle">Arbeit: Volksparkstadion öffnen</h3>
           <button class="modal-close" id="close-work-maps-modal" type="button">×</button>
         </div>
         <p class="small" style="margin-top:0;">Uwe-Seeler-Allee 9, 22525 Hamburg</p>
@@ -2285,10 +2385,10 @@
       </div>
     </div>
 
-    <div class="modal-overlay" id="private-maps-modal">
+    <div class="modal-overlay" id="private-maps-modal" role="dialog" aria-modal="true" aria-labelledby="private-maps-modal-title" aria-hidden="true">
       <div class="modal-card">
         <div class="modal-header">
-          <h3 data-i18n="privateMapsModalTitle">Privat: Adresse öffnen</h3>
+          <h3 id="private-maps-modal-title" data-i18n="privateMapsModalTitle">Privat: Adresse öffnen</h3>
           <button class="modal-close" id="close-private-maps-modal" type="button">×</button>
         </div>
         <p class="small" style="margin-top:0;">Koppelstraße 24, 22527 Hamburg</p>
@@ -2304,10 +2404,10 @@
     </div>
 
     <!-- MODAL: LEBENSLAUF PDF VORSCHAU & DOWNLOAD (Original Inhalt aus CV Lasse Boettcher August.pdf) -->
-    <div class="modal-overlay" id="cv-modal">
+    <div class="modal-overlay" id="cv-modal" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title" aria-hidden="true">
       <div class="modal-card cv-modal-wide">
         <div class="modal-header">
-          <h3 data-i18n="cvModalTitle">CV Lasse Boettcher August.pdf</h3>
+          <h3 id="cv-modal-title" data-i18n="cvModalTitle">CV Lasse Boettcher August.pdf</h3>
           <button class="modal-close" id="close-cv-modal" type="button">×</button>
         </div>
 
@@ -3249,6 +3349,202 @@
         correctLevel: QRCode.CorrectLevel.M
       });
     } catch (err) {}
+  
+    /* ---------- Barrierefreiheit: Erweiterungen ---------- */
+    (function () {
+      const live = document.getElementById("a11y-live");
+      function announce(msg) {
+        if (!live) return;
+        live.textContent = "";
+        // force reflow so consecutive identical messages are spoken
+        void live.offsetWidth;
+        live.textContent = msg;
+      }
+
+      // Theme toggle: aria-pressed + dynamic label
+      const themeBtn = document.getElementById("theme-toggle");
+      function syncThemeA11y() {
+        if (!themeBtn) return;
+        const isDark = document.body.classList.contains("dark");
+        themeBtn.setAttribute("aria-pressed", isDark ? "true" : "false");
+        const labels = {
+          de: isDark ? "Zum hellen Modus wechseln" : "Zum dunklen Modus wechseln",
+          en: isDark ? "Switch to light mode" : "Switch to dark mode",
+          fr: isDark ? "Passer en mode clair" : "Passer en mode sombre",
+          es: isDark ? "Cambiar a modo claro" : "Cambiar a modo oscuro",
+          it: isDark ? "Passa alla modalità chiara" : "Passa alla modalità scura",
+          pt: isDark ? "Mudar para modo claro" : "Mudar para modo escuro"
+        };
+        const lang = (typeof currentLang !== "undefined" && currentLang) || "de";
+        themeBtn.setAttribute("aria-label", labels[lang] || labels.de);
+        themeBtn.title = labels[lang] || labels.de;
+      }
+      if (themeBtn) {
+        // initial
+        if (localStorage.getItem("hsv_theme") === "dark") {
+          themeBtn.setAttribute("aria-pressed", "true");
+        }
+        themeBtn.addEventListener("click", () => {
+          // runs after existing handler toggles class (same tick order: our listener after original)
+          setTimeout(syncThemeA11y, 0);
+          const isDark = document.body.classList.contains("dark");
+          announce(isDark ? "Dunkler Modus aktiviert" : "Heller Modus aktiviert");
+        });
+        // run once
+        syncThemeA11y();
+      }
+
+      // Language change announcement – hook into applyLanguage if possible
+      const origApply = typeof applyLanguage === "function" ? applyLanguage : null;
+      if (origApply) {
+        window.applyLanguage = function (lang) {
+          origApply(lang);
+          syncThemeA11y();
+          const names = { de: "Deutsch", en: "English", fr: "Français", es: "Español", it: "Italiano", pt: "Português" };
+          announce("Sprache: " + (names[lang] || lang));
+        };
+      } else if (document.getElementById("lang-select")) {
+        document.getElementById("lang-select").addEventListener("change", (e) => {
+          const names = { de: "Deutsch", en: "English", fr: "Français", es: "Español", it: "Italiano", pt: "Português" };
+          setTimeout(() => announce("Sprache: " + (names[e.target.value] || e.target.value)), 50);
+          setTimeout(syncThemeA11y, 50);
+        });
+      }
+
+      // Toast already uses role=status when created – ensure announce on copy
+      const origShowToast = typeof showToast === "function" ? showToast : null;
+      if (origShowToast) {
+        window.showToast = function (msg) {
+          origShowToast(msg);
+          announce(msg);
+        };
+      }
+
+      // aria-current on quick-nav based on existing is-active class
+      function syncNavCurrent() {
+        document.querySelectorAll(".quick-nav a[href^='#']").forEach(a => {
+          if (a.classList.contains("is-active")) {
+            a.setAttribute("aria-current", "true");
+          } else {
+            a.removeAttribute("aria-current");
+          }
+        });
+      }
+      // observe scroll UI updates
+      const navObserver = new MutationObserver(syncNavCurrent);
+      document.querySelectorAll(".quick-nav a").forEach(a => {
+        navObserver.observe(a, { attributes: true, attributeFilter: ["class"] });
+      });
+      syncNavCurrent();
+
+      // details/summary aria-expanded (native mostly, reinforce)
+      document.querySelectorAll("details").forEach(d => {
+        const summary = d.querySelector("summary");
+        if (!summary) return;
+        summary.setAttribute("aria-expanded", d.open ? "true" : "false");
+        d.addEventListener("toggle", () => {
+          summary.setAttribute("aria-expanded", d.open ? "true" : "false");
+        });
+      });
+
+      // ---- Modal accessibility: focus trap, escape, aria-hidden, return focus ----
+      const FOCUSABLE = 'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+      let lastFocus = null;
+
+      function openModalA11y(modal) {
+        if (!modal) return;
+        lastFocus = document.activeElement;
+        modal.setAttribute("aria-hidden", "false");
+        modal.classList.add("active");
+        // focus first focusable or close button
+        const focusTarget = modal.querySelector(".modal-close, [data-focus-first]") || modal.querySelector(FOCUSABLE);
+        if (focusTarget) {
+          setTimeout(() => focusTarget.focus(), 30);
+        }
+      }
+
+      function closeModalA11y(modal) {
+        if (!modal) return;
+        modal.setAttribute("aria-hidden", "true");
+        modal.classList.remove("active");
+        if (lastFocus && typeof lastFocus.focus === "function") {
+          setTimeout(() => lastFocus.focus(), 10);
+        }
+      }
+
+      // Enhance existing setupModal calls by intercepting clicks
+      document.querySelectorAll(".modal-overlay[role='dialog']").forEach(modal => {
+        // Escape key
+        modal.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            e.preventDefault();
+            closeModalA11y(modal);
+          }
+          // Focus trap
+          if (e.key === "Tab") {
+            const focusables = Array.from(modal.querySelectorAll(FOCUSABLE)).filter(el => el.offsetParent !== null || el === document.activeElement);
+            if (!focusables.length) return;
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+              e.preventDefault();
+              last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+              e.preventDefault();
+              first.focus();
+            }
+          }
+        });
+
+        // Click on backdrop closes (already partially there)
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) closeModalA11y(modal);
+        });
+      });
+
+      // Hook open buttons that use setupModal
+      const openBtnIds = [
+        ["open-qr-modal", "qr-modal"],
+        ["open-wallet-modal", "wallet-modal"],
+        ["open-save-modal", "save-modal"],
+        ["open-work-maps-modal", "work-maps-modal"],
+        ["open-private-maps-modal", "private-maps-modal"],
+        ["open-cv-modal", "cv-modal"]
+      ];
+      openBtnIds.forEach(([btnId, modalId]) => {
+        const btn = document.getElementById(btnId);
+        const modal = document.getElementById(modalId);
+        if (!btn || !modal) return;
+        btn.addEventListener("click", () => {
+          // existing handler already adds .active – we reinforce a11y
+          setTimeout(() => openModalA11y(modal), 0);
+        });
+      });
+
+      // Close buttons
+      document.querySelectorAll(".modal-close, [id^='close-']").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const modal = btn.closest(".modal-overlay");
+          if (modal) closeModalA11y(modal);
+        });
+      });
+
+      // data-open buttons
+      document.querySelectorAll("[data-open]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const targetId = btn.getAttribute("data-open");
+          // data-open points to another button that opens modal
+          const trigger = document.getElementById(targetId);
+          if (trigger) {
+            // will be handled by trigger's listener
+          }
+        });
+      });
+    })();
+
   </script>
+
+  <div id="a11y-live" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
 </body>
 </html>
