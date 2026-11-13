@@ -104,7 +104,7 @@
       flex: 0 0 52px;
       width: 52px;
       height: 52px;
-      padding: 0;
+      padding: 4px;
       overflow: hidden;
       background: #fff;
       border: 1px solid var(--line);
@@ -115,9 +115,7 @@
     .brand-logo img {
       width: 100%;
       height: 100%;
-      display: block;
-      object-fit: cover;
-      object-position: center;
+      object-fit: contain;
       border: 2px solid var(--blue);
       border-radius: 50%;
     }
@@ -159,26 +157,23 @@
       justify-content: center;
       height: 52px;
       width: 52px;
-      flex: 0 0 52px;
       padding: 4px;
-      background: #fff;
-      border: 0;
-      border-radius: 0;
-      clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
-      filter: drop-shadow(0 3px 6px rgba(0, 52, 100, .25));
+      background: var(--glass);
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
     }
 
     .header-mid-logo img {
       width: 100%;
       height: 100%;
-      display: block;
-      object-fit: cover;
-      object-position: center;
+      object-fit: contain;
       background: #fff;
-      border: 0;
-      border-radius: 0;
-      clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
-      box-shadow: none;
+      border: 2px solid var(--blue);
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
 
     .theme-toggle {
@@ -282,7 +277,7 @@
       text-decoration: none;
       white-space: nowrap;
       background: var(--glass);
-      border-radius: 8px;
+      border-radius: 999px;
       border: 1px solid var(--line);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
@@ -373,10 +368,8 @@
     .hero-banner img {
       width: 58px;
       height: 58px;
-      padding: 0;
-      display: block;
-      object-fit: cover;
-      object-position: center;
+      padding: 4px;
+      object-fit: contain;
       background: #fff;
       border: 2px solid var(--blue);
       border-radius: 50%;
@@ -1120,18 +1113,16 @@
       width: 44px;
       height: 44px;
       margin: 0 auto 8px;
-      padding: 0;
+      padding: 3px;
       background: #fff;
-      border: 0;
+      border: 1px solid var(--line);
       border-radius: 50%;
       box-shadow: 0 4px 12px rgba(0, 52, 100, .2);
     }
     .footer-logo img {
       width: 100%;
       height: 100%;
-      display: block;
-      object-fit: cover;
-      object-position: center;
+      object-fit: contain;
       border: 2px solid var(--blue);
       border-radius: 50%;
     }
@@ -1239,7 +1230,7 @@
     .brand-logo { box-shadow: 0 0 0 3px rgba(255,255,255,.18); border: 0; }
     .header-tools, .header-mid-logo { box-shadow: none; border-color: rgba(255,255,255,.35); }
     .header-tools { border-radius: 14px; }
-    .header-mid-logo { border-radius: 0; }
+    .header-mid-logo { border-radius: 50%; }
     .home-link { font-weight: 650; }
 
     .quick-nav { gap: 8px !important; padding: 6px 0 18px; overflow-x: auto; scrollbar-width: none; }
@@ -2106,197 +2097,6 @@
       .match-names, .match-updated, .match-source, .match-meta, .match-foot, .match-note { color: #333 !important; }
       .match-ticket-btn, .match-item .match-ticket-link { color: #084b91 !important; background: #fff !important; box-shadow: none !important; border: 1px solid #084b91 !important; }
     }
-
-
-    /* HSV glass treatment: translucent surfaces, strong text contrast, unchanged content. */
-    :root {
-      --glass-panel: rgba(246, 250, 255, .80);
-      --glass-soft: rgba(246, 250, 255, .58);
-      --glass-edge: rgba(255, 255, 255, .58);
-      --glass-shadow: 0 16px 40px rgba(2, 18, 40, .20), inset 0 1px 0 rgba(255, 255, 255, .52);
-      --glass: var(--glass-panel);
-      --card-bg: var(--glass-panel);
-      --line: var(--glass-edge);
-      --shadow: var(--glass-shadow);
-    }
-    body.dark {
-      --glass-panel: rgba(12, 27, 44, .82);
-      --glass-soft: rgba(18, 38, 58, .64);
-      --glass-edge: rgba(214, 233, 255, .24);
-      --glass-shadow: 0 18px 44px rgba(0, 0, 0, .36), inset 0 1px 0 rgba(255, 255, 255, .08);
-      --glass: var(--glass-panel);
-      --card-bg: var(--glass-panel);
-      --line: var(--glass-edge);
-      --shadow: var(--glass-shadow);
-    }
-
-    .header-tools, .home-link, .quick-nav, .mobile-sticky-bar,
-    .legal-box, .modal-card, .card, .header-mid-logo {
-      backdrop-filter: blur(18px) saturate(150%);
-      -webkit-backdrop-filter: blur(18px) saturate(150%);
-    }
-    .header-tools, .home-link, .quick-nav, .mobile-sticky-bar,
-    .legal-box, .modal-card {
-      background: var(--glass-panel) !important;
-      border-color: var(--glass-edge) !important;
-      box-shadow: var(--glass-shadow) !important;
-    }
-    body.dark .quick-nav, body.dark .mobile-sticky-bar,
-    body.dark .legal-box, body.dark .modal-card {
-      background: var(--glass-panel) !important;
-      border-color: var(--glass-edge) !important;
-    }
-    .quick-nav a, .quick-nav button,
-    body.dark .quick-nav a, body.dark .quick-nav button {
-      background: var(--glass-soft) !important;
-      border-color: var(--glass-edge) !important;
-      backdrop-filter: blur(12px) saturate(140%);
-      -webkit-backdrop-filter: blur(12px) saturate(140%);
-    }
-
-    /* Rectangular glass tile; the crest inside keeps its original diamond shape. */
-    .header-mid-logo {
-      display: grid !important;
-      place-items: center;
-      width: 66px;
-      height: 52px;
-      flex: 0 0 66px;
-      padding: 4px;
-      overflow: hidden;
-      background: var(--glass-soft) !important;
-      border: 1px solid var(--glass-edge) !important;
-      border-radius: 12px !important;
-      clip-path: none !important;
-      box-shadow: var(--glass-shadow) !important;
-      filter: none;
-    }
-    .header-mid-logo img {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-      object-position: center;
-      background: transparent;
-      border: 0;
-      border-radius: 0;
-      clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
-      filter: drop-shadow(0 2px 3px rgba(0, 25, 55, .22));
-    }
-
-    .card, body.dark .card {
-      background: var(--glass-panel) !important;
-      border-color: var(--glass-edge) !important;
-      box-shadow: var(--glass-shadow) !important;
-    }
-    .contact-item, .timeline-item, .info-list li, .private-details,
-    .private-summary, .cv-doc-card, .wallet-btn, .save-icon-btn,
-    .map-btn, .chip, .qa, .match-item, .match-acc > summary {
-      background: var(--glass-soft) !important;
-      border-color: var(--glass-edge) !important;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .30);
-      backdrop-filter: blur(14px) saturate(145%);
-      -webkit-backdrop-filter: blur(14px) saturate(145%);
-    }
-    body.dark .contact-item, body.dark .timeline-item,
-    body.dark .info-list li, body.dark .private-details,
-    body.dark .private-summary, body.dark .cv-doc-card,
-    body.dark .wallet-btn, body.dark .save-icon-btn,
-    body.dark .map-btn, body.dark .chip, body.dark .qa,
-    body.dark .match-item, body.dark .match-acc > summary {
-      background: var(--glass-soft) !important;
-      border-color: var(--glass-edge) !important;
-    }
-    .contact-item:hover, .cv-doc-card:hover, .wallet-btn:hover,
-    .save-icon-btn:hover, .map-btn:hover, .qa:hover {
-      background: rgba(255, 255, 255, .72) !important;
-    }
-    body.dark .contact-item:hover, body.dark .cv-doc-card:hover,
-    body.dark .wallet-btn:hover, body.dark .save-icon-btn:hover,
-    body.dark .map-btn:hover, body.dark .qa:hover {
-      background: rgba(255, 255, 255, .14) !important;
-    }
-    .button:not(.pale) {
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .22), 0 8px 22px rgba(2, 30, 66, .20) !important;
-    }
-    .button.pale, body.dark .button.pale {
-      background: var(--glass-soft) !important;
-      border: 1px solid var(--glass-edge) !important;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-
-    @media (prefers-reduced-transparency: reduce) {
-      .header-tools, .home-link, .quick-nav, .mobile-sticky-bar,
-      .legal-box, .modal-card, .card, .contact-item, .timeline-item,
-      .info-list li, .private-details, .private-summary, .cv-doc-card,
-      .wallet-btn, .save-icon-btn, .map-btn, .chip, .qa {
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        background: rgba(246, 250, 255, .96) !important;
-      }
-      body.dark .header-tools, body.dark .home-link, body.dark .quick-nav,
-      body.dark .mobile-sticky-bar, body.dark .legal-box, body.dark .modal-card,
-      body.dark .card, body.dark .contact-item, body.dark .timeline-item,
-      body.dark .info-list li, body.dark .private-details, body.dark .private-summary,
-      body.dark .cv-doc-card, body.dark .wallet-btn, body.dark .save-icon-btn,
-      body.dark .map-btn, body.dark .chip, body.dark .qa {
-        background: rgba(12, 27, 44, .97) !important;
-      }
-    }
-    @media print {
-      .header-mid-logo, .header-tools, .home-link, .quick-nav, .mobile-sticky-bar,
-      .legal-box, .modal-card, .card, .contact-item, .timeline-item,
-      .info-list li, .private-details, .private-summary, .cv-doc-card,
-      .wallet-btn, .save-icon-btn, .map-btn, .chip, .qa {
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        box-shadow: none !important;
-      }
-    }
-
-    @media print {
-      .card, .contact-item, .timeline-item, .info-list li, .private-details,
-      .private-summary, .cv-doc-card, .wallet-btn, .save-icon-btn,
-      .map-btn, .chip, .qa, .legal-box, .modal-card {
-        color: #111 !important;
-        background: #fff !important;
-        border-color: #ccc !important;
-      }
-      .card h2, .card h3, .card p, .card li, .contact-item strong,
-      .contact-value, .small, .timeline-meta, .info-list strong {
-        color: #222 !important;
-      }
-    }
-
-    /* All four HSV marks share a crisp white 2px outline. */
-    .brand-logo img, .header-mid-logo img, .hero-banner img, .footer-logo img {
-      border: 2px solid #fff !important;
-    }
-    /* The upper mark is a blue-filled rectangle, not a diamond crop. */
-    .header-mid-logo {
-      padding: 0 !important;
-      background: #1e5cb3 !important;
-      border: 2px solid #fff !important;
-      border-radius: 10px !important;
-      overflow: hidden;
-    }
-    .header-mid-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
-      background: #1e5cb3;
-      border: 0 !important;
-      border-radius: 0 !important;
-      clip-path: none !important;
-      filter: none;
-    }
-
-    @media (max-width: 380px) {
-      .header-right { gap: 6px; flex-wrap: nowrap; }
-      .header-tools { gap: 3px; padding-right: 6px; padding-left: 6px; }
-      .header-mid-logo { width: 54px; height: 46px; flex-basis: 54px; }
-      .home-link { height: 44px; padding-right: 7px; padding-left: 7px; font-size: .76rem; }
-    }
   </style>
 </head>
 <body>
@@ -2306,7 +2106,7 @@
   <div class="page">
     <header>
       <a class="brand" href="https://www.hsv.de/" aria-label="Home | HSV">
-        <span class="brand-logo"><img src="/assets/logo_rund.png" onerror="this.src='https://placehold.co/100x100/00529f/ffffff?text=HSV'" alt="HSV-Logo"></span>
+        <span class="brand-logo"><img src="/assets/hsv-background.png" onerror="this.src='https://placehold.co/100x100/00529f/ffffff?text=HSV'" alt="HSV-Logo"></span>
         <span>
           <span data-i18n="brandName">Lasse Böttcher</span>
           <small data-i18n="brandSubtitle">Player Care & Administration Sport</small>
@@ -2341,7 +2141,7 @@
         </div>
 
         <div class="header-mid-logo" title="HSV Logo">
-          <img src="/assets/logo_rund.png" onerror="this.src='https://placehold.co/100x100/00529f/ffffff?text=HSV'" alt="HSV-Wappen auf rechteckigem HSV-blauem Hintergrund">
+          <img src="/assets/hsv-background.png" onerror="this.src='https://placehold.co/100x100/00529f/ffffff?text=HSV'" alt="HSV Logo">
         </div>
 
         <a class="home-link" href="https://www.hsv.de/" target="_blank" rel="noopener noreferrer" data-i18n="homeLink">Home | HSV ↗</a>
@@ -2365,7 +2165,7 @@
       <section class="hero" aria-labelledby="welcome-title">
         <div class="hero-content">
           <div class="hero-banner">
-            <img src="/assets/logo_rund.png" onerror="this.src='https://placehold.co/100x100/00529f/ffffff?text=HSV'" alt="HSV Wappen">
+            <img src="/assets/hsv-background.png" onerror="this.src='https://placehold.co/100x100/00529f/ffffff?text=HSV'" alt="HSV Wappen">
             <div>
               <strong>HSV</strong>
               <span data-i18n="heroBadge">Digitale Visitenkarte</span>
@@ -2893,7 +2693,7 @@
 
     <footer>
       <div class="footer-logo">
-        <img src="/assets/logo_rund.png" onerror="this.src='https://placehold.co/100x100/00529f/ffffff?text=HSV'" alt="HSV-Logo">
+        <img src="/assets/hsv-background.png" onerror="this.src='https://placehold.co/100x100/00529f/ffffff?text=HSV'" alt="HSV-Logo">
       </div>
       <div>HSV · Lasse Böttcher</div>
       <div class="legal-wrap">
