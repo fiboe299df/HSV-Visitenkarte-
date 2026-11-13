@@ -72,7 +72,7 @@
       margin: 0;
       color: var(--ink);
       background: linear-gradient(135deg, rgba(0, 42, 84, 0.75), rgba(0, 82, 159, 0.65)),
-                  url("assets/volksparkstadion.webp") center center / cover no-repeat fixed;
+                  url("assets/hsv-hintergrund.jpg") center center / cover no-repeat fixed;
       transition: background .25s, color .25s;
       min-height: 100vh;
     }
@@ -353,7 +353,7 @@
       overflow: hidden;
       color: #fff;
       background: linear-gradient(90deg, var(--hero-overlay-1), var(--hero-overlay-2)),
-                  url("assets/volksparkstadion.webp") center 48%/cover no-repeat;
+                  url("assets/volksparkstadion.jpg") center 48%/cover no-repeat;
       border: 1px solid rgba(255, 255, 255, .35);
       border-radius: 28px;
       box-shadow: var(--shadow);
@@ -2080,7 +2080,7 @@
     .hero {
       background:
         linear-gradient(115deg, rgba(4, 18, 40, 0.78) 0%, rgba(10, 79, 156, 0.5) 100%),
-        url("assets/volksparkstadion.webp") center 48% / cover no-repeat !important;
+        url("assets/volksparkstadion.jpg") center 48% / cover no-repeat !important;
       border: 1px solid rgba(255, 255, 255, 0.25) !important;
       box-shadow: var(--glass-shadow-lg), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
       border-radius: 28px !important;
@@ -2089,7 +2089,7 @@
     body.dark .hero {
       background:
         linear-gradient(115deg, rgba(2, 8, 16, 0.85) 0%, rgba(12, 48, 88, 0.65) 100%),
-        url("assets/volksparkstadion.webp") center 48% / cover no-repeat !important;
+        url("assets/volksparkstadion.jpg") center 48% / cover no-repeat !important;
     }
     .hero-photo {
       border: 3px solid rgba(255, 255, 255, 0.45) !important;
@@ -2803,70 +2803,6 @@
       aside.stack > .button.full { min-height: 68px !important; }
       .matches-blue-btn.button.full { min-height: 68px !important; }
     }
-
-    /* Spiele-Button in Sidebar */
-    aside.stack .matches-btn-wrap {
-      margin: 0;
-      width: 100%;
-      grid-column: 1 / -1; /* full width in tablet 2-col aside */
-    }
-    aside.stack .matches-blue-btn.button.full {
-      width: 100%;
-    }
-    @media (min-width: 901px) {
-      aside.stack .matches-btn-wrap { margin: 0; }
-    }
-
-    /* ===== Druck: nur Visitenkarten-Inhalt ===== */
-    @media print {
-      body, body.dark {
-        background: #fff !important;
-        color: #000 !important;
-        padding: 0 !important;
-      }
-      header,
-      .quick-nav,
-      .mobile-sticky-bar,
-      .modal-overlay,
-      .header-right,
-      .header-tools,
-      aside.stack,
-      .matches-btn-wrap,
-      #spiele,
-      footer,
-      .hero-photo,
-      .qa,
-      .social-links,
-      .cv-doc-card,
-      #karriere,
-      .theme-toggle,
-      .lang-dropdown,
-      .skip-link,
-      .to-top,
-      #to-top {
-        display: none !important;
-      }
-      .page { width: 100% !important; margin: 0 !important; }
-      .layout { display: block !important; }
-      .card, .hero {
-        break-inside: avoid;
-        box-shadow: none !important;
-        border: 1px solid #ccc !important;
-        background: #fff !important;
-        backdrop-filter: none !important;
-        color: #000 !important;
-      }
-      .hero {
-        background: #0a4f9c !important;
-        color: #fff !important;
-        print-color-adjust: exact;
-        -webkit-print-color-adjust: exact;
-      }
-      .hero h1, .hero .eyebrow, .hero-copy { color: #fff !important; }
-      a { color: #000; text-decoration: none; }
-      .profile-photo { box-shadow: none !important; }
-      details > * { display: block !important; }
-    }
 </style>
 
   <!-- ============================================================
@@ -2892,7 +2828,7 @@
       inset: 0;
       z-index: -2;
       pointer-events: none;
-      background: url("assets/volksparkstadion.webp") center center / cover no-repeat;
+      background: url("assets/hsv-hintergrund.jpg") center center / cover no-repeat;
     }
 
     /* Kontrast-Schleier: Marke bleibt sichtbar, Text bleibt lesbar */
@@ -3160,7 +3096,7 @@
   <div class="page">
     <header>
       <a class="brand" href="https://www.hsv.de/" aria-label="Home | HSV">
-        <span class="brand-logo"><img loading="eager" decoding="async" src="assets/hsv-logo.webp" data-fallback="assets/hsv-logo.png" onerror="this.src='https://placehold.co/100x100/00529f/ffffff?text=HSV'" alt="HSV-Logo"></span>
+        <span class="brand-logo"><img loading="eager" decoding="async" src="assets/hsv-logo.jpg" onerror="this.src='https://placehold.co/100x100/00529f/ffffff?text=HSV'" alt="HSV-Logo"></span>
         <span>
           <span data-i18n="brandName">Lasse Böttcher</span>
           <small data-i18n="brandSubtitle">Player Care & Administration Sport</small>
@@ -3223,7 +3159,7 @@
       <section class="hero" aria-labelledby="welcome-title">
         <div class="hero-content">
           <div class="hero-banner">
-            <img loading="eager" decoding="async" src="assets/hsv-logo.webp" data-fallback="assets/hsv-logo.png" onerror="this.src='https://placehold.co/100x100/00529f/ffffff?text=HSV'" alt="HSV Wappen">
+            <img loading="eager" decoding="async" src="assets/hsv-logo.jpg" onerror="this.src='https://placehold.co/100x100/00529f/ffffff?text=HSV'" alt="HSV Wappen">
             <div>
               <strong>HSV</strong>
               <span data-i18n="heroBadge">Digitale Visitenkarte</span>
@@ -3234,7 +3170,7 @@
           <p class="hero-copy">Lasse Böttcher · <span data-i18n="brandSubtitle">Player Care & Administration Sport</span></p>
         </div>
         <div class="hero-photo">
-          <img width="320" height="320" fetchpriority="high" loading="eager" decoding="async" src="assets/volksparkstadion.webp" onerror="this.src='https://placehold.co/600x450/eaf3fb/00529f?text=Lasse+B%C3%B6ttcher'" alt="Lasse Böttcher im Fußballstadion">
+          <img fetchpriority="high" loading="eager" decoding="async" src="assets/lasse-boettcher.jpg" onerror="this.src='https://placehold.co/600x450/eaf3fb/00529f?text=Lasse+B%C3%B6ttcher'" alt="Lasse Böttcher im Fußballstadion">
         </div>
       </section>
 
@@ -3243,7 +3179,7 @@
           <section class="card" aria-labelledby="profile-name">
             <div class="profile">
               <div class="profile-photo">
-                <img width="320" height="320" fetchpriority="high" loading="eager" decoding="async" src="assets/lasse-profil.webp" onerror="this.src='https://placehold.co/200x200/eaf3fb/00529f?text=LB'" alt="Profilbild von Lasse Böttcher">
+                <img fetchpriority="high" loading="eager" decoding="async" src="assets/lasse-boettcher.jpg" onerror="this.src='https://placehold.co/200x200/eaf3fb/00529f?text=LB'" alt="Profilbild von Lasse Böttcher">
               </div>
               <div>
                 <h2 id="profile-name">Lasse Böttcher</h2>
@@ -3566,19 +3502,6 @@
           <button class="button pale full" id="copy-contact" type="button" data-i18n="copyContact">Kontaktdaten kopieren</button>
           <a class="button full" id="book-appt" href="mailto:Lasse.boettcher@hsv.de?subject=Terminanfrage" data-i18n="bookAppt">Termin vereinbaren</a>
           <button class="button pale full" id="print-card" type="button" data-i18n="printCard">Karte drucken / als PDF</button>
-          <div class="matches-btn-wrap" id="spiele">
-          <button type="button" class="button full matches-blue-btn" id="open-matches-modal" aria-haspopup="dialog" aria-controls="matches-modal">
-            <span class="matches-blue-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 1 0 20M12 2a14.5 14.5 0 0 0 0 20M2 12h20"/></svg>
-            </span>
-            <span class="matches-blue-text">
-              <strong data-i18n="matchesTitle">HSV Herren · Spiele</strong>
-              <small data-i18n="matchesSummarySub">Nächstes: Bremen – HSV · So. 22.11. · 17:30</small>
-            </span>
-            <span class="matches-blue-arrow" aria-hidden="true">›</span>
-          </button>
-        </div>
-
         </aside>
       </div>
     </main>
@@ -3726,13 +3649,14 @@
           <button class="modal-close" id="close-cv-modal" type="button">×</button>
         </div>
 
-        
-            <div class="cv-pages" id="cv-preview-sheet" role="document" aria-label="CV Vorschau">
-              <img class="cv-page-img" src="assets/cv-preview-1.webp" width="600" height="848" alt="CV Lasse Böttcher – Seite 1 (Vorschau)" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/cv-preview-1.png'">
-              <img class="cv-page-img" src="assets/cv-preview-2.webp" width="600" height="848" alt="CV Lasse Böttcher – Seite 2 (Vorschau)" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/cv-preview-2.png'">
-              <p class="small" style="text-align:center;margin:8px 0 0;">Vorschau – vollständiges Dokument per Download</p>
-            </div>
-
+        <div class="cv-pages" id="cv-preview-sheet" role="document" aria-label="CV Lasse Boettcher August.pdf">
+        <object data="CV-Lasse-Boettcher-August.pdf#view=FitH" type="application/pdf" width="100%" height="560" title="CV Lasse Böttcher" style="min-height:52vh;border:0;border-radius:12px;background:#fff;display:block;">
+          <p style="padding:24px;text-align:center;color:var(--muted);margin:0;">
+            PDF-Vorschau wird in diesem Browser nicht unterstützt.
+            <br><a class="button" style="margin-top:12px;display:inline-flex;" href="CV-Lasse-Boettcher-August.pdf" download="CV Lasse Boettcher August.pdf">CV herunterladen</a>
+          </p>
+        </object>
+      </div>
 
         <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px;">
           <button type="button" class="button" style="flex: 1;" id="download-cv-pdf-btn" data-i18n="downloadCvPdf">⬇ CV Lasse Boettcher August.pdf herunterladen</button>
@@ -3744,7 +3668,20 @@
     
         
         
-        <div class="modal-overlay" id="matches-modal" role="dialog" aria-modal="true" aria-labelledby="matches-modal-title" aria-hidden="true">
+        <div class="matches-btn-wrap" id="spiele">
+          <button type="button" class="button full matches-blue-btn" id="open-matches-modal" aria-haspopup="dialog" aria-controls="matches-modal">
+            <span class="matches-blue-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 1 0 20M12 2a14.5 14.5 0 0 0 0 20M2 12h20"/></svg>
+            </span>
+            <span class="matches-blue-text">
+              <strong data-i18n="matchesTitle">HSV Herren · Spiele</strong>
+              <small data-i18n="matchesSummarySub">Nächstes: Bremen – HSV · So. 22.11. · 17:30</small>
+            </span>
+            <span class="matches-blue-arrow" aria-hidden="true">›</span>
+          </button>
+        </div>
+
+<div class="modal-overlay" id="matches-modal" role="dialog" aria-modal="true" aria-labelledby="matches-modal-title" aria-hidden="true">
           <div class="modal-card">
             <div class="modal-header">
               <h3 id="matches-modal-title" data-i18n="matchesTitle">HSV Herren · Spiele</h3>
@@ -3802,7 +3739,7 @@
 
 <footer>
       <div class="footer-logo">
-        <img loading="eager" decoding="async" src="assets/hsv-logo.webp" data-fallback="assets/hsv-logo.png" onerror="this.src='https://placehold.co/100x100/00529f/ffffff?text=HSV'" alt="HSV-Logo">
+        <img loading="eager" decoding="async" src="assets/hsv-logo.jpg" onerror="this.src='https://placehold.co/100x100/00529f/ffffff?text=HSV'" alt="HSV-Logo">
       </div>
       <div>HSV · Lasse Böttcher</div>
       <div class="legal-wrap">
@@ -5052,38 +4989,6 @@
     })();
 
   
-    
-    /* ===== HSV Spiele – Daten hier pflegen ===== */
-    const HSV_MATCHES = {
-      updated: "13.11.2026",
-      table: { place: 11, points: 12, played: 9 },
-      last: {
-        home: "HSV", away: "Borussia Mönchengladbach",
-        score: "3:1", date: "Fr., 06.11.2026 · 20:30",
-        meta: "9. Spieltag · Heim", result: "w"
-      },
-      next: {
-        home: "Werder Bremen", away: "HSV",
-        date: "So., 22.11.2026 · 17:30",
-        meta: "10. Spieltag · Auswärts"
-      },
-      upcoming: [
-        { home: "HSV", away: "FC Bayern München", date: "Sa., 28.11.2026 · 15:30", meta: "11. Spieltag · Heim" },
-        { home: "1. FC Union Berlin", away: "HSV", date: "Sa., 05.12.2026 · 15:30", meta: "12. Spieltag · Auswärts" }
-      ],
-      ticketsUrl: "https://www.hsv.de/tickets",
-      scheduleUrl: "https://www.hsv.de/teams/maenner/spielplan"
-    };
-    function renderHsvMatches() {
-      const m = HSV_MATCHES;
-      const summary = document.querySelectorAll("[data-i18n='matchesSummarySub']");
-      const nextLine = `Nächstes: ${m.next.home} – ${m.next.away} · ${m.next.date.split("·")[0].trim()}`;
-      summary.forEach(el => { if (el.closest(".matches-blue-btn") || el.classList.contains("matches-summary-sub")) el.textContent = nextLine; });
-      const table = document.querySelector("[data-i18n='tablePos']");
-      if (table) table.textContent = `Platz ${m.table.place} · ${m.table.points} Punkte · ${m.table.played} Spiele`;
-    }
-    try { document.addEventListener("DOMContentLoaded", renderHsvMatches); renderHsvMatches(); } catch (e) {}
-
     /* Matches modal window */
     (function () {
       const openBtn = document.getElementById("open-matches-modal");
