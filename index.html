@@ -7,12 +7,6 @@
   <meta name="theme-color" content="#0a121d" media="(prefers-color-scheme: dark)">
   <meta name="color-scheme" content="light dark">
   <meta name="format-detection" content="telephone=no">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Lasse Böttcher | HSV">
-  <link rel="manifest" href="data:application/manifest+json,{"name":"Lasse%20B%C3%B6ttcher%20%7C%20HSV","short_name":"Lasse%20HSV","start_url":".","display":"standalone","background_color":"%230a4f9c","theme_color":"%230a4f9c","lang":"de"}">
-
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Lasse Böttcher | Player Care & Administration Sport | HSV">
   <meta property="og:description" content="Digitale Visitenkarte von Lasse Böttcher, HSV Fußball AG: Kontakt, Werdegang, Lebenslauf und Wallet-Pass.">
@@ -21,44 +15,46 @@
   <title>Lasse Böttcher | HSV</title>
   <style>
     :root {
-      --blue: #00529f;
-      --blue-dark: #003b72;
-      --blue-pale: #eaf3fb;
-      --ink: #0a1628;
-      --muted: #3d5266;
-      --white: #fff;
-      --line: #d0dce8;
-      --glass: rgba(255, 255, 255, .92);
-      --shadow: 0 18px 48px rgba(0, 52, 100, .15);
-      --card-bg: rgba(255, 255, 255, .94);
-      --chip-bg: linear-gradient(135deg, var(--blue-pale), #edf5ff);
-      --hero-overlay-1: rgba(0, 29, 58, .94);
-      --hero-overlay-2: rgba(0, 82, 159, .68);
-      --button-text: #fff;
-      --button-pale-text: var(--blue-dark);
+      --blue: #0a4f9c;
+      --blue-dark: #062f5c;
+      --blue-pale: #eef4fb;
+      --ink: #0d1f2d;
+      --muted: #4a5f73;
+      --white: #ffffff;
+      --line: #d4e0ec;
+      --glass: rgba(255, 255, 255, .94);
+      --shadow: 0 1px 2px rgba(6, 47, 92, .06), 0 12px 32px rgba(6, 47, 92, .08);
+      --card-bg: #ffffff;
+      --chip-bg: linear-gradient(135deg, #eef4fb, #f5f9fd);
+      --hero-overlay-1: rgba(4, 22, 44, .94);
+      --hero-overlay-2: rgba(10, 79, 156, .68);
+      --button-text: #ffffff;
+      --button-pale-text: #062f5c;
       --text-on-blue: #ffffff;
-      --text-on-blue-soft: rgba(255, 255, 255, 0.92);
-      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      --focus-ring: #3b8fff;
+      font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     body.dark {
-      --blue: #8ec2ff;
-      --blue-dark: #e8f3ff;
+      --blue: #7eb6ff;
+      --blue-dark: #e8f2ff;
       --blue-pale: #152536;
-      --ink: #f2f7ff;
-      --muted: #a9c0d8;
+      --ink: #f0f6ff;
+      --muted: #a8bfd8;
       --white: #0a121d;
-      --line: rgba(180, 205, 230, .28);
+      --line: rgba(160, 190, 220, .22);
       --glass: rgba(12, 20, 32, .92);
-      --shadow: 0 18px 48px rgba(0, 0, 0, .5);
-      --card-bg: rgba(16, 26, 40, .96);
-      --chip-bg: linear-gradient(135deg, rgba(28, 48, 72, .95), rgba(18, 34, 52, .95));
+      --shadow: 0 1px 2px rgba(0,0,0,.25), 0 16px 40px rgba(0,0,0,.45);
+      --card-bg: #101c2b;
+      --chip-bg: linear-gradient(135deg, #1a2d42, #142436);
       --hero-overlay-1: rgba(2, 10, 18, .94);
-      --hero-overlay-2: rgba(12, 42, 78, .88);
+      --hero-overlay-2: rgba(12, 48, 88, .85);
       --button-text: #041422;
-      --text-on-blue: #ffffff;
-      --text-on-blue-soft: rgba(255, 255, 255, 0.94);
-      --button-pale-text: #dfefff;
+      --button-pale-text: #e8f2ff;
+      --text-on-blue: #041422;
+      --focus-ring: #7eb6ff;
     }
 
     * { box-sizing: border-box; }
@@ -66,7 +62,8 @@
     body {
       margin: 0;
       color: var(--ink);
-      background: linear-gradient(160deg, #061f3d 0%, #0a4f9c 45%, #0d3a6e 100%) fixed;
+      background: linear-gradient(135deg, rgba(0, 42, 84, 0.75), rgba(0, 82, 159, 0.65)),
+                  url("assets/hsv-hintergrund.jpg") center center / cover no-repeat fixed;
       transition: background .25s, color .25s;
       min-height: 100vh;
     }
@@ -117,34 +114,11 @@
       object-fit: contain;
       border-radius: 50%;
     }
-    .hsv-logo-svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-      border-radius: 50%;
-    }
-    .brand-logo .hsv-logo-svg,
-    .footer-logo .hsv-logo-svg {
-      width: 100%;
-      height: 100%;
-    }
-    .hero-banner .hsv-logo-svg {
-      width: 58px;
-      height: 58px;
-      flex-shrink: 0;
-    }
-    body.dark .hsv-logo-svg path {
-      fill: #7bb5ff;
-    }
-    body.dark .hsv-logo-svg text {
-      fill: #051d2f;
-    }
-
 
     .brand small {
       display: block;
       margin-top: 3px;
-      color: var(--text-on-blue-soft);
+      color: #d9eafa;
       font-size: .66rem;
       font-weight: 700;
       letter-spacing: .08em;
@@ -370,7 +344,7 @@
       overflow: hidden;
       color: #fff;
       background: linear-gradient(90deg, var(--hero-overlay-1), var(--hero-overlay-2)),
-                  linear-gradient(90deg, var(--hero-overlay-1), var(--hero-overlay-2));
+                  url("assets/volksparkstadion.jpg") center 48%/cover no-repeat;
       border: 1px solid rgba(255, 255, 255, .35);
       border-radius: 28px;
       box-shadow: var(--shadow);
@@ -403,7 +377,7 @@
     .hero-banner span {
       display: block;
       margin-top: 3px;
-      color: var(--text-on-blue-soft);
+      color: #d9eafa;
       font-size: .76rem;
       font-weight: 700;
       letter-spacing: .1em;
@@ -412,7 +386,7 @@
 
     .eyebrow {
       margin: 0 0 10px;
-      color: var(--text-on-blue-soft);
+      color: #c9e2f6;
       font-size: .78rem;
       font-weight: 800;
       letter-spacing: .14em;
@@ -428,7 +402,7 @@
 
     .hero-copy {
       max-width: 560px;
-      color: var(--text-on-blue-soft);
+      color: rgba(255, 255, 255, .86);
       line-height: 1.7;
     }
 
@@ -511,7 +485,7 @@
       letter-spacing: -.04em;
     }
 
-    .role { margin: 0; color: var(--blue); font-weight: 700; }
+    .role { margin: 0; color: var(--muted); }
     .company { margin: 6px 0 0; color: var(--blue); font-weight: 800; }
     .small { color: var(--muted); font-size: .87rem; line-height: 1.55; margin: 6px 0 12px; }
 
@@ -1214,29 +1188,22 @@
 
     /* ===== Modernes, professionelles Redesign (nur Optik) ===== */
     :root {
-      --blue: #0a4f9c; --blue-dark: #062845; --blue-pale: #e8f1fb;
-      --ink: #0a1628; --muted: #3d5266; --line: #d0dce8;
+      --blue: #0a4f9c; --blue-dark: #082f5c; --blue-pale: #eef4fb;
+      --ink: #0f2438; --muted: #5b6e82; --line: #e1e8f0;
       --shadow: 0 1px 2px rgba(8,47,92,.06), 0 12px 32px rgba(8,47,92,.08);
-      --card-bg: #fff; --glass: rgba(255,255,255,.96);
-      --text-on-blue: #ffffff;
-      --text-on-blue-soft: rgba(255, 255, 255, 0.92);
+      --card-bg: #fff; --glass: rgba(255,255,255,.92);
       font-family: Inter, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
-    body.dark {
-      --blue: #8ec2ff;
-      --blue-dark: #e8f3ff;
-      --blue-pale: #152536;
-      --ink: #f2f7ff;
-      --muted: #a9c0d8;
-      --line: rgba(180, 205, 230, .28);
-      --card-bg: #101a28;
-      --glass: rgba(12, 20, 32, .94);
-      --text-on-blue: #ffffff;
-      --text-on-blue-soft: rgba(255, 255, 255, 0.94);
+    body {
+      background: linear-gradient(180deg, #04182e 0, #0a4f9c 420px, #eef3f9 420px) no-repeat, #eef3f9 !important;
+      line-height: 1.6;
+      color: var(--ink);
     }
-    body { background: linear-gradient(180deg, #061f3d 0, #0a4f9c 440px, #eef3f9 440px) no-repeat, #eef3f9 !important; line-height: 1.55; }
-    body.dark { background: linear-gradient(180deg, #040b14 0, #0d2d52 440px, #0a121d 440px) no-repeat, #0a121d !important; }
+    body.dark {
+      background: linear-gradient(180deg, #02080f 0, #0c2a4e 420px, #0a121d 420px) no-repeat, #0a121d !important;
+      color: var(--ink);
+    }
     h1, h2, h3 { letter-spacing: -.02em; }
     h2 { font-size: 1.15rem; font-weight: 750; color: var(--ink); }
     header { padding: 22px 0 14px; }
@@ -1305,155 +1272,6 @@
     @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
     :focus-visible { outline: 3px solid #5aa7ff; outline-offset: 2px; border-radius: 8px; }
 
-
-    /* Dark-mode overrides for remaining hardcoded colors */
-    body.dark .cv-sheet,
-    body.dark .cv-pages,
-    body.dark #qrcode,
-    body.dark .wallet-qr #qrcode-wallet {
-      background: #0e1c2b !important;
-      color: var(--ink) !important;
-      border-color: var(--line) !important;
-    }
-    body.dark .cv-sheet-name { color: var(--blue-dark) !important; }
-    body.dark .cv-sheet-role,
-    body.dark .cv-sheet-section h4,
-    body.dark .cv-entry-date { color: var(--blue) !important; }
-    body.dark .cv-sheet-meta,
-    body.dark .cv-entry-sub { color: var(--muted) !important; }
-    body.dark .cv-entry-head { color: var(--ink) !important; }
-    body.dark .cv-entry ul { color: var(--ink) !important; }
-    body.dark footer { color: var(--muted) !important; text-shadow: none; }
-    body.dark .brand-logo,
-    body.dark .footer-logo {
-      background: #fff;
-    }
-    body.dark .social-link { color: #fff; }
-
-
-    /* ===== Kontrast & Lesbarkeit (Hell + Dunkel) ===== */
-    body {
-      font-size: 16px;
-      line-height: 1.65;
-      color: var(--ink);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
-    }
-    p, li, .contact-value, .small, .timeline-item p, .hero-copy, .about-text, .info-list li {
-      line-height: 1.7;
-      color: var(--ink);
-    }
-    .role {
-      color: var(--blue) !important;
-      font-weight: 700 !important;
-      font-size: 0.98rem !important;
-    }
-    .company {
-      color: var(--muted) !important;
-      font-weight: 650 !important;
-    }
-    .contact-value,
-    .small,
-    .timeline-meta {
-      color: var(--muted) !important;
-      font-weight: 550 !important;
-    }
-    .contact-item strong,
-    .timeline-item h3,
-    h2, h3 {
-      color: var(--ink) !important;
-      font-weight: 750 !important;
-    }
-    .contact-group-title {
-      color: var(--blue) !important;
-      font-weight: 800 !important;
-      letter-spacing: 0.06em;
-    }
-    /* Hero text always high contrast on blue */
-    .hero, .hero h1, .hero .eyebrow, .hero-copy, .hero-banner strong, .hero-banner span {
-      color: var(--text-on-blue) !important;
-    }
-    .hero-copy {
-      opacity: 1 !important;
-      color: var(--text-on-blue-soft) !important;
-      font-weight: 500 !important;
-    }
-    .eyebrow {
-      opacity: 0.9 !important;
-      font-weight: 800 !important;
-    }
-    /* Cards: solid backgrounds for readable text */
-    .card, .timeline-item, .contact-item, .info-list li, .private-details, .cv-doc-card {
-      background: var(--card-bg) !important;
-    }
-    body.dark .card,
-    body.dark .timeline-item,
-    body.dark .contact-item,
-    body.dark .info-list li {
-      background: var(--card-bg) !important;
-      border-color: var(--line) !important;
-    }
-    /* Language bars & chips */
-    .lang-header-row strong { color: var(--ink) !important; }
-    .lang-header-row span { color: var(--muted) !important; font-weight: 650 !important; }
-    .chip {
-      color: var(--blue-dark) !important;
-      font-weight: 650 !important;
-      border-color: var(--line) !important;
-    }
-    /* Modals */
-    .modal-card {
-      background: var(--white) !important;
-      color: var(--ink) !important;
-    }
-    body.dark .modal-card {
-      background: #101a28 !important;
-      color: var(--ink) !important;
-    }
-    .modal-header h3 { color: var(--ink) !important; }
-    /* About / body paragraphs */
-    .card p, .timeline-item p, section p {
-      color: var(--ink) !important;
-      font-size: 0.97rem;
-      line-height: 1.72;
-    }
-    /* Quick nav remains white on blue header area */
-    .quick-nav a, .quick-nav button {
-      color: #fff !important;
-      font-weight: 650 !important;
-    }
-    /* Focus visible for accessibility */
-    :focus-visible {
-      outline: 3px solid #3d8bfd;
-      outline-offset: 3px;
-    }
-    body.dark :focus-visible {
-      outline-color: #8ec2ff;
-    }
-    /* Prefer more contrast system preference */
-    @media (prefers-contrast: more) {
-      :root {
-        --ink: #000;
-        --muted: #2a3a4a;
-        --line: #99aabb;
-      }
-      body.dark {
-        --ink: #ffffff;
-        --muted: #c8d8e8;
-        --line: rgba(255,255,255,.35);
-      }
-      .card, .timeline-item, .contact-item {
-        border-width: 2px !important;
-      }
-    }
-    /* Slightly larger readable text on small screens */
-    @media (max-width: 720px) {
-      body { font-size: 16.5px; }
-      .card p, .timeline-item p { font-size: 1rem; line-height: 1.75; }
-      .contact-value { font-size: 0.95rem; }
-    }
-
     /* ===== Feinschliff: Lesbarkeit, Mobile, Barrierefreiheit, Druck ===== */
     html { -webkit-text-size-adjust: 100%; scroll-padding-top: 16px; }
     [id] { scroll-margin-top: 20px; }
@@ -1486,40 +1304,11 @@
       .card, .timeline-item, .contact-item { border-color: var(--ink) !important; }
     }
     @media print {
-      body, body.dark {
-        background: #fff !important;
-        color: #000 !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
-      header, .quick-nav, .mobile-sticky-bar, .modal-overlay,
-      .qr-present-overlay, aside.stack > .button.full:not(#print-card),
-      .header-right, .theme-toggle, .lang-dropdown, #to-top,
-      .hero-photo, #karriere, .private-details, .cv-doc-card {
-        display: none !important;
-      }
-      .page { width: 100% !important; margin: 0 !important; }
-      .hero {
-        background: #003b72 !important;
-        color: #fff !important;
-        border-radius: 0 !important;
-        box-shadow: none !important;
-        page-break-after: avoid;
-      }
-      .card, .timeline-item, .contact-item {
-        box-shadow: none !important;
-        border: 1px solid #ccc !important;
-        break-inside: avoid;
-        background: #fff !important;
-        color: #000 !important;
-      }
-      .layout { display: block !important; }
+      body, body.dark { background: #fff !important; color: #000; }
+      header, .quick-nav, .mobile-sticky-bar, .modal-overlay, aside, .header-right, footer, .hero-photo, #karriere { display: none !important; }
+      .card, .hero { box-shadow: none !important; border: 1px solid #ccc !important; break-inside: avoid; }
       details > * { display: block !important; }
-      a { text-decoration: none; color: inherit; }
-      /* One-Pager / Tischaufsteller */
-      .print-onepager .hero { padding: 24px !important; }
-      /* Visitenkarten-Hinweis (manuell zuschneiden 85×55 mm) */
-      @page { margin: 12mm; size: A4; }
+      a { text-decoration: none; }
     }
 
     /* ===== Die drei Aktions-Buttons (QR, Wallet, Kontakt speichern) ===== */
@@ -1573,34 +1362,134 @@
     }
     #toast.show { opacity: 1; transform: translate(-50%, 0); }
   
-    /* Präsentations- / Ticket-Modus für QR-Code (Stadion / Messe) */
-    .qr-present-overlay {
-      position: fixed; inset: 0; z-index: 2000;
-      display: none; flex-direction: column; align-items: center; justify-content: center;
-      background: #003b72; color: #fff; padding: 24px;
-      overscroll-behavior: contain;
-    }
-    .qr-present-overlay.active { display: flex; }
-    body.dark .qr-present-overlay { background: #051018; }
-    .qr-present-overlay .hsv-logo-svg { width: 72px; height: 72px; margin-bottom: 18px; }
-    .qr-present-box {
-      background: #fff; padding: 20px; border-radius: 20px;
-      box-shadow: 0 20px 50px rgba(0,0,0,.4);
-    }
-    .qr-present-box #qrcode-present { width: min(280px, 70vw); height: min(280px, 70vw); }
-    .qr-present-box #qrcode-present canvas,
-    .qr-present-box #qrcode-present img { width: 100% !important; height: auto !important; }
-    .qr-present-name { margin-top: 20px; font-size: 1.4rem; font-weight: 800; letter-spacing: -.02em; }
-    .qr-present-role { opacity: .85; font-size: .95rem; margin-top: 4px; }
-    .qr-present-close {
-      position: absolute; top: 16px; right: 16px;
-      width: 48px; height: 48px; border-radius: 50%;
-      background: rgba(255,255,255,.15); border: 0; color: #fff;
-      font-size: 1.5rem; cursor: pointer; display: grid; place-items: center;
-    }
-    .qr-present-hint { margin-top: 24px; font-size: .82rem; opacity: .7; }
 
-  </style>
+    /* ===== Lesbarkeit & Kontrast Feinschliff (Hell + Dunkel) ===== */
+    body, .card, .timeline-item, .contact-item, .info-list li {
+      color: var(--ink);
+    }
+    .role { color: var(--blue); font-weight: 650; }
+    .company { color: var(--muted); font-weight: 600; }
+    .small, .contact-value, .timeline-meta, .cv-doc-sub {
+      color: var(--muted);
+    }
+    h1, h2, h3, .profile h2, .cv-sheet-name {
+      color: var(--ink);
+      font-weight: 750;
+    }
+    body.dark h1, body.dark h2, body.dark h3, body.dark .profile h2 {
+      color: var(--ink);
+    }
+    .eyebrow, .hero-banner span, .hero-copy {
+      color: rgba(255,255,255,.9);
+    }
+    .hero-copy { font-weight: 500; opacity: 1; }
+    .button {
+      color: var(--button-text) !important;
+    }
+    .button.pale {
+      color: var(--button-pale-text) !important;
+      background: var(--blue-pale) !important;
+    }
+    body.dark .button.pale {
+      border-color: var(--line);
+    }
+    .chip {
+      color: var(--blue-dark);
+      background: var(--chip-bg);
+      border: 1px solid var(--line);
+    }
+    body.dark .chip {
+      color: var(--blue-dark);
+    }
+    .contact-icon {
+      color: var(--blue);
+      background: var(--blue-pale);
+    }
+    .contact-item strong {
+      color: var(--blue-dark);
+    }
+    .timeline-item {
+      border-left: 4px solid var(--blue);
+    }
+    .timeline-item h3 {
+      color: var(--blue-dark);
+    }
+    .progress-bar-fill {
+      background: linear-gradient(90deg, #0a4f9c, #3f8fe0) !important;
+    }
+    body.dark .progress-bar-fill {
+      background: linear-gradient(90deg, #3f8fe0, #7eb6ff) !important;
+    }
+    .qa {
+      color: var(--blue-dark);
+      background: var(--blue-pale);
+    }
+    body.dark .qa:hover {
+      color: #041422;
+    }
+    /* Focus visible for accessibility */
+    :focus-visible {
+      outline: 3px solid var(--focus-ring);
+      outline-offset: 2px;
+    }
+    /* Ensure links and buttons remain high-contrast */
+    a.contact-item:hover {
+      background: var(--blue-pale) !important;
+      border-color: var(--blue) !important;
+    }
+    /* Better card separation in dark */
+    body.dark .card {
+      background: #101c2b !important;
+      border-color: rgba(160, 190, 220, .18) !important;
+    }
+    body.dark .timeline-item,
+    body.dark .contact-item,
+    body.dark .info-list li {
+      background: transparent;
+      border-color: rgba(160, 190, 220, .16);
+    }
+    /* Hero text always white for max contrast on dark overlay */
+    .hero h1, .hero .eyebrow, .hero-banner strong {
+      color: #ffffff !important;
+      text-shadow: 0 1px 3px rgba(0,0,0,.35);
+    }
+    .hero-copy {
+      color: rgba(255,255,255,.92) !important;
+    }
+    /* Footer */
+    footer {
+      color: rgba(255,255,255,.75);
+    }
+    body.dark footer {
+      color: var(--muted);
+    }
+    /* Print still clean */
+    @media print {
+      body, body.dark { background: #fff !important; color: #000 !important; }
+      .card, .hero { box-shadow: none !important; border: 1px solid #ccc !important; }
+    }
+    /* Mobile sticky bar contrast */
+    .mobile-sticky-bar {
+      background: var(--glass) !important;
+      border: 1px solid var(--line);
+    }
+    /* Language select readable */
+    .lang-select, .lang-dropdown {
+      color: var(--blue-dark);
+    }
+    body.dark .lang-select, body.dark .lang-dropdown {
+      color: var(--blue-dark);
+    }
+    /* Toast high contrast */
+    #toast {
+      background: #062f5c;
+      color: #fff;
+    }
+    body.dark #toast {
+      background: #1a3a5c;
+      color: #f0f6ff;
+    }
+</style>
 
   <!-- ============================================================
        HSV-Feinschliff (ergänzende Ebene, Konzept bleibt unverändert)
@@ -1625,7 +1514,7 @@
       inset: 0;
       z-index: -2;
       pointer-events: none;
-      background: linear-gradient(160deg, #061f3d 0%, #0a4f9c 100%);
+      background: url("assets/hsv-hintergrund.jpg") center center / cover no-repeat;
     }
 
     /* Kontrast-Schleier: Marke bleibt sichtbar, Text bleibt lesbar */
@@ -1890,7 +1779,7 @@
   <div class="page">
     <header>
       <a class="brand" href="https://www.hsv.de/" aria-label="Home | HSV">
-        <span class="brand-logo"><svg class="hsv-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HSV Logo"><defs><linearGradient id="hsvGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00529f"/><stop offset="100%" stop-color="#003b72"/></linearGradient></defs><path d="M50 4 L96 50 L50 96 L4 50 Z" fill="url(#hsvGrad)" stroke="#fff" stroke-width="2.5"/><text x="50" y="58" text-anchor="middle" fill="#fff" font-size="26" font-weight="800" font-family="Arial, Helvetica, sans-serif" letter-spacing="-1">HSV</text></svg></span>
+        <span class="brand-logo"><img src="assets/hsv-logo.jpg" onerror="this.src='https://placehold.co/100x100/00529f/ffffff?text=HSV'" alt="HSV-Logo"></span>
         <span>
           <span data-i18n="brandName">Lasse Böttcher</span>
           <small data-i18n="brandSubtitle">Player Care & Administration Sport</small>
@@ -1925,7 +1814,7 @@
         </div>
 
         <div class="header-mid-logo" title="HSV Logo">
-          <svg class="hsv-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HSV Logo"><defs><linearGradient id="hsvGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00529f"/><stop offset="100%" stop-color="#003b72"/></linearGradient></defs><path d="M50 4 L96 50 L50 96 L4 50 Z" fill="url(#hsvGrad)" stroke="#fff" stroke-width="2.5"/><text x="50" y="58" text-anchor="middle" fill="#fff" font-size="26" font-weight="800" font-family="Arial, Helvetica, sans-serif" letter-spacing="-1">HSV</text></svg>
+          <img src="assets/hsv-hintergrund.jpg" onerror="this.src='https://placehold.co/100x100/00529f/ffffff?text=HSV'" alt="HSV Logo">
         </div>
 
         <a class="home-link" href="https://www.hsv.de/" target="_blank" rel="noopener noreferrer" data-i18n="homeLink">Home | HSV ↗</a>
@@ -1948,7 +1837,7 @@
       <section class="hero" aria-labelledby="welcome-title">
         <div class="hero-content">
           <div class="hero-banner">
-            <svg class="hsv-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HSV Logo"><defs><linearGradient id="hsvGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00529f"/><stop offset="100%" stop-color="#003b72"/></linearGradient></defs><path d="M50 4 L96 50 L50 96 L4 50 Z" fill="url(#hsvGrad)" stroke="#fff" stroke-width="2.5"/><text x="50" y="58" text-anchor="middle" fill="#fff" font-size="26" font-weight="800" font-family="Arial, Helvetica, sans-serif" letter-spacing="-1">HSV</text></svg>
+            <img src="assets/hsv-logo.jpg" onerror="this.src='https://placehold.co/100x100/00529f/ffffff?text=HSV'" alt="HSV Wappen">
             <div>
               <strong>HSV</strong>
               <span data-i18n="heroBadge">Digitale Visitenkarte</span>
@@ -2302,7 +2191,6 @@
           <div class="qr-actions">
             <button class="button pale full" id="copy-link" type="button" data-i18n="copyLink">Link kopieren</button>
             <button class="button pale full" id="download-qr" type="button" data-i18n="downloadQr">QR-Code herunterladen</button>
-            <button class="button full" type="button" data-qr-present style="margin-top:8px;">Vollbild / Präsentation</button>
           </div>
           <p class="status" id="qr-status" aria-live="polite"></p>
         </div>
@@ -2437,7 +2325,9 @@
     </div>
 
     <footer>
-      <div class="footer-logo"><svg class="hsv-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HSV Logo"><defs><linearGradient id="hsvGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00529f"/><stop offset="100%" stop-color="#003b72"/></linearGradient></defs><path d="M50 4 L96 50 L50 96 L4 50 Z" fill="url(#hsvGrad)" stroke="#fff" stroke-width="2.5"/><text x="50" y="58" text-anchor="middle" fill="#fff" font-size="26" font-weight="800" font-family="Arial, Helvetica, sans-serif" letter-spacing="-1">HSV</text></svg></div>
+      <div class="footer-logo">
+        <img src="assets/hsv-logo.jpg" onerror="this.src='https://placehold.co/100x100/00529f/ffffff?text=HSV'" alt="HSV-Logo">
+      </div>
       <div>HSV · Lasse Böttcher</div>
       <div class="legal-wrap">
         <details class="legal-box">
@@ -3070,11 +2960,6 @@
     langSelect.addEventListener("change", (e) => applyLanguage(e.target.value));
     applyLanguage(currentLang);
 
-    
-    function haptic(ms = 12) {
-      try { if (navigator.vibrate) navigator.vibrate(ms); } catch (e) {}
-    }
-
     function showToast(msg) {
       let el = document.getElementById("toast");
       if (!el) { el = document.createElement("div"); el.id = "toast"; el.setAttribute("role", "status"); document.body.appendChild(el); }
@@ -3107,59 +2992,6 @@
       e.currentTarget.href = "mailto:Lasse.boettcher@hsv.de?subject=" + encodeURIComponent(d.apptSubject) + "&body=" + encodeURIComponent(d.apptBody);
     });
 
-
-    // Präsentationsmodus
-    let presentQr = null;
-    function openQrPresent() {
-      const overlay = document.getElementById("qr-present");
-      const box = document.getElementById("qrcode-present");
-      if (!overlay || !box) return;
-      if (!presentQr) {
-        box.innerHTML = "";
-        presentQr = new QRCode(box, {
-          text: CARD.url,
-          width: 260,
-          height: 260,
-          colorDark: "#003b72",
-          colorLight: "#ffffff",
-          correctLevel: QRCode.CorrectLevel.H
-        });
-      }
-      overlay.classList.add("active");
-      document.body.style.overflow = "hidden";
-      haptic(10);
-    }
-    function closeQrPresent() {
-      const overlay = document.getElementById("qr-present");
-      if (overlay) overlay.classList.remove("active");
-      document.body.style.overflow = "";
-    }
-    document.getElementById("close-qr-present")?.addEventListener("click", closeQrPresent);
-    document.getElementById("qr-present")?.addEventListener("click", (e) => {
-      if (e.target.id === "qr-present") closeQrPresent();
-    });
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeQrPresent();
-    });
-    // Long-press / double-tap on main QR opens present mode
-    const mainQrBtn = document.getElementById("open-qr-modal");
-    if (mainQrBtn) {
-      let lastTap = 0;
-      mainQrBtn.addEventListener("click", (e) => {
-        const now = Date.now();
-        if (now - lastTap < 350) {
-          e.preventDefault();
-          e.stopPropagation();
-          openQrPresent();
-        }
-        lastTap = now;
-      });
-    }
-    // Also expose via data attribute buttons
-    document.querySelectorAll("[data-qr-present]").forEach(el => {
-      el.addEventListener("click", openQrPresent);
-    });
-
     const qrContainer = document.getElementById("qrcode");
     new QRCode(qrContainer, {
       text: CARD.url,
@@ -3175,7 +3007,7 @@
     copyBtn.addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(CARD.url);
-        haptic(12); statusEl.textContent = T[currentLang].copied;
+        statusEl.textContent = T[currentLang].copied;
         const originalText = copyBtn.textContent;
         copyBtn.textContent = "✓ " + T[currentLang].copied;
         setTimeout(() => {
@@ -3206,7 +3038,6 @@
     });
 
     function downloadVCard(btnElement) {
-      // Social profiles + note: PHOTO can be added once a real base64 portrait is available
       const vcard = [
         "BEGIN:VCARD",
         "VERSION:3.0",
@@ -3221,13 +3052,6 @@
         `ADR;TYPE=WORK:;;${CARD.workStreet};${CARD.workCity};;${CARD.workZip};${CARD.country}`,
         `ADR;TYPE=HOME:;;${CARD.privateStreet};${CARD.privateCity};;${CARD.privateZip};${CARD.country}`,
         `URL:${CARD.url}`,
-        "URL;TYPE=LinkedIn:https://de.linkedin.com/in/lasse-böttcher-954938154",
-        "URL;TYPE=XING:https://www.xing.com/profile/Lasse_Boettcher",
-        "URL;TYPE=Instagram:https://www.instagram.com/laboe1999",
-        "X-SOCIALPROFILE;TYPE=linkedin:https://de.linkedin.com/in/lasse-böttcher-954938154",
-        "X-SOCIALPROFILE;TYPE=xing:https://www.xing.com/profile/Lasse_Boettcher",
-        "X-SOCIALPROFILE;TYPE=instagram:https://www.instagram.com/laboe1999",
-        "NOTE:Player Care & Administration Sport · HSV Fußball AG",
         "END:VCARD"
       ].join("\r\n");
 
@@ -3241,7 +3065,7 @@
 
       if (btnElement) {
         const orig = btnElement.textContent;
-        haptic(20); btnElement.textContent = "✓ Gespeichert";
+        btnElement.textContent = "✓ Gespeichert";
         setTimeout(() => { btnElement.textContent = orig; }, 2000);
       }
     }
@@ -3380,7 +3204,7 @@
         }
       } catch (err) { ok = false; }
       if (!ok) ok = legacyCopy(CONTACT_TEXT);
-      haptic(15); showToast(ok ? (d.copyDone || "Kontaktdaten kopiert") : (d.copyFail || "Kopieren nicht möglich"));
+      showToast(ok ? (d.copyDone || "Kontaktdaten kopiert") : (d.copyFail || "Kopieren nicht möglich"));
     });
 
     document.getElementById("print-card")?.addEventListener("click", () => window.print());
@@ -3426,16 +3250,5 @@
       });
     } catch (err) {}
   </script>
-
-    <!-- Präsentationsmodus QR (Vollbild) -->
-    <div class="qr-present-overlay" id="qr-present" role="dialog" aria-modal="true" aria-label="QR-Code Präsentation">
-      <button type="button" class="qr-present-close" id="close-qr-present" aria-label="Schließen">×</button>
-      <svg class="hsv-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M50 4 L96 50 L50 96 L4 50 Z" fill="#fff"/><text x="50" y="58" text-anchor="middle" fill="#003b72" font-size="26" font-weight="800" font-family="Arial,sans-serif">HSV</text></svg>
-      <div class="qr-present-box"><div id="qrcode-present"></div></div>
-      <div class="qr-present-name">Lasse Böttcher</div>
-      <div class="qr-present-role">Player Care &amp; Administration Sport · HSV</div>
-      <div class="qr-present-hint">Zum Schließen tippen oder Escape</div>
-    </div>
-
 </body>
 </html>
